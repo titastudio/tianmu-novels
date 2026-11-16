@@ -3366,7 +3366,6 @@ function openAdmin() {
 }
 
 function closeAdmin() {
-  if (_publishTimer) { clearTimeout(_publishTimer); _publishTimer = null; _publishToGitHub(); }
   document.getElementById('adminOverlay').classList.remove('open');
   _loginAttempts = 0;
 }
@@ -3394,8 +3393,7 @@ async function checkAdminPassword() {
     document.getElementById('adminPanel').style.display = 'block';
     _adminUnlocked = true;
     populateAdminForms();
-    populateGitHubForm();
-    if (_readLocal()?.dirty) _schedulePublish(1000);
+    _setSyncStatus(_unsaved ? 'pending' : 'clean');
   } else {
     _loginAttempts++;
     document.getElementById('adminPasswordInput').value = '';
@@ -3440,7 +3438,7 @@ async function changePassword() {
   document.getElementById('pw-new').value = '';
   document.getElementById('pw-confirm').value = '';
   saveAllData();
-  showToast(_ghReady() ? '✓ Password changed — publishing to GitHub.' : '✓ Password changed on this device. Connect GitHub to publish it.');
+  showToast('✓ Password changed. Download the content files and upload them to make it permanent.');
 }
 
 // ── Site config (editable via admin) ──
@@ -5174,93 +5172,32 @@ function publishNow(novelIdx, chapterIdx) {
 }
 
 // ═══════════════════════════════════════════════
-// DATA PERSISTENCE — GitHub repo (content/*.json) + localStorage fallback
+// DATA — read straight from the content/ folder
 //
 //   index.html                    ← this file: code + design only
 //   content/site.json             ← site settings, About page, password hash
 //   content/novels/index.json     ← order of novels on the shelf
 //   content/novels/<novel>.json   ← one file per novel (info + all chapters)
 //
-// Readers: the JSON files are fetched from the same GitHub Pages site.
-// Admin:   every save is committed to the repo through the GitHub API, using a
-//          token that is stored ONLY in this browser (never in the repo).
+// Everyone (readers and admin) loads these JSON files from the same site.
+// Admin edits change the page in this browser only. "Download content files"
+// saves a zip with the updated files; upload them to the repo to publish.
 // ═══════════════════════════════════════════════
-const _CONTENT_DIR   = 'content';
-const _SAVE_KEY      = 'tm_site_data_v2';   // local cache / unpublished draft
-const _GH_KEY        = 'tm_github_v1';      // GitHub connection (this browser only)
-const _PUBLISH_DELAY = 2500;                // batch rapid edits into one commit
-
-let _adminUnlocked  = false;
-let _baseline       = null;   // { path: text } as it is on GitHub; null = unknown
-let _publishTimer   = null;
-let _publishing     = false;
-let _publishAgain   = false;
-let _syncState      = { state: 'idle', msg: '' };
-
+const _CONTENT_DIR = 'content';
 const _P_SITE  = `${_CONTENT_DIR}/site.json`;
 const _P_INDEX = `${_CONTENT_DIR}/novels/index.json`;
 const _pNovel  = name => `${_CONTENT_DIR}/novels/${name}.json`;
 const _fmt     = obj => JSON.stringify(obj, null, 2) + '\n';
 
-// ── GitHub connection settings (kept in this browser only) ──
-function _ghGuess() {
-  const m = location.hostname.match(/^([^.]+)\.github\.io$/i);
-  if (!m) return {};
-  const seg = location.pathname.split('/').filter(Boolean)[0];
-  return { owner: m[1], repo: (seg && !seg.includes('.')) ? seg : `${m[1]}.github.io` };
-}
-function _ghCfg() {
-  let c = {};
-  try { c = JSON.parse(localStorage.getItem(_GH_KEY)) || {}; } catch(e) {}
-  const g = _ghGuess();
-  return { owner: c.owner || g.owner || '', repo: c.repo || g.repo || '', branch: c.branch || 'main', token: c.token || '' };
-}
-function _ghReady() { const c = _ghCfg(); return !!(c.token && c.owner && c.repo); }
+let _adminUnlocked = false;
+let _unsaved = false;
 
-async function _gh(method, path, body) {
-  const c = _ghCfg();
-  const resp = await fetch(`https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}${path}`, {
-    method,
-    cache: 'no-store',
-    headers: {
-      'Authorization': 'Bearer ' + c.token,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      ...(body ? { 'Content-Type': 'application/json' } : {})
-    },
-    body: body ? JSON.stringify(body) : undefined
-  });
-  if (!resp.ok) {
-    let m = '';
-    try { m = (await resp.json()).message || ''; } catch(e) {}
-    const err = new Error(`GitHub ${resp.status}${m ? ': ' + m : ''}`);
-    err.status = resp.status;
-    throw err;
-  }
-  return resp.status === 204 ? null : resp.json();
-}
-
-// Read one content file. Admin with a token reads straight from the repo (no
-// Pages deploy delay); everyone else reads the file from the website itself.
-async function _fetchContent(path) {
-  if (_ghReady()) {
-    const c = _ghCfg();
-    try {
-      const resp = await fetch(
-        `https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(c.branch)}`,
-        { cache: 'no-store', headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github.raw+json', 'X-GitHub-Api-Version': '2022-11-28' } }
-      );
-      if (resp.ok) return { found: true, text: await resp.text() };
-      if (resp.status === 404) return { found: false };
-    } catch(e) { /* fall through to the public copy */ }
-  }
+async function _fetchJSON(path) {
   const resp = await fetch(path, { cache: 'no-cache' });
-  if (resp.status === 404) return { found: false };
   if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
-  return { found: true, text: await resp.text() };
+  return resp.json();
 }
 
-// ── Turn the in-memory data into repo files: { path: text } ──
 function _novelFileNames(novels) {
   const used = new Set();
   return novels.map((n, i) => {
@@ -5271,27 +5208,13 @@ function _novelFileNames(novels) {
     return name;
   });
 }
-function _sitePayload(site, about, hash) { return { siteConfig: site, aboutConfig: about, passwordHash: hash }; }
 function _buildContentFiles() {
   const files = {};
   const names = _novelFileNames(NOVELS);
   NOVELS.forEach((n, i) => { files[_pNovel(names[i])] = _fmt(n); });
   files[_P_INDEX] = _fmt({ novels: names });
-  files[_P_SITE]  = _fmt(_sitePayload(SITE_CONFIG, ABOUT_CONFIG, _ap));
+  files[_P_SITE]  = _fmt({ siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap, updatedAt: new Date().toISOString() });
   return files;
-}
-
-// ── Local cache ──
-function _readLocal() {
-  try { const raw = localStorage.getItem(_SAVE_KEY); return raw ? JSON.parse(raw) : null; } catch(e) { return null; }
-}
-function _writeLocal(dirty) {
-  try {
-    localStorage.setItem(_SAVE_KEY, JSON.stringify({
-      novels: NOVELS, siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap,
-      savedAt: Date.now(), dirty: !!dirty
-    }));
-  } catch(e) { console.warn('Could not write local cache:', e); }
 }
 function _applyData(d) {
   if (Array.isArray(d.novels)) { NOVELS.length = 0; d.novels.forEach(n => NOVELS.push(n)); }
@@ -5300,210 +5223,98 @@ function _applyData(d) {
   if (d.passwordHash) _ap = d.passwordHash;
 }
 
-// ── Load: GitHub content first, local cache as fallback ──
 async function loadSavedData() {
-  let remote = null;
+  try { localStorage.removeItem('tm_site_data_v2'); localStorage.removeItem('tm_github_v1'); } catch(e) {}   // old versions
   try {
-    const [siteRes, indexRes] = await Promise.all([_fetchContent(_P_SITE), _fetchContent(_P_INDEX)]);
-    if (!indexRes.found) {
-      // Repo has no content folder yet — publishing will create it.
-      _baseline = {};
-    } else {
-      const names = (JSON.parse(indexRes.text).novels || []).filter(Boolean);
-      const novelRes = await Promise.all(names.map(nm => _fetchContent(_pNovel(nm))));
-      const site = siteRes.found ? JSON.parse(siteRes.text) : {};
-      const novels = [];
-      const base = { [_P_INDEX]: _fmt({ novels: [] }) };
-      const keptNames = [];
-      novelRes.forEach((r, i) => {
-        if (!r.found) { console.warn('Missing novel file:', _pNovel(names[i])); return; }
-        const n = JSON.parse(r.text);
-        novels.push(n);
-        keptNames.push(names[i]);
-        base[_pNovel(names[i])] = _fmt(n);
-      });
-      base[_P_INDEX] = _fmt({ novels: keptNames });
-      if (siteRes.found) base[_P_SITE] = _fmt(_sitePayload(site.siteConfig || {}, site.aboutConfig || {}, site.passwordHash || ''));
-      _baseline = base;
-      remote = { novels, siteConfig: site.siteConfig, aboutConfig: site.aboutConfig, passwordHash: site.passwordHash, updatedAt: site.updatedAt || 0 };
+    const [site, index] = await Promise.all([_fetchJSON(_P_SITE), _fetchJSON(_P_INDEX)]);
+    const names = (index.novels || []).filter(Boolean);
+    const novels = [];
+    for (const nm of names) {
+      try { novels.push(await _fetchJSON(_pNovel(nm))); } catch(e) { console.warn('Missing novel file:', nm, e); }
     }
+    _applyData({ novels, siteConfig: site.siteConfig, aboutConfig: site.aboutConfig, passwordHash: site.passwordHash });
+    _setSyncStatus('clean');
+    return true;
   } catch(e) {
-    console.warn('Could not load content from GitHub, trying local cache:', e);
+    console.warn('Could not load content files:', e);
+    return false;
   }
-
-  const local = _readLocal();
-  // Unpublished edits made in this browser win if they are newer than GitHub.
-  if (local && local.dirty && (!remote || (local.savedAt || 0) > (remote.updatedAt || 0))) {
-    _applyData(local);
-    _setSyncStatus('pending');
-    return true;
-  }
-  if (remote) {
-    _applyData(remote);
-    _writeLocal(false);
-    _setSyncStatus(_ghReady() ? 'synced' : 'local');
-    return true;
-  }
-  if (local) { _applyData(local); return true; }
-  return false;
 }
 
-// ── Save: local immediately, GitHub after a short pause ──
+// Admin edits: kept in this page until downloaded.
 function saveAllData() {
-  _writeLocal(true);
   if (!_adminUnlocked) return;
-  _schedulePublish(_PUBLISH_DELAY);
-}
-
-function _schedulePublish(delay) {
-  clearTimeout(_publishTimer);
-  if (!_ghReady()) { _setSyncStatus('local'); return; }
+  _unsaved = true;
   _setSyncStatus('pending');
-  _publishTimer = setTimeout(() => { _publishTimer = null; _publishToGitHub(); }, delay);
 }
 
-// One atomic commit with any number of file changes. value null = delete file.
-async function _commitFiles(changes, message) {
-  const branch = _ghCfg().branch;
-  for (let attempt = 0; attempt < 2; attempt++) {
-    try {
-      const ref  = await _gh('GET', `/git/ref/heads/${encodeURIComponent(branch)}`);
-      const head = await _gh('GET', `/git/commits/${ref.object.sha}`);
-      const tree = Object.entries(changes).map(([path, text]) =>
-        text === null
-          ? { path, mode: '100644', type: 'blob', sha: null }
-          : { path, mode: '100644', type: 'blob', content: text });
-      const newTree = await _gh('POST', '/git/trees', { base_tree: head.tree.sha, tree });
-      const commit  = await _gh('POST', '/git/commits', { message, tree: newTree.sha, parents: [ref.object.sha] });
-      await _gh('PATCH', `/git/refs/heads/${encodeURIComponent(branch)}`, { sha: commit.sha });
-      return commit;
-    } catch(e) {
-      // 409/422 = someone else committed in between; try once more on top of it.
-      if (attempt === 0 && (e.status === 409 || e.status === 422)) continue;
-      throw e;
-    }
+// ── Tiny ZIP writer (no compression) so all files download in one go ──
+function _crc32(buf) {
+  let crc = 0xFFFFFFFF;
+  for (let n = 0; n < buf.length; n++) {
+    let c = (crc ^ buf[n]) & 0xFF;
+    for (let k = 0; k < 8; k++) c = c & 1 ? (c >>> 1) ^ 0xEDB88320 : c >>> 1;
+    crc = (crc >>> 8) ^ c;
   }
+  return (crc ^ 0xFFFFFFFF) >>> 0;
+}
+function _zip(files) {
+  const enc = new TextEncoder(), parts = [], central = [];
+  let offset = 0, count = 0;
+  for (const [name, text] of Object.entries(files)) {
+    const data = enc.encode(text), nm = enc.encode(name), crc = _crc32(data);
+    const lh = new DataView(new ArrayBuffer(30));
+    lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+    lh.setUint16(12, 0x21, true); lh.setUint32(14, crc, true); lh.setUint32(18, data.length, true);
+    lh.setUint32(22, data.length, true); lh.setUint16(26, nm.length, true);
+    parts.push(new Uint8Array(lh.buffer), nm, data);
+    const ch = new DataView(new ArrayBuffer(46));
+    ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+    ch.setUint16(14, 0x21, true); ch.setUint32(16, crc, true); ch.setUint32(20, data.length, true); ch.setUint32(24, data.length, true);
+    ch.setUint16(28, nm.length, true); ch.setUint32(42, offset, true);
+    central.push(new Uint8Array(ch.buffer), nm);
+    offset += 30 + nm.length + data.length; count++;
+  }
+  const cdSize = central.reduce((a, b) => a + b.length, 0);
+  const eocd = new DataView(new ArrayBuffer(22));
+  eocd.setUint32(0, 0x06054b50, true); eocd.setUint16(8, count, true); eocd.setUint16(10, count, true);
+  eocd.setUint32(12, cdSize, true); eocd.setUint32(16, offset, true);
+  return new Blob([...parts, ...central, new Uint8Array(eocd.buffer)], { type: 'application/zip' });
+}
+function _download(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-async function _publishToGitHub() {
-  if (!_ghReady()) { _setSyncStatus('local'); return false; }
-  if (_baseline === null) {
-    _setSyncStatus('error', 'Content could not be loaded from GitHub, so publishing is paused to avoid overwriting it. Reload the page and try again.');
-    return false;
-  }
-  if (_publishing) { _publishAgain = true; return false; }
-  _publishing = true;
-  _setSyncStatus('publishing');
-  try {
-    const files = _buildContentFiles();
-    const changes = {};
-    Object.entries(files).forEach(([p, t]) => { if (_baseline[p] !== t) changes[p] = t; });
-    Object.keys(_baseline).forEach(p => { if (!(p in files)) changes[p] = null; });
-    const changed = Object.keys(changes);
-    if (changed.length) {
-      const now = Date.now();
-      // site.json always carries the time of the last publish
-      const site = JSON.parse(files[_P_SITE]);
-      changes[_P_SITE] = _fmt({ ...site, updatedAt: now });
-      const label = changed.map(p => p.replace(_CONTENT_DIR + '/', '')).slice(0, 4).join(', ') + (changed.length > 4 ? ` +${changed.length - 4} more` : '');
-      await _commitFiles(changes, `Update ${label}`);
-      _baseline = files;
-    }
-    _writeLocal(false);
-    _setSyncStatus('synced');
-    return true;
-  } catch(e) {
-    console.warn('GitHub publish failed — changes kept in this browser:', e);
-    _setSyncStatus('error', e.status === 401 ? 'Token rejected (expired or wrong). Update it in Password → GitHub.'
-                         : e.status === 403 || e.status === 404 ? 'Token cannot write to this repo. Check owner/repo and that the token has Contents: Read and write.'
-                         : e.message);
-    return false;
-  } finally {
-    _publishing = false;
-    if (_publishAgain) { _publishAgain = false; _schedulePublish(300); }
-  }
-}
-
-async function publishNow() {
-  clearTimeout(_publishTimer); _publishTimer = null;
-  if (!_ghReady()) { showToast('✗ Connect GitHub first (Password tab).'); _setSyncStatus('local'); return; }
-  const ok = await _publishToGitHub();
-  showToast(ok ? '✓ Published to GitHub — live in about a minute.' : '✗ Publish failed — see the status in the top bar.');
+// Download everything the site reads, ready to upload to the repo root.
+function downloadContentFiles() {
+  const files = _buildContentFiles();
+  try { files['sitemap.xml'] = _sitemapXml(); files['robots.txt'] = _robotsTxt(); } catch(e) {}
+  _download(_zip(files), `tianmu-content-${new Date().toISOString().slice(0, 10)}.zip`);
+  _unsaved = false;
+  _setSyncStatus('downloaded');
+  showToast('✓ Downloaded. Upload the content folder (and sitemap/robots) to GitHub to publish.');
 }
 
 // ── Status pill in the admin top bar ──
-function _setSyncStatus(state, msg) {
-  _syncState = { state, msg: msg || '' };
+function _setSyncStatus(state) {
   const el = document.getElementById('ghSyncStatus');
   if (!el) return;
   const map = {
-    idle:       ['', ''],
-    synced:     ['ok',   '● Published to GitHub'],
-    pending:    ['wait', '● Unpublished changes — click to publish'],
-    publishing: ['wait', '● Publishing…'],
-    local:      ['warn', '● Saved on this device only — connect GitHub'],
-    error:      ['err',  '● Publish failed — click to retry']
+    clean:      ['ok',   '● Showing the published files'],
+    pending:    ['wait', '● Unsaved edits — click to download files'],
+    downloaded: ['ok',   '● Downloaded — upload to GitHub to publish'],
   };
-  const [cls, label] = map[state] || map.idle;
+  const [cls, label] = map[state] || map.clean;
   el.className = 'gh-sync ' + cls;
   el.textContent = label;
-  el.title = msg || '';
-  const detail = document.getElementById('gh-status-detail');
-  if (detail) detail.textContent = msg || label.replace('● ', '');
 }
 
 window.addEventListener('beforeunload', e => {
-  if (_adminUnlocked && (_publishTimer || _publishing || _syncState.state === 'pending')) { e.preventDefault(); e.returnValue = ''; }
+  if (_adminUnlocked && _unsaved) { e.preventDefault(); e.returnValue = ''; }
 });
-
-// ── GitHub settings form (Password tab) ──
-function populateGitHubForm() {
-  const c = _ghCfg();
-  const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
-  set('gh-owner', c.owner); set('gh-repo', c.repo); set('gh-branch', c.branch); set('gh-token', c.token);
-  _setSyncStatus(_syncState.state === 'idle' ? (_ghReady() ? 'synced' : 'local') : _syncState.state, _syncState.msg);
-}
-
-async function saveGitHubSettings() {
-  const v = id => (document.getElementById(id)?.value || '').trim();
-  const cfg = { owner: v('gh-owner'), repo: v('gh-repo'), branch: v('gh-branch') || 'main', token: v('gh-token') };
-  if (!cfg.owner || !cfg.repo || !cfg.token) { showToast('✗ Fill in username, repository and token.'); return; }
-  try { localStorage.setItem(_GH_KEY, JSON.stringify(cfg)); } catch(e) {}
-  showToast('⏳ Testing connection…');
-  try {
-    const repo = await _gh('GET', '');
-    if (!repo.permissions || !repo.permissions.push) throw new Error('This token can read the repo but cannot write to it. Give it Contents: Read and write.');
-    await _gh('GET', `/git/ref/heads/${encodeURIComponent(cfg.branch)}`);
-    showToast('✓ Connected to ' + repo.full_name);
-    // Re-read what is on GitHub so publishing compares against the real files.
-    const draft = _readLocal();
-    const hadDraft = draft && draft.dirty;
-    const snapshot = hadDraft ? JSON.parse(JSON.stringify({ novels: NOVELS, siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap })) : null;
-    _baseline = null;
-    await loadSavedData();
-    if (snapshot) { _applyData(snapshot); _writeLocal(true); }
-    if (_readLocal()?.dirty) _schedulePublish(300); else _setSyncStatus('synced');
-  } catch(e) {
-    _setSyncStatus('error', e.status === 401 ? 'Token rejected — check you copied it fully.' : e.status === 404 ? 'Repository or branch not found (or the token has no access to it).' : e.message);
-    showToast('✗ ' + (_syncState.msg || 'Connection failed'));
-  }
-}
-
-function disconnectGitHub() {
-  if (!confirm('Remove the GitHub token from this browser? Your repo is not changed.')) return;
-  try { localStorage.removeItem(_GH_KEY); } catch(e) {}
-  populateGitHubForm();
-  _setSyncStatus('local');
-  showToast('✓ Token removed from this browser.');
-}
-
-async function publishSeoFiles() {
-  if (!_ghReady()) { showToast('✗ Connect GitHub first.'); return; }
-  try {
-    await _commitFiles({ 'sitemap.xml': _sitemapXml(), 'robots.txt': _robotsTxt() }, 'Update sitemap.xml and robots.txt');
-    showToast('✓ sitemap.xml + robots.txt published to GitHub.');
-  } catch(e) { showToast('✗ ' + e.message); }
-}
 
 // Apply live site config to DOM
 function applySiteConfig() {
@@ -5685,7 +5496,7 @@ function importData() {
 (async () => {
   document.getElementById('novelGrid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Instrument Serif',serif;font-style:italic;color:#8a7a60">Loading library…</div>`;
 
-  const loaded = await loadSavedData();  // content/*.json from GitHub (or local cache)
+  const loaded = await loadSavedData();  // content/*.json
   applySiteConfig();
   applyAboutConfig();
   applyDarkPref();
@@ -5720,7 +5531,7 @@ function importData() {
     <div class="admin-topbar">
       <div class="admin-logo">⚙ <span>甜慕</span> Admin Panel</div>
       <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:flex-end">
-        <button id="ghSyncStatus" class="gh-sync" onclick="publishNow()"></button>
+        <button id="ghSyncStatus" class="gh-sync" onclick="downloadContentFiles()"></button>
         <button class="admin-close-btn" onclick="closeAdmin()">✕ Exit to Site</button>
       </div>
     </div>
@@ -6152,7 +5963,7 @@ function importData() {
               Your password is stored as a <strong style="color:var(--yellow)">SHA-256 hash</strong> — not in plain text. Even if someone reads the source code they cannot reverse the hash to find your password.
             </p>
             <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#776655;line-height:1.7">
-              After <strong style="color:var(--yellow)">3 wrong attempts</strong>, the login locks for 60 seconds. Any changes made by others only affect their own browser — your real files on GitHub stay untouched.
+              After <strong style="color:var(--yellow)">3 wrong attempts</strong>, the login locks for 60 seconds. Changes made in the admin panel stay in that browser until you download the files and upload them to GitHub.
             </p>
           </div>
 
@@ -6178,40 +5989,32 @@ function importData() {
           <div class="admin-section" style="background:#0a1a08;border-color:rgba(120,180,60,0.3)">
             <div class="admin-section-title" style="color:#78b43c">📦 Import / Export Data</div>
             <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:1rem">
-              <strong style="color:var(--yellow)">Export Data</strong> downloads a <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">.json</code> backup of all your novels, config, and password. Use <strong style="color:var(--yellow)">Import Data</strong> to restore it (importing publishes it to GitHub when connected).
+              <strong style="color:var(--yellow)">Export Data</strong> downloads a <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">.json</code> backup of all your novels, config, and password. Use <strong style="color:var(--yellow)">Import Data</strong> to load one back into the editor.
             </p>
             <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1.2rem">
               <button class="admin-btn admin-btn-primary" style="background:#78b43c;border-color:#a0c060;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="exportData()">⬇ Export Data (JSON)</button>
               <button class="admin-btn admin-btn-primary" style="background:#3a6a8a;border-color:#5a90b0;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="importData()">⬆ Import Data (JSON)</button>
             </div>
             <div style="border-top:1px solid rgba(120,180,60,0.2);padding-top:1rem">
-              <div class="admin-section-title" style="color:#78b43c;margin-bottom:0.6rem">🌐 GitHub — where your content lives</div>
+              <div class="admin-section-title" style="color:#78b43c;margin-bottom:0.6rem">🌐 Publishing your edits</div>
               <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:0.8rem">
-                Novels and settings are stored as files in your repo's <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">content/</code> folder, separate from <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">index.html</code>. Once connected, <strong style="color:var(--yellow)">every save publishes automatically</strong> (live on the site in about a minute).
+                The site reads everything from the <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">content/</code> folder in your repo. Edits you make here only change this browser until you publish them:
               </p>
-              <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:1rem">
-                The token is kept <strong style="color:var(--yellow)">only in this browser</strong> — it is never written to the repo. Create one at GitHub → Settings → Developer settings → <em>Fine-grained tokens</em>: pick only this repository, and set <em>Contents</em> to <strong style="color:var(--yellow)">Read and write</strong>.
-              </p>
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 0.8rem">
-                <div class="admin-field"><label class="admin-label">GitHub username</label><input class="admin-input" id="gh-owner" placeholder="your-username" autocomplete="off"></div>
-                <div class="admin-field"><label class="admin-label">Repository</label><input class="admin-input" id="gh-repo" placeholder="tianmu" autocomplete="off"></div>
-                <div class="admin-field"><label class="admin-label">Branch</label><input class="admin-input" id="gh-branch" placeholder="main" autocomplete="off"></div>
-              </div>
-              <div class="admin-field"><label class="admin-label">Access token</label><input class="admin-input" type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off"></div>
-              <p id="gh-status-detail" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:0.88rem;color:#a09070;margin:0 0 1rem"></p>
+              <ol style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.8;margin:0 0 1rem 1.2rem">
+                <li>Click <strong style="color:var(--yellow)">Download content files</strong> below (or the status pill at the top).</li>
+                <li>Unzip it. On GitHub, open your repo → <em>Add file → Upload files</em>, and drag in the <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">content</code> folder (plus <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">sitemap.xml</code> and <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">robots.txt</code>).</li>
+                <li>Click <em>Commit changes</em>. The site updates in about a minute.</li>
+              </ol>
               <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
-                <button class="admin-btn admin-btn-primary" style="background:#556b2f;border-color:#78b43c;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="saveGitHubSettings()">✓ Save &amp; Test Connection</button>
-                <button class="admin-btn admin-btn-primary" style="background:#3a6a8a;border-color:#5a90b0;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="publishNow()">⬆ Publish Now</button>
-                <button class="admin-btn" style="font-size:0.7rem;padding:0.6rem 1.2rem" onclick="disconnectGitHub()">Remove token</button>
+                <button class="admin-btn admin-btn-primary" style="background:#556b2f;border-color:#78b43c;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="downloadContentFiles()">⬇ Download content files</button>
               </div>
             </div>
             <div style="border-top:1px solid rgba(80,144,200,0.2);padding-top:1rem;margin-top:1rem">
               <div class="admin-section-title" style="color:#5090c8;margin-bottom:0.6rem">🗺 SEO Files</div>
               <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#3a5a7a;line-height:1.7;margin-bottom:0.8rem">
-                Publish <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">sitemap.xml</code> and <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">robots.txt</code> straight to your repo root, or download them.
+                Download <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">sitemap.xml</code> and <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">robots.txt</code> on their own (they are also included in the content download).
               </p>
               <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
-                <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="publishSeoFiles()">⬆ Publish both to GitHub</button>
                 <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="exportSitemap()">⬇ sitemap.xml</button>
                 <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="exportRobots()">⬇ robots.txt</button>
               </div>
