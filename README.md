@@ -41,6 +41,15 @@ The site updates in about a minute. If you close the tab before downloading, the
 
 Each chapter has a **type** (chapter editor → Chapter type). Use **Chapter** for the main story and **Side Story** for self-contained chapters that can be read on their own. Readers see side stories as dashed cards with an S number, can filter All / Main Story / Side Stories, and main chapters keep their own numbering.
 
+## Site address, links and search engines
+
+Live site: **https://titastudio.github.io/tianmu-novels/** (repo: `titastudio/tianmu-novels`).
+
+- Every novel and chapter has its own shareable link, e.g. `…/tianmu-novels/?novel=song-of-clouds` and `…/tianmu-novels/?novel=song-of-clouds&ch=41`. Old `#novel-…` links still work.
+- `sitemap.xml` lists the home page, every live novel and every published chapter, all on the address above. **Download content files** in the admin panel always rebuilds it with the right address, even from a preview copy. Upload it to the top of the repo next to `index.html`.
+- Submit `https://titastudio.github.io/tianmu-novels/sitemap.xml` in Google Search Console (add the site as a URL-prefix property for `https://titastudio.github.io/tianmu-novels/`).
+- `robots.txt` is included and correct, but search engines only read robots.txt from the root of the domain (`https://titastudio.github.io/robots.txt`), which belongs to a separate repo named `titastudio.github.io`. If you ever make that repo, copy this robots.txt into it. Until then nothing is blocked, so the site is still crawled normally.
+
 ## Volumes (optional)
 
 A chapter can have a **volume** (chapter editor → Volume), written like `Volume One: The Glimpse`. When chapters have volumes, the chapter list shows a heading each time the volume changes, the chapter menu is grouped by volume, and the reader shows "Volume One · Chapter 3" above the title. New chapters added in the admin copy the volume of the last chapter, so you only change it when a new volume starts. Leave it empty for novels without volumes.

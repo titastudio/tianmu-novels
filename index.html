@@ -8,13 +8,13 @@
 <meta name="keywords" content="甜慕, Tián Mù, web novel, original fiction, fantasy romance, literary fiction, online reading, free novels">
 <meta name="author" content="甜慕 Tián Mù">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tianmu.github.io/">
+<link rel="canonical" href="https://titastudio.github.io/tianmu-novels/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="甜慕 Tián Mù — Novel Library">
 <meta property="og:description" content="Original stories by 甜慕 Tián Mù — fantasy, romance, and literary fiction. Read free web novels updated regularly.">
-<meta property="og:url" content="https://tianmu.github.io/">
+<meta property="og:url" content="https://titastudio.github.io/tianmu-novels/">
 <meta property="og:site_name" content="甜慕 Tián Mù — Novel Library">
 <meta property="og:locale" content="en_US">
 
@@ -30,7 +30,7 @@
   "@type": "WebSite",
   "name": "甜慕 Tián Mù — Novel Library",
   "description": "Original stories by 甜慕 Tián Mù — fantasy, romance, and literary fiction.",
-  "url": "https://tianmu.github.io/",
+  "url": "https://titastudio.github.io/tianmu-novels/",
   "author": {
     "@type": "Person",
     "name": "甜慕 Tián Mù",
@@ -2752,6 +2752,11 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
   .reader-text { line-height: 1.85; }
 }
 
+/* Search box: hide the browser's own clear button (the site has its own ×) */
+.search-input { -webkit-appearance: none; appearance: none; }
+.search-input::-webkit-search-cancel-button, .search-input::-webkit-search-decoration { -webkit-appearance: none; display: none; }
+#adminLoginForm { display: contents; }
+
 </style>
 <body>
 
@@ -2804,7 +2809,7 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
   <div class="filter-bar">
     <div class="search-wrap">
       <span class="search-icon">⌕</span>
-      <input class="search-input" id="searchInput" placeholder="Search novels..." oninput="filterNovels()">
+      <input class="search-input" id="searchInput" type="search" name="novel-search" placeholder="Search novels..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore oninput="filterNovels()">
       <button class="search-clear" id="searchClear" onclick="clearSearch()" style="display:none">✕</button>
     </div>
     <div class="filter-tags" id="filterTags">
@@ -2878,7 +2883,7 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
       <!-- comment form -->
       <div class="comment-form">
         <div class="comment-form-title">💬 Leave a Comment</div>
-        <input class="comment-input" id="commentName" placeholder="Your name (optional)" maxlength="40">
+        <input class="comment-input" id="commentName" name="comment-name" placeholder="Your name (optional)" maxlength="40" autocomplete="off">
         <textarea class="comment-textarea" id="commentText" placeholder="Share your thoughts about this novel..." maxlength="500"></textarea>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
           <button class="comment-submit" onclick="submitComment()">Send Comment</button>
@@ -3057,7 +3062,7 @@ function renderGrid() {
 // ═══════════════════════════════════════════════
 // OPEN NOVEL
 // ═══════════════════════════════════════════════
-function openNovel(idx) {
+function openNovel(idx, _noPush) {
   currentNovel = idx;
   const novel = NOVELS[idx];
   document.getElementById('libraryView').style.display = 'none';
@@ -3069,7 +3074,8 @@ function openNovel(idx) {
   document.getElementById('readingHero').style.background = `linear-gradient(135deg,${novel.color},${novel.coverAccent})`;
   renderChapterList(idx);
   _showChapterListUI();
-  try { history.pushState({ view: 'novel', novelIdx: idx }, '', `#novel-${novel.id}`); } catch(e) {}
+  if (!_noPush) { try { history.pushState({ view: 'novel', novelIdx: idx }, '', _novelUrl(novel)); } catch(e) {} }
+  _setPageMeta(`${novel.titles.en} — ${SITE_CONFIG.authorName}`, _plain(novel.descs?.en || SITE_CONFIG.heroSub, 160), _novelUrl(novel));
   animateView(document.getElementById('readingView'));
   window.scrollTo(0,0);
 }
@@ -3093,7 +3099,8 @@ function _showChapterListUI() {
 function showChapterList() {
   _showChapterListUI();
   if (currentNovel !== null) {
-    try { history.pushState({ view: 'novel', novelIdx: currentNovel }, '', `#novel-${NOVELS[currentNovel].id}`); } catch(e) {}
+    try { history.pushState({ view: 'novel', novelIdx: currentNovel }, '', _novelUrl(NOVELS[currentNovel])); } catch(e) {}
+    _setPageMeta(`${NOVELS[currentNovel].titles.en} — ${SITE_CONFIG.authorName}`, _plain(NOVELS[currentNovel].descs?.en || '', 160), _novelUrl(NOVELS[currentNovel]));
   }
   window.scrollTo(0,0);
 }
@@ -3109,7 +3116,7 @@ function placeFontControls() {
   else if (fc.parentElement === pw) document.body.appendChild(fc);
 }
 window.addEventListener('resize', () => { if (document.body.classList.contains('in-reader')) placeFontControls(); });
-function openChapter(idx) {
+function openChapter(idx, _noPush) {
   currentChapterIdx = idx;
   const novel = NOVELS[currentNovel];
   const ch = novel.chapters[idx];
@@ -3149,7 +3156,8 @@ function openChapter(idx) {
   document.getElementById('readerProgressLabel').textContent = `Ch. ${_posForNav + 1} of ${_visibleForNav.length}`;
 
   // Push history state
-  try { history.pushState({ view: 'chapter', novelIdx: currentNovel, chapterIdx: idx }, '', `#novel-${novel.id}-ch${idx+1}`); } catch(e) {}
+  if (!_noPush) { try { history.pushState({ view: 'chapter', novelIdx: currentNovel, chapterIdx: idx }, '', _chapterUrl(novel, idx)); } catch(e) {} }
+  _setPageMeta(`${ch.title} — ${novel.titles.en} — ${SITE_CONFIG.authorName}`, _plain(ch.desc || ch.content, 160), _chapterUrl(novel, idx));
 
   animateView(document.getElementById('chapterReaderView'));
   window.scrollTo(0,0);
@@ -3193,8 +3201,69 @@ function goBack() {
   document.getElementById('readerProgressWrap').style.display = 'none';
   currentNovel = null;
   try { history.pushState({ view: 'library' }, '', window.location.pathname); } catch(e) {}
+  _setLibraryMeta();
   animateView(document.getElementById('libraryView'));
   window.scrollTo(0,0);
+}
+
+// ── Shareable links: ?novel=<id> and ?novel=<id>&ch=<n> (n = chapter position, 1-based) ──
+// The live address of the site. Used for the canonical link, sitemap.xml and robots.txt.
+const SITE_URL = 'https://titastudio.github.io/tianmu-novels/';
+function _novelUrl(novel) { return `?novel=${encodeURIComponent(novel.id)}`; }
+function _chapterUrl(novel, idx) { return `?novel=${encodeURIComponent(novel.id)}&ch=${idx + 1}`; }
+function _chapterIsLive(ch) {
+  const s = ch.publishStatus || 'published';
+  if (s === 'draft') return false;
+  if (s === 'published') return ch.visible !== false;
+  if (s === 'scheduled') return typeof isScheduledPast === 'function' && isScheduledPast(ch);
+  return false;
+}
+function _plain(html, n) { const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; }
+// Title, description and canonical link follow the page being read (helps search engines and link previews)
+function _setPageMeta(title, desc, path) {
+  document.title = title;
+  const url = SITE_URL + (path || '');
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+  link.href = url;
+  if (typeof _setMeta === 'function') {
+    _setMeta('name', 'description', desc); _setMeta('property', 'og:title', title); _setMeta('property', 'og:description', desc);
+    _setMeta('property', 'og:url', url); _setMeta('name', 'twitter:title', title); _setMeta('name', 'twitter:description', desc);
+  }
+}
+function _setLibraryMeta() { _setPageMeta(SITE_CONFIG.siteTitle, SITE_CONFIG.siteTitle + ' — ' + SITE_CONFIG.heroSub, ''); }
+// Open the novel/chapter named in the address (also understands the old #novel-id-chN links)
+function openFromAddress() {
+  const q = new URLSearchParams(location.search);
+  let id = q.get('novel'), ch = parseInt(q.get('ch') || '', 10);
+  const m = !id && location.hash.match(/^#novel-(.+?)(?:-ch(\d+))?$/);
+  if (m) { id = m[1]; ch = m[2] ? parseInt(m[2], 10) : NaN; }
+  if (!id) return false;
+  const ni = NOVELS.findIndex(n => n.id === id && (!n.status || n.status === 'active'));
+  if (ni < 0) return false;
+  openNovel(ni, true);
+  const ci = ch - 1, c = NOVELS[ni].chapters[ci];
+  if (c && _chapterIsLive(c)) openChapter(ci, true);
+  try {
+    history.replaceState({ view: 'library' }, '', location.pathname);
+    if (c && _chapterIsLive(c)) {
+      history.pushState({ view: 'novel', novelIdx: ni }, '', _novelUrl(NOVELS[ni]));
+      history.pushState({ view: 'chapter', novelIdx: ni, chapterIdx: ci }, '', _chapterUrl(NOVELS[ni], ci));
+    } else history.pushState({ view: 'novel', novelIdx: ni }, '', _novelUrl(NOVELS[ni]));
+  } catch(e) {}
+  return true;
+}
+
+// Some browsers put a saved login name into the first text box on the page after it loads.
+// The search bar should always start empty, so clear anything that appears before the reader types.
+function _clearAutofilledSearch() {
+  const el = document.getElementById('searchInput');
+  if (!el) return;
+  let typed = false;
+  el.addEventListener('keydown', () => { typed = true; }, { once: true });
+  el.addEventListener('paste', () => { typed = true; }, { once: true });
+  const clear = () => { if (!typed && el.value) { el.value = ''; if (typeof filterNovels === 'function') filterNovels(); } };
+  clear(); [150, 600, 1500].forEach(t => setTimeout(clear, t));
 }
 
 // Handle browser back/forward
@@ -3206,14 +3275,17 @@ window.addEventListener('popstate', e => {
     document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
     document.getElementById('readerProgressWrap').style.display = 'none';
     currentNovel = null;
+    _setLibraryMeta();
     window.scrollTo(0,0);
   } else if (state.view === 'novel') {
     if (document.getElementById('libraryView').style.display !== 'none') {
-      openNovel(state.novelIdx);
+      openNovel(state.novelIdx, true);
     } else {
       currentNovel = state.novelIdx;
       renderChapterList(state.novelIdx);
       _showChapterListUI();
+      const _n = NOVELS[state.novelIdx];
+      _setPageMeta(`${_n.titles.en} — ${SITE_CONFIG.authorName}`, _plain(_n.descs?.en || '', 160), _novelUrl(_n));
       window.scrollTo(0,0);
     }
   } else if (state.view === 'chapter') {
@@ -3227,7 +3299,7 @@ window.addEventListener('popstate', e => {
       document.getElementById('readingHero').style.background = `linear-gradient(135deg,${novel.color},${novel.coverAccent})`;
       renderChapterList(state.novelIdx);
     }
-    openChapter(state.chapterIdx);
+    openChapter(state.chapterIdx, true);
   }
 });
 
@@ -5418,7 +5490,7 @@ function downloadContentFiles() {
   _download(_zip(files), `tianmu-content-${new Date().toISOString().slice(0, 10)}.zip`);
   _unsaved = false;
   _setSyncStatus('downloaded');
-  showToast('✓ Downloaded. Upload the content folder (and sitemap/robots) to GitHub to publish.');
+  showToast('✓ Downloaded. Upload the content folder, sitemap.xml and robots.txt to the tianmu-novels repo to publish.');
 }
 
 // ── Status pill in the admin top bar ──
@@ -5488,24 +5560,31 @@ function applyAboutConfig() {
 // SEO EXPORT — sitemap.xml + robots.txt
 // ═══════════════════════════════════════════════
 function _getSiteBaseUrl() {
-  // Use canonical URL if set, else current origin
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) return canonical.href.replace(/\/$/, '');
-  return (window.location.origin + window.location.pathname.replace(/[^/]*$/, '')).replace(/\/$/, '');
+  // Always the live GitHub Pages address, so exports are correct even when made from a preview copy.
+  return SITE_URL.replace(/\/$/, '');
 }
 
 function _sitemapXml() {
   const base = _getSiteBaseUrl();
   const today = new Date().toISOString().split('T')[0];
+  const esc = u => u.replace(/&/g, '&amp;');
+  const day = d => (d && /^\d{4}-\d{2}-\d{2}/.test(d) && d.slice(0, 10) <= today) ? d.slice(0, 10) : today;
+  const entry = (loc, mod, freq, pri) => `  <url>\n    <loc>${esc(loc)}</loc>\n    <lastmod>${mod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${pri}</priority>\n  </url>`;
   const novelUrls = NOVELS
     .filter(n => !n.status || n.status === 'active')
-    .map(n => `  <url>\n    <loc>${base}/#novel-${n.id}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`)
+    .map(n => {
+      const live = (n.chapters || []).map((ch, i) => ({ ch, i })).filter(({ ch }) => _chapterIsLive(ch) && (!ch.publishDate || ch.publishDate.slice(0, 10) <= today));
+      const out = [entry(`${base}/${_novelUrl(n)}`, day(n.updatedDate), 'weekly', '0.8')];
+      live.forEach(({ ch, i }) => out.push(entry(`${base}/${_chapterUrl(n, i)}`, day(ch.publishDate), 'monthly', '0.6')));
+      return out.join('\n');
+    })
     .join('\n');
+  const homeMod = NOVELS.filter(n => !n.status || n.status === 'active').map(n => day(n.updatedDate)).sort().pop() || today;
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${base}/</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${homeMod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -5632,7 +5711,10 @@ function importData() {
   // Hearts are stored in this browser
   loadAllLikes();
   loadLastRead();
-  try { history.replaceState({ view: 'library' }, '', window.location.pathname + window.location.search); } catch(e) {}
+  _clearAutofilledSearch();
+  if (!openFromAddress()) {
+    try { history.replaceState({ view: 'library' }, '', window.location.pathname); } catch(e) {}
+  }
 })();
 </script>
 
@@ -5644,8 +5726,11 @@ function importData() {
       <div class="login-title">⚙ Admin</div>
       <div class="login-sub">Enter your password to continue</div>
       <div class="login-error" id="loginError"></div>
-      <input class="login-input" type="password" id="adminPasswordInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPassword()">
-      <button class="admin-btn admin-btn-yellow" style="width:100%" onclick="checkAdminPassword()">Enter Panel</button>
+      <form id="adminLoginForm" onsubmit="event.preventDefault(); checkAdminPassword();" autocomplete="on">
+        <input type="text" name="username" autocomplete="username" value="admin" readonly tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0;padding:0">
+        <input class="login-input" type="password" id="adminPasswordInput" name="password" autocomplete="current-password" placeholder="••••••••">
+        <button type="submit" class="admin-btn admin-btn-yellow" style="width:100%">Enter Panel</button>
+      </form>
     </div>
   </div>
 
