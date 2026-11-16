@@ -41,6 +41,10 @@ The site updates in about a minute. If you close the tab before downloading, the
 
 Each chapter has a **type** (chapter editor → Chapter type). Use **Chapter** for the main story and **Side Story** for self-contained chapters that can be read on their own. Readers see side stories as dashed cards with an S number, can filter All / Main Story / Side Stories, and main chapters keep their own numbering.
 
+## Volumes (optional)
+
+A chapter can have a **volume** (chapter editor → Volume), written like `Volume One: The Glimpse`. When chapters have volumes, the chapter list shows a heading each time the volume changes, the chapter menu is grouped by volume, and the reader shows "Volume One · Chapter 3" above the title. New chapters added in the admin copy the volume of the last chapter, so you only change it when a new volume starts. Leave it empty for novels without volumes.
+
 ## Hearts & comments
 
 These are saved **only in each reader's own browser**. Nothing is shared online.

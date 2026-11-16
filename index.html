@@ -2666,6 +2666,92 @@ body.dark-read .fmt-btn:hover { background: var(--coral); color: white; border-c
   max-height: 480px;
   overflow-y: auto;
 }
+
+/* ══ RESPONSIVE POLISH (phones, tablets, any zoom level) ══ */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, video, svg { max-width: 100%; height: auto; }
+.card-cover-title, .card-title, .reader-chapter-title, .reading-hero-title, .fm-block-title, .ch-title { overflow-wrap: anywhere; }
+
+/* Novel card badge: a pill that always fits its word */
+.card-badge { width: auto; height: auto; min-width: 0; border-radius: 99px; padding: 0.35rem 0.65rem; font-size: 0.56rem; letter-spacing: 0.1em; white-space: nowrap; }
+/* Idea / coming-soon label sits under the title instead of on top of it */
+.card-lock-overlay { justify-content: flex-end; align-items: center; flex-direction: column; gap: 0.2rem; padding: 0 0.8rem 0.8rem; background: rgba(10,8,4,0.45); text-align: center; }
+.card-lock-label { letter-spacing: 0.2em; }
+.card-lock-icon { font-size: 0.95rem; }
+.card-cover-title { font-size: clamp(1.15rem, 5vw, 1.6rem); padding: 1rem 1.2rem 2.2rem; }
+
+/* Volume headers in the chapter list */
+.vol-header { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 1.6rem 0 0.7rem; padding-bottom: 0.45rem; border-bottom: 2px solid var(--border); }
+.vol-header:first-of-type { margin-top: 0.4rem; }
+.vol-header .vol-num { font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--coral); }
+.vol-header .vol-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 900; color: var(--ink); line-height: 1.2; }
+body.dark-read .vol-header { border-color: #3a3020; }
+body.dark-read .vol-header .vol-name { color: #e8dcc8; }
+
+/* Front-matter tabs never squash into tall two-line pills */
+.fm-tab { white-space: nowrap; flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.35rem; }
+
+/* Reader: the novel banner is smaller while reading a chapter */
+body.in-reader .reading-hero { padding: 1.4rem 1rem 1.2rem; }
+body.in-reader .reading-hero-eyebrow, body.in-reader .reading-hero-author { display: none; }
+body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); margin: 0; }
+
+@media (max-width: 600px) {
+  /* Tabs wrap onto two rows so every page is visible (no hidden sideways scroll) */
+  .frontmatter-tabs { flex-wrap: wrap; overflow-x: visible; gap: 0.4rem; }
+  .fm-tab { padding: 0.4rem 0.75rem; font-size: 0.6rem; letter-spacing: 0.08em; }
+  .fm-block-title { font-size: 1.3rem; margin-bottom: 1rem; }
+  .fm-block-text { font-size: 1rem; line-height: 1.6; }
+  .fm-block-text p:last-child { margin-bottom: 0; }
+
+  /* Chapter list rows: smaller number column, two-line teaser, no arrow */
+  .chapter-item { gap: 0.75rem; padding: 0.8rem 0.9rem; align-items: flex-start; }
+  .ch-num { font-size: 1.15rem; min-width: 1.8rem; padding-top: 0.15rem; }
+  .ch-arrow { display: none; }
+  .ch-title { font-size: 1rem; line-height: 1.3; }
+  .ch-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+  .vol-header .vol-name { font-size: 1.05rem; }
+
+  /* Reading text: comfortable phone line length and spacing */
+  .reader-text { font-size: 1.05rem; line-height: 1.75; }
+  .reader-text p { margin-bottom: 1em; text-indent: 1.2em; }
+  .reader-text p:first-child::first-letter { font-size: 3.1em; }
+  .reader-chapter-title { font-size: clamp(1.35rem, 6.5vw, 1.9rem); }
+  .scene-break { margin: 1.4rem 0; letter-spacing: 0.4rem; }
+
+
+  .reader-nav { margin-bottom: 3rem; }
+
+  /* Novel cards: one per row until there's real room for two */
+  .novel-grid { grid-template-columns: 1fr; }
+  .card-cover { height: 150px; }
+}
+@media (min-width: 480px) and (max-width: 600px) {
+  .novel-grid { grid-template-columns: 1fr 1fr; }
+  .card-desc { font-size: 0.85rem; }
+}
+
+@media (max-width: 700px) {
+  /* Admin menu: compact two-column grid so the editor is visible without long scrolling */
+  .admin-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding-bottom: 0; }
+  .admin-sidebar-title { grid-column: 1 / -1; }
+  .admin-nav-item { padding: 0.7rem 0.8rem; font-size: 0.6rem; letter-spacing: 0.08em; border-left: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .admin-nav-item.active { border-left: none; box-shadow: inset 3px 0 0 var(--coral); }
+}
+
+/* Top reading bar: one tidy row at every width; the title shortens instead of wrapping */
+.reading-nav { flex-wrap: nowrap; }
+.reading-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
+.chapter-select { min-width: 0; max-width: min(360px, 42vw); text-overflow: ellipsis; }
+.reading-nav > *:last-child { flex-shrink: 0; }
+.back-btn { white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 900px) {
+  /* Tablets and zoomed-in screens: A+/A- move into the progress bar so they never cover text */
+  #readerProgressWrap .font-controls { position: static; transform: none; flex-direction: row; gap: 0.3rem; margin-left: 0.6rem; flex-shrink: 0; }
+  #readerProgressWrap .font-btn { width: 30px; height: 30px; font-size: 0.68rem; box-shadow: 1px 1px 0 var(--border); }
+  .reader-text { line-height: 1.85; }
+}
+
 </style>
 <body>
 
@@ -2977,6 +3063,7 @@ function openNovel(idx) {
   document.getElementById('libraryView').style.display = 'none';
   document.getElementById('readingView').style.display = 'block';
   document.getElementById('fontControls').style.display = 'flex';
+  document.body.classList.remove('in-reader');
   document.getElementById('readingNavTitle').textContent = novel.titles.en;
   document.getElementById('readingHeroTitle').textContent = novel.titles.en;
   document.getElementById('readingHero').style.background = `linear-gradient(135deg,${novel.color},${novel.coverAccent})`;
@@ -2991,7 +3078,7 @@ function openNovel(idx) {
 function _showChapterListUI() {
   document.getElementById('chapterListView').style.display = 'block';
   document.getElementById('chapterReaderView').classList.remove('active');
-  document.getElementById('fontControls').style.display = 'none';
+  document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
   document.getElementById('readerProgressWrap').style.display = 'none';
   document.getElementById('readerLangBar').classList.remove('has-translations');
   document.getElementById('chapterJumpSelect').value = '-1';
@@ -3014,6 +3101,14 @@ function showChapterList() {
 // ═══════════════════════════════════════════════
 // OPEN CHAPTER
 // ═══════════════════════════════════════════════
+// On phones the A+/A- buttons live in the progress bar; on wider screens they float at the right edge.
+function placeFontControls() {
+  const fc = document.getElementById('fontControls'), pw = document.getElementById('readerProgressWrap');
+  if (!fc || !pw) return;
+  if (window.matchMedia('(max-width: 900px)').matches) { if (fc.parentElement !== pw) pw.appendChild(fc); }
+  else if (fc.parentElement === pw) document.body.appendChild(fc);
+}
+window.addEventListener('resize', () => { if (document.body.classList.contains('in-reader')) placeFontControls(); });
 function openChapter(idx) {
   currentChapterIdx = idx;
   const novel = NOVELS[currentNovel];
@@ -3023,13 +3118,16 @@ function openChapter(idx) {
   const reader = document.getElementById('chapterReaderView');
   reader.classList.add('active');
   document.getElementById('fontControls').style.display = 'flex';
+  document.body.classList.add('in-reader');
+  placeFontControls();
 
   const trans = ch.translations?.[currentReaderLang];
   const displayTitle = (currentReaderLang !== 'en' && trans?.title) ? trans.title : ch.title;
   const displayContent = (currentReaderLang !== 'en' && trans?.content) ? trans.content : ch.content;
 
   const _lab = chapterLabel(novel, idx);
-  document.getElementById('readerChLabel').textContent = _lab.kind === 'side' ? `${_lab.long} · Can be read on its own` : _lab.long;
+  const _vol = volumeParts(ch.volume);
+  document.getElementById('readerChLabel').textContent = _lab.kind === 'side' ? `${_lab.long} · Can be read on its own` : (_vol ? `${_vol.num} · ${_lab.long}` : _lab.long);
   document.getElementById('readerChTitle').textContent = displayTitle;
   document.getElementById('readerText').innerHTML = processFootnotes(displayContent);
   document.getElementById('readerText').style.fontSize = fontSize + 'rem';
@@ -3091,7 +3189,7 @@ function nextChapter() {
 function goBack() {
   document.getElementById('readingView').style.display = 'none';
   document.getElementById('libraryView').style.display = 'block';
-  document.getElementById('fontControls').style.display = 'none';
+  document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
   document.getElementById('readerProgressWrap').style.display = 'none';
   currentNovel = null;
   try { history.pushState({ view: 'library' }, '', window.location.pathname); } catch(e) {}
@@ -3105,7 +3203,7 @@ window.addEventListener('popstate', e => {
   if (!state || state.view === 'library') {
     document.getElementById('readingView').style.display = 'none';
     document.getElementById('libraryView').style.display = 'block';
-    document.getElementById('fontControls').style.display = 'none';
+    document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
     document.getElementById('readerProgressWrap').style.display = 'none';
     currentNovel = null;
     window.scrollTo(0,0);
@@ -3147,6 +3245,12 @@ function chapterLabel(novel, idx) {
   const name = CH_TYPE_NAMES[t] || (t.charAt(0).toUpperCase() + t.slice(1));
   return { long: name, short: name, num: name, kind: 'main' };
 }
+// Optional volume grouping: chapter.volume = "Volume One: The Glimpse"
+function volumeParts(v) {
+  if (!v || !String(v).trim()) return null;
+  const t = String(v).trim(), k = t.indexOf(':');
+  return k > -1 ? { num: t.slice(0, k).trim(), name: t.slice(k + 1).trim(), full: t } : { num: t, name: '', full: t };
+}
 let _chFilter = 'all';
 function setChapterFilter(f) { _chFilter = f; if (currentNovel !== null) renderChapterList(currentNovel); }
 
@@ -3178,8 +3282,15 @@ function renderChapterList(idx) {
       `<button class="${_chFilter===k?'on':''}" onclick="setChapterFilter('${k}')">${l}</button>`).join('')}</div>
     <div class="ch-legend">Main chapters follow the story in order. Side stories are self-contained moments you can read on their own, any time.</div>` : '';
   const shown = publishedChapters.filter(({i}) => _chFilter === 'all' || chapterLabel(novel, i).kind === _chFilter);
+  let _lastVol = null;
   items.innerHTML = filterBar + (shown.map(({ch, i}) => {
     const lab = chapterLabel(novel, i);
+    const vp = _chFilter !== 'side' ? volumeParts(ch.volume) : null;
+    let volHead = '';
+    if (vp && vp.full !== _lastVol) {
+      volHead = `<div class="vol-header"><span class="vol-num">${vp.num}</span>${vp.name ? `<span class="vol-name">${vp.name}</span>` : ''}</div>`;
+      _lastVol = vp.full;
+    }
     const isSide = ch.type === 'side';
     const typeLabel = isSide ? `<span class="ch-kind-badge">Side Story</span>`
       : (ch.type && ch.type !== 'chapter' ? `<span class="ch-status-badge published" style="margin-left:0.4rem">${lab.long}</span>` : '');
@@ -3188,7 +3299,7 @@ function renderChapterList(idx) {
       : `<div class="ch-num">${lab.num}</div>`;
     const dateStr = ch.publishDate
       ? `<div class="ch-date">📅 ${formatDate(ch.publishDate)}</div>` : '';
-    return `
+    return volHead + `
     <div class="chapter-item${isSide ? ' side' : ''}" onclick="openChapter(${i})">
       ${numDisplay}
       <div class="ch-info">
@@ -3220,8 +3331,15 @@ function renderChapterList(idx) {
     </div>`;
   }
 
-  jump.innerHTML = `<option value="-1">Chapters</option>` +
-    publishedChapters.map(({ch,i}) => `<option value="${i}">${chapterLabel(novel, i).short}: ${ch.title}</option>`).join('');
+  let _grp = null, _opts = '';
+  publishedChapters.forEach(({ch,i}) => {
+    const vp = volumeParts(ch.volume);
+    const g = vp ? vp.full : null;
+    if (g !== _grp) { if (_grp !== null) _opts += '</optgroup>'; if (g !== null) _opts += `<optgroup label="${g.replace(/"/g,'&quot;')}">`; _grp = g; }
+    _opts += `<option value="${i}">${chapterLabel(novel, i).short}: ${ch.title}</option>`;
+  });
+  if (_grp !== null) _opts += '</optgroup>';
+  jump.innerHTML = `<option value="-1">Chapters</option>` + _opts;
 
   renderFrontMatterReader(idx);
 }
@@ -3700,6 +3818,7 @@ function editChapter(idx) {
   document.getElementById('ce-title').value = ch.title;
   document.getElementById('ce-desc').value = ch.desc || '';
   document.getElementById('ce-epigraph').value = ch.epigraph || '';
+  document.getElementById('ce-volume').value = ch.volume || '';
   document.getElementById('ce-content').value = ch.content;
   document.getElementById('ce-type').value = ch.type || 'chapter';
 
@@ -3729,7 +3848,9 @@ function setPublishStatus(status, updateField = true) {
 
 function addNewChapter() {
   if (adminNovelIdx === null) return;
+  const _prevCh = NOVELS[adminNovelIdx].chapters[NOVELS[adminNovelIdx].chapters.length - 1];
   NOVELS[adminNovelIdx].chapters.push({
+    ...(_prevCh && _prevCh.volume ? { volume: _prevCh.volume } : {}),
     title: 'New Chapter',
     desc: '',
     epigraph: '',
@@ -3754,6 +3875,8 @@ function saveChapter() {
   ch.title = document.getElementById('ce-title').value || 'Untitled';
   ch.desc = document.getElementById('ce-desc').value;
   ch.epigraph = document.getElementById('ce-epigraph').value;
+  const _v = document.getElementById('ce-volume').value.trim();
+  if (_v) ch.volume = _v; else delete ch.volume;
   ch.content = document.getElementById('ce-content').value;
   ch.type = document.getElementById('ce-type').value;
 
@@ -5813,9 +5936,15 @@ function importData() {
                 <input class="admin-input" id="ce-desc">
               </div>
             </div>
-            <div class="admin-field">
-              <label class="admin-label">Epigraph / Quote (optional)</label>
-              <input class="admin-input" id="ce-epigraph" placeholder='"A quote here..."'>
+            <div class="admin-row">
+              <div class="admin-field">
+                <label class="admin-label">Epigraph / Quote (optional)</label>
+                <input class="admin-input" id="ce-epigraph" placeholder='"A quote here..."'>
+              </div>
+              <div class="admin-field">
+                <label class="admin-label">Volume (optional)</label>
+                <input class="admin-input" id="ce-volume" placeholder="Volume One: The Glimpse">
+              </div>
             </div>
             <div class="admin-field">
               <label class="admin-label">Chapter Content — wrap paragraphs in &lt;p&gt; tags</label>
