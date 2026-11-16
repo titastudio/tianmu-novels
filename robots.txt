@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tianmu.github.io/sitemap.xml
+Sitemap: https://titastudio.github.io/tianmu-novels/sitemap.xml
