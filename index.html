@@ -622,6 +622,18 @@ nav {
   transition: transform 0.15s;
 }
 .chapter-item:hover .ch-arrow { transform: translateX(4px); }
+.chapter-item.side { border-style: dashed; background: var(--pink-bg); }
+.chapter-item.side .ch-num { color: var(--coral); font-size: 1.05rem; }
+.ch-kind-badge { display:inline-block; margin-left:0.45rem; padding:0.1rem 0.45rem; border:1.5px solid var(--coral); border-radius:99px;
+  font-family:'Syne',sans-serif; font-size:0.55rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--coral); vertical-align:middle; }
+.ch-filter { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0 0 0.5rem; }
+.ch-filter button { font-family:'Syne',sans-serif; font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.35rem 0.8rem;
+  border:2px solid var(--border); border-radius:99px; background:var(--cream); color:var(--ink); cursor:pointer; }
+.ch-filter button.on { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+.ch-legend { font-size:0.78rem; font-style:italic; color:#8a7a60; margin:0 0 0.9rem; }
+body.dark-read .chapter-item.side { background:#221c16; }
+body.dark-read .ch-filter button { background:#1e1a14; color:#e8dcc8; border-color:#3a3020; }
+body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
 
 /* ── CHAPTER READER ── */
 .chapter-reader {
@@ -1205,6 +1217,17 @@ nav {
   transition: all 0.15s;
 }
 .admin-close-btn:hover { background: #c0392b; }
+.gh-sync {
+  font-family: 'Syne', sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid #fff2; background: #1a1610;
+  color: #a09070; cursor: pointer; transition: all 0.15s; max-width: 22rem; text-align: left;
+}
+.gh-sync:empty { display: none; }
+.gh-sync.ok   { color: #9fd06a; border-color: rgba(120,180,60,0.45); }
+.gh-sync.wait { color: var(--yellow); border-color: rgba(232,208,96,0.45); }
+.gh-sync.warn { color: #e8a060; border-color: rgba(232,160,96,0.45); }
+.gh-sync.err  { color: #ff8a7a; border-color: rgba(255,120,100,0.5); background: #2a1210; }
+.gh-sync:hover { filter: brightness(1.2); }
 
 .admin-body {
   max-width: 960px;
@@ -2773,7 +2796,7 @@ body.dark-read .fmt-btn:hover { background: var(--coral); color: white; border-c
         <textarea class="comment-textarea" id="commentText" placeholder="Share your thoughts about this novel..." maxlength="500"></textarea>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
           <button class="comment-submit" onclick="submitComment()">Send Comment</button>
-          <div class="comment-pending-note">✦ Comments are reviewed before appearing</div>
+          <div class="comment-pending-note">✦ Saved on this device only</div>
         </div>
       </div>
       <!-- approved comments -->
@@ -2858,342 +2881,7 @@ body.dark-read .fmt-btn:hover { background: var(--coral); color: white; border-c
 // NOVEL DATA — Edit this section to add your novels!
 // ═══════════════════════════════════════════════════
 /*NOVELS_START*/
-const NOVELS = [
-  {
-    "id": "the-softest-kind-of-love",
-    "badge": "NEW",
-    "color": "#ce5082",
-    "descs": {
-      "en": "Lin Xiaoran is dramatic, affectionate, and impossible to handle. Zhou Yichen is patient, gentle, and hopelessly weak against her tears. Somehow, despite all their flaws, they fit together perfectly.",
-      "es": "Seis años de cartas sin enviar. Una página caída. El comienzo de todo.",
-      "fr": "Six ans de lettres non envoyées. Une page tombée. Le début de tout.",
-      "ja": "6年間の未送信の手紙。落とした一枚の紙。すべての始まり。",
-      "ko": "6년간의 보내지 않은 편지들. 떨어진 한 장. 모든 것의 시작.",
-      "ms": "Enam tahun surat yang tidak dihantar. Satu halaman yang jatuh. Permulaan segalanya.",
-      "zh": "六年未寄出的信。一页飘落的纸。一切的开始。"
-    },
-    "genre": "School Romance",
-    "status": "active",
-    "titles": {
-      "en": "The Softest Kind of Love",
-      "es": "Cartas de Grulla de Papel",
-      "fr": "Lettres de Grue en Papier",
-      "ja": "折り鶴の手紙",
-      "ko": "종이학 편지",
-      "ms": "Surat Burung Kertas",
-      "zh": "纸鹤书信"
-    },
-    "chapters": [
-      {
-        "desc": "He knew she was trouble the moment she started crying—and he still loved her too much to stop spoiling her.",
-        "type": "chapter",
-        "title": "The Boy Who Always Smiled at Her",
-        "content": "<p>The winter sunlight spilled across the school rooftop, pale gold against the chilly afternoon air.</p>\n\n<p><strong>“Zhou Yichen, move.”</strong></p>\n\n<p>The boy sitting lazily on the bench looked up with his usual smile already waiting.</p>\n\n<p><strong>“You’re the one who came late, Xiaoran.”</strong></p>\n\n<p>Lin Xiaoran huffed dramatically and squeezed herself beside him anyway, shoulder shoving him hard enough that he nearly lost balance.</p>\n\n<p><strong>“You did that on purpose.”</strong></p>\n\n<p><strong>“You’re too weak.”</strong></p>\n\n<p><strong>“You literally attacked me.”</strong></p>\n\n<p><strong>“But you’re still smiling.”</strong></p>\n\n<p>Because he always did.</p>\n\n<p>Whenever Lin Xiaoran was around, Zhou Yichen smiled like he forgot how to stop.</p>\n\n<p>He was the kind of boy girls whispered about in hallways—tall, calm, unfairly handsome, top student, captain of the basketball team. Yet the moment his girlfriend appeared, all that composed coolness disappeared into helpless indulgence.</p>\n\n<p>Especially when she pouted.</p>\n\n<p>Especially when she cried.</p>\n\n<p>And unfortunately for him, Lin Xiaoran cried very easily.</p>\n\n<p><strong>“You brought milk tea?”</strong> she asked immediately, eyes brightening.</p>\n\n<p>Yichen handed her the warm cup from his coat pocket.</p>\n\n<p><strong>“Half sugar. No pearls.”</strong></p>\n\n<p><strong>“Good boyfriend.”</strong> She pinched his cheek with satisfaction.</p>\n\n<p><strong>“You say that like you’re reviewing customer service.”</strong></p>\n\n<p><strong>“I am.”</strong></p>\n\n<p>He laughed softly while she drank happily beside him, kicking her legs against the bench.</p>\n\n<p>From the rooftop door, their friends watched with disgust.</p>\n\n<p><strong>“Every day,”</strong> sighed Chen Yuhao dramatically.</p>\n\n<p>Beside him, Tang Meilin rolled her eyes.</p>\n\n<p><strong>“You’re just jealous because you don’t have a girlfriend.”</strong></p>\n\n<p>Yuhao instantly straightened.</p>\n\n<p><strong>“That’s rude.”</strong></p>\n\n<p>Meanwhile, Xiaoran noticed them and waved.</p>\n\n<p><strong>“Why are you both standing there like divorced parents?”</strong></p>\n\n<p><strong>“Because watching you two gives me diabetes,”</strong> Yuhao replied.</p>\n\n<p>Yichen only smiled again.</p>\n\n<p>Meilin crossed her arms.</p>\n\n<p><strong>“Actually, Xiaoran, you should appreciate him more. If my future boyfriend tolerated even half your nonsense, I’d build him a temple.”</strong></p>\n\n<p><strong>“I’m perfectly appreciative,”</strong> Xiaoran declared confidently.</p>\n\n<p>Yichen raised a brow.</p>\n\n<p><strong>“Really?”</strong></p>\n\n<p><strong>“Yes.”</strong></p>\n\n<p>She was cute in the kind of dangerous way that made people forgive her too easily.</p>\n\n<p>Including Yichen.</p>\n\n<p>Especially Yichen.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>The problem started a week later.</p>\n\n<p>Basketball practice had just ended when Xiaoran came to the gym carrying snacks for Yichen.</p>\n\n<p>But the moment she entered, she saw a girl from Class 2 handing him a towel.</p>\n\n<p>Pretty. Tall. Elegant.</p>\n\n<p>Exactly Xiaoran’s least favorite type.</p>\n\n<p>The girl smiled softly.</p>\n\n<p><strong>“Your game today was amazing.”</strong></p>\n\n<p><strong>“Thanks,”</strong> Yichen replied politely.</p>\n\n<p>That should have been the end.</p>\n\n<p>But jealousy was ugly, irrational, and unfortunately very loud inside Lin Xiaoran’s head.</p>\n\n<p>She walked over with a sweet smile that already made Yuhao—watching from nearby—mutter:</p>\n\n<p><strong>“Oh no.”</strong></p>\n\n<p>Xiaoran wrapped herself around Yichen’s arm possessively.</p>\n\n<p><strong>“Yichen,”</strong> she said brightly, <strong>“who’s this?”</strong></p>\n\n<p>The girl introduced herself politely.</p>\n\n<p>Xiaoran smiled even wider.</p>\n\n<p><strong>“Ohhh, you’re the girl who confessed to him last semester, right?”</strong></p>\n\n<p>Silence.</p>\n\n<p>The girl’s face immediately stiffened.</p>\n\n<p>Yuhao physically covered his face.</p>\n\n<p>Even Yichen’s smile disappeared.</p>\n\n<p>Xiaoran continued casually:</p>\n\n<p><strong>“You’re still trying?”</strong></p>\n\n<p><strong>“Xiaoran,”</strong> Yichen said quietly.</p>\n\n<p>That tone alone made her pause.</p>\n\n<p>The girl looked embarrassed enough to cry before quickly leaving.</p>\n\n<p>And suddenly the gym felt cold.</p>\n\n<p>Yichen gently removed Xiaoran’s arms from his sleeve.</p>\n\n<p><strong>“You went too far.”</strong></p>\n\n<p>Her chest tightened instantly.</p>\n\n<p><strong>“What? I was joking.”</strong></p>\n\n<p><strong>“It wasn’t funny.”</strong></p>\n\n<p><strong>“She likes you.”</strong></p>\n\n<p><strong>“And?”</strong> His voice stayed calm, which somehow felt worse. <strong>“That doesn’t mean you get to humiliate her.”</strong></p>\n\n<p>Xiaoran’s eyes reddened almost immediately.</p>\n\n<p>Yichen sighed internally the second he saw it.</p>\n\n<p>Because there it was.</p>\n\n<p>The tears.</p>\n\n<p>Always so fast.</p>\n\n<p><strong>“I’m not scolding you,”</strong> he softened slightly.</p>\n\n<p><strong>“But you’re angry.”</strong></p>\n\n<p><strong>“I dislike what you did.”</strong></p>\n\n<p><strong>“You care more about her feelings than mine?”</strong></p>\n\n<p><strong>“That’s not what I said.”</strong></p>\n\n<p>But Xiaoran already looked devastated.</p>\n\n<p><strong>“I was jealous,”</strong> she whispered.</p>\n\n<p>Yichen rubbed his forehead tiredly.</p>\n\n<p><strong>“I know. But jealousy isn’t an excuse to hurt someone.”</strong></p>\n\n<p>She bit her lip hard, eyes watery.</p>\n\n<p>And then the worst possible thing happened.</p>\n\n<p><strong>“You’re being mean to me…”</strong></p>\n\n<p>Yichen nearly lost the argument right there.</p>\n\n<p>Because Lin Xiaoran crying was his greatest weakness.</p>\n\n<p>Unfortunately, he forced himself to stay firm.</p>\n\n<p><strong>“Xiaoran. Don’t avoid the point.”</strong></p>\n\n<p>Her tears fell immediately.</p>\n\n<p>Great.</p>\n\n<p>Now he felt like the villain in a tragic romance drama.</p>\n\n<p>She turned and ran out of the gym before he could stop her.</p>\n\n<p>Yuhao walked over slowly.</p>\n\n<p><strong>“…You survived longer than expected.”</strong></p>\n\n<p><strong>“Shut up.”</strong></p>\n\n<p><strong>“You made her cry.”</strong></p>\n\n<p><strong>“I KNOW.”</strong></p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Lin Xiaoran ignored him for two days.</p>\n\n<p>Which meant:</p>\n\n<p>No waiting outside his classroom.</p>\n\n<p>No stealing his drinks.</p>\n\n<p>No dramatic good morning voice messages.</p>\n\n<p>No random <strong>“Do you love me more today or yesterday?”</strong> questions.</p>\n\n<p>The entire school noticed Zhou Yichen becoming visibly miserable.</p>\n\n<p><strong>“He looks like a divorced father of two,”</strong> Yuhao commented.</p>\n\n<p><strong>“Go apologize already,”</strong> Meilin said.</p>\n\n<p><strong>“I’m not apologizing for telling her she was wrong.”</strong></p>\n\n<p><strong>“But you’re suffering.”</strong></p>\n\n<p>Yichen leaned back in frustration.</p>\n\n<p>Because the worst part?</p>\n\n<p>He missed her terribly.</p>\n\n<p>Even when she annoyed him.</p>\n\n<p>Especially when she annoyed him.</p>\n\n<p>That evening, he finally found her sitting alone behind the library, hugging her knees dramatically.</p>\n\n<p>The moment she saw him, she looked away.</p>\n\n<p><strong>“I’m still angry.”</strong></p>\n\n<p><strong>“You’ve said that in seventeen unread messages.”</strong></p>\n\n<p><strong>“You counted?”</strong></p>\n\n<p><strong>“Of course I counted.”</strong></p>\n\n<p>Her lips twitched slightly before she hid it again.</p>\n\n<p>Yichen sat beside her quietly.</p>\n\n<p>For a moment, neither spoke.</p>\n\n<p>Then he sighed softly.</p>\n\n<p><strong>“Xiaoran.”</strong></p>\n\n<p>Silence.</p>\n\n<p><strong>“I’m sorry for sounding harsh.”</strong></p>\n\n<p>She sniffed immediately.</p>\n\n<p>Here we go again.</p>\n\n<p><strong>“But,”</strong> he continued gently, <strong>“you really hurt her feelings.”</strong></p>\n\n<p><strong>“I know…”</strong></p>\n\n<p><strong>“And if someone treated you like that?”</strong></p>\n\n<p><strong>“I’d cry for ten business days.”</strong></p>\n\n<p>Despite himself, Yichen laughed.</p>\n\n<p>Xiaoran finally looked at him, eyes still watery.</p>\n\n<p><strong>“I just hated seeing her near you.”</strong></p>\n\n<p><strong>“I know.”</strong></p>\n\n<p><strong>“She looked so pretty.”</strong></p>\n\n<p><strong>“You’re prettier.”</strong></p>\n\n<p><strong>“That answer was too fast.”</strong></p>\n\n<p><strong>“Because it’s true.”</strong></p>\n\n<p>Her ears turned pink.</p>\n\n<p>Yichen reached over and pulled her closer by the sleeve.</p>\n\n<p><strong>“You can be jealous,”</strong> he murmured. <strong>“But don’t become cruel because of it.”</strong></p>\n\n<p>Xiaoran lowered her head guiltily.</p>\n\n<p><strong>“…Okay.”</strong></p>\n\n<p><strong>“And no more embarrassing people publicly.”</strong></p>\n\n<p><strong>“…Okay.”</strong></p>\n\n<p><strong>“And no crying every time I correct you.”</strong></p>\n\n<p><strong>“I can’t control that.”</strong></p>\n\n<p><strong>“You absolutely can.”</strong></p>\n\n<p><strong>“I’m delicate.”</strong></p>\n\n<p><strong>“You’re evil.”</strong></p>\n\n<p>She gasped dramatically.</p>\n\n<p><strong>“You said you wouldn’t scold me anymore.”</strong></p>\n\n<p>Yichen sighed with complete defeat before pulling her into his arms anyway.</p>\n\n<p>Instantly, she melted against him like a satisfied cat.</p>\n\n<p><strong>“You spoil her too much,”</strong> Meilin’s voice suddenly called from nearby.</p>\n\n<p>The two looked up to find Yuhao and Meilin holding convenience store snacks while spying openly.</p>\n\n<p>Yuhao pointed accusingly.</p>\n\n<p><strong>“See? THIS is why she acts like a menace.”</strong></p>\n\n<p>Yichen didn’t even deny it.</p>\n\n<p>Xiaoran looked extremely pleased with herself.</p>\n\n<p>Then she tilted her head up at Yichen sweetly.</p>\n\n<p><strong>“You still love me?”</strong></p>\n\n<p>He looked down at her helplessly.</p>\n\n<p>Too cute.</p>\n\n<p>Far too cute.</p>\n\n<p><strong>“Unfortunately,”</strong> he said, kissing her forehead lightly, <strong>“way too much.”</strong></p>\n",
-        "visible": true,
-        "epigraph": "“Some people are impossible to handle—and impossible not to love.”",
-        "publishDate": "2026-05-13",
-        "scheduleDate": "",
-        "scheduleTime": "12:00",
-        "translations": {
-          "id": {
-            "title": "Cowok yang Selalu Senyum ke Dia",
-            "content": "<p>Hujan matahari musim dingin jatuh pelan di atas atap sekolah, cahaya emas pucat nyampur sama udara sore yang dingin.</p>\n\n<p><strong>“Zhou Yichen, geser.”</strong></p>\n\n<p>Cowok yang lagi duduk santai di bangku itu ngangkat kepala, senyum khasnya yang udah standby dari tadi.</p>\n\n<p><strong>“Kamu yang telat, Xiaoran.”</strong></p>\n\n<p>Lin Xiaoran langsung manyun dramatis, terus nyempil duduk di sebelahnya sambil nyikut bahunya keras sampai hampir bikin dia oleng.</p>\n\n<p><strong>“Kamu duluan ya yang nyerang aku.”</strong></p>\n\n<p><strong>“Kamu lemah aja.”</strong></p>\n\n<p><strong>“Aku tuh diserang, ya!”</strong></p>\n\n<p><strong>“Tapi kamu masih senyum.”</strong></p>\n\n<p>Soalnya emang selalu gitu.</p>\n\n<p>Setiap kali Lin Xiaoran ada di dekatnya, Zhou Yichen senyum kayak orang yang lupa cara berhenti.</p>\n\n<p>Dia tipe cowok yang suka dibisik-bisikin cewek satu sekolah, tinggi, kalem, terlalu cakep sampai nggak masuk akal, ranking atas, kapten basket. Tapi begitu pacarnya muncul, semua image cool itu langsung ambyar jadi cowok bucin yang pasrah.</p>\n\n<p>Apalagi kalau dia manyun.</p>\n\n<p>Apalagi kalau dia nangis.</p>\n\n<p>Dan sialnya, Lin Xiaoran itu gampang banget nangis.</p>\n\n<p><strong>“Kamu bawa milk tea?”</strong> tanyanya langsung, matanya langsung berbinar.</p>\n\n<p>Yichen nyodorin cup hangat dari saku jaketnya.</p>\n\n<p><strong>“Setengah gula. Nggak pake boba.”</strong></p>\n\n<p><strong>“Good boyfriend.”</strong> Dia cubit pipinya puas.</p>\n\n<p><strong>“Kamu ngomongnya kayak lagi review customer service.”</strong></p>\n\n<p><strong>“Ya emang.”</strong></p>\n\n<p>Yichen ketawa pelan sementara Xiaoran minum dengan senang di sebelahnya, kakinya goyang-goyang di bangku.</p>\n\n<p>Dari pintu rooftop, temen-temen mereka ngeliatin dengan ekspresi jijik campur capek.</p>\n\n<p><strong>“Setiap hari kayak gini,”</strong> Yuhao ngeluh dramatis.</p>\n\n<p>Tang Meilin di sebelahnya cuma rolling eyes.</p>\n\n<p><strong>“Lo tuh iri karena nggak punya pacar.”</strong></p>\n\n<p>Yuhao langsung tegak.</p>\n\n<p><strong>“Jahat.”</strong></p>\n\n<p>Sementara itu Xiaoran ngeh mereka dan langsung ngelambai.</p>\n\n<p><strong>“Kalian berdua ngapain sih berdiri kayak orang tua yang baru cerai?”</strong></p>\n\n<p><strong>“Soalnya ngeliatin kalian berdua bikin gue diabetes,”</strong> Yuhao balas.</p>\n\n<p>Yichen cuma senyum lagi.</p>\n\n<p>Meilin nyilang tangan.</p>\n\n<p><strong>“Xiaoran, kamu tuh harusnya lebih appreciate Yichen. Kalau aku punya pacar yang sabar kayak dia, gue bakal bangunin kuil.”</strong></p>\n\n<p><strong>“Aku udah appreciate kok,”</strong> kata Xiaoran pede.</p>\n\n<p>Yichen ngangkat alis.</p>\n\n<p><strong>“Oh ya?”</strong></p>\n\n<p><strong>“Iya.”</strong></p>\n\n<p>Dia tuh cute banget dengan cara yang bahaya—bikin orang gampang banget maafin dia.</p>\n\n<p>Termasuk Yichen.</p>\n\n<p>Apalagi Yichen.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Masalahnya mulai seminggu kemudian.</p>\n\n<p>Latihan basket baru aja selesai waktu Xiaoran dateng ke gym bawa snack buat Yichen.</p>\n\n<p>Tapi pas dia masuk, dia lihat cewek dari Kelas 2 lagi nyodorin handuk ke Yichen.</p>\n\n<p>Cantik. Tinggi. Elegan.</p>\n\n<p>Dan itu tipe yang paling dia nggak suka.</p>\n\n<p>Cewek itu senyum halus.</p>\n\n<p><strong>“Tadi game kamu keren banget.”</strong></p>\n\n<p><strong>“Makasih,”</strong> jawab Yichen sopan.</p>\n\n<p>Harusnya selesai di situ.</p>\n\n<p>Tapi cemburu itu jelek, nggak logis, dan sayangnya ganggu banget di kepala Lin Xiaoran.</p>\n\n<p>Dia jalan mendekat dengan senyum manis yang langsung bikin Yuhao—yang lagi nonton dari jauh—mikir:</p>\n\n<p><strong>“Waduh.”</strong></p>\n\n<p>Xiaoran langsung melilit lengan Yichen.</p>\n\n<p><strong>“Yichen,”</strong> katanya ceria, <strong>“ini siapa?”</strong></p>\n\n<p>Cewek itu ngenalin diri dengan sopan.</p>\n\n<p>Xiaoran senyum makin lebar.</p>\n\n<p><strong>“Ohhh, kamu yang pernah nembak dia semester lalu itu ya?”</strong></p>\n\n<p>Hening.</p>\n\n<p>Muka cewek itu langsung kaku.</p>\n\n<p>Yuhao nutup muka.</p>\n\n<p>Bahkan senyum Yichen ilang.</p>\n\n<p>Xiaoran lanjut santai:</p>\n\n<p><strong>“Masih ngejar dia ya?”</strong></p>\n\n<p><strong>“Xiaoran,”</strong> suara Yichen turun pelan.</p>\n\n<p>Dan cuma itu aja udah bikin dia berhenti.</p>\n\n<p>Cewek itu langsung keliatan pengen nangis, terus pergi cepat-cepat.</p>\n\n<p>Tiba-tiba gym jadi dingin.</p>\n\n<p>Yichen lepas pelan tangan Xiaoran dari lengannya.</p>\n\n<p><strong>“Kamu kelewatan.”</strong></p>\n\n<p>Dada Xiaoran langsung sesak.</p>\n\n<p><strong>“Hah? Aku bercanda aja.”</strong></p>\n\n<p><strong>“Nggak lucu.”</strong></p>\n\n<p><strong>“Dia suka kamu.”</strong></p>\n\n<p><strong>“Terus?”</strong> suaranya tetap tenang, tapi justru itu yang bikin makin sakit. <strong>“Bukan berarti kamu boleh ngerendahin dia.”</strong></p>\n\n<p>Mata Xiaoran langsung merah.</p>\n\n<p>Yichen langsung sadar di detik itu juga.</p>\n\n<p>Tangisnya.</p>\n\n<p>Selalu cepet banget.</p>\n\n<p><strong>“Aku nggak marah,”</strong> dia melunak sedikit.</p>\n\n<p><strong>“Tapi kamu kesel.”</strong></p>\n\n<p><strong>“Aku nggak suka cara kamu tadi.”</strong></p>\n\n<p><strong>“Kamu lebih peduli dia daripada aku?”</strong></p>\n\n<p><strong>“Bukan itu.”</strong></p>\n\n<p>Tapi Xiaoran udah kelihatan hancur.</p>\n\n<p><strong>“Aku cemburu,”</strong> bisiknya.</p>\n\n<p>Yichen ngusap pelipisnya capek.</p>\n\n<p><strong>“Aku tahu. Tapi cemburu bukan alasan buat nyakitin orang.”</strong></p>\n\n<p>Dia gigit bibir, mata masih basah.</p>\n\n<p>Terus kejadian terburuknya datang.</p>\n\n<p><strong>“Kamu jahat sama aku…”</strong></p>\n\n<p>Yichen hampir kalah di situ juga.</p>\n\n<p>Karena Lin Xiaoran nangis itu kelemahan terbesarnya.</p>\n\n<p>Tapi dia maksa tetap tegas.</p>\n\n<p><strong>“Xiaoran. Bukan itu poinnya.”</strong></p>\n\n<p>Air mata Xiaoran jatuh.</p>\n\n<p>Oke.</p>\n\n<p>Sekarang dia merasa kayak villain di drama romantis.</p>\n\n<p>Dia langsung kabur keluar gym sebelum dihentikan.</p>\n\n<p>Yuhao jalan mendekat pelan.</p>\n\n<p><strong>“…Lo bertahan lebih lama dari perkiraan.”</strong></p>\n\n<p><strong>“Berisik.”</strong></p>\n\n<p><strong>“Kasihan tuh dia nangis.”</strong></p>\n\n<p><strong>“GUE TAU.”</strong></p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Lin Xiaoran nge-ghosting dia dua hari.</p>\n\n<p>Yang berarti:</p>\n\n<p>Nggak nungguin dia di kelas.</p>\n\n<p>Nggak nyolong minumannya.</p>\n\n<p>Nggak ngirim voice note pagi yang dramatis.</p>\n\n<p>Nggak nanya random <strong>“hari ini kamu lebih sayang aku atau kemarin?”</strong></p>\n\n<p>Satu sekolah langsung sadar Zhou Yichen jadi keliatan miserable.</p>\n\n<p><strong>“Dia kayak duda dua anak,”</strong> komentar Yuhao.</p>\n\n<p><strong>“Minta maaf aja,”</strong> kata Meilin.</p>\n\n<p><strong>“Gue nggak mau minta maaf, gue bener.”</strong></p>\n\n<p><strong>“Tapi lo menderita.”</strong></p>\n\n<p>Yichen nyender frustrasi.</p>\n\n<p>Soalnya yang paling parah?</p>\n\n<p>Dia kangen banget.</p>\n\n<p>Bahkan saat Xiaoran nyebelin.</p>\n\n<p>Apalagi saat Xiaoran nyebelin.</p>\n\n<p>Sore itu dia nemuin Xiaoran duduk sendiri di belakang perpustakaan, peluk lutut dengan dramatis.</p>\n\n<p>Begitu lihat dia, dia langsung buang muka.</p>\n\n<p><strong>“Aku masih marah.”</strong></p>\n\n<p><strong>“Kamu bilang itu 17 kali di WeChat.”</strong></p>\n\n<p><strong>“Kamu ngitungin?”</strong></p>\n\n<p><strong>“Iya.”</strong></p>\n\n<p>Dia nyengir dikit tapi langsung disembunyiin lagi.</p>\n\n<p>Yichen duduk pelan di sebelahnya.</p>\n\n<p>Hening sebentar.</p>\n\n<p>Terus dia narik napas.</p>\n\n<p><strong>“Xiaoran.”</strong></p>\n\n<p>Hening.</p>\n\n<p><strong>“Aku minta maaf kalau saat itu terlalu keras.”</strong></p>\n\n<p>Dia langsung sniff.</p>\n\n<p>Here we go again.</p>\n\n<p><strong>“Tapi,”</strong> lanjutnya pelan, <strong>“kamu ngerti kan maksudku.”</strong></p>\n\n<p><strong>“Aku tahu…”</strong></p>\n\n<p><strong>“Kalau kamu di posisi dia?”</strong></p>\n\n<p><strong>“Aku bakal nangis 10 hari.”</strong></p>\n\n<p>Yichen ketawa tanpa sadar.</p>\n\n<p>Xiaoran akhirnya lihat dia, mata masih basah.</p>\n\n<p><strong>“Aku cuma nggak suka dia deket kamu.”</strong></p>\n\n<p><strong>“Aku tahu.”</strong></p>\n\n<p><strong>“Dia cantik banget.”</strong></p>\n\n<p><strong>“Kamu lebih cantik.”</strong></p>\n\n<p><strong>“Jawaban kamu terlalu cepet.”</strong></p>\n\n<p><strong>“Karena itu bener.”</strong></p>\n\n<p>Telinganya langsung merah.</p>\n\n<p>Yichen tarik dia pelan.</p>\n\n<p><strong>“Kamu boleh cemburu,”</strong> katanya pelan. <strong>“Tapi jangan jadi jahat karena itu.”</strong></p>\n\n<p>Xiaoran nurunin kepala.</p>\n\n<p><strong>“…Oke.”</strong></p>\n\n<p><strong>“Jangan nangis di depan umum lagi.”</strong></p>\n\n<p><strong>“…Oke.”</strong></p>\n\n<p><strong>“Jangan nangis tiap aku koreksi kamu.”</strong></p>\n\n<p><strong>“Aku nggak bisa kontrol itu.”</strong></p>\n\n<p><strong>“Bisa.”</strong></p>\n\n<p><strong>“Aku rapuh.”</strong></p>\n\n<p><strong>“Kamu itu ngeselin.”</strong></p>\n\n<p>Dia pura-pura kaget.</p>\n\n<p><strong>“Kamu bilang nggak bakal marahin aku lagi.”</strong></p>\n\n<p>Yichen nyerah total, terus narik dia ke pelukannya.</p>\n\n<p>Langsung dia meleleh kayak kucing puas.</p>\n\n<p><strong>“Lo terlalu manjain dia,”</strong> suara Meilin dari belakang.</p>\n\n<p>Yuhao dan Meilin lagi bawa snack sambil ngintip terang-terangan.</p>\n\n<p>Yuhao nunjuk.</p>\n\n<p><strong>“Nah kan? Ini kenapa dia jadi makin liar.”</strong></p>\n\n<p>Yichen nggak nolak.</p>\n\n<p>Xiaoran keliatan super puas.</p>\n\n<p>Terus dia nengok ke Yichen.</p>\n\n<p><strong>“Kamu masih sayang aku?”</strong></p>\n\n<p>Dia lihat dia dengan pasrah.</p>\n\n<p>Bahaya banget.</p>\n\n<p><strong>“Sayangnya,”</strong> katanya sambil kiss keningnya pelan, <strong>“terlalu sayang.”</strong></p>"
-          }
-        },
-        "publishStatus": "published"
-      },
-      {
-        "desc": "A claw machine, a chance meeting, and one boy who smiled like he already knew she was meant to stay.",
-        "type": "chapter",
-        "title": "Strawberry Milk Confession",
-        "content": "<p>It started with a claw machine.</p>\n\n<p>Lin Xiaoran stood in the arcade with her arms crossed, glaring at the stupid plush bunny trapped behind glass like it had personally offended her family bloodline.</p>\n\n<p><strong>“This machine is rigged.”</strong></p>\n\n<p><strong>“It’s not,”</strong> said a calm voice beside her.</p>\n\n<p>She turned.</p>\n\n<p>And immediately forgot what she was going to say for half a second.</p>\n\n<p>The boy standing there was tall, clean-looking, dressed in their school uniform with his sleeves casually rolled up. Sharp brows. Pretty eyes. The kind of face girls definitely wrote about in private group chats.</p>\n\n<p>Most annoyingly—</p>\n\n<p>He was smiling.</p>\n\n<p>Not the arrogant type.</p>\n\n<p>Not teasing.</p>\n\n<p>Just naturally warm.</p>\n\n<p>Lin Xiaoran recovered quickly.</p>\n\n<p><strong>“You work for the machine company or something?”</strong></p>\n\n<p>The boy laughed softly.</p>\n\n<p><strong>“No. You’re just grabbing the bunny wrong.”</strong></p>\n\n<p><strong>“I’ve tried eleven times.”</strong></p>\n\n<p><strong>“That explains the problem.”</strong></p>\n\n<p><strong>“What does THAT mean?”</strong></p>\n\n<p><strong>“You’re impatient.”</strong></p>\n\n<p>She narrowed her eyes instantly.</p>\n\n<p>Who even was this guy?</p>\n\n<p>The boy stepped beside her.</p>\n\n<p><strong>“Move.”</strong></p>\n\n<p><strong>“Excuse me?”</strong></p>\n\n<p><strong>“You want the bunny or not?”</strong></p>\n\n<p>Reluctantly, Xiaoran shuffled aside while watching suspiciously.</p>\n\n<p>He inserted coins calmly, adjusted the claw once—</p>\n\n<p>And won the plush immediately.</p>\n\n<p>Xiaoran gasped in betrayal.</p>\n\n<p><strong>“That’s impossible.”</strong></p>\n\n<p>He picked up the bunny and handed it to her.</p>\n\n<p><strong>“There.”</strong></p>\n\n<p>She hugged the plush automatically before catching herself.</p>\n\n<p><strong>“…Thank you.”</strong></p>\n\n<p><strong>“You’re welcome.”</strong></p>\n\n<p>Then he smiled again.</p>\n\n<p>And for some reason, her heartbeat skipped strangely.</p>\n\n<p>Annoying.</p>\n\n<p>Very annoying.</p>\n\n<p><strong>“What’s your name?”</strong></p>\n\n<p><strong>“Zhou Yichen.”</strong></p>\n\n<p>Oh.</p>\n\n<p>So this was <em>THE</em> Zhou Yichen.</p>\n\n<p>Top student. Basketball captain. Third-year legend. Girls from other schools literally waited outside games for him.</p>\n\n<p>Xiaoran immediately became defensive.</p>\n\n<p><strong>“Hm. You’re overrated.”</strong></p>\n\n<p>Yichen blinked once.</p>\n\n<p>Then laughed.</p>\n\n<p>Actually laughed.</p>\n\n<p>Like she had said something genuinely funny.</p>\n\n<p><strong>“You’re cute,”</strong> he said absentmindedly.</p>\n\n<p>Lin Xiaoran nearly dropped the bunny.</p>\n\n<p><strong>“What?!”</strong></p>\n\n<p><strong>“Nothing.”</strong></p>\n\n<p>His smile only deepened.</p>\n\n<p>And that was the first problem.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>After that, they somehow kept meeting everywhere.</p>\n\n<p>Library.</p>\n\n<p>Convenience store.</p>\n\n<p>Bus stop.</p>\n\n<p>School festival prep.</p>\n\n<p>It became suspicious enough that Tang Meilin accused fate of being too obvious.</p>\n\n<p><strong>“You like him,”</strong> Meilin declared.</p>\n\n<p><strong>“I absolutely do not.”</strong></p>\n\n<p><strong>“You brushed your hair three times when he walked past.”</strong></p>\n\n<p><strong>“That was wind maintenance.”</strong></p>\n\n<p><strong>“That’s not a thing.”</strong></p>\n\n<p>Lin Xiaoran ignored her dramatically.</p>\n\n<p>But secretly…</p>\n\n<p>She noticed things.</p>\n\n<p>Like how Zhou Yichen always looked relaxed around everyone else, but around her, he smiled more.</p>\n\n<p>How he remembered every tiny thing she said.</p>\n\n<p>How he bought strawberry milk for her once after hearing her complain the cafeteria sold out three days earlier.</p>\n\n<p>How he never got annoyed even when she acted bratty on purpose.</p>\n\n<p>Which she did frequently.</p>\n\n<p><strong>“Move,”</strong> she’d complain while shoving him aside dramatically in hallways.</p>\n\n<p><strong>“You walked into me.”</strong></p>\n\n<p><strong>“You exist in my path.”</strong></p>\n\n<p><strong>“That sounds like a personal issue.”</strong></p>\n\n<p><strong>“Hm.”</strong></p>\n\n<p>And somehow, he always looked amused instead of offended.</p>\n\n<p>It made her chest feel weird.</p>\n\n<p>One rainy afternoon, Xiaoran forgot her umbrella after cram school.</p>\n\n<p>By the time she reached the school gate, heavy rain poured everywhere.</p>\n\n<p><strong>“…Great.”</strong></p>\n\n<p><strong>“You’ll get sick.”</strong></p>\n\n<p>She turned to find Zhou Yichen standing behind her holding a black umbrella.</p>\n\n<p>Again.</p>\n\n<p>Smiling.</p>\n\n<p>Always smiling.</p>\n\n<p><strong>“Were you waiting for someone?”</strong></p>\n\n<p><strong>“You.”</strong></p>\n\n<p>Her heart stumbled so hard it was humiliating.</p>\n\n<p><strong>“…Why?”</strong></p>\n\n<p><strong>“You texted the class group complaining about the rain.”</strong></p>\n\n<p><strong>“That doesn’t mean come rescue me.”</strong></p>\n\n<p><strong>“But you sounded pitiful.”</strong></p>\n\n<p><strong>“I was NOT pitiful.”</strong></p>\n\n<p><strong>“You used three crying emojis.”</strong></p>\n\n<p><strong>“That’s expressive communication.”</strong></p>\n\n<p>Yichen laughed quietly before opening the umbrella over her head.</p>\n\n<p><strong>“Come on.”</strong></p>\n\n<p>The walk home became dangerous for Lin Xiaoran’s emotional stability.</p>\n\n<p>Because Zhou Yichen was unfairly gentle.</p>\n\n<p>He tilted the umbrella toward her side more.</p>\n\n<p>Walked closer to the road so passing cars wouldn’t splash her.</p>\n\n<p>Listened carefully even when she rambled nonsense.</p>\n\n<p>And worst of all—</p>\n\n<p>He looked at her like she mattered.</p>\n\n<p>By the time they reached her apartment building, Xiaoran already knew she was doomed.</p>\n\n<p>Yichen looked down at her.</p>\n\n<p><strong>“You should go inside before you catch a cold.”</strong></p>\n\n<p><strong>“…Okay.”</strong></p>\n\n<p>But neither moved.</p>\n\n<p>Rain poured softly around them.</p>\n\n<p>Xiaoran clutched the plush bunny still attached to her bag.</p>\n\n<p>Then suddenly blurted—</p>\n\n<p><strong>“Do you like me?”</strong></p>\n\n<p>Silence.</p>\n\n<p>Yichen blinked, clearly surprised.</p>\n\n<p>Unfortunately for her pride, once Lin Xiaoran got nervous, she only became more reckless.</p>\n\n<p><strong>“Because if you DON’T,”</strong> she rushed out, <strong>“then you should stop acting so nice to me all the time because it’s confusing.”</strong></p>\n\n<p>Yichen stared at her for two seconds.</p>\n\n<p>Then slowly—</p>\n\n<p>Very slowly—</p>\n\n<p>He smiled again.</p>\n\n<p>That smile.</p>\n\n<p>The one that always made her heart weak.</p>\n\n<p><strong>“What if I do like you?”</strong></p>\n\n<p>Xiaoran’s brain immediately stopped functioning.</p>\n\n<p><strong>“Oh.”</strong></p>\n\n<p>Very intelligent response.</p>\n\n<p>Yichen stepped slightly closer beneath the umbrella.</p>\n\n<p><strong>“What if I’ve liked you since the arcade?”</strong></p>\n\n<p><strong>“…That fast?”</strong></p>\n\n<p><strong>“You called me overrated within thirty seconds.”</strong></p>\n\n<p><strong>“And that made you fall in love?”</strong></p>\n\n<p><strong>“I found it refreshing.”</strong></p>\n\n<p>She stared at him, ears turning pink.</p>\n\n<p>This was bad.</p>\n\n<p>Very bad.</p>\n\n<p>Because now she wanted to say it too.</p>\n\n<p>And Lin Xiaoran hated being vulnerable.</p>\n\n<p>But she also hated lying.</p>\n\n<p>So after a full minute of internal suffering, she mumbled quietly—</p>\n\n<p><strong>“…I like you too.”</strong></p>\n\n<p>Yichen’s expression softened instantly.</p>\n\n<p><strong>“Yeah?”</strong></p>\n\n<p><strong>“I think about you too much,”</strong> she confessed with deep annoyance. <strong>“It’s affecting my studies.”</strong></p>\n\n<p>He laughed softly.</p>\n\n<p>And suddenly Xiaoran realized something terrifying.</p>\n\n<p>Zhou Yichen looked happiest whenever he was with her.</p>\n\n<p>Like genuinely happiest.</p>\n\n<p><strong>“Lin Xiaoran,”</strong> he said gently.</p>\n\n<p><strong>“…What?”</strong></p>\n\n<p><strong>“Do you want to go out with me?”</strong></p>\n\n<p>Her eyes widened.</p>\n\n<p><strong>“So suddenly?”</strong></p>\n\n<p><strong>“You confessed first.”</strong></p>\n\n<p><strong>“That’s true.”</strong></p>\n\n<p><strong>“And I don’t want anyone else asking you before I do.”</strong></p>\n\n<p>Her heart exploded.</p>\n\n<p>Actually exploded.</p>\n\n<p>She tried acting calm anyway.</p>\n\n<p><strong>“Hm. I’ll consider it.”</strong></p>\n\n<p>Yichen raised a brow.</p>\n\n<p><strong>“You just confessed love two minutes ago.”</strong></p>\n\n<p><strong>“That was before. This is negotiation.”</strong></p>\n\n<p>He laughed again, lowering his head slightly closer to hers.</p>\n\n<p><strong>“Okay then,”</strong> he murmured. <strong>“Please let me be your boyfriend.”</strong></p>\n\n<p>Xiaoran lasted exactly three seconds before smiling shyly.</p>\n\n<p><strong>“…Fine.”</strong></p>\n\n<p><strong>“Fine?”</strong></p>\n\n<p><strong>“Don’t push your luck, Zhou Yichen.”</strong></p>\n\n<p><strong>“Yes, girlfriend.”</strong></p>\n\n<p>And somehow, hearing that for the first time felt warmer than the umbrella shielding them from the rain.</p>",
-        "visible": true,
-        "epigraph": "“He found her in chaos, and stayed like it was home.”",
-        "publishDate": "2026-05-13",
-        "scheduleDate": "2026-05-14",
-        "scheduleTime": "12:00",
-        "translations": {
-          "id": {
-            "title": "Pengakuan Yichen",
-            "content": "<p>Dimulai dari sebuah mesin capit.</p>\n\n<p>Lin Xiaoran berdiri di arcade dengan tangan terlipat, melototin boneka kelinci yang kejebak di balik kaca kayak dia punya masalah pribadi sama keluarganya.</p>\n\n<p><strong>“Mesin ini curang.”</strong></p>\n\n<p><strong>“Nggak kok,”</strong> suara kalem dari sampingnya nyaut.</p>\n\n<p>Dia nengok.</p>\n\n<p>Terus langsung lupa mau ngomong apa selama setengah detik.</p>\n\n<p>Cowok yang berdiri di situ tinggi, rapi, masih pake seragam sekolah dengan lengan digulung santai. Alis tegas. Mata tajam. Tipe muka yang pasti ada di grup chat cewek-cewek tapi dibahas diam-diam.</p>\n\n<p>Dan yang paling nyebelin—</p>\n\n<p>Dia lagi senyum.</p>\n\n<p>Bukan sombong.</p>\n\n<p>Bukan ngeledek.</p>\n\n<p>Ya… natural aja, hangat.</p>\n\n<p>Lin Xiaoran langsung sadar lagi.</p>\n\n<p><strong>“Kamu yang bikin mesin ini emangnya?”</strong></p>\n\n<p>Cowok itu ketawa pelan.</p>\n\n<p><strong>“Nggak. Kamu aja yang salah cara ngambilnya.”</strong></p>\n\n<p><strong>“Aku udah nyoba sebelas kali.”</strong></p>\n\n<p><strong>“Nah itu masalahnya.”</strong></p>\n\n<p><strong>“Maksud lo apa?”</strong></p>\n\n<p><strong>“Kamu nggak sabaran.”</strong></p>\n\n<p>Dia langsung nyipitin mata.</p>\n\n<p>Ini anak siapa sih?</p>\n\n<p>Cowok itu melangkah mendekat.</p>\n\n<p><strong>“Geser.”</strong></p>\n\n<p><strong>“Hah?”</strong></p>\n\n<p><strong>“Mau bonekanya nggak?”</strong></p>\n\n<p>Dengan berat hati, Xiaoran minggir sambil curiga banget.</p>\n\n<p>Dia masukin koin pelan, atur claw sekali—</p>\n\n<p>dan langsung dapet.</p>\n\n<p>Xiaoran langsung kaget kayak dikhianatin semesta.</p>\n\n<p><strong>“Nggak mungkin.”</strong></p>\n\n<p>Dia ngambil kelincinya terus nyodorin.</p>\n\n<p><strong>“Nih.”</strong></p>\n\n<p>Dia peluk otomatis sebelum sadar.</p>\n\n<p><strong>“…Makasih.”</strong></p>\n\n<p><strong>“Sama-sama.”</strong></p>\n\n<p>Terus dia senyum lagi.</p>\n\n<p>Dan entah kenapa, jantungnya langsung aneh.</p>\n\n<p>Nyebelin.</p>\n\n<p>Banget.</p>\n\n<p><strong>“Nama lo siapa?”</strong></p>\n\n<p><strong>“Zhou Yichen.”</strong></p>\n\n<p>Oh.</p>\n\n<p>Jadi ini <em>si</em> Zhou Yichen.</p>\n\n<p>Top student. Kapten basket. Legenda sekolah. Cowok yang ditungguin cewek sekolah lain di luar pertandingan.</p>\n\n<p>Xiaoran langsung defensif.</p>\n\n<p><strong>“Hm. Overrated.”</strong></p>\n\n<p>Yichen kedip sekali.</p>\n\n<p>Terus ketawa.</p>\n\n<p>Beneran ketawa.</p>\n\n<p>Kayak dia baru denger hal paling lucu di dunia.</p>\n\n<p><strong>“Lo lucu,”</strong> katanya tanpa mikir.</p>\n\n<p>Lin Xiaoran hampir jatuhin kelinci.</p>\n\n<p><strong>“Hah?!”</strong></p>\n\n<p><strong>“Nggak apa-apa.”</strong></p>\n\n<p>Senyumnya malah makin jadi.</p>\n\n<p>Dan itu masalah pertama.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Habis itu, mereka entah kenapa sering ketemu di mana-mana.</p>\n\n<p>Perpustakaan.</p>\n\n<p>Meiyijia.</p>\n\n<p>Halte.</p>\n\n<p>Acara sekolah.</p>\n\n<p>Sampai Tang Meilin mulai nuduh semesta lagi iseng.</p>\n\n<p><strong>“Lo suka dia,”</strong> kata Meilin.</p>\n\n<p><strong>“Enggak.”</strong></p>\n\n<p><strong>“Lo benerin rambut tiga kali pas dia lewat.”</strong></p>\n\n<p><strong>“Karena angin.”</strong></p>\n\n<p><strong>“Dih nyalahin angin.”</strong></p>\n\n<p>Xiaoran pura-pura nggak denger.</p>\n\n<p>Tapi diam-diam…</p>\n\n<p>dia sadar sesuatu.</p>\n\n<p>Yaitu gimana Yichen selalu kelihatan santai sama orang lain, tapi sama dia senyumnya lebih sering keluar.</p>\n\n<p>Gimana dia inget hal-hal kecil yang dia bilang.</p>\n\n<p>Gimana dia pernah beli strawberry milk dari luar cuma karena dia ngeluh kehabisan di kantin.</p>\n\n<p>Gimana dia nggak pernah kesel walau dia sering banget nyebelin.</p>\n\n<p>Padahal dia emang nyebelin.</p>\n\n<p><strong>“Geser,”</strong> katanya sambil dorong dia di lorong.</p>\n\n<p><strong>“Kamu yang nabrak aku.”</strong></p>\n\n<p><strong>“Kamu yang ada di jalur aku. Salah kamu.”</strong></p>\n\n<p><strong>“Hm.”</strong></p>\n\n<p>Dan anehnya… dia selalu ketawa, bukan marah.</p>\n\n<p>Bikin dada Xiaoran aneh.</p>\n\n<p>Suatu hari hujan, dia lupa payung.</p>\n\n<p>Pas sampai gerbang sekolah, hujan deras.</p>\n\n<p><strong>“…Nyebelin banget sih hujan.”</strong></p>\n\n<p><strong>“Nanti kamu sakit.”</strong></p>\n\n<p>Dia nengok.</p>\n\n<p>Yichen udah berdiri di belakangnya, bawa payung hitam.</p>\n\n<p>Lagi.</p>\n\n<p>Senyum.</p>\n\n<p>Selalu senyum.</p>\n\n<p><strong>“Nunggu siapa?”</strong></p>\n\n<p><strong>“Kamu.”</strong></p>\n\n<p>Jantungnya langsung jatuh hampir ke lantai.</p>\n\n<p><strong>“…Kenapa?”</strong></p>\n\n<p><strong>“Kamu chat di grup sambil ngeluh tentang hujan.”</strong></p>\n\n<p><strong>“Bukan berarti aku minta dijemput.”</strong></p>\n\n<p><strong>“Tapi nada kamu kayak menyedihkan banget.”</strong></p>\n\n<p><strong>“Aku nggak menyedihkan.”</strong></p>\n\n<p><strong>“Kamu pakai tiga emoji nangis.”</strong></p>\n\n<p><strong>“Itu namanya ekspresi.”</strong></p>\n\n<p>Yichen ketawa pelan, terus bukain payungnya.</p>\n\n<p><strong>“Ayo.”</strong></p>\n\n<p>Jalan pulang jadi bahaya buat emosi Lin Xiaoran.</p>\n\n<p>Soalnya Yichen terlalu lembut.</p>\n\n<p>Payungnya condong ke dia.</p>\n\n<p>Dia jalan di sisi luar biar Xiaoran nggak kena cipratan mobil.</p>\n\n<p>Dengerin Xiaoran ngomong random tanpa kesel.</p>\n\n<p>Dan yang paling parah—</p>\n\n<p>Dia ngeliatin Xiaoran kayak Xiaoran itu penting.</p>\n\n<p>Sampai depan apartemen, Xiaoran udah tahu hati dia kacau.</p>\n\n<p><strong>“…Kamu suka aku ya?”</strong></p>\n\n<p>Hening.</p>\n\n<p>Yichen kedip, agak kaget.</p>\n\n<p>Sayangnya, kalau Lin Xiaoran udah gugup, dia malah makin brutal.</p>\n\n<p><strong>“Soalnya kalau enggak,”</strong> dia lanjut cepat, <strong>“kamu jangan terlalu baik sama aku terus, soalnya aku jadi bingung.”</strong></p>\n\n<p>Yichen diem dua detik.</p>\n\n<p>Terus senyum lagi.</p>\n\n<p>Senyum itu.</p>\n\n<p><strong>“Kalau aku emang suka kamu gimana?”</strong></p>\n\n<p>Otak Xiaoran langsung error.</p>\n\n<p><strong>“…Oh.”</strong></p>\n\n<p>Respons paling pintar sejagat raya.</p>\n\n<p>Yichen maju sedikit di bawah payung.</p>\n\n<p><strong>“Kalau aku udah suka kamu dari dulu?”</strong></p>\n\n<p><strong>“…Pas kita ketemu di arcade?”</strong></p>\n\n<p><strong>“Kamu bilang aku overrated dalam 30 detik.”</strong></p>\n\n<p><strong>“Terus itu bikin kamu jatuh cinta?”</strong></p>\n\n<p><strong>“Aku suka aja.”</strong></p>\n\n<p>Dia diem, telinganya mulai merah.</p>\n\n<p>Gawat.</p>\n\n<p>Dia juga suka.</p>\n\n<p>Tapi dia nggak mau keliatan kalah.</p>\n\n<p>Jadi setelah hening lama, dia gumam:</p>\n\n<p><strong>“…Aku juga suka.”</strong></p>\n\n<p>Yichen langsung berubah lembut.</p>\n\n<p><strong>“Iya?”</strong></p>\n\n<p><strong>“Aku kepikiran kamu terus, ganggu belajar.”</strong></p>\n\n<p>Dia ketawa pelan.</p>\n\n<p>Dan Xiaoran sadar sesuatu yang bikin panik.</p>\n\n<p>Yichen kelihatan paling bahagia kalau sama dia.</p>\n\n<p><strong>“Lin Xiaoran,”</strong> katanya pelan.</p>\n\n<p><strong>“…Apa?”</strong></p>\n\n<p><strong>“Mau pacaran sama aku?”</strong></p>\n\n<p>Dia melotot.</p>\n\n<p><strong>“Tiba-tiba banget.”</strong></p>\n\n<p><strong>“Kamu yang duluan confess.”</strong></p>\n\n<p><strong>“Iya sih.”</strong></p>\n\n<p><strong>“Dan aku nggak mau orang lain duluan.”</strong></p>\n\n<p>Jantungnya meledak.</p>\n\n<p>Dia coba cool.</p>\n\n<p><strong>“Hm. Aku pikirin dulu.”</strong></p>\n\n<p>Yichen ngangkat alis.</p>\n\n<p><strong>“Kamu duluan yang confess dua menit lalu.”</strong></p>\n\n<p><strong>“Beda. Sekarang namanya negosiasi.”</strong></p>\n\n<p>Dia ketawa lagi, makin deket.</p>\n\n<p><strong>“Kalau gitu… jadi pacarku ya.”</strong></p>\n\n<p>Xiaoran bertahan tiga detik.</p>\n\n<p><strong>“…Oke.”</strong></p>\n\n<p><strong>“Oke aja?”</strong></p>\n\n<p><strong>“Jangan sombong, Zhou Yichen.”</strong></p>\n\n<p><strong>“Iya, pacar.”</strong></p>\n\n<p>Dan entah kenapa, itu lebih hangat dari hujan di sekitar mereka.</p>\n"
-          }
-        },
-        "publishStatus": "published"
-      },
-      {
-        "desc": "Zhou Yichen noticed her long before she noticed him, loud, chaotic, unforgettable, and somehow decided, without telling anyone, that she would become his favorite coincidence.",
-        "type": "chapter",
-        "title": "All Our Coincidences Were Intentional",
-        "content": "<p>Before Zhou Yichen ever spoke to Lin Xiaoran, he already knew three things about her.</p>\n\n<p>First—</p>\n\n<p>She was loud.</p>\n\n<p>Second—</p>\n\n<p>She was dramatic.</p>\n\n<p>Third—</p>\n\n<p>She cried unbelievably fast.</p>\n\n<p>The first time he noticed her was outside the teachers’ office.</p>\n\n<p>A girl in a slightly messy uniform stood there arguing with a teacher over confiscated snacks.</p>\n\n<p><strong>“But instant noodles are emotionally necessary,”</strong> she protested seriously.</p>\n\n<p><strong>“They are not.”</strong></p>\n\n<p><strong>“What if I faint from heartbreak during math class?”</strong></p>\n\n<p><strong>“You won’t.”</strong></p>\n\n<p><strong>“How can you be so sure?”</strong></p>\n\n<p>Yichen had only walked past casually at first.</p>\n\n<p>Then the girl sighed dramatically and muttered under her breath—</p>\n\n<p><strong>“This school suppresses artistic souls.”</strong></p>\n\n<p>The teacher nearly laughed despite herself.</p>\n\n<p>Yichen did too.</p>\n\n<p>The girl was cute.</p>\n\n<p>Not just pretty-cute.</p>\n\n<p>Dangerously expressive cute.</p>\n\n<p>The kind where every emotion showed clearly on her face.</p>\n\n<p>That should’ve been the end of it.</p>\n\n<p>But after noticing someone once, somehow you kept seeing them everywhere.</p>\n\n<p>In the cafeteria complaining because her pudding was sold out.</p>\n\n<p>In the hallway fake-crying because her friend Tang Meilin refused to lend her lip gloss.</p>\n\n<p>In class presentations confidently speaking nonsense with full conviction.</p>\n\n<p><strong>“She’s ridiculous,”</strong> Chen Yuhao commented one afternoon while the basketball team walked past the courtyard.</p>\n\n<p>Below them, Lin Xiaoran sat on a bench dramatically sulking while Meilin ignored her.</p>\n\n<p><strong>“What happened?”</strong> Yichen asked casually.</p>\n\n<p><strong>“She lost rock-paper-scissors.”</strong></p>\n\n<p><strong>“…That’s why she looks heartbroken?”</strong></p>\n\n<p><strong>“She takes competition seriously.”</strong></p>\n\n<p>Yichen watched as Xiaoran suddenly grabbed Meilin’s sleeve and whined something shameless enough to make Meilin physically shove her away.</p>\n\n<p>Instead of getting angry, Xiaoran only laughed.</p>\n\n<p>Brightly.</p>\n\n<p>Carelessly.</p>\n\n<p>Like sunshine that didn’t know how to behave properly.</p>\n\n<p>Yichen looked away after a second.</p>\n\n<p>But for some reason—</p>\n\n<p>He smiled.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>The second time she truly caught his attention was during rain duty week.</p>\n\n<p>Students rushed through the corridors while teachers yelled about slippery floors.</p>\n\n<p>Yichen carried sports equipment back toward the gym when he noticed a familiar figure crouching beside the school garden.</p>\n\n<p>Lin Xiaoran was holding a tiny soaked kitten.</p>\n\n<p><strong>“What are you doing?”</strong> Meilin asked beside her.</p>\n\n<p><strong>“It looked cold.”</strong></p>\n\n<p><strong>“You’re also cold.”</strong></p>\n\n<p><strong>“I’m emotionally stronger than him.”</strong></p>\n\n<p>The kitten meowed pitifully.</p>\n\n<p>Xiaoran immediately looked devastated.</p>\n\n<p><strong>“Oh no,”</strong> she whispered, hugging it carefully. <strong>“Don’t sound so pitiful.”</strong></p>\n\n<p>Yichen laughed quietly before he could stop himself.</p>\n\n<p>Xiaoran looked up immediately.</p>\n\n<p>Their eyes met for the first time.</p>\n\n<p>Yichen saw her properly then.</p>\n\n<p>Soft features. Bright eyes. Pink lips slightly parted in surprise.</p>\n\n<p>Cute.</p>\n\n<p>Too cute.</p>\n\n<p>For one second, Xiaoran simply stared.</p>\n\n<p>Then she narrowed her eyes suspiciously.</p>\n\n<p><strong>“…Why are you laughing?”</strong></p>\n\n<p><strong>“Nothing.”</strong></p>\n\n<p><strong>“You definitely laughed at me.”</strong></p>\n\n<p><strong>“A little.”</strong></p>\n\n<p><strong>“Hm. Rude.”</strong></p>\n\n<p>But she didn’t actually sound offended.</p>\n\n<p>Yichen walked away afterward.</p>\n\n<p>Yet strangely enough, he kept thinking about her.</p>\n\n<p>About how she held the kitten so gently.</p>\n\n<p>About how expressive her face was.</p>\n\n<p>About how alive she felt compared to everyone else around him.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>The arcade encounter one week later wasn’t exactly coincidence.</p>\n\n<p>Well.</p>\n\n<p>Not entirely.</p>\n\n<p>The basketball team had won a practice match nearby, and Yuhao suggested going to the shopping center arcade afterward.</p>\n\n<p>Yichen normally would’ve refused.</p>\n\n<p>But while walking past the claw machines, he suddenly froze.</p>\n\n<p>There she was again.</p>\n\n<p>Lin Xiaoran.</p>\n\n<p>Standing before a claw machine with absolute fury on her face.</p>\n\n<p><strong>“I spent twenty-seven yuan already,”</strong> she informed Meilin dramatically.</p>\n\n<p><strong>“Then stop.”</strong></p>\n\n<p><strong>“No.”</strong></p>\n\n<p><strong>“The bunny looks ugly anyway.”</strong></p>\n\n<p><strong>“Don’t insult him.”</strong></p>\n\n<p>Yichen watched silently from several machines away.</p>\n\n<p>Xiaoran failed again.</p>\n\n<p>And again.</p>\n\n<p>Then she crouched in front of the machine and pointed accusingly.</p>\n\n<p><strong>“You and I are enemies now.”</strong></p>\n\n<p>Meilin looked exhausted.</p>\n\n<p><strong>“You’re talking to a machine.”</strong></p>\n\n<p><strong>“It started first.”</strong></p>\n\n<p>Yichen laughed quietly.</p>\n\n<p>Before he realized it—</p>\n\n<p>He was already walking toward her.</p>\n\n<p><strong>“You’re grabbing the bunny wrong.”</strong></p>\n\n<p>Xiaoran turned immediately.</p>\n\n<p>And Yichen almost smiled right there because her expression was exactly the same as when she defended instant noodles to the teacher.</p>\n\n<p>Offended.</p>\n\n<p>Dramatic.</p>\n\n<p>Cute.</p>\n\n<p><strong>“You work for the machine company or something?”</strong> she asked suspiciously.</p>\n\n<p>And just like that—</p>\n\n<p>The conversation started.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>After the arcade, the “coincidences” increased suspiciously.</p>\n\n<p>Except most of them were caused by Zhou Yichen himself.</p>\n\n<p>He simply never admitted it.</p>\n\n<p>Like the convenience store encounter.</p>\n\n<p>Xiaoran entered after school craving strawberry milk only to discover the shelf empty.</p>\n\n<p><strong>“This country has failed me,”</strong> she sighed dramatically.</p>\n\n<p>Then a hand suddenly extended from beside her holding the exact drink.</p>\n\n<p><strong>“You can have mine.”</strong></p>\n\n<p>She turned.</p>\n\n<p>Zhou Yichen stood there casually like this was fate and not the fact he bought it ten minutes ago outside after knowing the store was running out of stock.</p>\n\n<p><strong>“…Why are you here?”</strong></p>\n\n<p><strong>“Buying water.”</strong></p>\n\n<p><strong>“You bought strawberry milk.”</strong></p>\n\n<p><strong>“I wanted this earlier. But not anymore.”</strong></p>\n\n<p>She laughed despite herself.</p>\n\n<p>Yichen immediately decided that making her laugh was dangerously addictive.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Then came the library coincidence.</p>\n\n<p>Which was definitely not coincidence.</p>\n\n<p>Yichen had discovered from Yuhao that Xiaoran studied there every Wednesday because her house lost WiFi every week due to “mysterious causes.”</p>\n\n<p>The mysterious cause was later revealed to be her neighbor downloading games illegally using her house WiFi.</p>\n\n<p>So naturally—</p>\n\n<p>Yichen began studying there every Wednesday too.</p>\n\n<p>The first time Xiaoran spotted him, she blinked suspiciously.</p>\n\n<p><strong>“You’re everywhere.”</strong></p>\n\n<p><strong>“That sounds romantic.”</strong></p>\n\n<p><strong>“That sounds creepy.”</strong></p>\n\n<p>He smiled lazily.</p>\n\n<p><strong>“Then I’ll leave.”</strong></p>\n\n<p><strong>“…I didn’t say leave.”</strong></p>\n\n<p>Yichen sat down again immediately.</p>\n\n<p>Xiaoran looked horrified at herself for saying that out loud.</p>\n\n<p>He nearly laughed.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Then came the bus stop coincidence.</p>\n\n<p>The café coincidence.</p>\n\n<p>The hallway coincidence.</p>\n\n<p>The school festival coincidence.</p>\n\n<p>At first, Xiaoran genuinely believed fate kept pushing them together.</p>\n\n<p>Meanwhile, Yuhao watched Yichen intentionally choosing longer routes between classes just to 'accidentally' meet Xiaoran near Building C.</p>\n\n<p><strong>“You’re actually shameless,”</strong> Yuhao said.</p>\n\n<p><strong>“I don’t know what you mean.”</strong></p>\n\n<p><strong>“You changed your entire lunch schedule because she eats earlier.”</strong></p>\n\n<p><strong>“Coincidence.”</strong></p>\n\n<p><strong>“You hate the cafeteria before noon.”</strong></p>\n\n<p><strong>“People change.”</strong></p>\n\n<p>Yuhao stared at him in disbelief.</p>\n\n<p>Because Zhou Yichen—</p>\n\n<p>The calm, rational, untouchable Zhou Yichen—</p>\n\n<p>Was deliberately orchestrating encounters like a romance drama protagonist.</p>\n\n<p>And the worst part?</p>\n\n<p>He looked happy doing it.</p>\n\n<p>Especially every time Lin Xiaoran appeared.</p>\n\n<p>The moment she walked into view, his expression softened automatically.</p>\n\n<p>His smile became real.</p>\n\n<p>Warm.</p>\n\n<p>Easy.</p>\n\n<p>Like she unknowingly carried sunlight around specifically for him.</p>\n\n<p>One afternoon, Yuhao finally asked the obvious question.</p>\n\n<p><strong>“What exactly do you like about her so much?”</strong></p>\n\n<p>Yichen looked toward the courtyard below.</p>\n\n<p>Lin Xiaoran was there complaining loudly while Meilin ignored her existence.</p>\n\n<p>Probably another dramatic crisis.</p>\n\n<p>Yichen watched her for a moment before smiling unconsciously.</p>\n\n<p><strong>“She makes everything feel less tiring.”</strong></p>\n\n<p>Yuhao blinked.</p>\n\n<p>Below them, Xiaoran suddenly looked up accidentally.</p>\n\n<p>Their eyes met across the courtyard.</p>\n\n<p>Immediately, her expression changed.</p>\n\n<p>Brightened.</p>\n\n<p>Like she was unconsciously happy to see him too.</p>\n\n<p>Yichen smiled wider.</p>\n\n<p>And right then—</p>\n\n<p>He already knew he was completely doomed.</p>\n",
-        "visible": true,
-        "epigraph": "“Before he ever spoke to her, he had already started choosing her.”",
-        "publishDate": "2026-05-13",
-        "scheduleDate": "2026-05-14",
-        "scheduleTime": "12:00",
-        "translations": {
-          "id": {
-            "title": "Semua 'Kebetulan' Kita itu Ternyata Disengaja.",
-            "content": "<p>Sebelum Zhou Yichen pernah ngomong sama Lin Xiaoran, dia udah tahu tiga hal tentang dia.</p>\n\n<p>Pertama—</p>\n\n<p>Dia berisik.</p>\n\n<p>Kedua—</p>\n\n<p>Dia drama banget.</p>\n\n<p>Ketiga—</p>\n\n<p>Dia gampang banget nangis.</p>\n\n<p>Pertama kali dia ngeh sama Xiaoran itu di depan ruang guru.</p>\n\n<p>Seorang cewek dengan seragam agak berantakan lagi debat sama guru gara-gara jajanan yang disita.</p>\n\n<p><strong>“Tapi mie instan itu kebutuhan emosional, Pak,”</strong> dia protes serius.</p>\n\n<p><strong>“Enggak.”</strong></p>\n\n<p><strong>“Kalau Saya pingsan karena disakiti sama pelajaran matematika gimana?”</strong></p>\n\n<p><strong>“Nggak bakal.”</strong></p>\n\n<p><strong>“Kok yakin banget, Pak?”</strong></p>\n\n<p>Yichen awalnya cuma lewat santai.</p>\n\n<p>Terus cewek itu ngeluh pelan sambil gumam—</p>\n\n<p><strong>“Sekolah ini menekan jiwa bebas Saya.”</strong></p>\n\n<p>Guru di situ sampai hampir ketawa nahan diri.</p>\n\n<p>Yichen juga.</p>\n\n<p>Lucu.</p>\n\n<p>Bukan cuma lucu-cute biasa.</p>\n\n<p>Tapi tipe yang ekspresinya kebaca semua di muka.</p>\n\n<p>Harusnya berhenti di situ.</p>\n\n<p>Tapi entah kenapa, kalau udah ngeh sama satu orang, dia jadi sering muncul di mana-mana.</p>\n\n<p>Di kantin karena pudingnya habis.</p>\n\n<p>Di lorong pura-pura nangis karena Tang Meilin nggak mau minjemin lip gloss.</p>\n\n<p>Di kelas presentasi ngomong ngawur tapi pede banget.</p>\n\n<p><strong>“Dia receh banget,”</strong> Chen Yuhao komentar suatu hari waktu tim basket lewat halaman sekolah.</p>\n\n<p>Di bawah, Lin Xiaoran lagi duduk manyun dramatis, sementara Meilin pura-pura nggak peduli.</p>\n\n<p><strong>“Kenapa?”</strong> Yichen tanya santai.</p>\n\n<p><strong>“Dia kalah suit.”</strong></p>\n\n<p><strong>“…Itu alasan dia sedih?”</strong></p>\n\n<p><strong>“Kompetitif banget orangnya.”</strong></p>\n\n<p>Yichen lihat Xiaoran tiba-tiba narik lengan Meilin sambil ngeluh nggak tahu malu sampai akhirnya didorong sampai terjungkal.</p>\n\n<p>Tapi dia malah ketawa.</p>\n\n<p>Terang banget. Kayak matahari.</p>\n\n<p>Yichen buang pandangan lagi.</p>\n\n<p>Tapi entah kenapa—</p>\n\n<p>Dia senyum.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Kedua kalinya dia bener-bener ngeh itu pas minggu piket hujan.</p>\n\n<p>Anak-anak lari-larian di lorong, guru teriak soal lantai licin.</p>\n\n<p>Yichen lagi bawa alat olahraga balik ke gym pas dia lihat sosok familiar jongkok di dekat taman sekolah.</p>\n\n<p>Lin Xiaoran lagi nggendong anak kucing yang basah kuyup.</p>\n\n<p><strong>“Ngapain sih?”</strong> Meilin nanya di sebelahnya.</p>\n\n<p><strong>“Dia kedinginan.”</strong></p>\n\n<p><strong>“Kamu juga kedinginan.”</strong></p>\n\n<p><strong>“Aku lebih kuat dari dia.”</strong></p>\n\n<p>Anak kucingnya mengeong pelan.</p>\n\n<p>Xiaoran langsung keliatan hancur.</p>\n\n<p><strong>“Aduh,”</strong> dia bisik sambil peluk pelan. <strong>“Jangan kelihatan sedih gitu dong.”</strong></p>\n\n<p>Yichen ketawa pelan tanpa sadar.</p>\n\n<p>Xiaoran langsung nengok.</p>\n\n<p>Untuk pertama kali mereka ketemu pandangan.</p>\n\n<p>Yichen lihat dia dengan jelas.</p>\n\n<p>Wajah lembut, mata terang, bibir sedikit terbuka karena kaget.</p>\n\n<p>Cute.</p>\n\n<p>Keterlaluan cute.</p>\n\n<p>Satu detik mereka cuma saling lihat.</p>\n\n<p>Terus Xiaoran nyipit curiga.</p>\n\n<p><strong>“…Ngapain ketawa?”</strong></p>\n\n<p><strong>“Nggak apa-apa.”</strong></p>\n\n<p><strong>“Pasti ketawain aku.”</strong></p>\n\n<p><strong>“Sedikit.”</strong></p>\n\n<p><strong>“Hm. Gak sopan.”</strong></p>\n\n<p>Tapi dia nggak marah beneran.</p>\n\n<p>Yichen pergi setelah itu.</p>\n\n<p>Tapi entah kenapa, dia kepikiran terus.</p>\n\n<p>Tentang cara dia peluk kucingnya.</p>\n\n<p>Tentang ekspresinya yang hidup banget.</p>\n\n<p>Tentang dia yang beda dari orang lain di sekitarnya.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Ketemu di arcade seminggu kemudian itu sebenarnya bukan kebetulan.</p>\n\n<p>Ya… nggak sepenuhnya.</p>\n\n<p>Tim basket lagi menang sparing, dan Yuhao ngajak ke arcade.</p>\n\n<p>Yichen awalnya mau nolak.</p>\n\n<p>Tapi pas lewat mesin capit, dia berhenti.</p>\n\n<p>Di sana dia lagi.</p>\n\n<p>Lin Xiaoran.</p>\n\n<p>Ngeliatin mesin itu kayak musuh pribadi.</p>\n\n<p><strong>“Aku udah keluar 27 ribu,”</strong> dia bilang dramatis ke Meilin.</p>\n\n<p><strong>“Ya udah stop.”</strong></p>\n\n<p><strong>“Nggak.”</strong></p>\n\n<p><strong>“Kelinci itu jelek.”</strong></p>\n\n<p><strong>“Jangan hina dia.”</strong></p>\n\n<p>Yichen lihat dari jauh.</p>\n\n<p>Gagal.</p>\n\n<p>Gagal lagi.</p>\n\n<p>Terus dia jongkok depan mesin.</p>\n\n<p><strong>“Kamu dan aku musuh sekarang.”</strong></p>\n\n<p>Meilin capek banget mukanya.</p>\n\n<p><strong>“Itu mesin, bukan orang.”</strong></p>\n\n<p><strong>“Dia mulai duluan.”</strong></p>\n\n<p>Yichen ketawa pelan.</p>\n\n<p>Terus tanpa sadar—</p>\n\n<p>dia jalan ke sana.</p>\n\n<p><strong>“Kamu salah cara ngambilnya.”</strong></p>\n\n<p>Xiaoran langsung nengok.</p>\n\n<p>Dan Yichen hampir senyum karena ekspresinya persis kayak waktu debat mie instan di depan guru.</p>\n\n<p>Kepancing.</p>\n\n<p>Drama.</p>\n\n<p>Cute.</p>\n\n<p><strong>“Kamu yang bikin mesin ini emangnya?”</strong> dia curiga.</p>\n\n<p>Dan dari situ—</p>\n\n<p>obrolannya mulai.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Habis itu, 'kebetulan' makin sering.</p>\n\n<p>Padahal sebagian besar… bukan kebetulan.</p>\n\n<p>Seperti di kantin.</p>\n\n<p>Xiaoran pengen strawberry milk, tapi ternyata kosong.</p>\n\n<p><strong>“Setiap hari selalu ada aja yang bikin kecewa,”</strong> dia ngeluh dramatis.</p>\n\n<p>Terus ada tangan nyodorin botol dari samping.</p>\n\n<p><strong>“Minum punyaku aja.”</strong></p>\n\n<p>Dia nengok.</p>\n\n<p>Yichen berdiri santai kayak ini takdir, bukan dia yang cari minuman ini sepuluh menit lalu dari luar.</p>\n\n<p><strong>“…Kok kamu di sini?”</strong></p>\n\n<p><strong>“Beli air.”</strong></p>\n\n<p><strong>“Itu strawberry milk.”</strong></p>\n\n<p><strong>“Tadi lagi kepengen aja.”</strong></p>\n\n<p>Xiaoran ketawa tanpa sadar.</p>\n\n<p>Dan Yichen langsung sadar satu hal: bikin dia ketawa itu bahaya.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Lalu di perpustakaan.</p>\n\n<p>Yang jelas-jelas bukan kebetulan.</p>\n\n<p>Yichen tahu dari Yuhao kalau Xiaoran selalu belajar hari Rabu disana karena katanya WiFi rumahnya selalu 'hilang secara misterius' setiap hari Rabu.</p>\n\n<p>Ternyata itu tetangga yang numpang WiFi buat download game ilegal.</p>\n\n<p>Jadi Yichen mulai datang juga tiap Rabu.</p>\n\n<p>Pertama kali ketemu, Xiaoran curiga.</p>\n\n<p><strong>“Kamu ada di mana-mana.”</strong></p>\n\n<p><strong>“Kayak takdir ya?”</strong></p>\n\n<p><strong>“Lebih ke creepy sih.”</strong></p>\n\n<p>Dia senyum santai.</p>\n\n<p><strong>“Kalau gitu aku pergi.”</strong></p>\n\n<p><strong>“…Aku nggak bilang gitu kok.”</strong></p>\n\n<p>Dia duduk lagi.</p>\n\n<p>Xiaoran langsung panik sendiri.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>Habis itu ada halte, kafe, lorong, festival sekolah.</p>\n\n<p>Awalnya Xiaoran pikir itu takdir.</p>\n\n<p>Sementara Yuhao lihat Yichen sengaja muter jalan biar 'kebetulan' ketemu Xiaoran di dekat gedung C.</p>\n\n<p><strong>“Lo nggak tahu malu banget,”</strong> Yuhao bilang.</p>\n\n<p><strong>“Maksud?”</strong></p>\n\n<p><strong>“Lo ubah jadwal makan siang cuma karena dia makan lebih awal.”</strong></p>\n\n<p><strong>“Kebetulan aja.”</strong></p>\n\n<p><strong>“Lo benci ke kantin sebelum jam 12.”</strong></p>\n\n<p><strong>“Orang juga bisa berubah kali.”</strong></p>\n\n<p>Yuhao cuma bisa melotot.</p>\n\n<p>Karena Zhou Yichen—</p>\n\n<p>si kalem, si rasional itu—</p>\n\n<p>lagi ngatur 'kebetulan' kayak tokoh utama romansa.</p>\n\n<p>Dan parahnya?</p>\n\n<p>Dia kelihatan senang.</p>\n\n<p>Setiap kali Xiaoran muncul, wajahnya langsung melunak.</p>\n\n<p>Senyumnya jadi lembut.</p>\n\n<p>Hangat.</p>\n\n<p>Kayak Xiaoran tanpa sadar bawa matahari khusus buat dia.</p>\n\n<p>Suatu hari Yuhao akhirnya nanya.</p>\n\n<p><strong>“Sebenernya lo suka apa sih dari dia?”</strong></p>\n\n<p>Yichen lihat ke bawah halaman.</p>\n\n<p>Xiaoran lagi ribut sendiri, Meilin pura-pura nggak peduli.</p>\n\n<p>Drama biasa.</p>\n\n<p>Dia senyum tanpa sadar.</p>\n\n<p><strong>“Hidupnya bahagia banget.”</strong></p>\n\n<p>Yuhao diam.</p>\n\n<p>Xiaoran lihat ke atas.</p>\n\n<p>Mata mereka ketemu.</p>\n\n<p>Dia langsung cerah.</p>\n\n<p>Dan Yichen tahu—</p>\n\n<p>dia udah jatuh terlalu dalam.</p>\n"
-          }
-        },
-        "publishStatus": "published"
-      },
-      {
-        "desc": "Lin Xiaoran thought she understood Zhou Yichen completely… until she saw what his silence looked like when someone else tried to take her place.",
-        "type": "chapter",
-        "title": "The Day Zhou Yichen Finally Got Jealous",
-        "content": "<p>The first sign something was wrong was that Zhou Yichen stopped smiling.</p>\n\n<p>Not completely.</p>\n\n<p>Just… less.</p>\n\n<p>And for someone like Zhou Yichen, who usually looked at Lin Xiaoran like she personally invented happiness, the difference was terrifyingly obvious.</p>\n\n<p>Unfortunately—</p>\n\n<p>Lin Xiaoran herself noticed absolutely nothing.</p>\n\n<p><strong>“Yichen,”</strong> she announced proudly during lunch, <strong>“someone confessed to me today.”</strong></p>\n\n<p>Chen Yuhao choked on his drink instantly.</p>\n\n<p>Tang Meilin slowly lowered her spoon.</p>\n\n<p>Across the table, Zhou Yichen looked up calmly.</p>\n\n<p><strong>“Oh?”</strong></p>\n\n<p>Xiaoran nodded dramatically.</p>\n\n<p><strong>“A first-year boy.”</strong></p>\n\n<p><strong>“…Mm.”</strong></p>\n\n<p><strong>“He said I’m cute.”</strong></p>\n\n<p><strong>“…He’s right.”</strong></p>\n\n<p>Yuhao stared at Yichen in disbelief.</p>\n\n<p>Because that response sounded calm.</p>\n\n<p>Too calm.</p>\n\n<p>Dangerously calm.</p>\n\n<p>Xiaoran continued happily, completely unaware of the growing pressure in the atmosphere.</p>\n\n<p><strong>“Then he asked if I wanted to watch a movie with him.”</strong></p>\n\n<p><strong>“What did you say?”</strong> Meilin asked carefully.</p>\n\n<p><strong>“I said I already have a boyfriend obviously.”</strong></p>\n\n<p>Yichen nodded once.</p>\n\n<p><strong>“Good.”</strong></p>\n\n<p><strong>“But then,”</strong> Xiaoran added while opening her yogurt, <strong>“he got sad so I comforted him a little.”</strong></p>\n\n<p>Silence.</p>\n\n<p>Yuhao immediately looked down at his food like survival instincts kicked in.</p>\n\n<p>Yichen smiled faintly.</p>\n\n<p><strong>“What does ‘comforted him a little’ mean?”</strong></p>\n\n<p><strong>“Oh, nothing serious.”</strong> Xiaoran waved casually. <strong>“I just told him he’ll definitely find someone prettier and kinder than me someday.”</strong></p>\n\n<p>Yichen stared at her.</p>\n\n<p><strong>“Prettier than you?”</strong></p>\n\n<p><strong>“Yes.”</strong></p>\n\n<p><strong>“You told another guy that?”</strong></p>\n\n<p>Xiaoran blinked.</p>\n\n<p><strong>“…Should I not?”</strong></p>\n\n<p>Meilin closed her eyes briefly.</p>\n\n<p>Oh no.</p>\n\n<p>The problem with Zhou Yichen was that he almost never got jealous.</p>\n\n<p>Girls liked him constantly.</p>\n\n<p>Confessed constantly.</p>\n\n<p>Texted constantly.</p>\n\n<p>And Xiaoran herself became jealous at least twice a month.</p>\n\n<p>But Yichen?</p>\n\n<p>Always calm.</p>\n\n<p>Always secure.</p>\n\n<p>Always indulgent.</p>\n\n<p>Which meant when he finally <em>did</em> get jealous—</p>\n\n<p>Nobody knew how dangerous it actually was.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>The second sign something was wrong came after school.</p>\n\n<p>Usually, Zhou Yichen waited outside Xiaoran’s classroom every afternoon.</p>\n\n<p>Today?</p>\n\n<p>Gone.</p>\n\n<p>Xiaoran walked around Building B in confusion.</p>\n\n<p>Then she finally found him near the basketball court talking with teammates.</p>\n\n<p><strong>“Yichen!”</strong></p>\n\n<p>He looked over immediately.</p>\n\n<p>Still handsome.</p>\n\n<p>Still calm.</p>\n\n<p>Still smiling slightly.</p>\n\n<p>But somehow…</p>\n\n<p>Cooler.</p>\n\n<p>More distant.</p>\n\n<p>Xiaoran immediately disliked it.</p>\n\n<p>She walked over and grabbed his sleeve automatically.</p>\n\n<p><strong>“Why didn’t you wait for me?”</strong></p>\n\n<p><strong>“I was busy.”</strong></p>\n\n<p>That had literally never stopped him before.</p>\n\n<p>Xiaoran narrowed her eyes suspiciously.</p>\n\n<p><strong>“…Are you angry?”</strong></p>\n\n<p><strong>“No.”</strong></p>\n\n<p>Lie.</p>\n\n<p>A very pretty lie.</p>\n\n<p>But still a lie.</p>\n\n<p>Before she could investigate further, another voice interrupted.</p>\n\n<p><strong>“Senior Xiaoran!”</strong></p>\n\n<p>Everyone turned.</p>\n\n<p>A younger boy jogged over nervously carrying canned coffee.</p>\n\n<p>The same first-year.</p>\n\n<p>The moment he reached them, he froze seeing Zhou Yichen beside her.</p>\n\n<p>Still, he gathered courage and held out the drink toward Xiaoran.</p>\n\n<p><strong>“Thank you for earlier,”</strong> he said shyly.</p>\n\n<p><strong>“I bought your favorite flavor.”</strong></p>\n\n<p>Xiaoran looked surprised.</p>\n\n<p><strong>“How did you know my favorite?”</strong></p>\n\n<p><strong>“You mentioned it.”</strong></p>\n\n<p><strong>“Oh.”</strong></p>\n\n<p>She reached for the drink instinctively—</p>\n\n<p>Only for another hand to take it first.</p>\n\n<p>Silence.</p>\n\n<p>Zhou Yichen held the can calmly in one hand.</p>\n\n<p>Smiling.</p>\n\n<p>Polite.</p>\n\n<p>Terrifying.</p>\n\n<p><strong>“Thank you,”</strong> he said gently. <strong>“But she doesn’t drink coffee after 5 p.m.”</strong></p>\n\n<p>The younger boy froze completely.</p>\n\n<p>Xiaoran blinked.</p>\n\n<p><strong>“…I do sometimes.”</strong></p>\n\n<p>Yichen looked at her.</p>\n\n<p><strong>“You couldn’t sleep until two last time.”</strong></p>\n\n<p><strong>“…Oh.”</strong></p>\n\n<p>The boy looked increasingly nervous.</p>\n\n<p><strong>“I-I just wanted to thank senior…”</strong></p>\n\n<p><strong>“You already did.”</strong> Yichen’s voice stayed pleasant. <strong>“That’s enough.”</strong></p>\n\n<p>Even Yuhao, watching from nearby, nearly saluted.</p>\n\n<p>Because wow.</p>\n\n<p>That was terrifyingly boyfriend-coded.</p>\n\n<p>The younger boy retreated almost immediately.</p>\n\n<p>The second he disappeared, Xiaoran turned toward Yichen slowly.</p>\n\n<p><strong>“…You scared him.”</strong></p>\n\n<p><strong>“He’ll survive.”</strong></p>\n\n<p><strong>“…You’re definitely angry.”</strong></p>\n\n<p><strong>“I said I’m not.”</strong></p>\n\n<p><strong>“Your smile looks expensive.”</strong></p>\n\n<p>Yuhao physically walked away because he refused to witness whatever happened next.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>That night, Lin Xiaoran lay dramatically across her bed while video calling Meilin.</p>\n\n<p><strong>“I think Zhou Yichen is malfunctioning.”</strong></p>\n\n<p><strong>“He’s jealous.”</strong></p>\n\n<p><strong>“…Huh?”</strong></p>\n\n<p>Meilin stared at her silently.</p>\n\n<p>Then—</p>\n\n<p><strong>“You really don’t notice things unless they hit you with a chair.”</strong></p>\n\n<p><strong>“What’s there to notice?”</strong></p>\n\n<p><strong>“He’s obsessed with you.”</strong></p>\n\n<p><strong>“Well yes obviously.”</strong></p>\n\n<p><strong>“And another guy openly approached you.”</strong></p>\n\n<p><strong>“But I rejected him!”</strong></p>\n\n<p><strong>“You also comforted him.”</strong></p>\n\n<p><strong>“He looked sad!”</strong></p>\n\n<p>Meilin sighed deeply.</p>\n\n<p><strong>“Xiaoran. Imagine a pretty girl confessed to Yichen, then Yichen comforted her gently and accepted gifts from her.”</strong></p>\n\n<p>Xiaoran sat upright instantly.</p>\n\n<p><strong>“…Oh.”</strong></p>\n\n<p><strong>“Exactly.”</strong></p>\n\n<p>Suddenly, everything replayed in her head.</p>\n\n<p>Yichen not waiting after class.</p>\n\n<p>The weird smile.</p>\n\n<p>Taking the coffee.</p>\n\n<p>The calm voice that somehow felt colder than usual.</p>\n\n<p>Oh no.</p>\n\n<p>Zhou Yichen was jealous.</p>\n\n<p>Actually jealous.</p>\n\n<p>And somehow that realization made her chest feel weirdly warm.</p>\n\n<p>A little sweet.</p>\n\n<p>A little dangerous.</p>\n\n<div class=\"scene-break\">✦   ✦   ✦</div>\n\n<p>The next morning, Xiaoran arrived at school carrying two strawberry milks.</p>\n\n<p>One for herself.</p>\n\n<p>One peace offering.</p>\n\n<p>She found Zhou Yichen in the library before morning class, reading quietly near the windows.</p>\n\n<p>Sunlight fell across his face softly.</p>\n\n<p>Pretty.</p>\n\n<p>Annoyingly pretty.</p>\n\n<p>Xiaoran walked over cautiously before placing the drink beside him.</p>\n\n<p><strong>“For you.”</strong></p>\n\n<p>Yichen glanced at it.</p>\n\n<p><strong>“Bribery?”</strong></p>\n\n<p><strong>“Yes.”</strong></p>\n\n<p>He laughed quietly despite himself.</p>\n\n<p>Good.</p>\n\n<p>Progress.</p>\n\n<p>Xiaoran sat beside him, fidgeting slightly.</p>\n\n<p><strong>“…Are you still jealous?”</strong></p>\n\n<p><strong>“I wasn’t jealous.”</strong></p>\n\n<p><strong>“Liar.”</strong></p>\n\n<p><strong>“I was concerned.”</strong></p>\n\n<p><strong>“You stole his coffee like a drama villain.”</strong></p>\n\n<p><strong>“He bought it for my girlfriend.”</strong></p>\n\n<p>The way he said <em>my girlfriend</em> so naturally made her ears warm instantly.</p>\n\n<p>Yichen finally closed his book and looked at her properly.</p>\n\n<p><strong>“I trust you,”</strong> he said calmly. <strong>“I just dislike people trying to enter spaces that belong to me.”</strong></p>\n\n<p>Xiaoran blinked slowly.</p>\n\n<p><strong>“…That sounds hot.”</strong></p>\n\n<p>Yichen looked genuinely caught off guard for the first time.</p>\n\n<p>Then he laughed helplessly, covering his eyes briefly.</p>\n\n<p><strong>“You’re unbelievable.”</strong></p>\n\n<p><strong>“No but seriously,”</strong> Xiaoran continued, leaning closer. <strong>“You’re usually so calm. Seeing you jealous is kind of…”</strong></p>\n\n<p><strong>“Kind of?”</strong></p>\n\n<p><strong>“…Cute.”</strong></p>\n\n<p>Yichen stared at her in disbelief.</p>\n\n<p><strong>“I suffered yesterday.”</strong></p>\n\n<p><strong>“You were attractive while suffering.”</strong></p>\n\n<p><strong>“That doesn’t help.”</strong></p>\n\n<p>Xiaoran giggled before hooking her pinky around his sleeve.</p>\n\n<p><strong>“Don’t worry,”</strong> she said softly. <strong>“I only like you.”</strong></p>\n\n<p>His expression softened instantly.</p>\n\n<p>There it was again.</p>\n\n<p>That look.</p>\n\n<p>The one that always melted around her no matter how jealous, annoyed, or tired he was.</p>\n\n<p>Honestly unfair.</p>\n\n<p>Yichen sighed quietly before pulling her chair closer beside him.</p>\n\n<p><strong>“Next time,”</strong> he murmured, <strong>“don’t comfort random boys who like you.”</strong></p>\n\n<p><strong>“What if I enjoy making you jealous?”</strong></p>\n\n<p><strong>“You won’t enjoy the consequences.”</strong></p>\n\n<p>Xiaoran gasped dramatically.</p>\n\n<p><strong>“You’re threatening me?”</strong></p>\n\n<p><strong>“I’m warning you.”</strong></p>\n\n<p>Xiaoran gasped again.</p>\n\n<p>Yichen leaned closer slightly, voice low and calm.</p>\n\n<p><strong>“Lin Xiaoran.”</strong></p>\n\n<p><strong>“…What?”</strong></p>\n\n<p><strong>“If another guy buys you coffee again, I’m kissing you in front of him.”</strong></p>\n\n<p>Silence.</p>\n\n<p>Her entire face exploded red instantly.</p>\n\n<p>Meanwhile, Zhou Yichen finally smiled properly again.</p>\n\n<p>Warm.</p>\n\n<p>Victorious.</p>\n\n<p>Completely unfair.</p>\n\n<p>And Lin Xiaoran realized something important too late.</p>\n\n<p>Maybe Zhou Yichen jealous…</p>\n\n<p>Was actually much more dangerous than her.</p>\n",
-        "visible": false,
-        "epigraph": "“He was never jealous often—so when he was, even love felt dangerous.”",
-        "publishDate": "",
-        "scheduleDate": "2026-05-14",
-        "scheduleTime": "11:00",
-        "publishStatus": "scheduled"
-      }
-    ],
-    "ideaNote": "",
-    "coverAccent": "#d685a8",
-    "frontMatter": {
-      "synopsis": {
-        "icon": "📖",
-        "title": "Synopsis",
-        "content": "<p>Lin Xiaoran never does anything quietly.<p>\n\n<p>She complains dramatically over tiny inconveniences, gets jealous too easily, cries the moment she’s seriously scolded, and somehow turns every peaceful situation into chaos within minutes. Most people can only tolerate her in small doses.<p>\n\n<p>Unfortunately for Zhou Yichen, he fell in love with her almost immediately.<p>\n\n<p>Calm, dependable, and endlessly patient, Yichen spends most of his days cleaning up Xiaoran’s messes, carrying extra drinks for her without being asked, and pretending he’s unaffected whenever she clings to his sleeve with that dangerous look in her eyes. Their friends think he spoils her too much.<p>\n\n<p>They’re absolutely right.<p>\n\n<p>But love isn’t always soft in easy ways.<p>\n\n<p>As their relationship deepens, Xiaoran and Yichen slowly learn that affection alone cannot fix everything. Jealousy, insecurity, hurt feelings, and unspoken emotions begin slipping between their quiet everyday moments, forcing them to grow—not apart, but together.<p>\n\n<p>Told through interconnected standalone chapters across different stages of their relationship, <strong>The Softest Kind of Love</strong> is a warm school romance about accidental confessions, winter rooftops, convenience store dates, emotional healing, and two people learning how to love each other more gently with every passing day.<p>",
-        "visible": true
-      },
-      "authorNote": {
-        "icon": "✍️",
-        "title": "Author Note",
-        "content": "<p>Thank you for embarking on this romantic journey with Lin Xiaoran and Zhou Yichen.<p>\n<p>This compilation captures the delicate evolution of two teenagers discovering love—not through grand gestures or perfect moments, but through the quiet certainty of choosing each other repeatedly.<p>\n<p>Xiaoran taught me that vulnerability wrapped in humor is still bravery. That crying easily doesn't make you weak; it makes you honest. That love doesn't require perfection; it requires showing up.<p>\n<p>Yichen showed me that patience isn't passive. That holding someone's hand matters as much as grand confessions. That the smallest gestures—fixing a crooked ribbon, remembering an old plushie, kissing a forehead—can contain entire universes of tenderness.<p>\n<p>Their story isn't about fate or destiny.<p>\n<p>It's about two people who became each other's home.<p>\n<p>One messy, dramatic, beautiful piece at a time.<p>\n<p>To everyone who has loved someone who annoys them constantly: your story matters too.<p>\n<p>To everyone who has quietly loved without asking for recognition: you are seen.<p>\n<p>To everyone building a future with someone else: may you find your middle ground between dreams.<p>",
-        "visible": true
-      },
-      "characters": {
-        "icon": "👥",
-        "chars": [
-          {
-            "age": "17",
-            "mbti": "ENFP",
-            "name": "Lin Xiaoran",
-            "role": "Female Lead",
-            "birthday": "April 12",
-            "favDrink": "Strawberry milk",
-            "favHabit": "Stealing Yichen’s hoodie and poking his cheek.",
-            "nickname": "Little Trouble",
-            "strengths": "Brightens every room naturally\nHonest with emotions\nWarm-hearted toward people and animals\nMakes others feel alive around her",
-            "appearance": "Petite, soft-featured, expressive eyes, glossy dark hair, always smells faintly like peach shampoo.",
-            "weaknesses": "Immature when jealous\nAvoids serious emotional conversations\nOverthinks small things\nRelies too much on Yichen spoiling her",
-            "nameChinese": "林晓冉",
-            "personality": "Bratty but lovable\nDramatic over tiny inconveniences\nGets jealous easily\nPretends to act tough/nonchalant\nCries immediately when seriously scolded\nVery affectionate without realizing it\nSocially fearless but emotionally shy when vulnerable",
-            "loveLanguage": "Words of affirmation & physical affection"
-          },
-          {
-            "age": "18",
-            "mbti": "INFJ",
-            "name": "Zhou Yichen",
-            "role": "Male Lead",
-            "birthday": "November 3",
-            "favDrink": "",
-            "favHabit": "Watching Xiaoran talk nonsense.",
-            "nickname": "Perfect Student Menace",
-            "strengths": "Reliable and dependable\nNotices tiny details about people\nNaturally comforting presence\nVery emotionally intelligent",
-            "appearance": "Tall, clean-cut, sharp brows, calm eyes, warm smile that softens around Xiaoran.",
-            "weaknesses": "Spoils Xiaoran too much\nHides his own feelings\nLets things slide until he gets genuinely upset\nWeak against Xiaoran crying",
-            "nameChinese": "周亦辰",
-            "personality": "Calm and emotionally mature\nPatient to a dangerous degree\nQuietly observant\nTeases subtly\nExtremely indulgent toward Xiaoran\nRarely angry, which makes it scarier when he is",
-            "loveLanguage": "Acts of service"
-          },
-          {
-            "age": "17",
-            "mbti": "ISTJ",
-            "name": "Tang Meilin",
-            "role": "Female Lead’s Best Friend",
-            "birthday": "December 11",
-            "favDrink": "",
-            "favHabit": "",
-            "nickname": "",
-            "strengths": "",
-            "appearance": "Smart, sarcastic, emotionally observant. Pretends to be tired of Xiaoran but loves her deeply.",
-            "weaknesses": "",
-            "nameChinese": "唐美琳",
-            "personality": "",
-            "loveLanguage": ""
-          },
-          {
-            "age": "18",
-            "mbti": "ENTP",
-            "name": "Chen Yuhao",
-            "role": "Male Lead’s Best Friend",
-            "birthday": "January 1",
-            "favDrink": "",
-            "favHabit": "",
-            "nickname": "",
-            "strengths": "",
-            "appearance": "Loud, chaotic, constantly third-wheeling Yichen and Xiaoran. Loves exposing Yichen’s obvious simping.",
-            "weaknesses": "",
-            "nameChinese": "陈宇豪",
-            "personality": "",
-            "loveLanguage": ""
-          }
-        ],
-        "title": "Characters",
-        "content": "✦ Lin Xiaoran (林晓冉)\nRole: Female Lead\nAge: 17\nBirthday: April 12\nMBTI: ENFP\nLove Language: Words of affirmation & physical affection\nAppearance: Petite, soft-featured, expressive eyes, glossy dark hair, always smells faintly like peach shampoo.\nPersonality:\nBratty but lovable\nDramatic over tiny inconveniences\nGets jealous easily\nPretends to act tough/nonchalant\nCries immediately when seriously scolded\nVery affectionate without realizing it\nSocially fearless but emotionally shy when vulnerable\nStrengths:\nBrightens every room naturally\nHonest with emotions\nWarm-hearted toward people and animals\nMakes others feel alive around her\nWeaknesses:\nImmature when jealous\nAvoids serious emotional conversations\nOverthinks small things\nRelies too much on Yichen spoiling her\nNickname: Little Trouble\nFavorite Drink: Strawberry milk\nFavorite Habit: Stealing Yichen’s hoodie and poking his cheek.\n\n✦ Zhou Yichen (周亦辰)\nRole: Male Lead\nAge: 18\nBirthday: November 3\nMBTI: INFJ\nLove Language: Acts of service\nAppearance: Tall, clean-cut, sharp brows, calm eyes, warm smile that softens around Xiaoran.\nPersonality:\nCalm and emotionally mature\nPatient to a dangerous degree\nQuietly observant\nTeases subtly\nExtremely indulgent toward Xiaoran\nRarely angry, which makes it scarier when he is\nStrengths:\nReliable and dependable\nNotices tiny details about people\nNaturally comforting presence\nVery emotionally intelligent\nWeaknesses:\nSpoils Xiaoran too much\nHides his own feelings\nLets things slide until he gets genuinely upset\nWeak against Xiaoran crying\nNickname: Perfect Student Menace\nFavorite Habit: Watching Xiaoran talk nonsense.\n\n✦ Tang Meilin (唐美琳)\nRole: Female Lead’s Best Friend\nAge: 17\nBirthday: December 11\nMBTI: ISTJ\nAppearance: Smart, sarcastic, emotionally observant. Pretends to be tired of Xiaoran but loves her deeply.\n\n✦ Chen Yuhao (陈宇豪)\nRole: Male Lead’s Best Friend\nAge: 18\nBirthday: January 1\nMBTI: ENTP\nAppearance: Loud, chaotic, constantly third-wheeling Yichen and Xiaoran. Loves exposing Yichen’s obvious simping.",
-        "visible": true
-      }
-    },
-    "publishDate": "2026-05-13",
-    "updatedDate": "2026-05-13"
-  },
-  {
-    "id": "midnight-garden",
-    "badge": "IDEA",
-    "color": "#2d1a4a",
-    "descs": {
-      "en": "A garden that only exists at midnight. Flowers that archive grief. A keeper who must learn to let things go.",
-      "es": "Un jardín que solo existe a medianoche. Flores que archivan el dolor. Una guardiana que debe aprender a soltar.",
-      "fr": "Un jardin qui n'existe qu'à minuit. Des fleurs qui archivent le chagrin. Une gardienne qui doit apprendre à lâcher prise.",
-      "ja": "真夜中だけに存在する庭。悲しみを記録する花々。手放すことを学ばなければならない番人。",
-      "ko": "자정에만 존재하는 정원. 슬픔을 기록하는 꽃들. 놓아주는 법을 배워야 하는 수호자.",
-      "ms": "Sebuah taman yang hanya wujud di tengah malam. Bunga-bunga yang menyimpan kesedihan. Seorang penjaga yang perlu belajar melepaskan.",
-      "zh": "一座只在午夜存在的花园。储存悲伤的花朵。一位必须学会放手的守护者。"
-    },
-    "genre": "Dark Fantasy",
-    "status": "idea",
-    "titles": {
-      "en": "The Midnight Garden",
-      "es": "El Jardín de Medianoche",
-      "fr": "Le Jardin de Minuit",
-      "ja": "真夜中の庭園",
-      "ko": "한밤중의 정원",
-      "ms": "Taman Tengah Malam",
-      "zh": "午夜花园"
-    },
-    "chapters": [
-      {
-        "desc": "She tends flowers that should not exist.",
-        "title": "The Garden That Blooms at the End of the World",
-        "content": "<p>The garden existed in the hour between midnight and one, and only Mei Ruolan could find it.</p>\n<p>She had discovered it the winter she turned nineteen, following a smell she could not name — not quite jasmine, not quite rain, not quite the particular silence that falls after someone leaves. She had pushed through a gap in a stone wall behind the old pharmacy and found: flowers. Dozens of them. All varieties that had been extinct for a hundred years or had never been catalogued or existed only in the imagination of painters who had never left their studios.</p>\n<p>She became the garden's keeper the way one becomes anything important: accidentally, then devotedly, then absolutely.</p>\n<div class=\"scene-break\">✦ &nbsp; ✦ &nbsp; ✦</div>\n<p>The first time Xiao Shang appeared, he was sitting on a stone bench in the middle of the night garden eating a tangerine with an air of complete ownership.</p>\n<p>\"You're trespassing,\" said Mei Ruolan.</p>\n<p>\"You're both trespassing,\" he said. \"This garden belongs to someone who hasn't been born yet.\" He peeled another segment. \"I've been waiting for you to find it. You took longer than expected.\"</p>\n<p>\"Who are you?\"</p>\n<p>He looked at her the way a person looks at someone they have known a very long time across a distance of time that cannot be adequately described.</p>\n<p>\"That,\" he said, \"is the question the garden brought you here to answer.\"</p>",
-        "epigraph": "\"Every impossible thing begins as someone's refusal to accept the possible.\""
-      },
-      {
-        "desc": "Plants that remember. A boy who sees tomorrow.",
-        "title": "What Flowers Know",
-        "content": "<p>The flowers in the midnight garden were not merely decorative. Mei Ruolan understood this in her second month as keeper, when the black iris in the eastern corner began to hum.</p>\n<p>It was not the humming of something mechanical. It was the humming of something remembering — low, rhythmic, in a key that did not correspond to any note on any instrument she knew. She pressed her ear to the soil beside its roots and heard, or felt, the vibration of very old grief.</p>\n<p>\"The flowers are archives,\" Xiao Shang told her. He had taken to appearing without announcement at hours she could not predict, and she had taken to no longer being surprised by this. \"Every feeling a person has suppressed long enough passes into the ground and eventually into a root.\" He crouched beside the iris. \"This one has been holding someone's sorrow for approximately sixty years.\"</p>\n<div class=\"scene-break\">✦ &nbsp; ✦ &nbsp; ✦</div>\n<p>\"Can it be released?\" she asked.</p>\n<p>\"That's why you're here,\" he said simply.</p>\n<p>She looked at him. \"You keep saying I was brought here for a reason. But you won't tell me what the reason is.\"</p>\n<p>\"Because,\" he said, and for the first time she heard something beneath his composure — something careful and private and worn smooth with long keeping — \"if I tell you the ending, you might not take the steps that lead to it.\" He stood. \"And I have worked very hard,\" he said quietly, \"to make sure you arrive.\"</p>",
-        "epigraph": "\"The root does not know the flower. The flower does not know the fruit. And yet they are the same continuous thing.\""
-      },
-      {
-        "desc": "Some endings are also beginnings. Some losses are also gifts.",
-        "title": "The Last Bloom",
-        "content": "<p>The garden bloomed one final time on the night of the winter solstice, and every flower in it opened simultaneously, which was not a thing that happened in nature or in magic, but happened then.</p>\n<p>Mei Ruolan stood in the center of it and felt the accumulated grief of sixty years move through her like a tide going out — not painless, but purposeful. She understood, standing there, that she had been a vessel for something she had not chosen, in the way that all important things arrive unchosen.</p>\n<p>Xiao Shang stood at the edge of the garden. She looked at him across the blooming and the light.</p>\n<div class=\"scene-break\">✦ &nbsp; ✦ &nbsp; ✦</div>\n<p>\"You're leaving,\" she said. It was not a question.</p>\n<p>\"The garden is complete,\" he said. \"The debt is settled. The grief is released.\" He paused. \"I was only ever here to bring you to the moment where you could do what you were meant to do.\"</p>\n<p>\"And what was that?\"</p>\n<p>He smiled. It was the first time, she realized, that she had seen him smile without the weight of knowing behind it. Just a smile. Just a person, briefly, in a garden at the end of a winter, glad.</p>\n<p>\"You let things be held,\" he said. \"You let old sorrow become something that could finally breathe.\" He stepped back toward the gap in the wall. \"Not everyone can do that. Almost no one can.\" He paused once more. \"The garden will be here. It will have a new keeper. But it will remember you.\"</p>\n<p>She watched him go. The flowers held their light a little longer, and then, one by one, in the slow and dignified way of things that have completed their purpose, they closed.</p>\n<p style=\"text-align:center; font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:0.4em; color:var(--coral); opacity:0.7; margin-top:3rem; text-transform:uppercase;\">— Complete —</p>"
-      }
-    ],
-    "ideaNote": "",
-    "coverAccent": "#6a3a8a",
-    "publishDate": "",
-    "updatedDate": ""
-  },
-  {
-    "id": "salt-silk",
-    "badge": "IDEA",
-    "color": "#5a4020",
-    "descs": {
-      "en": "A merchant's daughter who keeps the books in secret. An auditor sent to find the errors. A dynasty-era love story built on trust and ledgers.",
-      "es": "La hija de un mercader que lleva los libros en secreto. Un auditor enviado a encontrar los errores. Una historia de amor de la era dinástica construida sobre confianza y libros contables.",
-      "fr": "La fille d'un marchand qui tient les livres en secret. Un auditeur envoyé pour trouver les erreurs. Une histoire d'amour de l'ère dynastique construite sur la confiance et les registres.",
-      "ja": "秘密で帳簿をつける商人の娘。誤りを見つけるために派遣された検査官。信頼と台帳で築かれた王朝時代の恋愛物語。",
-      "ko": "비밀리에 장부를 적는 상인의 딸. 오류를 찾기 위해 파견된 감사관. 신뢰와 원장으로 세워진 왕조 시대 러브스토리.",
-      "ms": "Seorang anak perempuan saudagar yang merahsiakan pembukuan. Seorang juruaudit yang dihantar mencari kesilapan. Kisah cinta era dinasti yang dibina atas kepercayaan dan lejar.",
-      "zh": "一个秘密记账的商人之女。一个被派来查账的审计员。一段以信任与账本为基础的朝代爱情故事。"
-    },
-    "genre": "Historical Drama",
-    "status": "idea",
-    "titles": {
-      "en": "Salt & Silk",
-      "es": "Sal y Seda",
-      "fr": "Sel et Soie",
-      "ja": "塩と絹",
-      "ko": "소금과 비단",
-      "ms": "Garam & Sutera",
-      "zh": "盐与丝"
-    },
-    "chapters": [
-      {
-        "desc": "She was taught to be invisible. She refused.",
-        "title": "The Merchant's Daughter",
-        "content": "<p>In the fourth year of the Minghua reign, when the silk trade ran from the eastern ports to the desert crossings and back again in a river of coin and cloth and carefully managed debt, Zhou Yinghua did her father's accounts in secret and better than he did them himself.</p>\n<p>She was twenty-two. She had been taught to pour tea, to embroider, to walk with the particular contained grace expected of a merchant's daughter of good family. She had learned all of these things and performed them when required and found them, in honest moments, insufficient.</p>\n<p>The accounts were different. The accounts were a language she had taught herself from her father's discarded ledgers, and in them she had found something that felt less like a skill and more like a native tongue returned to after long absence.</p>\n<div class=\"scene-break\">✦ &nbsp; ✦ &nbsp; ✦</div>\n<p>She was rewriting a particularly egregious miscalculation when the door opened and a voice said: \"Those numbers are wrong.\"</p>\n<p>She looked up. A man she did not know stood in the doorway — dusty from travel, plainly dressed, with the particular quality of stillness that belongs to people who have spent long periods of time in places where movement is unwise.</p>\n<p>\"I know,\" she said. \"I'm correcting them.\"</p>\n<p>He looked at the ledger. He looked at her. Something shifted in his expression — not surprise exactly, but the adjustment a person makes when the situation turns out to be more interesting than expected.</p>\n<p>\"Your father sent me to review the accounts,\" he said.</p>\n<p>\"Then we'll be working together,\" said Zhou Yinghua, and turned back to the columns, and did not let him see that her hands were shaking, not from fear but from the feeling — unfamiliar, extraordinary — of being caught doing something true.</p>",
-        "epigraph": "\"A woman who knows the price of silk knows the price of everything — including herself.\""
-      },
-      {
-        "desc": "The mathematics of trade, trust, and risk.",
-        "title": "Silk Road Arithmetic",
-        "content": "<p>His name was Wei Congming and he had been, variously, a soldier, an inspector, a translator, and a man who could calculate the true value of a shipment by smell alone. He did not say these things. Zhou Yinghua learned them the way she learned most important things: by watching, cataloguing, and drawing conclusions that she kept to herself until they were certain.</p>\n<p>They worked together for three weeks before either of them said anything that wasn't strictly about the accounts. In those three weeks, she corrected four of his calculations (tactfully) and he acknowledged three of the corrections (tersely) and they developed between them, without discussion, a system for dividing the work that was more efficient than anything her father had previously managed.</p>\n<div class=\"scene-break\">✦ &nbsp; ✦ &nbsp; ✦</div>\n<p>\"Why do you do it in secret?\" he asked on the seventeenth evening, without looking up from his column.</p>\n<p>She did not pretend to misunderstand. \"Because if my father knew I was better at this than he is, he would stop letting me do it.\"</p>\n<p>Wei Congming set down his brush. He looked at her with an expression she couldn't read — not quite admiration, not quite recognition, something more complicated than either.</p>\n<p>\"That,\" he said, \"is the most pragmatic thing I've heard in three months.\"</p>\n<p>She looked at him. \"Is that a compliment?\"</p>\n<p>\"In my experience,\" he said, picking up his brush again, \"pragmatism is the highest compliment there is.\"</p>",
-        "epigraph": "\"Every calculation is also a wager. The wise merchant knows which is which.\""
-      }
-    ],
-    "ideaNote": "",
-    "coverAccent": "#8a6030",
-    "publishDate": "",
-    "updatedDate": ""
-  },
-  {
-    "id": "glass-lantern",
-    "badge": "IDEA",
-    "color": "#1a3a4a",
-    "descs": {
-      "en": "A detective who can see the last moments of the dead. A city that buries its secrets in light. Chapter 1 is almost ready.",
-      "es": "Un detective que puede ver los últimos momentos de los muertos. Una ciudad que entierra sus secretos en la luz. El capítulo 1 está casi listo.",
-      "fr": "Un détective qui peut voir les derniers instants des morts. Une ville qui enterre ses secrets dans la lumière. Le chapitre 1 est presque prêt.",
-      "ja": "死者の最後の瞬間を見ることができる探偵。光の中に秘密を埋める都市。第1章はもうすぐ準備完了。",
-      "ko": "죽은 자의 마지막 순간을 볼 수 있는 탐정. 빛 속에 비밀을 묻는 도시. 1장이 거의 준비됐습니다.",
-      "ms": "Seorang detektif yang dapat melihat detik terakhir orang mati. Sebuah kota yang mengubur rahsianya dalam cahaya. Bab 1 hampir siap.",
-      "zh": "一个能看见死者最后时刻的侦探。一座将秘密埋葬在光中的城市。第一章即将准备好。"
-    },
-    "genre": "Supernatural Mystery",
-    "status": "idea",
-    "titles": {
-      "en": "The Glass Lantern",
-      "es": "La Linterna de Cristal",
-      "fr": "La Lanterne de Verre",
-      "ja": "ガラスの提灯",
-      "ko": "유리 등불",
-      "ms": "Lentera Kaca",
-      "zh": "玻璃灯笼"
-    },
-    "chapters": [],
-    "ideaNote": "",
-    "coverAccent": "#2a6070",
-    "publishDate": "",
-    "updatedDate": ""
-  },
-  {
-    "id": "echo-hollow",
-    "badge": "IDEA",
-    "color": "#3a2a5a",
-    "descs": {
-      "en": "In a kingdom that outlawed sound, silence is power. She forgot to be silent.",
-      "es": "En un reino que prohibió el sonido, el silencio es poder. Ella olvidó guardar silencio.",
-      "fr": "Dans un royaume qui a banni le son, le silence est pouvoir. Elle a oublié de se taire.",
-      "ja": "音が違法とされる王国で、沈黙は力だ。彼女は黙ることを忘れた。",
-      "ko": "소리를 불법화한 왕국에서 침묵은 권력이다. 그녀는 침묵하는 것을 잊었다.",
-      "ms": "Dalam sebuah kerajaan yang mengharamkan bunyi, senyap adalah kuasa. Dia terlupa untuk berdiam diri.",
-      "zh": "在一个将声音列为非法的王国，沉默即是权力。她忘记了保持沉默。"
-    },
-    "genre": "Fantasy",
-    "status": "idea",
-    "titles": {
-      "en": "Echo Hollow",
-      "es": "Eco Hueco",
-      "fr": "Écho Creux",
-      "ja": "エコーホロウ",
-      "ko": "에코 할로우",
-      "ms": "Lembah Gema",
-      "zh": "回声空谷"
-    },
-    "chapters": [],
-    "ideaNote": "A world where music is illegal and one girl hums anyway.",
-    "coverAccent": "#6a4a9a",
-    "publishDate": "",
-    "updatedDate": ""
-  }
-];
+const NOVELS = []; // filled from content/novels/*.json at startup
 /*NOVELS_END*/
 
 // ═══════════════════════════════════════════════
@@ -3340,7 +3028,8 @@ function openChapter(idx) {
   const displayTitle = (currentReaderLang !== 'en' && trans?.title) ? trans.title : ch.title;
   const displayContent = (currentReaderLang !== 'en' && trans?.content) ? trans.content : ch.content;
 
-  document.getElementById('readerChLabel').textContent = `Chapter ${idx+1}`;
+  const _lab = chapterLabel(novel, idx);
+  document.getElementById('readerChLabel').textContent = _lab.kind === 'side' ? `${_lab.long} · Can be read on its own` : _lab.long;
   document.getElementById('readerChTitle').textContent = displayTitle;
   document.getElementById('readerText').innerHTML = processFootnotes(displayContent);
   document.getElementById('readerText').style.fontSize = fontSize + 'rem';
@@ -3444,6 +3133,23 @@ window.addEventListener('popstate', e => {
   }
 });
 
+// Main chapters and side stories are numbered separately.
+const CH_TYPE_NAMES = { prologue:'Prologue', epilogue:'Epilogue', interlude:'Interlude', bonus:'Bonus', extra:'Extra', side:'Side Story' };
+function chapterLabel(novel, idx) {
+  const t = novel.chapters[idx].type || 'chapter';
+  if (t === 'chapter' || t === 'side') {
+    let n = 0;
+    for (let k = 0; k <= idx; k++) if ((novel.chapters[k].type || 'chapter') === t) n++;
+    return t === 'chapter'
+      ? { long: `Chapter ${n}`, short: `Ch. ${n}`, num: String(n).padStart(2, '0'), kind: 'main' }
+      : { long: `Side Story ${n}`, short: `Side ${n}`, num: `S${n}`, kind: 'side' };
+  }
+  const name = CH_TYPE_NAMES[t] || (t.charAt(0).toUpperCase() + t.slice(1));
+  return { long: name, short: name, num: name, kind: 'main' };
+}
+let _chFilter = 'all';
+function setChapterFilter(f) { _chFilter = f; if (currentNovel !== null) renderChapterList(currentNovel); }
+
 function renderChapterList(idx) {
   const novel = NOVELS[idx];
   const items = document.getElementById('chapterListItems');
@@ -3466,16 +3172,24 @@ function renderChapterList(idx) {
     return s === 'scheduled' && !isScheduledPast(ch);
   });
 
-  items.innerHTML = publishedChapters.map(({ch, i}) => {
-    const typeLabel = ch.type && ch.type !== 'chapter'
-      ? `<span class="ch-status-badge published" style="margin-left:0.4rem">${ch.type}</span>` : '';
-    const numDisplay = ch.type && ch.type !== 'chapter'
-      ? `<div class="ch-num" style="font-size:0.7rem;letter-spacing:0.05em">${ch.type.charAt(0).toUpperCase()+ch.type.slice(1)}</div>`
-      : `<div class="ch-num">${String(i+1).padStart(2,'0')}</div>`;
+  const hasSide = novel.chapters.some(c => c.type === 'side');
+  if (!hasSide) _chFilter = 'all';
+  const filterBar = hasSide ? `<div class="ch-filter">${[['all','All'],['main','Main Story'],['side','Side Stories']].map(([k,l]) =>
+      `<button class="${_chFilter===k?'on':''}" onclick="setChapterFilter('${k}')">${l}</button>`).join('')}</div>
+    <div class="ch-legend">Main chapters follow the story in order. Side stories are self-contained moments you can read on their own, any time.</div>` : '';
+  const shown = publishedChapters.filter(({i}) => _chFilter === 'all' || chapterLabel(novel, i).kind === _chFilter);
+  items.innerHTML = filterBar + (shown.map(({ch, i}) => {
+    const lab = chapterLabel(novel, i);
+    const isSide = ch.type === 'side';
+    const typeLabel = isSide ? `<span class="ch-kind-badge">Side Story</span>`
+      : (ch.type && ch.type !== 'chapter' ? `<span class="ch-status-badge published" style="margin-left:0.4rem">${lab.long}</span>` : '');
+    const numDisplay = (ch.type && ch.type !== 'chapter' && !isSide)
+      ? `<div class="ch-num" style="font-size:0.7rem;letter-spacing:0.05em">${lab.long}</div>`
+      : `<div class="ch-num">${lab.num}</div>`;
     const dateStr = ch.publishDate
       ? `<div class="ch-date">📅 ${formatDate(ch.publishDate)}</div>` : '';
     return `
-    <div class="chapter-item" onclick="openChapter(${i})">
+    <div class="chapter-item${isSide ? ' side' : ''}" onclick="openChapter(${i})">
       ${numDisplay}
       <div class="ch-info">
         <div class="ch-title">${ch.title}${typeLabel}</div>
@@ -3484,7 +3198,7 @@ function renderChapterList(idx) {
       </div>
       <div class="ch-arrow">→</div>
     </div>`;
-  }).join('') || '<p style="font-style:italic;color:#8a7a60;padding:1rem 0">No chapters available yet.</p>';
+  }).join('') || '<p style="font-style:italic;color:#8a7a60;padding:1rem 0">No chapters available yet.</p>');
 
   // Upcoming section
   if (upcomingChapters.length > 0) {
@@ -3507,7 +3221,7 @@ function renderChapterList(idx) {
   }
 
   jump.innerHTML = `<option value="-1">Chapters</option>` +
-    publishedChapters.map(({ch,i}) => `<option value="${i}">${ch.type && ch.type!=='chapter' ? ch.type : 'Ch. '+(i+1)}: ${ch.title}</option>`).join('');
+    publishedChapters.map(({ch,i}) => `<option value="${i}">${chapterLabel(novel, i).short}: ${ch.title}</option>`).join('');
 
   renderFrontMatterReader(idx);
 }
@@ -3652,6 +3366,7 @@ function openAdmin() {
 }
 
 function closeAdmin() {
+  if (_publishTimer) { clearTimeout(_publishTimer); _publishTimer = null; _publishToGitHub(); }
   document.getElementById('adminOverlay').classList.remove('open');
   _loginAttempts = 0;
 }
@@ -3677,7 +3392,10 @@ async function checkAdminPassword() {
     _lockUntil = 0;
     document.getElementById('adminLogin').style.display = 'none';
     document.getElementById('adminPanel').style.display = 'block';
+    _adminUnlocked = true;
     populateAdminForms();
+    populateGitHubForm();
+    if (_readLocal()?.dirty) _schedulePublish(1000);
   } else {
     _loginAttempts++;
     document.getElementById('adminPasswordInput').value = '';
@@ -3721,7 +3439,8 @@ async function changePassword() {
   document.getElementById('pw-current').value = '';
   document.getElementById('pw-new').value = '';
   document.getElementById('pw-confirm').value = '';
-  showToast('✓ Password changed! Save your HTML file to keep this change.');
+  saveAllData();
+  showToast(_ghReady() ? '✓ Password changed — publishing to GitHub.' : '✓ Password changed on this device. Connect GitHub to publish it.');
 }
 
 // ── Site config (editable via admin) ──
@@ -3884,8 +3603,8 @@ function addNewNovel() {
     coverAccent: '#5a8aa0',
     badge: 'NEW',
     chapters: [],
-    titles: { en: 'New Novel', zh: '', ms: '', ja: '', ko: '', es: '', fr: '' },
-    descs: { en: 'A new story begins here.', zh: '', ms: '', ja: '', ko: '', es: '', fr: '' }
+    titles: { en: 'New Novel' },
+    descs: { en: 'A new story begins here.' }
   });
   renderAdminNovelList();
   editNovel(NOVELS.length - 1);
@@ -5029,50 +4748,25 @@ function animateView(el) {
 }
 
 // ═══════════════════════════════════════════════
-// HEART / LIKES SYSTEM — Supabase-backed (shared across all visitors)
+// HEART / LIKES SYSTEM — saved in this reader's browser only (no online sync)
 // ═══════════════════════════════════════════════
 
 // In-memory cache: { novelId: { count, liked } }
 const _likesCache = {};
+const _LIKES_KEY = 'tm_likes_v1';
 
-// Browser fingerprint (stable per device, anonymous)
-function _getFingerprint() {
-  let fp = null;
-  try { fp = localStorage.getItem('tm_fp'); } catch(e) {}
-  if (!fp) {
-    fp = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    try { localStorage.setItem('tm_fp', fp); } catch(e) {}
-  }
-  return fp;
-}
+function _readLikes() { try { return JSON.parse(localStorage.getItem(_LIKES_KEY)) || {}; } catch(e) { return {}; } }
+function _writeLikes(o) { try { localStorage.setItem(_LIKES_KEY, JSON.stringify(o)); } catch(e) {} }
 
-// Fetch like count + whether this device liked a novel from Supabase
 async function _fetchLikeData(novelId) {
-  try {
-    const fp = _getFingerprint();
-    // Count total likes
-    const countResp = await fetch(
-      `${_SB_URL}/rest/v1/novel_likes?novel_id=eq.${encodeURIComponent(novelId)}&select=id`,
-      { headers: { ..._SB_HEADERS, 'Prefer': 'count=exact', 'Range': '0-0' } }
-    );
-    const count = parseInt(countResp.headers.get('content-range')?.split('/')[1] || '0');
-    // Check if this device already liked
-    const likedResp = await fetch(
-      `${_SB_URL}/rest/v1/novel_likes?novel_id=eq.${encodeURIComponent(novelId)}&fingerprint=eq.${encodeURIComponent(fp)}&select=id`,
-      { headers: _SB_HEADERS }
-    );
-    const likedRows = likedResp.ok ? await likedResp.json() : [];
-    _likesCache[novelId] = { count, liked: likedRows.length > 0 };
-    return _likesCache[novelId];
-  } catch(e) {
-    return _likesCache[novelId] || { count: 0, liked: false };
-  }
+  const liked = !!_readLikes()[novelId];
+  _likesCache[novelId] = { count: liked ? 1 : 0, liked };
+  return _likesCache[novelId];
 }
 
-// Load all like data for all novels and refresh the grid display
+// Load like state for all novels and refresh the grid display
 async function loadAllLikes() {
   await Promise.all(NOVELS.map(n => _fetchLikeData(n.id)));
-  // Refresh counts in the grid
   NOVELS.forEach((n, idx) => {
     const data = _likesCache[n.id] || { count: 0, liked: false };
     const countEl = document.getElementById('heart-count-' + idx);
@@ -5099,37 +4793,12 @@ function getHeartCount(idx) {
 async function toggleHeart(idx, btn) {
   const novel = NOVELS[idx];
   if (!novel) return;
-  const fp = _getFingerprint();
-  const cache = _likesCache[novel.id] || { count: 0, liked: false };
-  const nowLiked = !cache.liked;
-
-  // Optimistic UI update
-  _likesCache[novel.id] = { count: nowLiked ? cache.count + 1 : Math.max(0, cache.count - 1), liked: nowLiked };
+  const likes = _readLikes();
+  const nowLiked = !likes[novel.id];
+  if (nowLiked) likes[novel.id] = Date.now(); else delete likes[novel.id];
+  _writeLikes(likes);
+  _likesCache[novel.id] = { count: nowLiked ? 1 : 0, liked: nowLiked };
   _refreshHeartUI(idx, nowLiked, _likesCache[novel.id].count);
-
-  try {
-    if (nowLiked) {
-      // Insert like row (upsert to be safe)
-      await fetch(`${_SB_URL}/rest/v1/novel_likes`, {
-        method: 'POST',
-        headers: { ..._SB_HEADERS, 'Prefer': 'resolution=ignore-duplicates,return=minimal' },
-        body: JSON.stringify({ novel_id: novel.id, fingerprint: fp })
-      });
-    } else {
-      // Delete like row
-      await fetch(
-        `${_SB_URL}/rest/v1/novel_likes?novel_id=eq.${encodeURIComponent(novel.id)}&fingerprint=eq.${encodeURIComponent(fp)}`,
-        { method: 'DELETE', headers: _SB_HEADERS }
-      );
-    }
-    // Re-fetch real count (in case of concurrent likes from others)
-    await _fetchLikeData(novel.id);
-    _refreshHeartUI(idx, _likesCache[novel.id].liked, _likesCache[novel.id].count);
-  } catch(e) {
-    // Revert optimistic update on failure
-    _likesCache[novel.id] = cache;
-    _refreshHeartUI(idx, cache.liked, cache.count);
-  }
 }
 
 function _refreshHeartUI(idx, liked, count) {
@@ -5177,66 +4846,52 @@ function updateReaderHeart() {
 }
 
 // ═══════════════════════════════════════════════
-// COMMENTS SYSTEM — Supabase-backed
+// COMMENTS SYSTEM — saved in this reader's browser only (no online sync)
 // ═══════════════════════════════════════════════
 
 // In-memory cache: { novelId: [ comment, ... ] }
 const _commentsCache = {};
+const _COMMENTS_KEY = 'tm_comments_v1';
+
+function _readAllComments() { try { return JSON.parse(localStorage.getItem(_COMMENTS_KEY)) || {}; } catch(e) { return {}; } }
+function _writeAllComments(o) { try { localStorage.setItem(_COMMENTS_KEY, JSON.stringify(o)); return true; } catch(e) { return false; } }
 
 async function _fetchComments(novelId) {
-  try {
-    // Fetch only approved comments for readers
-    const resp = await fetch(
-      `${_SB_URL}/rest/v1/novel_comments?novel_id=eq.${encodeURIComponent(novelId)}&approved=eq.true&order=created_at.asc&select=id,body,created_at`,
-      { headers: _SB_HEADERS }
-    );
-    if (resp.ok) {
-      const rows = await resp.json();
-      _commentsCache[novelId] = rows;
-      return rows;
-    }
-  } catch(e) {}
-  return _commentsCache[novelId] || [];
+  const rows = _readAllComments()[novelId] || [];
+  _commentsCache[novelId] = rows;
+  return rows;
 }
 
 async function _fetchAllCommentsAdmin() {
-  try {
-    const resp = await fetch(
-      `${_SB_URL}/rest/v1/novel_comments?order=created_at.asc&select=id,novel_id,body,approved,created_at`,
-      { headers: _SB_HEADERS }
-    );
-    if (resp.ok) return await resp.json();
-  } catch(e) {}
-  return [];
+  const all = _readAllComments();
+  return Object.entries(all).flatMap(([novel_id, rows]) =>
+    (rows || []).map(c => ({ ...c, novel_id, approved: true })));
 }
 
 // Legacy compat shims (used by renderInsights)
-function getComments(novelId) { return _commentsCache[novelId] || []; }
+function getComments(novelId) {
+  if (!_commentsCache[novelId]) _commentsCache[novelId] = _readAllComments()[novelId] || [];
+  return _commentsCache[novelId];
+}
 
 async function submitComment() {
   if (currentNovel === null) return;
   const novel = NOVELS[currentNovel];
   const text = document.getElementById('commentText').value.trim();
+  const nameEl = document.getElementById('commentName');
+  const name = nameEl ? nameEl.value.trim().slice(0, 40) : '';
   if (!text) { showCommentFeedback('Please write something first ✦'); return; }
   if (text.length < 3) { showCommentFeedback('Comment is too short.'); return; }
 
-  const btn = document.querySelector('.comment-submit');
-  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-
-  try {
-    const resp = await fetch(`${_SB_URL}/rest/v1/novel_comments`, {
-      method: 'POST',
-      headers: { ..._SB_HEADERS, 'Prefer': 'return=minimal' },
-      body: JSON.stringify({ novel_id: novel.id, body: text, approved: false })
-    });
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    document.getElementById('commentText').value = '';
-    showCommentFeedback('✦ Comment submitted! Waiting for approval.');
-  } catch(e) {
-    showCommentFeedback('✕ Could not submit — please try again.');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'Send Comment'; }
-  }
+  const all = _readAllComments();
+  (all[novel.id] = all[novel.id] || []).push({
+    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+    name, body: text, created_at: new Date().toISOString()
+  });
+  if (!_writeAllComments(all)) { showCommentFeedback('✕ Could not save — your browser storage may be full or blocked.'); return; }
+  document.getElementById('commentText').value = '';
+  showCommentFeedback('✦ Comment saved on this device.');
+  renderComments(novel.id);
 }
 
 function showCommentFeedback(msg) {
@@ -5267,7 +4922,7 @@ async function renderComments(novelId) {
   list.innerHTML = comments.map(c => `
     <div class="comment-item">
       <div class="comment-meta">
-        <span class="comment-name">Anonymous Reader</span>
+        <span class="comment-name">${escHtml(c.name || 'You')}</span>
         <span class="comment-date">${new Date(c.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</span>
       </div>
       <div class="comment-text">${escHtml(c.body)}</div>
@@ -5321,29 +4976,17 @@ async function renderAdminComments() {
     : '<p style="font-family:&quot;Instrument Serif&quot;,serif;font-style:italic;color:#665;padding:0.5rem 0">No approved comments yet.</p>';
 }
 
-async function approveComment(commentId) {
-  try {
-    const resp = await fetch(
-      `${_SB_URL}/rest/v1/novel_comments?id=eq.${encodeURIComponent(commentId)}`,
-      { method: 'PATCH', headers: { ..._SB_HEADERS, 'Prefer': 'return=minimal' }, body: JSON.stringify({ approved: true }) }
-    );
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    showToast('✓ Comment approved!');
-    renderAdminComments();
-  } catch(e) { showToast('✕ Failed to approve comment.'); }
-}
+async function approveComment(commentId) { renderAdminComments(); }
 
 async function deleteComment(commentId) {
-  if (!confirm('Delete this comment?')) return;
-  try {
-    const resp = await fetch(
-      `${_SB_URL}/rest/v1/novel_comments?id=eq.${encodeURIComponent(commentId)}`,
-      { method: 'DELETE', headers: _SB_HEADERS }
-    );
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    showToast('✓ Comment deleted.');
-    renderAdminComments();
-  } catch(e) { showToast('✕ Failed to delete comment.'); }
+  if (!confirm('Delete this comment from this browser?')) return;
+  const all = _readAllComments();
+  Object.keys(all).forEach(k => { all[k] = (all[k] || []).filter(c => c.id !== commentId); if (!all[k].length) delete all[k]; });
+  _writeAllComments(all);
+  Object.keys(_commentsCache).forEach(k => delete _commentsCache[k]);
+  showToast('✓ Comment deleted.');
+  renderAdminComments();
+  if (currentNovel !== null) renderComments(NOVELS[currentNovel].id);
 }
 
 // ═══════════════════════════════════════════════
@@ -5368,11 +5011,8 @@ function renderInsights() {
   let totalComments = 0;
   let pendingComments = 0;
   NOVELS.forEach(n => {
-    // _commentsCache holds approved-only for readers; pending count not available synchronously
-    const c = getComments(n.id);
-    totalComments += c.length;
-    // pending shown in admin panel via live Supabase fetch
-    pendingComments = 0;
+    // Hearts and comments live in each reader's browser — these are this device's only
+    totalComments += getComments(n.id).length;
   });
 
   // Stat cards
@@ -5384,9 +5024,8 @@ function renderInsights() {
     { num: completed, label: 'Completed', cls: 'olive' },
     { num: totalChapters, label: 'Total Chapters', cls: '' },
     { num: totalWords.toLocaleString(), label: 'Est. Words', cls: '' },
-    { num: totalLikes, label: 'Total Likes ❤️', cls: 'coral' },
-    { num: totalComments, label: 'Comments', cls: 'olive' },
-    { num: pendingComments, label: 'Pending Review', cls: pendingComments > 0 ? 'coral' : '' },
+    { num: totalLikes, label: 'Likes ❤️ (this device)', cls: 'coral' },
+    { num: totalComments, label: 'Comments (this device)', cls: 'olive' },
   ].map(s => `
     <div class="insight-card ${s.cls}">
       <div class="insight-num">${s.num}</div>
@@ -5535,96 +5174,335 @@ function publishNow(novelIdx, chapterIdx) {
 }
 
 // ═══════════════════════════════════════════════
-// DATA PERSISTENCE — Supabase (cross-device) + localStorage fallback
+// DATA PERSISTENCE — GitHub repo (content/*.json) + localStorage fallback
+//
+//   index.html                    ← this file: code + design only
+//   content/site.json             ← site settings, About page, password hash
+//   content/novels/index.json     ← order of novels on the shelf
+//   content/novels/<novel>.json   ← one file per novel (info + all chapters)
+//
+// Readers: the JSON files are fetched from the same GitHub Pages site.
+// Admin:   every save is committed to the repo through the GitHub API, using a
+//          token that is stored ONLY in this browser (never in the repo).
 // ═══════════════════════════════════════════════
-const _SB_URL  = 'https://nzhfwkedwktvpvzhmlcv.supabase.co';
-// Key split so GitHub secret scanning does not flag this public anon key.
-// Safe to expose when Supabase RLS is enabled on all tables.
-const _SB_KEY  = [
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-  'eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56aGZ3a2Vkd2t0dnB2emhtbGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5ODM0MTAsImV4cCI6MjA5MzU1OTQxMH0',
-  'I4Zhh_NqyxjWgIo5qb8Gpx0YjiD89owPwFjyFnm8Cgc'
-].join('.');
-const _SB_HEADERS = { 'Content-Type': 'application/json', 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY };
-const _SAVE_KEY = 'tm_site_data_v1'; // kept for fallback
+const _CONTENT_DIR   = 'content';
+const _SAVE_KEY      = 'tm_site_data_v2';   // local cache / unpublished draft
+const _GH_KEY        = 'tm_github_v1';      // GitHub connection (this browser only)
+const _PUBLISH_DELAY = 2500;                // batch rapid edits into one commit
 
-// Debounce timer — avoid hammering Supabase on rapid saves
-let _saveTimer = null;
+let _adminUnlocked  = false;
+let _baseline       = null;   // { path: text } as it is on GitHub; null = unknown
+let _publishTimer   = null;
+let _publishing     = false;
+let _publishAgain   = false;
+let _syncState      = { state: 'idle', msg: '' };
 
-function saveAllData() {
-  // Always write to localStorage immediately as local fallback
+const _P_SITE  = `${_CONTENT_DIR}/site.json`;
+const _P_INDEX = `${_CONTENT_DIR}/novels/index.json`;
+const _pNovel  = name => `${_CONTENT_DIR}/novels/${name}.json`;
+const _fmt     = obj => JSON.stringify(obj, null, 2) + '\n';
+
+// ── GitHub connection settings (kept in this browser only) ──
+function _ghGuess() {
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+  if (!m) return {};
+  const seg = location.pathname.split('/').filter(Boolean)[0];
+  return { owner: m[1], repo: (seg && !seg.includes('.')) ? seg : `${m[1]}.github.io` };
+}
+function _ghCfg() {
+  let c = {};
+  try { c = JSON.parse(localStorage.getItem(_GH_KEY)) || {}; } catch(e) {}
+  const g = _ghGuess();
+  return { owner: c.owner || g.owner || '', repo: c.repo || g.repo || '', branch: c.branch || 'main', token: c.token || '' };
+}
+function _ghReady() { const c = _ghCfg(); return !!(c.token && c.owner && c.repo); }
+
+async function _gh(method, path, body) {
+  const c = _ghCfg();
+  const resp = await fetch(`https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}${path}`, {
+    method,
+    cache: 'no-store',
+    headers: {
+      'Authorization': 'Bearer ' + c.token,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(body ? { 'Content-Type': 'application/json' } : {})
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!resp.ok) {
+    let m = '';
+    try { m = (await resp.json()).message || ''; } catch(e) {}
+    const err = new Error(`GitHub ${resp.status}${m ? ': ' + m : ''}`);
+    err.status = resp.status;
+    throw err;
+  }
+  return resp.status === 204 ? null : resp.json();
+}
+
+// Read one content file. Admin with a token reads straight from the repo (no
+// Pages deploy delay); everyone else reads the file from the website itself.
+async function _fetchContent(path) {
+  if (_ghReady()) {
+    const c = _ghCfg();
+    try {
+      const resp = await fetch(
+        `https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(c.branch)}`,
+        { cache: 'no-store', headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github.raw+json', 'X-GitHub-Api-Version': '2022-11-28' } }
+      );
+      if (resp.ok) return { found: true, text: await resp.text() };
+      if (resp.status === 404) return { found: false };
+    } catch(e) { /* fall through to the public copy */ }
+  }
+  const resp = await fetch(path, { cache: 'no-cache' });
+  if (resp.status === 404) return { found: false };
+  if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
+  return { found: true, text: await resp.text() };
+}
+
+// ── Turn the in-memory data into repo files: { path: text } ──
+function _novelFileNames(novels) {
+  const used = new Set();
+  return novels.map((n, i) => {
+    const base = String(n.id || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || `novel-${i + 1}`;
+    let name = base, k = 2;
+    while (used.has(name)) name = `${base}-${k++}`;
+    used.add(name);
+    return name;
+  });
+}
+function _sitePayload(site, about, hash) { return { siteConfig: site, aboutConfig: about, passwordHash: hash }; }
+function _buildContentFiles() {
+  const files = {};
+  const names = _novelFileNames(NOVELS);
+  NOVELS.forEach((n, i) => { files[_pNovel(names[i])] = _fmt(n); });
+  files[_P_INDEX] = _fmt({ novels: names });
+  files[_P_SITE]  = _fmt(_sitePayload(SITE_CONFIG, ABOUT_CONFIG, _ap));
+  return files;
+}
+
+// ── Local cache ──
+function _readLocal() {
+  try { const raw = localStorage.getItem(_SAVE_KEY); return raw ? JSON.parse(raw) : null; } catch(e) { return null; }
+}
+function _writeLocal(dirty) {
   try {
     localStorage.setItem(_SAVE_KEY, JSON.stringify({
-      novels: NOVELS, siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, savedAt: Date.now()
+      novels: NOVELS, siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap,
+      savedAt: Date.now(), dirty: !!dirty
     }));
-  } catch(e) {}
-
-  // Debounce Supabase write by 800ms
-  clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(_saveToSupabase, 800);
+  } catch(e) { console.warn('Could not write local cache:', e); }
+}
+function _applyData(d) {
+  if (Array.isArray(d.novels)) { NOVELS.length = 0; d.novels.forEach(n => NOVELS.push(n)); }
+  if (d.siteConfig)   Object.assign(SITE_CONFIG, d.siteConfig);
+  if (d.aboutConfig)  Object.assign(ABOUT_CONFIG, d.aboutConfig);
+  if (d.passwordHash) _ap = d.passwordHash;
 }
 
-async function _saveToSupabase() {
-  try {
-    const payload = {
-      novels: NOVELS,
-      siteConfig: SITE_CONFIG,
-      aboutConfig: ABOUT_CONFIG,
-      passwordHash: _ap,
-      savedAt: Date.now()
-    };
-    const resp = await fetch(_SB_URL + '/rest/v1/site_data', {
-      method: 'POST',
-      headers: { ..._SB_HEADERS, 'Prefer': 'resolution=merge-duplicates,return=minimal' },
-      body: JSON.stringify({ id: 'main', data: payload, updated_at: new Date().toISOString() })
-    });
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-  } catch(e) {
-    console.warn('Supabase save failed, data kept in localStorage:', e);
-  }
-}
-
+// ── Load: GitHub content first, local cache as fallback ──
 async function loadSavedData() {
-  // Try Supabase first
+  let remote = null;
   try {
-    const resp = await fetch(_SB_URL + '/rest/v1/site_data?id=eq.main&select=data', {
-      headers: _SB_HEADERS
-    });
-    if (resp.ok) {
-      const rows = await resp.json();
-      if (rows.length > 0 && rows[0].data && Object.keys(rows[0].data).length > 0) {
-        const data = rows[0].data;
-        if (data.novels && Array.isArray(data.novels) && data.novels.length > 0) {
-          NOVELS.length = 0;
-          data.novels.forEach(n => NOVELS.push(n));
-        }
-        if (data.siteConfig) Object.assign(SITE_CONFIG, data.siteConfig);
-        if (data.aboutConfig) Object.assign(ABOUT_CONFIG, data.aboutConfig);
-        if (data.passwordHash) _ap = data.passwordHash;
-        // Mirror to localStorage as fallback
-        try { localStorage.setItem(_SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-        return true;
-      }
+    const [siteRes, indexRes] = await Promise.all([_fetchContent(_P_SITE), _fetchContent(_P_INDEX)]);
+    if (!indexRes.found) {
+      // Repo has no content folder yet — publishing will create it.
+      _baseline = {};
+    } else {
+      const names = (JSON.parse(indexRes.text).novels || []).filter(Boolean);
+      const novelRes = await Promise.all(names.map(nm => _fetchContent(_pNovel(nm))));
+      const site = siteRes.found ? JSON.parse(siteRes.text) : {};
+      const novels = [];
+      const base = { [_P_INDEX]: _fmt({ novels: [] }) };
+      const keptNames = [];
+      novelRes.forEach((r, i) => {
+        if (!r.found) { console.warn('Missing novel file:', _pNovel(names[i])); return; }
+        const n = JSON.parse(r.text);
+        novels.push(n);
+        keptNames.push(names[i]);
+        base[_pNovel(names[i])] = _fmt(n);
+      });
+      base[_P_INDEX] = _fmt({ novels: keptNames });
+      if (siteRes.found) base[_P_SITE] = _fmt(_sitePayload(site.siteConfig || {}, site.aboutConfig || {}, site.passwordHash || ''));
+      _baseline = base;
+      remote = { novels, siteConfig: site.siteConfig, aboutConfig: site.aboutConfig, passwordHash: site.passwordHash, updatedAt: site.updatedAt || 0 };
     }
   } catch(e) {
-    console.warn('Supabase load failed, trying localStorage:', e);
+    console.warn('Could not load content from GitHub, trying local cache:', e);
   }
 
-  // Fallback to localStorage
-  try {
-    const raw = localStorage.getItem(_SAVE_KEY);
-    if (!raw) return false;
-    const data = JSON.parse(raw);
-    if (data.novels && Array.isArray(data.novels) && data.novels.length > 0) {
-      NOVELS.length = 0;
-      data.novels.forEach(n => NOVELS.push(n));
-    }
-    if (data.siteConfig) Object.assign(SITE_CONFIG, data.siteConfig);
-    if (data.aboutConfig) Object.assign(ABOUT_CONFIG, data.aboutConfig);
+  const local = _readLocal();
+  // Unpublished edits made in this browser win if they are newer than GitHub.
+  if (local && local.dirty && (!remote || (local.savedAt || 0) > (remote.updatedAt || 0))) {
+    _applyData(local);
+    _setSyncStatus('pending');
     return true;
-  } catch(e) {
+  }
+  if (remote) {
+    _applyData(remote);
+    _writeLocal(false);
+    _setSyncStatus(_ghReady() ? 'synced' : 'local');
+    return true;
+  }
+  if (local) { _applyData(local); return true; }
+  return false;
+}
+
+// ── Save: local immediately, GitHub after a short pause ──
+function saveAllData() {
+  _writeLocal(true);
+  if (!_adminUnlocked) return;
+  _schedulePublish(_PUBLISH_DELAY);
+}
+
+function _schedulePublish(delay) {
+  clearTimeout(_publishTimer);
+  if (!_ghReady()) { _setSyncStatus('local'); return; }
+  _setSyncStatus('pending');
+  _publishTimer = setTimeout(() => { _publishTimer = null; _publishToGitHub(); }, delay);
+}
+
+// One atomic commit with any number of file changes. value null = delete file.
+async function _commitFiles(changes, message) {
+  const branch = _ghCfg().branch;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const ref  = await _gh('GET', `/git/ref/heads/${encodeURIComponent(branch)}`);
+      const head = await _gh('GET', `/git/commits/${ref.object.sha}`);
+      const tree = Object.entries(changes).map(([path, text]) =>
+        text === null
+          ? { path, mode: '100644', type: 'blob', sha: null }
+          : { path, mode: '100644', type: 'blob', content: text });
+      const newTree = await _gh('POST', '/git/trees', { base_tree: head.tree.sha, tree });
+      const commit  = await _gh('POST', '/git/commits', { message, tree: newTree.sha, parents: [ref.object.sha] });
+      await _gh('PATCH', `/git/refs/heads/${encodeURIComponent(branch)}`, { sha: commit.sha });
+      return commit;
+    } catch(e) {
+      // 409/422 = someone else committed in between; try once more on top of it.
+      if (attempt === 0 && (e.status === 409 || e.status === 422)) continue;
+      throw e;
+    }
+  }
+}
+
+async function _publishToGitHub() {
+  if (!_ghReady()) { _setSyncStatus('local'); return false; }
+  if (_baseline === null) {
+    _setSyncStatus('error', 'Content could not be loaded from GitHub, so publishing is paused to avoid overwriting it. Reload the page and try again.');
     return false;
   }
+  if (_publishing) { _publishAgain = true; return false; }
+  _publishing = true;
+  _setSyncStatus('publishing');
+  try {
+    const files = _buildContentFiles();
+    const changes = {};
+    Object.entries(files).forEach(([p, t]) => { if (_baseline[p] !== t) changes[p] = t; });
+    Object.keys(_baseline).forEach(p => { if (!(p in files)) changes[p] = null; });
+    const changed = Object.keys(changes);
+    if (changed.length) {
+      const now = Date.now();
+      // site.json always carries the time of the last publish
+      const site = JSON.parse(files[_P_SITE]);
+      changes[_P_SITE] = _fmt({ ...site, updatedAt: now });
+      const label = changed.map(p => p.replace(_CONTENT_DIR + '/', '')).slice(0, 4).join(', ') + (changed.length > 4 ? ` +${changed.length - 4} more` : '');
+      await _commitFiles(changes, `Update ${label}`);
+      _baseline = files;
+    }
+    _writeLocal(false);
+    _setSyncStatus('synced');
+    return true;
+  } catch(e) {
+    console.warn('GitHub publish failed — changes kept in this browser:', e);
+    _setSyncStatus('error', e.status === 401 ? 'Token rejected (expired or wrong). Update it in Password → GitHub.'
+                         : e.status === 403 || e.status === 404 ? 'Token cannot write to this repo. Check owner/repo and that the token has Contents: Read and write.'
+                         : e.message);
+    return false;
+  } finally {
+    _publishing = false;
+    if (_publishAgain) { _publishAgain = false; _schedulePublish(300); }
+  }
+}
+
+async function publishNow() {
+  clearTimeout(_publishTimer); _publishTimer = null;
+  if (!_ghReady()) { showToast('✗ Connect GitHub first (Password tab).'); _setSyncStatus('local'); return; }
+  const ok = await _publishToGitHub();
+  showToast(ok ? '✓ Published to GitHub — live in about a minute.' : '✗ Publish failed — see the status in the top bar.');
+}
+
+// ── Status pill in the admin top bar ──
+function _setSyncStatus(state, msg) {
+  _syncState = { state, msg: msg || '' };
+  const el = document.getElementById('ghSyncStatus');
+  if (!el) return;
+  const map = {
+    idle:       ['', ''],
+    synced:     ['ok',   '● Published to GitHub'],
+    pending:    ['wait', '● Unpublished changes — click to publish'],
+    publishing: ['wait', '● Publishing…'],
+    local:      ['warn', '● Saved on this device only — connect GitHub'],
+    error:      ['err',  '● Publish failed — click to retry']
+  };
+  const [cls, label] = map[state] || map.idle;
+  el.className = 'gh-sync ' + cls;
+  el.textContent = label;
+  el.title = msg || '';
+  const detail = document.getElementById('gh-status-detail');
+  if (detail) detail.textContent = msg || label.replace('● ', '');
+}
+
+window.addEventListener('beforeunload', e => {
+  if (_adminUnlocked && (_publishTimer || _publishing || _syncState.state === 'pending')) { e.preventDefault(); e.returnValue = ''; }
+});
+
+// ── GitHub settings form (Password tab) ──
+function populateGitHubForm() {
+  const c = _ghCfg();
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+  set('gh-owner', c.owner); set('gh-repo', c.repo); set('gh-branch', c.branch); set('gh-token', c.token);
+  _setSyncStatus(_syncState.state === 'idle' ? (_ghReady() ? 'synced' : 'local') : _syncState.state, _syncState.msg);
+}
+
+async function saveGitHubSettings() {
+  const v = id => (document.getElementById(id)?.value || '').trim();
+  const cfg = { owner: v('gh-owner'), repo: v('gh-repo'), branch: v('gh-branch') || 'main', token: v('gh-token') };
+  if (!cfg.owner || !cfg.repo || !cfg.token) { showToast('✗ Fill in username, repository and token.'); return; }
+  try { localStorage.setItem(_GH_KEY, JSON.stringify(cfg)); } catch(e) {}
+  showToast('⏳ Testing connection…');
+  try {
+    const repo = await _gh('GET', '');
+    if (!repo.permissions || !repo.permissions.push) throw new Error('This token can read the repo but cannot write to it. Give it Contents: Read and write.');
+    await _gh('GET', `/git/ref/heads/${encodeURIComponent(cfg.branch)}`);
+    showToast('✓ Connected to ' + repo.full_name);
+    // Re-read what is on GitHub so publishing compares against the real files.
+    const draft = _readLocal();
+    const hadDraft = draft && draft.dirty;
+    const snapshot = hadDraft ? JSON.parse(JSON.stringify({ novels: NOVELS, siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap })) : null;
+    _baseline = null;
+    await loadSavedData();
+    if (snapshot) { _applyData(snapshot); _writeLocal(true); }
+    if (_readLocal()?.dirty) _schedulePublish(300); else _setSyncStatus('synced');
+  } catch(e) {
+    _setSyncStatus('error', e.status === 401 ? 'Token rejected — check you copied it fully.' : e.status === 404 ? 'Repository or branch not found (or the token has no access to it).' : e.message);
+    showToast('✗ ' + (_syncState.msg || 'Connection failed'));
+  }
+}
+
+function disconnectGitHub() {
+  if (!confirm('Remove the GitHub token from this browser? Your repo is not changed.')) return;
+  try { localStorage.removeItem(_GH_KEY); } catch(e) {}
+  populateGitHubForm();
+  _setSyncStatus('local');
+  showToast('✓ Token removed from this browser.');
+}
+
+async function publishSeoFiles() {
+  if (!_ghReady()) { showToast('✗ Connect GitHub first.'); return; }
+  try {
+    await _commitFiles({ 'sitemap.xml': _sitemapXml(), 'robots.txt': _robotsTxt() }, 'Update sitemap.xml and robots.txt');
+    showToast('✓ sitemap.xml + robots.txt published to GitHub.');
+  } catch(e) { showToast('✗ ' + e.message); }
 }
 
 // Apply live site config to DOM
@@ -5673,57 +5551,16 @@ function applyAboutConfig() {
 // Auto-save whenever admin saves anything — saveAllData() called inline after each ✓ action
 
 // ═══════════════════════════════════════════════
-// EXPORT — download updated HTML file
-// ═══════════════════════════════════════════════
-async function exportSite() {
-  showToast('\u23f3 Preparing export\u2026');
-
-  // Fetch the original page source — reliable, avoids outerHTML mangling
-  let src;
-  try {
-    const resp = await fetch(location.href);
-    src = await resp.text();
-  } catch(e) {
-    src = document.documentElement.outerHTML;
-  }
-
-  const novelsJson = JSON.stringify(NOVELS, null, 2);
-  const siteJson   = JSON.stringify(SITE_CONFIG, null, 2);
-  const aboutJson  = JSON.stringify(ABOUT_CONFIG, null, 2);
-  const pwHash     = `'${_ap}'`;
-
-  let updated = src
-    .replace(/\/\*NOVELS_START\*\/\nconst NOVELS = \[[\s\S]*?\n\];\n\/\*NOVELS_END\*\//, `/*NOVELS_START*/\nconst NOVELS = ${novelsJson};\n/*NOVELS_END*/`)
-    .replace(/let SITE_CONFIG = \{[\s\S]*?\};/, `let SITE_CONFIG = ${siteJson};`)
-    .replace(/let ABOUT_CONFIG = \{[\s\S]*?\};/, `let ABOUT_CONFIG = ${aboutJson};`)
-    .replace(/let _ap = '[^']*';/, `let _ap = ${pwHash};`);
-
-  if (updated === src) {
-    showToast('\u2717 Export failed: markers not found. Re-save content first.');
-    return;
-  }
-
-  const blob = new Blob([updated], { type: 'text/html;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'tianmu-library.html';
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast('\u2713 Site exported! Upload to GitHub to publish.');
-}
-
-// ═══════════════════════════════════════════════
 // SEO EXPORT — sitemap.xml + robots.txt
 // ═══════════════════════════════════════════════
 function _getSiteBaseUrl() {
   // Use canonical URL if set, else current origin
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) return canonical.href.replace(/\/$/, '');
-  return window.location.origin;
+  return (window.location.origin + window.location.pathname.replace(/[^/]*$/, '')).replace(/\/$/, '');
 }
 
-function exportSitemap() {
+function _sitemapXml() {
   const base = _getSiteBaseUrl();
   const today = new Date().toISOString().split('T')[0];
   const novelUrls = NOVELS
@@ -5740,14 +5577,20 @@ function exportSitemap() {
   </url>
 ${novelUrls}
 </urlset>`;
-  _downloadFile('sitemap.xml', xml, 'application/xml;charset=utf-8');
+  return xml;
+}
+
+function exportSitemap() {
+  _downloadFile('sitemap.xml', _sitemapXml(), 'application/xml;charset=utf-8');
   showToast('✓ sitemap.xml downloaded!');
 }
 
+function _robotsTxt() {
+  return `User-agent: *\nAllow: /\n\nSitemap: ${_getSiteBaseUrl()}/sitemap.xml\n`;
+}
+
 function exportRobots() {
-  const base = _getSiteBaseUrl();
-  const txt = `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`;
-  _downloadFile('robots.txt', txt, 'text/plain;charset=utf-8');
+  _downloadFile('robots.txt', _robotsTxt(), 'text/plain;charset=utf-8');
   showToast('✓ robots.txt downloaded!');
 }
 
@@ -5842,14 +5685,17 @@ function importData() {
 (async () => {
   document.getElementById('novelGrid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Instrument Serif',serif;font-style:italic;color:#8a7a60">Loading library…</div>`;
 
-  await loadSavedData();  // Fetch from Supabase (or localStorage fallback)
+  const loaded = await loadSavedData();  // content/*.json from GitHub (or local cache)
   applySiteConfig();
   applyAboutConfig();
   applyDarkPref();
   buildMarquee();
   checkScheduledChapters();
   renderGrid();
-  // Load live like counts from Supabase (non-blocking, updates UI when ready)
+  if (!loaded && !NOVELS.length) {
+    document.getElementById('novelGrid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Instrument Serif',serif;font-style:italic;color:#8a7a60">The library couldn't be loaded. Please check your connection and refresh.${location.protocol === 'file:' ? '<br><small>(This page reads its novels from the <code>content</code> folder, so it must be opened from a web server such as GitHub Pages — not as a file.)</small>' : ''}</div>`;
+  }
+  // Hearts are stored in this browser
   loadAllLikes();
   loadLastRead();
   try { history.replaceState({ view: 'library' }, '', window.location.pathname + window.location.search); } catch(e) {}
@@ -5873,7 +5719,10 @@ function importData() {
   <div id="adminPanel" style="display:none">
     <div class="admin-topbar">
       <div class="admin-logo">⚙ <span>甜慕</span> Admin Panel</div>
-      <button class="admin-close-btn" onclick="closeAdmin()">✕ Exit to Site</button>
+      <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:flex-end">
+        <button id="ghSyncStatus" class="gh-sync" onclick="publishNow()"></button>
+        <button class="admin-close-btn" onclick="closeAdmin()">✕ Exit to Site</button>
+      </div>
     </div>
 
     <div class="admin-body">
@@ -5907,14 +5756,11 @@ function importData() {
         <!-- COMMENTS APPROVAL -->
         <div class="admin-panel" id="panel-comments">
           <div class="admin-panel-title">Comments</div>
-          <div class="admin-panel-sub">Review and approve reader comments before they appear on the site.</div>
+          <div class="admin-panel-sub">Hearts and comments are saved only in each reader's own browser — they don't sync online, so nobody else sees them. This list shows the comments written in <em>this</em> browser.</div>
+          <div id="adminPendingComments" style="display:none"></div>
           <div class="admin-section">
-            <div class="admin-section-title">Pending Approval</div>
-            <div id="adminPendingComments"><p style="font-family:'Instrument Serif',serif;font-style:italic;color:#665;padding:0.5rem 0">No pending comments.</p></div>
-          </div>
-          <div class="admin-section">
-            <div class="admin-section-title">Approved Comments</div>
-            <div id="adminApprovedComments"><p style="font-family:'Instrument Serif',serif;font-style:italic;color:#665;padding:0.5rem 0">No approved comments yet.</p></div>
+            <div class="admin-section-title">Comments on this device</div>
+            <div id="adminApprovedComments"><p style="font-family:'Instrument Serif',serif;font-style:italic;color:#665;padding:0.5rem 0">No comments yet.</p></div>
           </div>
         </div>
 
@@ -6141,6 +5987,7 @@ function importData() {
                   <option value="interlude">Interlude</option>
                   <option value="bonus">Bonus</option>
                   <option value="extra">Extra</option>
+                  <option value="side">Side Story</option>
                 </select>
               </div>
             </div>
@@ -6331,25 +6178,40 @@ function importData() {
           <div class="admin-section" style="background:#0a1a08;border-color:rgba(120,180,60,0.3)">
             <div class="admin-section-title" style="color:#78b43c">📦 Import / Export Data</div>
             <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:1rem">
-              <strong style="color:var(--yellow)">Export Data</strong> downloads a <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">.json</code> backup of all your novels, config, and password. Use <strong style="color:var(--yellow)">Import Data</strong> to restore it on any device — no GitHub needed.
+              <strong style="color:var(--yellow)">Export Data</strong> downloads a <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">.json</code> backup of all your novels, config, and password. Use <strong style="color:var(--yellow)">Import Data</strong> to restore it (importing publishes it to GitHub when connected).
             </p>
             <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1.2rem">
               <button class="admin-btn admin-btn-primary" style="background:#78b43c;border-color:#a0c060;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="exportData()">⬇ Export Data (JSON)</button>
               <button class="admin-btn admin-btn-primary" style="background:#3a6a8a;border-color:#5a90b0;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="importData()">⬆ Import Data (JSON)</button>
             </div>
             <div style="border-top:1px solid rgba(120,180,60,0.2);padding-top:1rem">
-              <div class="admin-section-title" style="color:#78b43c;margin-bottom:0.6rem">🌐 Publish to GitHub</div>
-              <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:1rem">
-                To update your <strong style="color:var(--yellow)">live website</strong>, export the full HTML and upload it to GitHub Pages.
+              <div class="admin-section-title" style="color:#78b43c;margin-bottom:0.6rem">🌐 GitHub — where your content lives</div>
+              <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:0.8rem">
+                Novels and settings are stored as files in your repo's <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">content/</code> folder, separate from <code style="color:var(--yellow);background:#1a1610;padding:0.1rem 0.4rem;border-radius:4px">index.html</code>. Once connected, <strong style="color:var(--yellow)">every save publishes automatically</strong> (live on the site in about a minute).
               </p>
-              <button class="admin-btn admin-btn-primary" style="background:#556b2f;border-color:#78b43c;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="exportSite()">⬇ Export HTML for GitHub</button>
+              <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#5a7a40;line-height:1.7;margin-bottom:1rem">
+                The token is kept <strong style="color:var(--yellow)">only in this browser</strong> — it is never written to the repo. Create one at GitHub → Settings → Developer settings → <em>Fine-grained tokens</em>: pick only this repository, and set <em>Contents</em> to <strong style="color:var(--yellow)">Read and write</strong>.
+              </p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 0.8rem">
+                <div class="admin-field"><label class="admin-label">GitHub username</label><input class="admin-input" id="gh-owner" placeholder="your-username" autocomplete="off"></div>
+                <div class="admin-field"><label class="admin-label">Repository</label><input class="admin-input" id="gh-repo" placeholder="tianmu" autocomplete="off"></div>
+                <div class="admin-field"><label class="admin-label">Branch</label><input class="admin-input" id="gh-branch" placeholder="main" autocomplete="off"></div>
+              </div>
+              <div class="admin-field"><label class="admin-label">Access token</label><input class="admin-input" type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off"></div>
+              <p id="gh-status-detail" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:0.88rem;color:#a09070;margin:0 0 1rem"></p>
+              <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
+                <button class="admin-btn admin-btn-primary" style="background:#556b2f;border-color:#78b43c;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="saveGitHubSettings()">✓ Save &amp; Test Connection</button>
+                <button class="admin-btn admin-btn-primary" style="background:#3a6a8a;border-color:#5a90b0;font-size:0.75rem;padding:0.8rem 1.6rem" onclick="publishNow()">⬆ Publish Now</button>
+                <button class="admin-btn" style="font-size:0.7rem;padding:0.6rem 1.2rem" onclick="disconnectGitHub()">Remove token</button>
+              </div>
             </div>
             <div style="border-top:1px solid rgba(80,144,200,0.2);padding-top:1rem;margin-top:1rem">
               <div class="admin-section-title" style="color:#5090c8;margin-bottom:0.6rem">🗺 SEO Files</div>
               <p style="font-family:'Instrument Serif',serif;font-size:0.9rem;color:#3a5a7a;line-height:1.7;margin-bottom:0.8rem">
-                Download <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">sitemap.xml</code> and <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">robots.txt</code> — upload these alongside your <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">index.html</code> in your GitHub repo root.
+                Publish <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">sitemap.xml</code> and <code style="color:var(--yellow);background:#0e0c08;padding:0.1rem 0.4rem;border-radius:4px">robots.txt</code> straight to your repo root, or download them.
               </p>
               <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
+                <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="publishSeoFiles()">⬆ Publish both to GitHub</button>
                 <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="exportSitemap()">⬇ sitemap.xml</button>
                 <button class="admin-btn" style="background:#1a3060;border-color:#3a60a0;color:#88aadd;font-size:0.7rem;padding:0.6rem 1.2rem" onclick="exportRobots()">⬇ robots.txt</button>
               </div>
