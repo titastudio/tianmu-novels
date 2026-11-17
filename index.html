@@ -52,7 +52,18 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet"></noscript>
+<script>
+// Start fetching the library straight away, before the rest of the page has been read.
+window._early = {};
+try {
+  ['content/site.json', 'content/catalog.json'].forEach(function (u) {
+    window._early[u] = fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(u + ': HTTP ' + r.status); return r.json(); });
+    window._early[u].catch(function () {});
+  });
+} catch (e) {}
+</script>
 <style>
 :root {
   --olive: #5a6e2c;
@@ -3096,6 +3107,7 @@ function renderGrid() {
 // OPEN NOVEL
 // ═══════════════════════════════════════════════
 function openNovel(idx, _noPush) {
+  _ensureNovel(idx).catch(() => {});   // start loading this book's chapter text now
   currentNovel = idx;
   const novel = NOVELS[idx];
   document.getElementById('libraryView').style.display = 'none';
@@ -3155,6 +3167,11 @@ function openChapter(idx, _noPush) {
   currentChapterIdx = idx;
   const novel = NOVELS[currentNovel];
   const ch = novel.chapters[idx];
+  if (novel._lite) {
+    const want = currentNovel;
+    _ensureNovel(want).then(() => { if (currentNovel === want && currentChapterIdx === idx) openChapter(idx, true); })
+      .catch(() => { const b = document.getElementById('readerText'); if (b) b.innerHTML = '<p style="text-align:center">This chapter couldn’t be loaded. Please check your connection and refresh.</p>'; });
+  }
 
   document.getElementById('chapterListView').style.display = 'none';
   const reader = document.getElementById('chapterReaderView');
@@ -3165,7 +3182,7 @@ function openChapter(idx, _noPush) {
 
   const trans = ch.translations?.[currentReaderLang];
   const displayTitle = (currentReaderLang !== 'en' && trans?.title) ? trans.title : ch.title;
-  const displayContent = (currentReaderLang !== 'en' && trans?.content) ? trans.content : ch.content;
+  const displayContent = (currentReaderLang !== 'en' && trans?.content) ? trans.content : (ch.content ?? '<p style="text-align:center;font-style:italic;opacity:.6">Loading chapter…</p>');
 
   const _lab = chapterLabel(novel, idx);
   const _vol = volumeParts(ch.volume);
@@ -3624,6 +3641,7 @@ async function checkAdminPassword() {
     document.getElementById('adminLogin').style.display = 'none';
     document.getElementById('adminPanel').style.display = 'block';
     _adminUnlocked = true;
+    await _ensureAll();
     populateAdminForms();
     _setSyncStatus(_unsaved ? 'pending' : 'clean');
   } else {
@@ -5352,7 +5370,7 @@ function renderInsights() {
   const totalChapters = NOVELS.reduce((s,n) => s + (n.chapters?.length||0), 0);
   const totalWords = NOVELS.reduce((s,n) => {
     return s + (n.chapters||[]).reduce((cs,ch) => {
-      if (!ch.content) return cs;
+      if (!ch.content) return cs + (ch.words || 0);
       const tmp = document.createElement('div');
       tmp.innerHTML = ch.content;
       return cs + (tmp.textContent.trim().split(/\s+/).length);
@@ -5546,6 +5564,8 @@ let _adminUnlocked = false;
 let _unsaved = false;
 
 async function _fetchJSON(path) {
+  const early = window._early && window._early[path];
+  if (early) { delete window._early[path]; try { return await early; } catch (e) { /* fall through and try again */ } }
   const resp = await fetch(path, { cache: 'no-cache' });
   if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
   return resp.json();
@@ -5561,10 +5581,20 @@ function _novelFileNames(novels) {
     return name;
   });
 }
+function _ver(text) { let h = 2166136261; for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); }
+function _cleanNovel(n) { const o = Object.assign({}, n); delete o._lite; delete o._file; delete o._ver; return o; }
 function _buildContentFiles() {
   const files = {};
   const names = _novelFileNames(NOVELS);
-  NOVELS.forEach((n, i) => { files[_pNovel(names[i])] = _fmt(n); });
+  const cat = [];
+  NOVELS.forEach((n, i) => {
+    const clean = _cleanNovel(n), text = _fmt(clean);
+    files[_pNovel(names[i])] = text;
+    const lite = Object.assign({}, clean, { _file: names[i], _ver: _ver(text) });
+    lite.chapters = (clean.chapters || []).map(c => { const o = Object.assign({}, c); const tmp = document.createElement('div'); tmp.innerHTML = o.content || ''; o.words = tmp.textContent.trim().split(/\s+/).filter(Boolean).length; delete o.content; delete o.translations; return o; });
+    cat.push(lite);
+  });
+  files[_P_CATALOG] = JSON.stringify({ novels: cat }) + '\n';
   files[_P_INDEX] = _fmt({ novels: names });
   files[_P_SITE]  = _fmt({ siteConfig: SITE_CONFIG, aboutConfig: ABOUT_CONFIG, passwordHash: _ap, updatedAt: new Date().toISOString() });
   return files;
@@ -5576,17 +5606,47 @@ function _applyData(d) {
   if (d.passwordHash) _ap = d.passwordHash;
 }
 
+// Fast start: one small catalog (every novel and chapter list, no chapter text) draws the
+// whole library at once. Chapter text loads in the background, in parallel, and is cached
+// by the browser per file version, so a refresh doesn't download it again.
+const _P_CATALOG = `${_CONTENT_DIR}/catalog.json`;
+let _fullLoad = Promise.resolve();
+const _novelLoads = {};
+function _mergeNovel(lite, full) {
+  const keep = { _file: lite._file, _ver: lite._ver };
+  Object.keys(lite).forEach(k => delete lite[k]);
+  Object.assign(lite, full);
+  Object.defineProperty(lite, '_src', { value: keep, enumerable: false, writable: true });
+}
+function _ensureNovel(i) {
+  const n = NOVELS[i];
+  if (!n || !n._lite) return Promise.resolve(n);
+  if (!_novelLoads[n._file]) {
+    const url = _pNovel(n._file) + (n._ver ? `?v=${n._ver}` : '');
+    _novelLoads[n._file] = fetch(url, { cache: n._ver ? 'force-cache' : 'no-cache' })
+      .then(r => { if (!r.ok) throw new Error(url + ': HTTP ' + r.status); return r.json(); })
+      .then(full => { if (n._lite) _mergeNovel(n, full); return n; })
+      .catch(e => { delete _novelLoads[n._file]; throw e; });
+  }
+  return _novelLoads[n._file];
+}
+function _ensureAll() { return Promise.all(NOVELS.map((n, i) => _ensureNovel(i).catch(e => console.warn(e)))); }
+
 async function loadSavedData() {
   try { localStorage.removeItem('tm_site_data_v2'); localStorage.removeItem('tm_github_v1'); } catch(e) {}   // old versions
   try {
-    const [site, index] = await Promise.all([_fetchJSON(_P_SITE), _fetchJSON(_P_INDEX)]);
-    const names = (index.novels || []).filter(Boolean);
-    const novels = [];
-    for (const nm of names) {
-      try { novels.push(await _fetchJSON(_pNovel(nm))); } catch(e) { console.warn('Missing novel file:', nm, e); }
+    const [site, cat] = await Promise.all([_fetchJSON(_P_SITE), _fetchJSON(_P_CATALOG).catch(() => null)]);
+    let novels;
+    if (cat && Array.isArray(cat.novels)) {
+      novels = cat.novels.map(n => Object.assign(n, { _lite: true }));
+    } else {
+      const index = await _fetchJSON(_P_INDEX);
+      const names = (index.novels || []).filter(Boolean);
+      novels = (await Promise.all(names.map(nm => _fetchJSON(_pNovel(nm)).catch(e => { console.warn('Missing novel file:', nm, e); return null; })))).filter(Boolean);
     }
     _applyData({ novels, siteConfig: site.siteConfig, aboutConfig: site.aboutConfig, passwordHash: site.passwordHash });
     _setSyncStatus('clean');
+    // Chapter text is fetched only when a book is opened (and for the book in the address bar).
     return true;
   } catch(e) {
     console.warn('Could not load content files:', e);
@@ -5642,7 +5702,8 @@ function _download(blob, filename) {
 }
 
 // Download everything the site reads, ready to upload to the repo root.
-function downloadContentFiles() {
+async function downloadContentFiles() {
+  await _ensureAll();
   const files = _buildContentFiles();
   try { files['sitemap.xml'] = _sitemapXml(); files['robots.txt'] = _robotsTxt(); } catch(e) {}
   _download(_zip(files), `tianmu-content-${new Date().toISOString().slice(0, 10)}.zip`);

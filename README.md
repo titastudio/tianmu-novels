@@ -6,6 +6,7 @@ The site's code and its content live in separate files. There is no backend and 
 index.html                     ← design + code only (no novel text inside)
 content/
   site.json                    ← site title, hero text, About page, admin password hash
+  catalog.json                 ← every novel and chapter list, no chapter text (for a fast start)
   novels/
     index.json                 ← which novels appear, in what order
     two-hundred-miles-an-hour.json
@@ -28,7 +29,9 @@ The site goes live at `https://<username>.github.io/<repo>/` in about a minute.
 
 ## Updating content
 
-**Option A — edit the files directly.** Open a file in `content/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`.
+**Option A — edit the files directly.** Open a file in `content/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`. If you change titles, dates or chapters this way, also replace `content/catalog.json` (the admin download makes a fresh one), or the library will show the old list.
+
+**Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file, in well under a second, then loads chapter text in the background. Each novel file is fetched with a version tag, so the browser keeps it and a refresh doesn't download it again.
 
 **Option B — use the admin panel.** Click the logo **5 times** and log in. Edit anything. Your edits stay in that browser until you publish them:
 
