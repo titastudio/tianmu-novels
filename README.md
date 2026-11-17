@@ -8,8 +8,8 @@ content/
   site.json                    ← site title, hero text, About page, admin password hash
   novels/
     index.json                 ← which novels appear, in what order
+    two-hundred-miles-an-hour.json
     the-softest-kind-of-love.json
-    midnight-garden.json
     …                          ← one file per novel: info, front matter, all chapters
 ```
 
@@ -53,6 +53,18 @@ Live site: **https://titastudio.github.io/tianmu-novels/** (repo: `titastudio/ti
 ## Volumes (optional)
 
 A chapter can have a **volume** (chapter editor → Volume), written like `Volume One: The Glimpse`. When chapters have volumes, the chapter list shows a heading each time the volume changes, the chapter menu is grouped by volume, and the reader shows "Volume One · Chapter 3" above the title. New chapters added in the admin copy the volume of the last chapter, so you only change it when a new volume starts. Leave it empty for novels without volumes.
+
+## Reading history ("Continue reading")
+
+Saved **only in each reader's own browser** (key `tm_reads_v1`), one entry per story.
+
+- A chapter only counts as read after real reading: the chapter is open, the tab is visible, the reader has been active in the last minute, and has spent at least 20 seconds on it and scrolled at least 15% (or 8 seconds and 60% for fast readers). Quick clicks, previews and peeks are ignored.
+- Each story's page shows its own card: *Continue where you left off* (with % read), or *Up next* once a chapter is finished. A story the reader has never read shows nothing.
+- Library cards show "Reading Ch. N · 2 days ago" for stories in progress, and the home page offers the story read most recently.
+
+## Idea novels
+
+Novels with status **Idea** have no chapters yet but can be opened (the card says *Tap to preview*) to read their Synopsis, Characters, Author Note and Content Warning. They are left out of the sitemap until they go live.
 
 ## Hearts & comments
 
