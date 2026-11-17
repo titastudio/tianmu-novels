@@ -1,0 +1,110 @@
+{
+ "id": "the-ghost-surgeon",
+ "badge": "IDEA",
+ "color": "#1f7a8c",
+ "coverAccent": "#7fc8c9",
+ "descs": {
+  "en": "He thinks her hands are broken and opens every door for her. She secretly got her surgeon’s hands back, and works nights in a basement as the family’s ghost surgeon."
+ },
+ "genre": "Medical Romance",
+ "status": "idea",
+ "titles": {
+  "en": "The Ghost Surgeon"
+ },
+ "ideaNote": "Planned: 50 chapters. The Student · The Secret · The Night · The Hands · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>At eighteen, a retaliatory strike against the Lin family left Elara with nerve damage in both hands and the end of her surgical dream. Now she lectures medical students, talks without stopping, and lets her husband cut her food. Wang Xing Yue, chief surgical resident and the cleanest man in the city, believes her hands still shake.</p>\n\n<p>They don’t. With a rehab rig her sister-in-law machined in a garage, Elara has spent years getting her precision back, and at night she operates in a basement on people the family can’t take to a hospital. She is keeping the secret to protect his peace. He has already noticed how she sews a torn pillowcase.</p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>I love a book where two people fall in love by watching each other be very good at their work. This one has two secrets in one house and a marriage strong enough to survive both of them coming out.</p>\n\n<p>Elara talks. All the time. Xing Yue barely speaks, and he can’t live without the noise. The love scenes are gentle and unhurried, after night shifts, in the early light.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Elara Wang (née Lin)",
+     "nameChinese": "",
+     "role": "Female Lead · medical lecturer / the Ghost Surgeon",
+     "age": "25",
+     "birthday": "",
+     "mbti": "ENFP",
+     "loveLanguage": "",
+     "appearance": "Bright, quick, always mid-sentence; hands she keeps in her lap in public.",
+     "personality": "Talks about everything, all the time\nAdopted into the Lin family after hers was erased\nKeeps her recovered hands a secret to keep him clean",
+     "strengths": "A surgeon’s hands, back\nThe family’s emotional glue",
+     "weaknesses": "Carries everyone and lets no one carry her\nThinks secrets are a kind of love",
+     "nickname": "The Ghost Surgeon",
+     "favDrink": "",
+     "favHabit": "Solving the case in the margins of the journals he leaves open"
+    },
+    {
+     "name": "Wang Xing Yue",
+     "nameChinese": "",
+     "role": "Male Lead · chief surgical resident",
+     "age": "28",
+     "birthday": "",
+     "mbti": "INTJ",
+     "loveLanguage": "Acts of service",
+     "appearance": "Tall, immaculate, surgical calm; reading glasses he never admits he needs.",
+     "personality": "A clinical kind of quiet\nFell for her in an ER rotation and spent months trying to diagnose it\nElder brother of Wang An Yu",
+     "strengths": "Pattern recognition nobody can fool\nThe perfect, law-abiding shield",
+     "weaknesses": "Terrified of her light going out\nSays the clinical thing instead of the true one",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Pulling her into his lap to ‘inspect’ her hands"
+    },
+    {
+     "name": "Jia “Jinx” Lin",
+     "nameChinese": "",
+     "role": "Elara’s sister-in-law",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Machined the hand-rehab rig in her garage and never asked why",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    },
+    {
+     "name": "Wang Yu Chen",
+     "nameChinese": "",
+     "role": "Xing Yue’s younger cousin and student",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Final-year medical student who wants to be his cousin, one day",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Elara Wang (née Lin)\nRole: Female Lead · medical lecturer / the Ghost Surgeon\nAge: 25\nMBTI: ENFP\nAppearance: Bright, quick, always mid-sentence; hands she keeps in her lap in public.\nPersonality:\nTalks about everything, all the time\nAdopted into the Lin family after hers was erased\nKeeps her recovered hands a secret to keep him clean\nStrengths:\nA surgeon’s hands, back\nThe family’s emotional glue\nWeaknesses:\nCarries everyone and lets no one carry her\nThinks secrets are a kind of love\nNickname: The Ghost Surgeon\nFavorite Habit: Solving the case in the margins of the journals he leaves open\n\n✦ Wang Xing Yue\nRole: Male Lead · chief surgical resident\nAge: 28\nMBTI: INTJ\nLove Language: Acts of service\nAppearance: Tall, immaculate, surgical calm; reading glasses he never admits he needs.\nPersonality:\nA clinical kind of quiet\nFell for her in an ER rotation and spent months trying to diagnose it\nElder brother of Wang An Yu\nStrengths:\nPattern recognition nobody can fool\nThe perfect, law-abiding shield\nWeaknesses:\nTerrified of her light going out\nSays the clinical thing instead of the true one\nFavorite Habit: Pulling her into his lap to ‘inspect’ her hands\n\n✦ Jia “Jinx” Lin\nRole: Elara’s sister-in-law\nPersonality:\nMachined the hand-rehab rig in her garage and never asked why\n\n✦ Wang Yu Chen\nRole: Xing Yue’s younger cousin and student\nPersonality:\nFinal-year medical student who wants to be his cousin, one day"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>Planned content includes:</p>\n\n<p>• A violent attack and lasting nerve damage</p>\n\n<p>• Surgery described from a surgeon’s point of view, including a surgery that goes wrong</p>\n\n<p>• Underground medicine outside a hospital</p>\n\n<p>• Hospital tension and a terrifying night</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}

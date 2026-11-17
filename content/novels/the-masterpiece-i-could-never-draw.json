@@ -1,0 +1,110 @@
+{
+ "id": "the-masterpiece-i-could-never-draw",
+ "badge": "IDEA",
+ "color": "#8a5a44",
+ "coverAccent": "#d4a373",
+ "descs": {
+  "en": "She nearly ran him over at a street race and jumped off her bike to fight him. He complimented her intake manifold."
+ },
+ "genre": "Romantic Comedy",
+ "status": "idea",
+ "titles": {
+  "en": "The Masterpiece I Could Never Draw"
+ },
+ "ideaNote": "Planned: 50 chapters. The Track · The House · The Chop Shop · The Drawing · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>Raiden Lin plays the cheerful, slightly useless Lin son so well that the Syndicate and the police both ignore him. In fact he draws the family’s safe houses, and knows the weak point of every building in the city. One night he’s standing in the middle of a street-race track sketching the golden ratio of a warehouse, and a motorbike nearly kills him.</p>\n\n<p>Jia, Jinx to everyone who values their teeth, gets off the bike to beat some sense into him. He looks up, smiles, and tells her that her intake manifold is beautifully symmetrical. Nobody has ever looked at her like that. She has no idea what to do about it.</p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>I’ve wanted to write these two since Raiden walked into Every Flower in the Shop with three builders and a roll of drawings. He’s the funniest person in the family and the one who has hidden the most.</p>\n\n<p>This is a warm book with grease and flour in it. He cooks; she fixes; they argue mid-kiss and keep going. Each of them has one deep wound, his borderland childhood and her father’s chop shop, and the book takes those seriously too.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Raiden Lin",
+     "nameChinese": "",
+     "role": "Male Lead · architectural draughtsman",
+     "age": "27",
+     "birthday": "",
+     "mbti": "ESFP",
+     "loveLanguage": "Quality time",
+     "appearance": "Paint on his jacket, a pencil behind his ear, a sunny, total innocence Elowen has feared since he was nine.",
+     "personality": "Plays the useless socialite on purpose\nMemorises the structural weaknesses of every building he walks into\nThe one who cooks",
+     "strengths": "Spatial genius\nMakes everyone laugh, including Zhao, nearly",
+     "weaknesses": "Hides everything real behind a joke\nWas the spare, raised far from home",
+     "nickname": "Darling (to his wife, who hates it)",
+     "favDrink": "",
+     "favHabit": "Drawing things ‘as they really are’"
+    },
+    {
+     "name": "Jia “Jinx” Lin",
+     "nameChinese": "",
+     "role": "Female Lead · master motorcycle engineer",
+     "age": "27",
+     "birthday": "",
+     "mbti": "ISTP",
+     "loveLanguage": "Acts of service",
+     "appearance": "Small and fierce, hair shaved at one side, black nails, tattoos on both arms: peonies, gears and a carp swimming toward a spark plug.",
+     "personality": "Grew up taking engines apart before she could read\nBlunt; machines either work or they don’t\nOne order, no questions",
+     "strengths": "Can build anything with two wheels\nProtects him from the street",
+     "weaknesses": "Burns herself out\nDoesn’t know how to be looked after",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Building him a slow ‘safety bike’ so he can sketch on the road"
+    },
+    {
+     "name": "Serafina Song",
+     "nameChinese": "",
+     "role": "Racing driver · Jinx’s best customer",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Orders her bikes from Jinx; will not admit the bike is faster off the line",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    },
+    {
+     "name": "Wang Yu Chen",
+     "nameChinese": "",
+     "role": "The neighbour Raiden gives advice to",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Asks Raiden how to love someone who doesn’t want to be protected",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Raiden Lin\nRole: Male Lead · architectural draughtsman\nAge: 27\nMBTI: ESFP\nLove Language: Quality time\nAppearance: Paint on his jacket, a pencil behind his ear, a sunny, total innocence Elowen has feared since he was nine.\nPersonality:\nPlays the useless socialite on purpose\nMemorises the structural weaknesses of every building he walks into\nThe one who cooks\nStrengths:\nSpatial genius\nMakes everyone laugh, including Zhao, nearly\nWeaknesses:\nHides everything real behind a joke\nWas the spare, raised far from home\nNickname: Darling (to his wife, who hates it)\nFavorite Habit: Drawing things ‘as they really are’\n\n✦ Jia “Jinx” Lin\nRole: Female Lead · master motorcycle engineer\nAge: 27\nMBTI: ISTP\nLove Language: Acts of service\nAppearance: Small and fierce, hair shaved at one side, black nails, tattoos on both arms: peonies, gears and a carp swimming toward a spark plug.\nPersonality:\nGrew up taking engines apart before she could read\nBlunt; machines either work or they don’t\nOne order, no questions\nStrengths:\nCan build anything with two wheels\nProtects him from the street\nWeaknesses:\nBurns herself out\nDoesn’t know how to be looked after\nFavorite Habit: Building him a slow ‘safety bike’ so he can sketch on the road\n\n✦ Serafina Song\nRole: Racing driver · Jinx’s best customer\nPersonality:\nOrders her bikes from Jinx; will not admit the bike is faster off the line\n\n✦ Wang Yu Chen\nRole: The neighbour Raiden gives advice to\nPersonality:\nAsks Raiden how to love someone who doesn’t want to be protected"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>This is mostly a light book. Planned content includes:</p>\n\n<p>• Street racing and motorcycle crashes</p>\n\n<p>• A childhood spent hidden in a borderland safe house, away from family</p>\n\n<p>• A violent father who runs a chop shop for the Syndicate</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}
