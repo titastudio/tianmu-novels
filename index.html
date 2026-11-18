@@ -1596,6 +1596,7 @@ body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
   padding: 0.2rem;
 }
 .filter-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filter-tag .ft-n { opacity: .55; font-size: .85em; }
 .filter-tag {
   background: var(--cream);
   border: 2px solid var(--border);
@@ -1904,10 +1905,12 @@ body.dark-read .fmt-btn:hover { background: var(--coral); color: white; border-c
 }
 .resume-dismiss:hover { color: var(--cream); }
 
-.novel-card.is-idea { cursor: pointer; }
-.novel-card.is-idea .card-cover { filter: none; }
-.novel-card.is-idea .card-lock-overlay { background: linear-gradient(to top, rgba(20,14,8,0.45), rgba(20,14,8,0) 60%); }
-.novel-card.is-idea:hover { transform: translateY(-3px); }
+.novel-card.is-idea { cursor: default; }
+.novel-card.is-idea > * { opacity: 0.6; }
+.novel-card.is-idea .card-cover { filter: saturate(0.25) brightness(0.95); }
+.novel-card.is-idea .card-lock-overlay { background: linear-gradient(to top, rgba(20,14,8,0.5), rgba(20,14,8,0.05) 60%); }
+.novel-card.is-idea:hover { transform: none; box-shadow: var(--shadow); }
+.novel-card.is-idea .card-title, .novel-card.is-idea .card-desc { color: #8a7d66; }
 /* ── CONTINUE READING (per story) ── */
 .continue-card { display:flex; align-items:center; gap:0.9rem; margin:0 0 1.4rem; padding:0.9rem 1.1rem; border:2px solid var(--ink); border-radius:14px; background:#fff8ea; box-shadow:3px 3px 0 var(--coral); }
 .continue-card .cc-icon { font-size:1.4rem; flex-shrink:0; }
@@ -2853,10 +2856,11 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
       <button class="search-clear" id="searchClear" onclick="clearSearch()" style="display:none">✕</button>
     </div>
     <div class="filter-tags" id="filterTags">
-      <button class="filter-tag active" onclick="setFilter('all',this)">All</button>
-      <button class="filter-tag" onclick="setFilter('active',this)">Available</button>
-      <button class="filter-tag" onclick="setFilter('coming-soon',this)">Coming Soon</button>
-      <button class="filter-tag" onclick="setFilter('idea',this)">Ideas</button>
+      <button class="filter-tag active" data-f="all" onclick="setFilter('all',this)">All stories</button>
+      <button class="filter-tag" data-f="new" onclick="setFilter('new',this)">Just added</button>
+      <button class="filter-tag" data-f="complete" onclick="setFilter('complete',this)">Complete</button>
+      <button class="filter-tag" data-f="ongoing" onclick="setFilter('ongoing',this)">Ongoing</button>
+      <button class="filter-tag" data-f="later" onclick="setFilter('later',this)">Coming later</button>
     </div>
   </div>
 
@@ -3041,6 +3045,7 @@ function buildMarquee() {
 function renderGrid() {
   const grid = document.getElementById('novelGrid');
   document.getElementById('novelCount').textContent = `${NOVELS.length} novels`;
+  try { _refreshFilterTags(); } catch (e) {}
 
   grid.innerHTML = NOVELS.map((n, idx) => {
     const title = n.titles.en;
@@ -3054,7 +3059,7 @@ function renderGrid() {
     if (isIdea) {
       lockOverlay = `<div class="card-lock-overlay">
         <div class="card-lock-icon">💭</div>
-        <div class="card-lock-label">Idea — Tap to preview</div>
+        <div class="card-lock-label">Coming later</div>
       </div>`;
     } else if (isComing) {
       lockOverlay = `<div class="card-lock-overlay">
@@ -3064,9 +3069,7 @@ function renderGrid() {
     }
 
     // Footer button
-    const footerBtn = isIdea
-      ? `<button class="card-read-btn">Preview</button>`
-      : isLocked
+    const footerBtn = isLocked
       ? `<button class="card-read-btn disabled" disabled>Coming Soon</button>`
       : `<button class="card-read-btn">${'Read Now'}</button>`;
 
@@ -3075,7 +3078,7 @@ function renderGrid() {
       ? `<div class="card-idea-note">💡 ${n.ideaNote}</div>` : '';
 
     return `
-    <div class="novel-card${isLocked ? ' is-locked' : ''}${isIdea ? ' is-idea' : ''}" onclick="${(isLocked && !isIdea) ? '' : `openNovel(${idx})`}">
+    <div class="novel-card${isLocked ? ' is-locked' : ''}${isIdea ? ' is-idea' : ''}" onclick="${isLocked ? '' : `openNovel(${idx})`}"${isLocked ? ' aria-disabled="true"' : ''}>
       <div class="card-cover" style="background:linear-gradient(135deg,${n.color},${n.coverAccent})">
         <div class="card-cover-title">${title}</div>
         ${lockOverlay}
@@ -3107,6 +3110,7 @@ function renderGrid() {
 // OPEN NOVEL
 // ═══════════════════════════════════════════════
 function openNovel(idx, _noPush) {
+  if (NOVELS[idx] && (NOVELS[idx].status === 'idea' || NOVELS[idx].status === 'coming-soon') && !document.body.classList.contains('admin-mode')) return;
   _ensureNovel(idx).catch(() => {});   // start loading this book's chapter text now
   currentNovel = idx;
   const novel = NOVELS[idx];
@@ -3292,7 +3296,7 @@ function openFromAddress() {
   const m = !id && location.hash.match(/^#novel-(.+?)(?:-ch(\d+))?$/);
   if (m) { id = m[1]; ch = m[2] ? parseInt(m[2], 10) : NaN; }
   if (!id) return false;
-  const ni = NOVELS.findIndex(n => n.id === id && (!n.status || n.status === 'active' || n.status === 'idea'));
+  const ni = NOVELS.findIndex(n => n.id === id && (!n.status || n.status === 'active'));
   if (ni < 0) return false;
   openNovel(ni, true);
   const ci = ch - 1, c = NOVELS[ni].chapters[ci];
@@ -4877,6 +4881,28 @@ function clearSearch() {
   applyFilter('', activeFilter);
 }
 
+function _isLive(n) { return !n.status || n.status === 'active'; }
+function _filterMatch(n, f) {
+  const badge = (n.badge || '').toUpperCase();
+  if (f === 'all') return true;
+  if (f === 'new') return _isLive(n) && badge.includes('NEW');
+  if (f === 'complete') return _isLive(n) && badge.includes('COMPLETE');
+  if (f === 'ongoing') return _isLive(n) && !badge.includes('COMPLETE');
+  if (f === 'later') return n.status === 'idea' || n.status === 'coming-soon';
+  // old filter names still work
+  if (f === 'active') return _isLive(n);
+  return n.status === f;
+}
+function _refreshFilterTags() {
+  document.querySelectorAll('.filter-tag[data-f]').forEach(b => {
+    const f = b.dataset.f;
+    const c = NOVELS.filter(n => _filterMatch(n, f)).length;
+    b.style.display = (f === 'all' || c) ? '' : 'none';
+    let sp = b.querySelector('.ft-n');
+    if (!sp) { sp = document.createElement('span'); sp.className = 'ft-n'; b.appendChild(sp); }
+    sp.textContent = ' ' + c;
+  });
+}
 function setFilter(filter, btn) {
   activeFilter = filter;
   document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
@@ -4896,10 +4922,7 @@ function applyFilter(q, filter) {
     const genre = (n.genre || '').toLowerCase();
     const ideaNote = (n.ideaNote || '').toLowerCase();
     const matchQ = !q || title.includes(q) || desc.includes(q) || genre.includes(q) || ideaNote.includes(q);
-    const matchF = filter === 'all' ||
-      (filter === 'active' && (!n.status || n.status === 'active')) ||
-      (filter === 'coming-soon' && n.status === 'coming-soon') ||
-      (filter === 'idea' && n.status === 'idea');
+    const matchF = _filterMatch(n, filter);
     const show = matchQ && matchF;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
