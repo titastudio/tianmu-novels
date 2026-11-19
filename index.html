@@ -3093,7 +3093,7 @@ function renderGrid() {
         ${!isLocked ? `<div class="card-lastread" data-nid="${n.id}">${_cardReadLine(n)}</div>` : ''}
       </div>
       <div class="card-footer">
-        <div class="card-chapters">${isLocked ? '—' : n.chapters.length + ' ' + 'chapters'}</div>
+        <div class="card-chapters">${isLocked ? '—' : (n.chapters.length ? n.chapters.length + ' ' + 'chapters' : 'Coming soon')}</div>
         <div style="display:flex;align-items:center;gap:0.5rem">
           ${!isLocked ? `<button class="card-heart-btn ${getNovelLiked(idx)?'liked':''}" onclick="event.stopPropagation();toggleHeart(${idx},this)" title="Like this novel">
             <span class="heart-icon">${getNovelLiked(idx)?'❤️':'🤍'}</span>
@@ -4887,8 +4887,9 @@ function _filterMatch(n, f) {
   if (f === 'all') return true;
   if (f === 'new') return _isLive(n) && badge.includes('NEW');
   if (f === 'complete') return _isLive(n) && badge.includes('COMPLETE');
-  if (f === 'ongoing') return _isLive(n) && !badge.includes('COMPLETE');
-  if (f === 'later') return n.status === 'idea' || n.status === 'coming-soon';
+  const hasCh = (n.chapters || []).length > 0;
+  if (f === 'ongoing') return _isLive(n) && hasCh && !badge.includes('COMPLETE');
+  if (f === 'later') return n.status === 'idea' || n.status === 'coming-soon' || (_isLive(n) && !hasCh);
   // old filter names still work
   if (f === 'active') return _isLive(n);
   return n.status === f;
