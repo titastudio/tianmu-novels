@@ -9,7 +9,7 @@ content/
   catalog.json                 ← every novel and chapter list, no chapter text (for a fast start)
   novels/
     index.json                 ← which novels appear, in what order
-    two-hundred-miles-an-hour.json
+    322.json
     the-softest-kind-of-love.json
     …                          ← one file per novel: info, front matter, all chapters
 ```
@@ -48,7 +48,7 @@ Each chapter has a **type** (chapter editor → Chapter type). Use **Chapter** f
 
 Live site: **https://titastudio.github.io/tianmu-novels/** (repo: `titastudio/tianmu-novels`).
 
-- Every novel and chapter has its own shareable link, e.g. `…/tianmu-novels/?novel=song-of-clouds` and `…/tianmu-novels/?novel=song-of-clouds&ch=41`. Old `#novel-…` links still work.
+- Every novel and chapter has its own shareable link, e.g. `…/tianmu-novels/?novel=song-of-clouds` and `…/tianmu-novels/?novel=song-of-clouds&ch=41`.
 - `sitemap.xml` lists the home page, every live novel and every published chapter, all on the address above. **Download content files** in the admin panel always rebuilds it with the right address, even from a preview copy. Upload it to the top of the repo next to `index.html`.
 - Submit `https://titastudio.github.io/tianmu-novels/sitemap.xml` in Google Search Console (add the site as a URL-prefix property for `https://titastudio.github.io/tianmu-novels/`).
 - `robots.txt` is included and correct, but search engines only read robots.txt from the root of the domain (`https://titastudio.github.io/robots.txt`), which belongs to a separate repo named `titastudio.github.io`. If you ever make that repo, copy this robots.txt into it. Until then nothing is blocked, so the site is still crawled normally.

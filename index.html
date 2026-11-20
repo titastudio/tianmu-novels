@@ -940,20 +940,6 @@ body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
   margin: 0.1rem 0.2rem 0.1rem 0;
 }
 .char-tag-row { display: flex; flex-wrap: wrap; gap: 0.2rem; margin-top: 0.3rem; }
-.char-desc { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.9rem; color: #6a5a40; line-height: 1.5; }
-.ch-hidden-badge {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: #e8d060;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.15rem 0.5rem;
-  margin-left: 0.5rem;
-}
 /* Admin toggle switch */
 .admin-toggle-row {
   display: flex;
@@ -1723,7 +1709,6 @@ body.dark-read .fm-block-title { color: var(--cream-dark); }
 body.dark-read .char-card { background: #252018; border-color: #2a2418; }
 body.dark-read .char-card-header { background: #252018; }
 body.dark-read .char-name { color: var(--cream-dark); }
-body.dark-read .char-desc { color: #7a6a50; }
 body.dark-read .char-field-val { color: #c0b0a0; }
 body.dark-read .char-badge { background: #1a1610; border-color: #554433; color: var(--coral); }
 body.dark-read .char-field-label { color: var(--olive-light); }
@@ -3289,12 +3274,10 @@ function _setPageMeta(title, desc, path) {
   }
 }
 function _setLibraryMeta() { _setPageMeta(SITE_CONFIG.siteTitle, SITE_CONFIG.siteTitle + ' — ' + SITE_CONFIG.heroSub, ''); }
-// Open the novel/chapter named in the address (also understands the old #novel-id-chN links)
+// Open the novel/chapter named in the address
 function openFromAddress() {
   const q = new URLSearchParams(location.search);
-  let id = q.get('novel'), ch = parseInt(q.get('ch') || '', 10);
-  const m = !id && location.hash.match(/^#novel-(.+?)(?:-ch(\d+))?$/);
-  if (m) { id = m[1]; ch = m[2] ? parseInt(m[2], 10) : NaN; }
+  const id = q.get('novel'), ch = parseInt(q.get('ch') || '', 10);
   if (!id) return false;
   const ni = NOVELS.findIndex(n => n.id === id && (!n.status || n.status === 'active'));
   if (ni < 0) return false;
@@ -5261,7 +5244,6 @@ async function _fetchAllCommentsAdmin() {
     (rows || []).map(c => ({ ...c, novel_id, approved: true })));
 }
 
-// Legacy compat shims (used by renderInsights)
 function getComments(novelId) {
   if (!_commentsCache[novelId]) _commentsCache[novelId] = _readAllComments()[novelId] || [];
   return _commentsCache[novelId];
@@ -5402,7 +5384,6 @@ function renderInsights() {
   }, 0);
   const totalLikes = NOVELS.reduce((s,n,i) => s + getHeartCount(i), 0);
   let totalComments = 0;
-  let pendingComments = 0;
   NOVELS.forEach(n => {
     // Hearts and comments live in each reader's browser — these are this device's only
     totalComments += getComments(n.id).length;
@@ -5634,7 +5615,6 @@ function _applyData(d) {
 // whole library at once. Chapter text loads in the background, in parallel, and is cached
 // by the browser per file version, so a refresh doesn't download it again.
 const _P_CATALOG = `${_CONTENT_DIR}/catalog.json`;
-let _fullLoad = Promise.resolve();
 const _novelLoads = {};
 function _mergeNovel(lite, full) {
   const keep = { _file: lite._file, _ver: lite._ver };
@@ -5657,7 +5637,6 @@ function _ensureNovel(i) {
 function _ensureAll() { return Promise.all(NOVELS.map((n, i) => _ensureNovel(i).catch(e => console.warn(e)))); }
 
 async function loadSavedData() {
-  try { localStorage.removeItem('tm_site_data_v2'); localStorage.removeItem('tm_github_v1'); } catch(e) {}   // old versions
   try {
     const [site, cat] = await Promise.all([_fetchJSON(_P_SITE), _fetchJSON(_P_CATALOG).catch(() => null)]);
     let novels;
