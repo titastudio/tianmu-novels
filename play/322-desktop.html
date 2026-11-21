@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>322 · Little Finger · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* 322 · desktop · "Little Finger"
+   Serafina's office computer in the garage under the railway bridge, Sunday 26 February to Saturday 11 March 2023.
+   Canon: Ch8 (5:52 "Wait for me", no phone, "I'm choosing twelve"; Sat 4 Mar the Needle, splitter cracked,
+   less than a metre, Aurelia's "When you can tell me, tell me", four tenths quicker in the afternoon; the mug upside down;
+   Fri 10 Mar the blank Monza postcard, his name only; 11:20 p.m. he's back; "Next time, write something"),
+   Ch9 (Sat 11 Mar 10:16 the glovebox, the ruby from Antwerp, a speech in four parts, the little finger,
+   the silver ring on her dressing table; 11:07 the Bureau form, "intended marriage"). Saved as GUARD (LIFTS). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: '322',
+  title: '322 · Little Finger',
+  bookUrl: '../../?novel=322',
+  owner: 'Serafina Song',
+  me: { photo: 'img/av-serafina.webp' },
+  wall: 'img/322-wall-desk.webp',
+  dark: true,
+  login: { pass: 'nonna', hint: 'Hint: the car she learned in.', atStart: true },
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'sheets', 'calendar'],
+  calIcon: [{ wd: 'Sun', dn: '26' }, { wd: 'Sat', dn: '4' }, { wd: 'Fri', dn: '10' }, { wd: 'Sat', dn: '11' }],
+  caption: { open: 'Sunday, the twenty-sixth of February. Eight minutes to six in the morning.<br><br>One small black bag. A coat over the passenger seat. A folder she was careful not to look at. No phone.<br><br>“Two weeks,” he said. She chose twelve, because it was a better number.<br><br>The grey estate has gone round the corner. She has gone into the little office behind the workbench, because she isn’t going to stand in a doorway for twelve days.' },
+  days: [
+    { date: 'Sun 26 Feb', dn: 26, start: '06:03', beats: [
+      { id: 'g1', target: 'thread:g', auto: true, autoDelay: 600 },
+      { id: 'tw', target: 'note:tw', auto: true, delay: 2400 },
+      { id: 'mo', target: 'thread:mo', unread: 'mo', time: '07:41', at: '07:41', delay: 2600, notify: { app: 'messages', title: 'Mouse', body: 'is he gone' } }
+    ] },
+    { date: 'Sat 4 Mar', dn: 4, start: '22:46', lead: 'The first test of the year. The circuit in the north.', beats: [
+      { id: 'sh', target: 'sheet:t', notify: { app: 'messages', title: 'Mouse', body: 'sent you the data. look at lap 3' } },
+      { id: 'au', target: 'thread:au', unread: 'au', time: '22:58', at: '22:58', delay: 2600, notify: { app: 'messages', title: 'Aurelia', body: 'The splitter is on my account. Don’t argue.' } },
+      { id: 'g2', target: 'thread:g', auto: true, delay: 2600 }
+    ] },
+    { date: 'Fri 10 Mar', dn: 10, start: '11:44', lead: 'Day twelve.', beats: [
+      { id: 's1', target: 'search:s1', auto: true, autoDelay: 600 },
+      { id: 'g3', target: 'thread:g', auto: true, delay: 2600 },
+      { id: 'g4', target: 'thread:g', unread: 'g', time: '23:58', at: '23:58', delay: 3200, notify: { app: 'messages', title: 'GUARD (LIFTS)', body: 'I read them.' } }
+    ] },
+    { date: 'Sat 11 Mar', dn: 11, start: '11:07', lead: 'Saturday. Bright and cold. Front left was low.', beats: [
+      { id: 'tw2', target: 'note:tw2', auto: true, autoDelay: 600 },
+      { id: 'au2', target: 'thread:au', unread: 'au', time: '11:19', at: '11:19', delay: 2400, notify: { app: 'messages', title: 'Aurelia', body: 'With what?' } },
+      { id: 'mo2', target: 'thread:mo', unread: 'mo', time: '11:26', at: '11:26', delay: 2600, notify: { app: 'messages', title: 'Mouse', body: 'WHAT' } }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'tw', day: 0, date: '06:05', stamp: '26 February 2023 at 06:05', title: 'Twelve', body: [],
+        play: [['t', 'Day 1. 5:52. He said wait for me.'], ['p', 900], ['t', '\nI said I’m not waiting in a cupboard.'], ['p', 1300], ['t', '\nI am sitting in the office at six in the morning looking at a door.'], ['p', 1500], ['t', '\n\nThings I am not going to do:'], ['p', 600], ['t', '\nStare at the door.'], ['p', 500], ['t', '\nAsk where.'], ['p', 500], ['t', '\nTurn his mug round.'], ['p', 1800], ['t', '\n\nThings I am going to do:'], ['p', 500], ['t', '\nGilded. Front geometry, pads, the rack.'], ['p', 500], ['t', '\nStop Mouse touching my shelves.'], ['p', 500], ['t', '\nWin on Saturday.']] },
+      { id: 'tw2', day: 3, date: '11:08', stamp: '11 March 2023 at 11:08', title: 'Thirteen', body: [],
+        play: [['t', 'Day 13.'], ['p', 800], ['t', '\n10:16. Front left at thirty. Should be thirty-two. Gauge in the glovebox.'], ['p', 1200], ['t', '\nBehind the handbook, next to the tissues and a map that has been in a war:'], ['p', 1600], ['t', '\na red velvet box gone pale at the corners.'], ['p', 1800], ['t', '\n\nRuby. Antwerp. Thin gold band.'], ['p', 900], ['t', '\nHe had a speech in four parts. I said yes before part two.'], ['p', 1100], ['t', '\nHe knelt in my oil anyway.'], ['p', 1400], ['t', '\n\nHe measured the silver ring on my dressing table.'], ['p', 900], ['t', '\nIt fits my little finger. Of course it does.'], ['p', 1600], ['t', '\n\nHe is at my desk filling in a form for intended marriage.'], ['p', 800], ['t', '\nThere’s an actual form.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Granny Shum', subject: 'Saturday', date: '24/02/2023', full: '24 February 2023 at 19:02', body: 'The gas-works bend is still new tarmac to the fifth lamp post.\n\nYour guard has not been. I noticed.\n\nNO GUNS NO DRUNKS NO CHILDREN NO CRYING.\n\nG.S.' },
+      { id: 'm1', day: 1, from: 'Northern Circuit', subject: 'Your test day: incident report', date: '19:20', full: 'Saturday 4 March 2023 at 19:20', body: 'Car 7, Team AURELIA.\n\n09:21, turn 9 (the Needle). Car ran wide under braking, kerb strike, light contact with the tyre-wall apron. No barrier damage. Driver uninjured.\n\nPlease confirm the car’s splitter has been inspected before your next session.\n\nCircuit Safety Office' }
+    ] },
+    messages: { threads: [
+      { id: 'g', day: 0, name: 'GUARD (LIFTS)', photo: 'img/av-haozhen.webp', time: '06:04', order: 50, items: [
+        { t: 'day', text: '<b>Sat 26 Nov 2022</b> 23:50' },
+        { t: 'in', text: 'It costs you a tenth.' },
+        { t: 'out', text: 'You lifted at the second lamp post.' },
+        { t: 'in', text: 'I don’t know what you mean.' },
+        { t: 'day', text: '<b>Thu 22 Dec 2022</b> 23:41' },
+        { t: 'out', text: 'Your mug is on the shelf.' },
+        { t: 'in', text: 'I know where my mug is.' },
+        { t: 'day', text: '<b>Sun 26 Feb</b> 06:04' },
+        { t: 'out', text: 'I’m not waiting in a cupboard.', live: true, play: [['p', 800], ['t', 'Come back'], ['p', 1200], ['d', 9], ['p', 700], ['t', 'I’m not waiting in a cupboard.']] },
+        { t: 'out', text: 'You don’t have your phone. I know. I’m writing anyway.', live: true, play: [['p', 1400], ['t', 'You don’t have your phone. I know. I’m writing anyway.']] },
+        { t: 'day', text: '<b>Wed 1 Mar</b> 01:12', day: 1 },
+        { t: 'out', text: 'Day 4. Mouse touched the shelves. I have moved them back.', day: 1 },
+        { t: 'day', text: '<b>Sat 4 Mar</b> 23:14', beat: 'g2', day: 1 },
+        { t: 'out', text: 'I went off at the Needle.', day: 1, live: true, play: [['p', 900], ['t', 'I went off at the Needle.']] },
+        { t: 'out', text: 'Less than a metre. Splitter’s cracked. I’m fine.', day: 1, live: true, play: [['p', 1200], ['t', 'Less than a metre. Splitter’s cracked. I’m fine.']] },
+        { t: 'out', text: 'Don’t ask me why.', day: 1, live: true, play: [['p', 1600], ['t', 'It was because'], ['p', 1400], ['d', 14], ['p', 900], ['t', 'Don’t ask me why.']] },
+        { t: 'out', text: 'Four tenths quicker in the afternoon. I didn’t look at the gate once.', day: 1, live: true, play: [['p', 1300], ['t', 'Four tenths quicker in the afternoon. I didn’t look at the gate once.']] },
+        { t: 'day', text: '<b>Fri 10 Mar</b> 11:49', beat: 'g3', day: 2 },
+        { t: 'out', text: 'You sent me a racetrack with nothing written on it.', day: 2, live: true, play: [['p', 1000], ['t', 'You sent me a racetrack with nothing written on it.']] },
+        { t: 'out', text: 'I’ve put it by your mug.', day: 2, live: true, play: [['p', 1300], ['t', 'I’ve put it by your mug.']] },
+        { t: 'out', text: 'No. I’ve moved it. Grease.', day: 2, live: true, play: [['p', 1800], ['t', 'No. I’ve moved it. Grease.']], status: 'Delivered' },
+        { t: 'day', text: '<b>Fri 10 Mar</b> 23:58', beat: 'g4', day: 2 },
+        { t: 'in', text: 'I read them.', day: 2, live: true, wait: 600 },
+        { t: 'in', text: 'All of them. On the bench, while the kettle was on.', day: 2, live: true, wait: 1700 },
+        { t: 'out', text: 'You’re three metres away.', day: 2, live: true },
+        { t: 'in', text: 'I know. It’s easier to write it.', day: 2, live: true, wait: 2100 },
+        { t: 'in', text: 'Next time I’ll write something on the card.', day: 2, live: true, wait: 1600 },
+        { t: 'out', text: 'More than your name.', day: 2, live: true },
+        { t: 'in', text: 'I’ll try.', day: 2, live: true, wait: 1500 }
+      ] },
+      { id: 'mo', day: 0, name: 'Mouse', photo: 'img/av-mouse.webp', time: '07:41', order: 30, items: [
+        { t: 'day', text: '<b>Sun 26 Feb</b> 07:41', beat: 'mo' },
+        { t: 'in', text: 'is he gone', live: true, wait: 300 },
+        { t: 'out', text: 'Twelve days.', live: true },
+        { t: 'in', text: 'ok', live: true, wait: 1400 },
+        { t: 'in', text: 'i’m coming over to do your shelves', live: true, wait: 1300 },
+        { t: 'out', text: 'Touch my shelves and I’ll put your screens in the parts washer.', live: true },
+        { t: 'in', text: 'coming over', live: true, wait: 1600 },
+        { t: 'day', text: '<b>Sat 4 Mar</b> 22:44', day: 1 },
+        { t: 'in', text: 'sent you the data. look at lap 3', day: 1 },
+        { t: 'in', text: 'you braked 22 metres late at the Needle. you never brake late at the Needle', day: 1 },
+        { t: 'day', text: '<b>Sat 11 Mar</b> 11:26', beat: 'mo2', day: 3 },
+        { t: 'in', text: 'WHAT', day: 3 },
+        { t: 'in', text: 'aurelia says ring', day: 3, live: true, wait: 900 },
+        { t: 'in', text: 'on your LITTLE FINGER', day: 3, live: true, wait: 1100 },
+        { t: 'out', text: 'He measured the silver one on my dressing table.', day: 3, live: true },
+        { t: 'in', text: 'he measured the wrong ring', day: 3, live: true, wait: 1500 },
+        { t: 'out', text: 'He measured the right ring. It just fits a different finger.', day: 3, live: true },
+        { t: 'in', text: 'that is the most him thing i have ever heard', day: 3, live: true, wait: 1600 },
+        { t: 'in', text: 'congratulations. i’m still doing your shelves', day: 3, live: true, wait: 1300 }
+      ] },
+      { id: 'au', day: 0, name: 'Aurelia', photo: 'img/av-aurelia.webp', time: 'Feb', order: 20, items: [
+        { t: 'day', text: '<b>Thu 23 Feb</b> 20:15' },
+        { t: 'in', text: 'Saturday week. I’ll do the clipboard. Camel coat, don’t laugh.' },
+        { t: 'day', text: '<b>Sat 4 Mar</b> 22:58', beat: 'au', day: 1 },
+        { t: 'in', text: 'The splitter is on my account. Don’t argue.', day: 1 },
+        { t: 'in', text: 'And what I said by the tyres stands. When you can tell me, tell me.', day: 1, live: true, wait: 1500 },
+        { t: 'out', text: 'And if I never can?', day: 1, live: true, play: [['p', 1100], ['t', 'And if I never can?']] },
+        { t: 'in', text: 'Then I’ll pay for the splitter. And wait anyway.', day: 1, live: true, wait: 2000 },
+        { t: 'day', text: '<b>Sat 11 Mar</b> 11:19', beat: 'au2', day: 3 },
+        { t: 'out', text: 'He asked.', day: 3 },
+        { t: 'in', text: 'With what?', day: 3 },
+        { t: 'out', text: 'A ruby. From Antwerp. In his glovebox next to the tissues.', day: 3, live: true },
+        { t: 'in', text: 'Of course it was.', day: 3, live: true, wait: 1500 },
+        { t: 'in', text: 'Bring it to me. I want to see the claws.', day: 3, live: true, wait: 1200 },
+        { t: 'out', text: 'It’s on my little finger.', day: 3, live: true },
+        { t: 'in', text: 'Then I’ll reset it. Later. Wear it where it fits for now.', day: 3, live: true, wait: 2200 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Saturday 25 February', time: '21:30', q: 'brake pad compound bedding in procedure', results: [{ site: 'Motorsport Workshop', path: 'brakes', title: 'Bedding race pads properly', snip: 'Several moderate stops from speed, then a cool-down lap. Don’t sit with the brakes clamped hot.' }] },
+      { id: 's1', day: 2, dayLabel: 'Friday 10 March', time: '11:45', q: 'monza old banking', live: true, play: [['t', 'postmark milano how long'], ['p', 1200], ['d', 24], ['p', 600], ['t', 'monza old banking']], results: [
+        { site: 'Circuit Histories', path: 'italy', title: 'The banking at Monza', snip: 'Built in 1955, unused for racing since 1969. You can still walk up it on open days. The concrete curve rises higher than it looks in photographs.' },
+        { site: 'Travel Notes', path: 'lombardy', title: 'Monza from Milan in an afternoon', snip: 'A short train from the city. Go on a weekday afternoon when the park is quiet.' }
+      ] }
+    ] },
+    sheets: { items: [
+      { id: 't', day: 1, title: 'Test 4 Mar — Gilded (Mouse)', cols: ['Lap', 'Time', 'Needle brake', 'Min speed', 'Note'], rows: [
+        ['1', '2:04.81', 'board', '71 km/h', 'out lap'],
+        ['2', '1:57.92', 'board', '74 km/h', ''],
+        ['3', '2:11.60', '+22 m late', '—', 'off. kerb. splitter. < 1 m from wall'],
+        ['4', '2:26.04', '—', '—', 'in lap, slow'],
+        ['PM 1', '1:56.71', 'board', '75 km/h', 'new pads OK'],
+        ['PM 2', '1:56.12', 'board', '76 km/h', ''],
+        ['PM 3', '1:55.98', 'board', '76 km/h', 'PB by 0.40. didn’t look at the gate (A.)']
+      ] }
+    ] },
+    calendar: { year: 2023, month: 2, label: 'March', events: [
+      { d: 4, text: 'Test, north circuit' }, { d: 10, text: 'Twelve', red: true }, { d: 18, text: 'Granny Shum’s' }, { d: 25, text: 'Gearbox (Big Wu)' }
+    ] },
+    files: { folders: [
+      { name: 'Gilded', day: 0, items: [
+        { name: 'Setup — front geometry v3.pdf', kind: 'pdf', date: '20 Feb 2023', body: ['GILDED · NO. 7 · SETUP', '', 'Front camber −3.1°. Toe 1 mm out. Rack: new mount.', '', 'Pads: compound B. Bed in before Saturday.'] },
+        { name: 'Splitter quote.pdf', kind: 'pdf', date: '6 Mar 2023', day: 1, body: ['Carbon splitter, front, car 7.', '', 'Account: Aurelia Chen. (She insisted.)'] }
+      ] },
+      { name: 'Team', day: 0, items: [
+        { name: 'Sponsor deck 2023.pdf', kind: 'pdf', date: '9 Jan 2023', body: ['TEAM AURELIA · SERAFINA SONG · NUMBER 7', '', 'Season plan. Asian series. Northern circuit opener in April.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4000,
+    caption: 'At nineteen minutes to three they were meant to be going for lunch, and got as far as the end of the alley.<br><br>“I had a plan,” he said. “It had four parts. You were supposed to let me finish.”<br><br>“Save the third part for the wedding,” said Serafina.<br><br>“And the fourth?”<br><br>“Especially the fourth.”'
+  }
+});
+
+</script>
+</body>
+</html>

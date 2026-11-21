@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>The Ghost Surgeon · Star Sapphire · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* The Ghost Surgeon · desktop · "Star Sapphire"
+   Xing Yue's laptop, Saturday 13 April to Sunday 30 June 2024.
+   Canon: Ch15 (the broken necklace mended in gold in Aurelia's window; second week of June; a star sapphire, grey-blue,
+   a narrow plain gold band, nothing to catch in a glove; Enzo, three weeks, two for double; "I shan’t tell Elowen";
+   carried nine days in grey silk; 1 July resident on Professor Liao's team, seven, not his; Liao in the lift;
+   "I want to see it when nobody’s there"; "You’re never off on a Sunday." "I’ll meet you."; he swapped; five to seven
+   at the garden gate behind the old block, the camphor tree, the koi; measured her finger with thread in April while
+   she slept; the gold hook in her locker, third from the end on the left, the porters on Friday). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'the-ghost-surgeon',
+  title: 'The Ghost Surgeon · Star Sapphire',
+  bookUrl: '../../?novel=the-ghost-surgeon',
+  owner: 'Wang Xing Yue',
+  me: { photo: 'img/av-xing-yue.webp' },
+  wall: 'img/the-ghost-surgeon-wall-desk.webp',
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar', 'sheets'],
+  calIcon: [{ wd: 'Sat', dn: '13' }, { wd: 'Wed', dn: '12' }, { wd: 'Fri', dn: '28' }, { wd: 'Sun', dn: '30' }],
+  caption: { open: 'April. 14 Banyan Terrace. Two in the morning.<br><br>They have been married since a Friday in August, at a registry, with a plain band from a shop on Harbour Road. In September he told a room full of her family that he was her husband.<br><br>He would like to ask her again. In front of everyone. He has had it in his head for a year.<br><br>She is asleep, talking to somebody in a dream. He has a piece of thread.' },
+  days: [
+    { date: 'Sat 13 Apr', dn: 13, start: '02:06', beats: [
+      { id: 't', target: 'note:t', auto: true, autoDelay: 500 },
+      { id: 's1', target: 'search:s1', auto: true, delay: 2400 }
+    ] },
+    { date: 'Wed 12 Jun', dn: 12, start: '22:31', lead: 'The second week of June.', beats: [
+      { id: 'au', target: 'mail:au', mailUnread: 'au', notify: { app: 'mail', title: 'Aurelia Chen', body: 'Your commission' } },
+      { id: 'el', target: 'thread:el', unread: 'el', time: '22:44', at: '22:44', delay: 2600, notify: { app: 'messages', title: 'Elara', body: 'ok so the 84 year old in bed 6 asked for a THIRD pudding' } },
+      { id: 'r', target: 'sheet:r', auto: true, delay: 2600 }
+    ] },
+    { date: 'Fri 28 Jun', dn: 28, start: '17:42', lead: 'Two days.', beats: [
+      { id: 'po', target: 'mail:po', mailUnread: 'po', notify: { app: 'mail', title: 'Porters’ Lodge, City Hospital', body: 'Re: residents’ changing room, seven' } },
+      { id: 'sw', target: 'mail:sw', mailUnread: 'sw', delay: 2400, notify: { app: 'mail', title: 'Surgical Rota Office', body: 'Swap confirmed: Sunday 30 June' } },
+      { id: 'el2', target: 'thread:el', unread: 'el', time: '18:05', at: '18:05', delay: 2600, notify: { app: 'messages', title: 'Elara', body: 'Liao cornered you in the lift didn’t he' } }
+    ] },
+    { date: 'Sun 30 Jun', dn: 30, start: '06:41', lead: 'The last night of her intern year.', beats: [
+      { id: 'el3', target: 'thread:el', unread: 'el', time: '06:44', at: '06:44', notify: { app: 'messages', title: 'Elara', body: 'LAST SHIFT DONE' } },
+      { id: 'su', target: 'note:su', auto: true, delay: 2600 }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 't', day: 0, date: '02:07', stamp: '13 April 2024 at 02:07', title: 'Thread', body: [],
+        play: [['t', 'Left hand, fourth finger, below the knuckle. Thread round once, marked, measured against the rule.'], ['p', 1100], ['t', '\n52 mm.'], ['p', 900], ['t', ' Twice. Same.'], ['p', 1400], ['t', '\n\nShe said, asleep: “That one’s asleep, look, by the stone.”'], ['p', 1300], ['t', '\nI don’t know which one.'], ['p', 1600], ['t', '\n\nStone: star sapphire. Grey-blue. Not large.'], ['p', 700], ['t', '\nBand: narrow, plain gold. Nothing to catch in a glove.'], ['p', 900], ['t', '\nSmall enough for a surgeon’s hand.'], ['p', 1500], ['t', '\n\nDay: the morning her intern year ends. The old garden behind the old block. She’s never been in.']] },
+      { id: 'su', day: 3, date: '06:46', stamp: '30 June 2024 at 06:46', title: 'Sunday', body: [],
+        play: [['t', '06:46. Garden gate behind the old block.'], ['p', 900], ['t', '\nIt rained in the night. Camphor dripping. Pond. Koi: orange, white, gold.'], ['p', 1300], ['t', '\nBox: inside left pocket. Grey silk.'], ['p', 1100], ['t', '\n\nShe will talk. Let her.'], ['p', 1200], ['t', '\nIf her lace is undone, tie it.'], ['p', 1600], ['t', '\n\nThe dot has crossed the bridge.'], ['p', 1400], ['t', '\nIt’s turning up the hill.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Professor Liao', subject: 'Resident appointments, colorectal and general', date: '05/04/2024', full: '5 April 2024 at 08:14', body: 'Wang,\n\nFor your information as associate consultant on 9B: the July residents on seven are confirmed. You will note one name.\n\nI read her Harbourside reports, her prize and her logbook. I took her in a week. I did not ask you, and I would like it kept that way.\n\nL.' },
+      { id: 'au', day: 1, from: 'Aurelia Chen', subject: 'Your commission', date: '22:20', full: 'Wednesday 12 June 2024 at 22:20', body: 'Dr. Wang,\n\nOne star sapphire, grey-blue, the kind with the star that slides across it under a light. One narrow plain gold band. Nothing that could catch in a glove. 52 mm, as measured, I am told, with a piece of thread.\n\nEnzo will set it. He wanted three weeks. You wanted two. It costs double, for rushing a genius, as discussed.\n\nStar and moon. Elara told Elowen what your name meant, and Elowen told me, and we both agreed it was the most nauseating thing we had ever heard.\n\nI shan’t tell Elowen. Not because you asked. Because it is the only time in ten years I will have known something about her family before she did.\n\nAnd when you do it again in front of everybody, I am making the bands. Both of them. Don’t argue.\n\nA.' },
+      { id: 'po', day: 2, beat: 'po', from: 'Porters’ Lodge, City Hospital', subject: 'Re: residents’ changing room, seven', date: '17:30', full: 'Friday 28 June 2024 at 17:30', body: 'Dr. Wang,\n\nDone. Third locker from the end on the left. Small gold hook inside the door at the top, where she will see it.\n\nWe did not ask what it was for. Mr. Kei says congratulations anyway.\n\nPorters’ Lodge' },
+      { id: 'sw', day: 2, beat: 'sw', from: 'Surgical Rota Office', subject: 'Swap confirmed: Sunday 30 June', date: '17:39', full: 'Friday 28 June 2024 at 17:39', body: 'Dr. Wang,\n\nYour swap for Sunday 30 June is confirmed. Dr. Zang will cover 9B.\n\nFor our records: this is the first swap you have requested since you joined the department.\n\nRota Office' }
+    ] },
+    messages: { threads: [
+      { id: 'el', day: 0, name: 'Elara', photo: 'img/av-elara.webp', time: 'Apr', order: 40, items: [
+        { t: 'day', text: '<b>Fri 12 Apr</b> 23:58' },
+        { t: 'in', text: 'home in ten. the ferry has a new deckhand and he has a cat on the boat. a CAT. on the BOAT. i asked if it gets seasick and he said only on tuesdays' },
+        { t: 'out', text: 'Is it Tuesday?' },
+        { t: 'in', text: 'it is FRIDAY xing yue' },
+        { t: 'day', text: '<b>Wed 12 Jun</b> 22:44', beat: 'el', day: 1 },
+        { t: 'in', text: 'ok so the 84 year old in bed 6 asked for a THIRD pudding', day: 1 },
+        { t: 'in', text: 'and i said i’d ask the doctor and he said you ARE the doctor and i said i’m a very junior doctor and he said then you won’t get in much trouble', day: 1, live: true, wait: 1200 },
+        { t: 'in', text: 'so he had the pudding', day: 1, live: true, wait: 1100 },
+        { t: 'out', text: 'Good.', day: 1, live: true, play: [['p', 900], ['t', 'Good.']] },
+        { t: 'in', text: 'that’s it? good?', day: 1, live: true, wait: 1500 },
+        { t: 'out', text: 'Very good.', day: 1, live: true },
+        { t: 'in', text: 'i love you. eighteen days left. i’m going to cry on the last one, i can feel it', day: 1, live: true, wait: 1800 },
+        { t: 'day', text: '<b>Fri 28 Jun</b> 18:05', beat: 'el2', day: 2 },
+        { t: 'in', text: 'Liao cornered you in the lift didn’t he. Dr. Sha saw. She said Liao was sucking a sweet AT you', day: 2 },
+        { t: 'out', text: 'He doesn’t want to hear one word from me about you.', day: 2, live: true },
+        { t: 'in', text: 'good or bad?', day: 2, live: true, wait: 1300 },
+        { t: 'out', text: 'Either.', day: 2, live: true },
+        { t: 'in', text: 'ok. sunday. i want to see the old garden before it’s mine. i’ve never once gone in, i’ve always been running', day: 2, live: true, wait: 1900 },
+        { t: 'in', text: 'you’re never off on a sunday though', day: 2, live: true, wait: 1100 },
+        { t: 'out', text: 'I’ll meet you.', day: 2, live: true, play: [['p', 1200], ['t', 'I’ll meet you.']] },
+        { t: 'day', text: '<b>Sun 30 Jun</b> 06:44', beat: 'el3', day: 3 },
+        { t: 'in', text: 'LAST SHIFT DONE', day: 3 },
+        { t: 'in', text: 'a lady gave me a knitted bookmark at 4am. it’s a cat with three ears. i think it’s meant to have two. i love it more than anything i own', day: 3, live: true, wait: 1300 },
+        { t: 'in', text: 'taxi’s on the bridge. are you actually there or are you on 9B pretending', day: 3, live: true, wait: 1500 },
+        { t: 'out', text: 'I’m at the gate.', day: 3, live: true, play: [['p', 800], ['t', 'I’m at the gate.']] },
+        { t: 'in', text: 'AT SEVEN ON A SUNDAY', day: 3, live: true, wait: 1200 },
+        { t: 'out', text: 'I swapped.', day: 3, live: true },
+        { t: 'in', text: 'you NEVER swap', day: 3, live: true, wait: 1100 }
+      ] },
+      { id: 'ay', day: 0, name: 'An Yu', photo: 'img/av-an-yu.webp', time: 'Apr', order: 20, items: [
+        { t: 'day', text: '<b>Sun 7 Apr</b> 20:10' },
+        { t: 'in', text: 'Nainai wants to know when you’re going to do it properly. Her words.' },
+        { t: 'out', text: 'June.' },
+        { t: 'in', text: 'She says June is too long. She also says don’t tell her I asked.' }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Friday 12 April', time: '23:40', q: 'ferry timetable sunday early', results: [{ site: 'Harbour Ferries', path: 'timetable', title: 'Sunday crossings', snip: 'First crossing 06:10. Every twenty minutes until nine.' }] },
+      { id: 's1', day: 0, dayLabel: 'Saturday 13 April', time: '02:12', q: 'ring size from circumference 52 mm', live: true, play: [['t', 'ring size from circumference 52 mm']], results: [
+        { site: 'Jewellers’ Reference', path: 'sizing', title: 'Converting a measured circumference to a ring size', snip: 'Measure the base of the finger, not the knuckle. Measure twice, at the end of the day if you can. Fingers swell in heat.' },
+        { site: 'Gemstone Notes', path: 'sapphire', title: 'Star sapphires: asterism explained', snip: 'Fine needles inside the stone reflect light in a six-rayed star that moves across the surface as the stone turns.' }
+      ] }
+    ] },
+    sheets: { items: [
+      { id: 'r', day: 1, title: 'Rota — late June (9B)', cols: ['Date', 'Day', 'Wang X.Y.', 'Note'], rows: [
+        ['24 Jun', 'Mon', 'Theatre', ''],
+        ['25 Jun', 'Tue', '9B', ''],
+        ['26 Jun', 'Wed', 'Theatre', ''],
+        ['27 Jun', 'Thu', 'On call', ''],
+        ['28 Jun', 'Fri', '9B', 'Porters re: locker'],
+        ['29 Jun', 'Sat', '9B', 'Her last night shift (Harbourside)'],
+        ['30 Jun', 'Sun', '9B → SWAP', 'Garden gate, 07:00'],
+        ['1 Jul', 'Mon', 'Theatre', 'Her first day, seven. Not my team.']
+      ] }
+    ] },
+    calendar: { year: 2024, month: 5, label: 'June', events: [
+      { d: 12, text: 'Harbour Road (A.C.)', day: 1 }, { d: 26, text: 'Collect (grey silk)', day: 1 }, { d: 29, text: 'Her last night shift' }, { d: 30, text: '07:00 · Garden gate', red: true, day: 2 }
+    ] },
+    files: { folders: [
+      { name: 'Clinical', day: 0, items: [
+        { name: 'M&M June.pdf', kind: 'pdf', date: '3 Jun 2024', body: ['MORBIDITY AND MORTALITY · 9B · JUNE', '', 'Three cases. Discussion Thursday, 07:30.'] }
+      ] },
+      { name: 'Personal', day: 0, items: [
+        { name: 'Registry, 11 Aug 2023.pdf', kind: 'pdf', date: '11 Aug 2023', body: ['CERTIFICATE OF MARRIAGE', '', 'WANG Xing Yue · LIN Elara', 'Witnesses: Mr. Yin. Sister Miao.', '', 'Date: Friday 11 August 2023.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'She walked round the pond and talked, about a cat with three ears and a third pudding and whether koi sleep, since they haven’t got eyelids, and he said, “Marry me again,” and she kept going for another sentence and a half.<br><br>Then she stopped, and turned, and he was on one knee on the wet path, holding out a box of grey silk.<br><br>“Yes. Yes, but I was saying about the koi—oh. Oh. Yes.”<br><br>Six thin lines of light slid across the stone when she held it up.'
+  }
+});
+
+</script>
+</body>
+</html>

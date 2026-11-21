@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Stay Behind Me · Every Word · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Stay Behind Me · phone · "Every Word"
+   Jun Hyuk holds Evangeline's phone, the small hours of Sunday 23 April 2023, the room over the Golden Nightingale,
+   the night he came back over the river after thirteen days.
+   Canon: Ch9 (four syllables in the shower, the spoon, "That's not a name. That's a sentence."), Ch10 (the ring with
+   the coordinates, the black thread, Sat 8 Apr the registry, Auntie Fen's freesias, Nam's three photographs, 4:03 a.m.,
+   "Come home", lunch on the ninth: Raiden's one question, her father holding the ring), Ch11 (thirteen days crossed off
+   Nam's calendar, the kettle left warm, honey, the cut lip, first "Husband", the old thread in a dated envelope,
+   rule 8 written a week after the wedding). Her new green phone is in Nam's jar; this is the old one. */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'stay-behind-me',
+  title: 'Stay Behind Me · Every Word',
+  bookUrl: '../../?novel=stay-behind-me',
+  battery: 34,
+  caption: {
+    open: 'The small hours of Sunday, the twenty-third of April. The room over the Golden Nightingale. Three locks done.<br><br>He came back over the river this morning after thirteen days, with honey and a split lip. At the corner table she called him husband for the first time, and he didn’t have a single word for it.<br><br>She is asleep now on the camp bed with the lamp on. He isn’t. He doesn’t know how.<br><br>Her phone has lit up twice on the crate beside her. She hardly ever speaks. He has always wondered where she keeps the rest.'
+  },
+  clock: { start: '01:52', date: 'Sunday 23 April' },
+  calIcon: { wd: 'Sun', dn: '23', wdLong: 'Sunday' },
+  lock: { code: '0904', wall: 'img/stay-behind-me-wall-phone.webp', hintAfter: 2, nudge: 'Not the seventh. The date on her papers.' },
+  home: {
+    wall: 'img/stay-behind-me-wall-phone.webp',
+    widgets: ['notes', 'weather:s', 'photo:s'],
+    weather: { city: 'River Bridge', temp: 14, cond: 'Light rain', hi: 19, lo: 13, night: true },
+    apps: ['calendar', 'photos', 'clock', 'reminders', 'browser', 'settings', 'camera', 'weather'],
+    dock: ['phone', 'messages', 'notes'],
+    badges: {}
+  },
+  stubText: { settings: 'Language: two. One of them she has never spoken out loud.' },
+  me: { name: 'Evangeline Lin', photo: 'img/av-evangeline.webp', initials: 'E' },
+  contacts: [
+    { name: 'Jun Hyuk', photo: 'img/av-jun-hyuk.webp', initials: 'J', fav: true, thread: 'jh', phone: '6403 1190', notes: 'Papers: 11 March. Real birthday: ask Nam. (Nam says ask him.)' },
+    { name: 'Elowen', photo: 'img/av-elowen.webp', initials: 'E', fav: true, thread: 'el', phone: '9031 5521', sub: 'The shop' },
+    { name: 'Nam', photo: 'img/av-nam.webp', initials: 'N', fav: true, thread: 'nam', phone: '0571 3366 014', sub: 'Nam’s Noodles, 14 River Bridge Road' },
+    { name: 'Raiden', photo: 'img/av-raiden.webp', initials: 'R', thread: 'ra', phone: '6390 2212' },
+    { name: 'Baba', photo: 'img/av-lin-jian.webp', initials: 'B', thread: 'ba', phone: '2618 0001', sub: 'The Walled City' },
+    { name: 'Eliana', photo: 'img/av-eliana.webp', initials: 'E', phone: '6115 2003' },
+    { name: 'Elara', photo: 'img/av-elara.webp', initials: 'E', phone: '6228 1199' },
+    { name: 'Ah Sim', photo: 'img/av-ah-sim.webp', initials: 'A', phone: '2618 0003' },
+    { name: 'Uncle Mok', initials: 'M', phone: '2618 0002' },
+    { name: 'Auntie Fen', photo: 'img/av-auntie-fen.webp', initials: 'F', thread: 'fen', phone: '0571 3301 288', sub: 'Chicken stall, by the bus stand' },
+    { name: 'Inspector Song', photo: 'img/av-song-wei-long.webp', initials: 'S', phone: '9902 4417', notes: 'Jun Hyuk gave me this number. Ring if anything happens. Don’t cross the river alone.' }
+  ],
+  clockApp: { alarms: [{ time: '04:40', label: 'Bus north', days: 'Sun, Wed', on: true }, { time: '05:30', label: 'Market', days: 'Tue, Sat', on: true }] },
+
+  messages: {
+    placeholder: 'Text Message',
+    threads: [
+      { id: 'el', name: 'Elowen', photo: 'img/av-elowen.webp', initials: 'E', color: 'linear-gradient(180deg,#e7a9a9,#b85c5c)', time: '01:47', order: 50, items: [
+        { t: 'day', text: '<b>Tue 11 Apr</b> 18:30' },
+        { t: 'in', text: 'You took twenty-four orchids up the hill by yourself again. The stall man told me.' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Are you eating up there?' },
+        { t: 'out', text: 'Nam.' },
+        { t: 'in', text: 'That is a person, sweetheart, not a meal.' },
+        { t: 'day', text: '<b>Sat 15 Apr</b> 21:02' },
+        { t: 'in', text: 'Baba says you were wearing a ring at lunch on the ninth.' },
+        { t: 'in', text: 'I’m not asking. I’m just saying I noticed that Baba noticed.' },
+        { t: 'out', text: 'Thank you for not asking.' },
+        { t: 'day', text: '<b>Today</b> 01:44' },
+        { t: 'in', text: 'Nam told Mok, and Mok told Ah Sim, and Ah Sim told me. Your friend is back.' },
+        { t: 'in', text: 'Are you all right?' }
+      ] },
+      { id: 'nam', name: 'Nam', photo: 'img/av-nam.webp', initials: 'N', time: 'Yesterday', order: 40, items: [
+        { t: 'day', text: '<b>Mon 10 Apr</b> 06:12' },
+        { t: 'in', text: 'Kettle’s warm.' },
+        { t: 'day', text: '<b>Fri 14 Apr</b> 06:05' },
+        { t: 'in', text: 'Kettle’s warm. You don’t have to come down. It’s warm anyway.' },
+        { t: 'day', text: '<b>Wed 19 Apr</b> 22:40' },
+        { t: 'in', text: 'Ten days. You have been in my shop eleven of them.' },
+        { t: 'out', text: 'Sorry.' },
+        { t: 'in', text: 'Don’t be sorry. Eat the second bowl.' },
+        { t: 'day', text: '<b>Yesterday</b> 15:10' },
+        { t: 'in', text: 'You knocked your chair over. Nobody has knocked a chair over in my shop since 1991.' },
+        { t: 'in', text: 'It was the right day for it.' }
+      ] },
+      { id: 'jh', name: 'Jun Hyuk', photo: 'img/av-jun-hyuk.webp', initials: 'J', time: '09/04', order: 30, items: [
+        { t: 'day', text: '<b>Tue 8 Nov 2022</b> 05:58' },
+        { t: 'in', text: 'Pillar.' },
+        { t: 'out', text: 'I see you.' },
+        { t: 'day', text: '<b>Sat 26 Nov 2022</b> 06:40' },
+        { t: 'in', text: 'Twenty-four orchids is too many for one person.' },
+        { t: 'out', text: 'There are two people.' },
+        { t: 'day', text: '<b>Sun 4 Dec 2022</b> 22:31' },
+        { t: 'in', text: 'I folded them in thirds.' },
+        { t: 'out', text: 'I know. I checked.' },
+        { t: 'day', text: '<b>Sun 9 Apr</b> 04:09' },
+        { t: 'out', text: 'Come home.', status: 'Delivered' }
+      ] },
+      { id: 'ba', name: 'Baba', photo: 'img/av-lin-jian.webp', initials: 'B', time: '10/04', order: 20, items: [
+        { t: 'day', text: '<b>Mon 10 Apr</b> 09:00' },
+        { t: 'in', text: 'Is the new phone working?' },
+        { t: 'out', text: 'It is somewhere very safe.' },
+        { t: 'in', text: 'Good. Keep it charged.' },
+        { t: 'in', text: 'Your mother would have liked the ring.' }
+      ] },
+      { id: 'ra', name: 'Raiden', photo: 'img/av-raiden.webp', initials: 'R', time: '09/04', order: 15, items: [
+        { t: 'day', text: '<b>Sun 9 Apr</b> 21:15' },
+        { t: 'in', text: 'Happy birthday, twin. One cake each, as usual.' },
+        { t: 'in', text: 'I asked my one question. I’m not asking a second.' },
+        { t: 'out', text: 'Happy birthday.' },
+        { t: 'out', text: 'Thank you for sitting next to me. You always do.' }
+      ] },
+      { id: 'fen', name: 'Auntie Fen', photo: 'img/av-auntie-fen.webp', initials: 'F', time: '08/04', order: 10, items: [
+        { t: 'day', text: '<b>Sat 8 Apr</b> 12:20' },
+        { t: 'in', text: 'Cut the stems under water and change it every day. Freesias last a week if you’re kind to them.' },
+        { t: 'in', text: 'Your husband too.' },
+        { t: 'out', text: 'Thank you for shutting the stall.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    widget: 'th',
+    items: [
+      { id: 'th', group: 'Today', when: '00:58', stamp: '23 April 2023 at 00:58', title: 'Thirteen',
+        body: [
+          'Sun 9. 4:03. Boots by the door. A copy of the numbers in my ring, on the table, under a note.',
+          'He said wife at the door. I said come home.',
+          'Lunch. Raiden saw it before the soup. One question: is he kind to you. Yes.',
+          'Baba held my hand with the ring between his fingers. He didn’t ask who.',
+          '',
+          'Mon 10. Nam left the kettle warm.',
+          'Tue 11. Market. Twenty-four moth orchids up the hill on my own. Eleven minutes. Same as when he carried them.',
+          'Wed 12. Crossed it through on Nam’s calendar.',
+          'Thu 13. Stopped checking the calendar. Kept listening for the back step.',
+          'Fri 14. Changed the water in the freesias. Cut the stems under water.',
+          'Sat 15. Wrote rule 8 on the menu, under his seven. Small, so it fits.',
+          'Sun 16. Nam left the kettle on again. Pretended it was for him.',
+          'Mon 17. Rain. Three locks. Lamp on.',
+          'Tue 18. Market. Bus back. Lamp on.',
+          'Wed 19. Ten days. Second bowl, because Nam said.',
+          'Thu 20. Didn’t sleep.',
+          'Fri 21. Nam has stopped pretending not to watch me.',
+          '',
+          'Sat 22. The bell over the door.',
+          'Thinner. Hair longer. Dusty up to the knees. Cut lip. He said it was small.',
+          'He brought honey. He remembered.',
+          'Said it. (See the other note.)'
+        ] },
+      { id: 'hu', group: 'Previous 30 Days', when: '12/04/2023', stamp: '12 April 2023 at 23:40', title: 'Husband',
+        body: [
+          'He practised four syllables in the shower. This one’s two. I can manage two.',
+          '',
+          'Husband.',
+          '~~Husband?~~ Not a question.',
+          'My husband.',
+          '~~Jun Hyuk, my husband~~ too long.',
+          '',
+          'Not at the door. He’ll be tired at the door.',
+          'At the table, when he sits down. Across from him. Hands on the table.',
+          'If it gets stuck, say his name first and then it.',
+          '',
+          'Husband.',
+          'Husband.',
+          'Husband.',
+          '',
+          '(Writing it is easy.)'
+        ] },
+      { id: 'ru', group: 'Previous 30 Days', when: '15/04/2023', stamp: '15 April 2023 at 22:10', title: 'For the menu',
+        body: [
+          'Under his seven. Small, so it fits.',
+          '',
+          '7. Don’t come back.  (His rule. I broke it.)',
+          '',
+          '8. If you’re going to be late, say so. If I’ve been worried, I’ll say so.',
+          '',
+          'Thirteen days is late.'
+        ] },
+      { id: 'wo', group: 'Earlier', when: '27/10/2022', stamp: '27 October 2022 at 23:15', title: 'Things he says',
+        body: [
+          '“If you want to live, stay behind me.”',
+          '“That’s not a name. That’s a sentence.”',
+          '“You can.”',
+          '“Can I kiss you?” (Sunday. Towels in thirds.)',
+          '“Wife.”',
+          '“I will come back.”',
+          '',
+          'He’ll talk to cats, and to the man at the petrol station.',
+          'When something matters he goes quiet, so I write down what he says.'
+        ] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Tuesday 11 April', time: '22:04', q: 'how long do freesias last in water', results: [
+      { site: 'Florist’s Notebook', path: 'cut flowers', title: 'Keeping freesias', snip: 'About a week. Recut the stems at an angle and change the water daily. Keep them out of the sun.' }] },
+    { day: 'Monday 17 April', time: '03:20', q: 'how many days to cross the river on foot and back', results: [
+      { site: 'Border Region Travel', path: 'routes', title: 'Old customs road: distances', snip: 'The old road is longer than it looks on the map. Allow several days in each direction.' }] },
+    { day: 'Saturday 22 April', time: '16:02', q: 'cut lip healing time', results: [
+      { site: 'Family Health', path: 'first aid', title: 'Cuts to the lip', snip: 'Small cuts heal in about a week. Keep them clean. If it was deep, or it reopens, see someone.' }] },
+    { day: 'Saturday 22 April', time: '22:38', q: 'how to tie a thread so it won’t come undone', results: [
+      { site: 'Needle & Thread', path: 'knots', title: 'A knot that holds', snip: 'A double overhand, pulled snug and the ends tucked under, will hold on a finger for weeks.' }] }
+  ] },
+
+  photos: { widget: 0, widgetLabel: 'Today', items: [
+    { src: 'img/stay-behind-me-honey.webp', date: '22 April 2023', time: '15:40', fav: true },
+    { src: 'img/stay-behind-me-orchid.webp', date: '11 April 2023', time: '07:12' },
+    { src: 'img/stay-behind-me-g-registry-3.webp', date: '8 April 2023', time: '11:03', fav: true },
+    { src: 'img/stay-behind-me-g-registry-2.webp', date: '8 April 2023', time: '11:02' },
+    { src: 'img/stay-behind-me-g-registry-1.webp', date: '8 April 2023', time: '11:01' },
+    { src: 'img/stay-behind-me-g-evangeline-stall.webp', date: '4 March 2023', time: '09:20' }
+  ] },
+
+  phone: {
+    voicemail: [{ name: 'Baba', photo: 'img/av-lin-jian.webp', when: '07/04/2023', len: '0:19', unheard: true, transcript: 'It’s your father. The phone is for when you’re away from home. Keep it charged. It was a good lunch. I keep this day with you. I always will.' }],
+    recents: [
+      { name: 'Elowen', photo: 'img/av-elowen.webp', when: '15/04/2023', kind: 'mobile', dayLabel: 'Saturday 15 April', log: [{ time: '21:10', what: 'Incoming Call · 6 min' }] },
+      { name: 'Nam', photo: 'img/av-nam.webp', when: '09/04/2023', kind: 'work', dayLabel: 'Sunday 9 April', log: [{ time: '04:31', what: 'Outgoing Call · 1 min' }] },
+      { name: 'Baba', photo: 'img/av-lin-jian.webp', miss: true, when: '07/04/2023', kind: 'home', dayLabel: 'Friday 7 April', log: [{ time: '19:02', what: 'Missed Call', miss: true }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Black thread. More.', due: 'Today' },
+    { text: 'Envelope for the old one. Write the date.', due: 'Today' },
+    { text: 'Market, Tuesday', due: 'Tuesday 25 April' },
+    { text: 'Green phone: charge it (it’s in the jar)', done: false }
+  ] },
+  calendar: { today: [{ title: 'Market', time: 'Tue, Sat' }], later: [{ title: 'Elowen, lunch', time: 'Sat 29 April' }] },
+
+  beats: [
+    { id: 'el', onLock: true, target: 'thread:el', banner: { app: 'messages', title: 'Elowen', body: 'Nam told Mok, and Mok told Ah Sim, and Ah Sim told me. Your friend is back.', when: '8m ago', open: 'thread:el' } },
+    { id: 'th', target: 'note:th', delay: 1600, hold: 8000 },
+    { id: 'hu', target: 'note:hu', delay: 1200, hold: 9000 },
+    { id: 'nam', target: 'thread:nam', at: '02:01', unread: 'nam', time: '02:01', push: [{ t: 'day', text: '<b>Today</b> 02:01' }, { t: 'in', text: 'Your light’s still on over the bar. If that ox is sitting up like a guard dog, make him lie down.' }], banner: { app: 'messages', title: 'Nam', body: 'If that ox is sitting up like a guard dog, make him lie down.', open: 'thread:nam' }, delay: 3000 },
+    { id: 'vm', target: 'voicemail', badge: { phone: 1 }, at: '02:03', delay: 2200 }
+  ],
+  end: {
+    delay: 3600, at: '02:07', capDelay: 1800,
+    caption: 'He put the phone back on the crate, face down, the way she always left it.<br><br>She stirred and opened her eyes and found him sitting up with his boots on.<br><br>“Lie down,” she said.<br><br>Three days later she crossed out his rule nine on the back of Nam’s menu and wrote underneath it, small, so it fitted: <i>When you’re home, let me look after you too.</i>'
+  }
+});
+
+</script>
+</body>
+</html>

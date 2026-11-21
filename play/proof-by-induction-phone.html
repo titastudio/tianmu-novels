@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Proof by Induction · Still Here · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Proof by Induction · phone · "Still Here"
+   Yu Jie holds Miles's phone, Monday 30 March 2026, the attic on Bell Street.
+   Canon: Ch23 (two cups, the tank, STILL HERE), Ch24 (the blanket, the plan without the award),
+   Ch25 (23:18 "I said no tonight" … "Not yet."), Ch27 (the suitcase, the attic, "went down to bring up the box"). */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'proof-by-induction',
+  title: 'Proof by Induction · Still Here',
+  bookUrl: '../../?novel=proof-by-induction',
+  battery: 23,
+  caption: {
+    open: 'Monday, the thirtieth of March. The attic over Ling’s bakery.<br><br>He walked a suitcase down the hill on a bicycle for her, and now he has gone down two steep flights to bring up the last box.<br><br>His phone is on her new desk, under the brass lamp with the green shade.<br><br>For eighteen days he didn’t send her anything. She wants to know what he did instead. She knows the code. It has been in the corner of his board all year.'
+  },
+  clock: { start: '15:12', date: 'Monday 30 March' },
+  calIcon: { wd: 'Mon', dn: '30', wdLong: 'Monday' },
+  lock: { code: '2006', wall: 'img/proof-by-induction-wall-phone.webp', hintAfter: 2, nudge: '20 JUNE — 16:00. The date he never rubs off.' },
+  home: {
+    wall: 'img/proof-by-induction-wall-phone.webp',
+    widgets: ['cal:s', 'photo:s', 'sugg'],
+    sugg: ['messages', 'notes', 'browser', 'photos'],
+    apps: ['calendar', 'photos', 'clock', 'weather', 'reminders', 'notes', 'camera', 'settings'],
+    dock: ['phone', 'browser', 'messages', 'mail'],
+    badges: {}
+  },
+  stubText: { mail: 'No new mail.' },
+  me: { name: 'Miles Wei', photo: 'img/av-miles.webp', initials: 'M' },
+  contacts: [
+    { name: 'Not Stuck', photo: 'img/av-yu-jie.webp', initials: 'Y', fav: true, thread: 'yj', phone: '6702 1593', notes: 'Sweets: the peach & strawberry ones. Tea: jasmine, strong. Uses the blue mug.' },
+    { name: 'Wei Lan', photo: 'img/av-wei-lan.webp', initials: 'W', fav: true, thread: 'wl', phone: '9318 4426', related: 'sister' },
+    { name: 'Ling Hao', photo: 'img/av-ling-hao.webp', initials: 'L', fav: true, thread: 'lh', phone: '6155 0413', sub: 'Office 413' },
+    { name: 'Shu Mei', photo: 'img/av-shu-mei.webp', initials: 'S', phone: '2557 1904', sub: 'Ling’s bakery, Bell Street' },
+    { name: 'Professor Ruan', photo: 'img/av-professor-ruan.webp', initials: 'R', thread: 'ruan', phone: '9440 2208', sub: 'Condensed matter' },
+    { name: 'Professor Cen', photo: 'img/av-professor-cen.webp', initials: 'C', phone: '2859 1100', sub: 'Head of department' },
+    { name: 'Zeng Bo', photo: 'img/av-zeng-bo.webp', initials: 'Z', phone: '6284 7730' },
+    { name: 'Tao Tao', photo: 'img/av-tao-tao.webp', initials: 'T', phone: '5571 3348' },
+    { name: 'Mum', initials: 'M', phone: '2391 6605' },
+    { name: 'Dad', initials: 'D', phone: '2391 6605' },
+    { name: 'Dr. Mao', initials: 'M', phone: '010 6455 2081', sub: 'Visiting, the capital' },
+    { name: 'Aurelia Chen', photo: 'img/av-aurelia.webp', initials: 'A', phone: '9283 6115' },
+    { name: 'Yan Zhiyuan', initials: 'Y', phone: '9026 7714' }
+  ],
+  clockApp: { alarms: [{ time: '06:30', label: 'Alarm', days: 'Weekdays', on: true }, { time: '08:42', label: 'Glass room', days: 'Wed', on: false }] },
+
+  messages: {
+    threads: [
+      { id: 'wl', name: 'Wei Lan', photo: 'img/av-wei-lan.webp', initials: 'W', time: '15:09', order: 30, unread: true, items: [
+        { t: 'day', text: '<b>Sun 15 Mar</b> 20:14' },
+        { t: 'in', text: 'Little brother. Mum says you haven’t rung for two weeks.' },
+        { t: 'out', text: 'I’ve been busy. The tank came.' },
+        { t: 'in', text: 'Tanks don’t count.' },
+        { t: 'in', text: 'Is it her?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Did you say something stupid.' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Then go and say sorry properly. Out loud. Not on a sticky note.' },
+        { t: 'day', text: '<b>Today</b> 15:09' },
+        { t: 'in', text: 'Did you eat today or are you carrying boxes on an empty stomach again' }
+      ] },
+      { id: 'yj', name: 'Not Stuck', photo: 'img/av-yu-jie.webp', initials: 'Y', color: 'linear-gradient(180deg,#f3a6b5,#d96d86)', time: 'Thursday', order: 40, items: [
+        { t: 'day', text: '<b>Wed 28 Jan</b> 23:51' },
+        { t: 'in', text: 'Is it still snowing where you are' },
+        { t: 'out', text: 'I’m four streets from you.' },
+        { t: 'in', text: 'That isn’t an answer, Dr. Wei' },
+        { t: 'out', text: 'Yes. It is still snowing.' },
+        { t: 'day', text: '<b>Tue 3 Mar</b> 22:40' },
+        { t: 'in', text: 'Tell me Wednesday.' },
+        { t: 'out', text: 'I’ll tell you Wednesday.' },
+        { t: 'day', text: '<b>Sun 22 Mar</b> 23:18' },
+        { t: 'in', text: 'I said no tonight.' },
+        { t: 'out', text: 'I’m glad.' },
+        { t: 'out', text: 'I hope you weren’t on your own.' },
+        { t: 'in', text: 'I wasn’t.' },
+        { t: 'out', text: 'Good.' },
+        { t: 'in', text: 'I miss the jasmine tea.' },
+        { t: 'out', text: 'I’ll make it whenever you want.' },
+        { t: 'in', text: 'Not yet.' },
+        { t: 'out', text: 'All right.' },
+        { t: 'day', text: '<b>Thu 26 Mar</b> 21:02' },
+        { t: 'out', text: 'There’s a room on Bell Street. Above the bakery. It isn’t mine. Would you look at it?' },
+        { t: 'in', text: 'Who found it?' },
+        { t: 'out', text: 'Tao Tao asked around.' },
+        { t: 'in', text: 'Saturday', status: 'Read 21:09' }
+      ] },
+      { id: 'lh', name: 'Ling Hao', photo: 'img/av-ling-hao.webp', initials: 'L', time: 'Friday', order: 20, items: [
+        { t: 'day', text: '<b>Wed 11 Mar</b> 10:12' },
+        { t: 'in', text: 'Two cups again?' },
+        { t: 'out', text: 'There’s no rule against making two cups.' },
+        { t: 'in', text: 'I drank hers. It was stewed. Eat something.' },
+        { t: 'day', text: '<b>Wed 18 Mar</b> 12:31' },
+        { t: 'in', text: 'Saw the board.' },
+        { t: 'in', text: 'Leave it.' },
+        { t: 'day', text: '<b>Fri 20 Mar</b> 19:02' },
+        { t: 'in', text: 'Come up out of that basement or I’m coming down.' },
+        { t: 'out', text: 'Writing the five-year plan. Without the award this time.' },
+        { t: 'in', text: 'Show me. If you put me down as a cost I’ll put you down as a fire hazard.' }
+      ] },
+      { id: 'ruan', name: 'Professor Ruan', photo: 'img/av-professor-ruan.webp', initials: 'R', time: '15/03', order: 10, items: [
+        { t: 'day', text: '<b>Sun 15 Mar</b> 17:48' },
+        { t: 'in', text: 'You left a grey blanket on my sofa.' },
+        { t: 'out', text: 'It’s cold in your outer office at night.' },
+        { t: 'in', text: 'I shall tell her it is mine.' },
+        { t: 'out', text: 'Thank you.' },
+        { t: 'in', text: 'She will not believe me. Go home, Miles.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    widget: 'ns',
+    items: [
+      { id: 'ns', group: 'Previous 30 Days', when: '22/03/2026', stamp: '22 March 2026 at 23:31', title: 'Not sent',
+        body: [
+          'Wed 11. Made two cups out of habit. Ling Hao drank yours and said it was stewed. It was. That’s how you like it.',
+          '',
+          'Thu 12. The tank arrived. Four metres across. You’d have walked round it twice before saying anything.',
+          '',
+          'Sun 15. Left the blanket in Ruan’s outer office. She’s going to tell you it’s hers. You’ll know it isn’t.',
+          '',
+          'Tue 17. Three peeled oranges on my desk in a clean box. Your note said “Still angry. Still peeling oranges.” I made them last the whole morning.',
+          '',
+          'Wed 18. Wrote it on my board. Rubbed it out. Wrote it again. Ling Hao saw.',
+          '',
+          'Fri 20. Wrote the five-year plan without the award. Not to prove anything to you. I actually want it.',
+          '',
+          'Sun 22, 23:18. You said no tonight. I wrote “Good.” What I meant was I’m proud of you, and are you warm enough. ~~And~~',
+          '',
+          'You said “not yet”. Not yet isn’t no.'
+        ] },
+      { id: 'cards', group: 'Previous 30 Days', when: '04/03/2026', stamp: '4 March 2026 at 23:58', title: 'What I said',
+        body: ['“So you bought me.”', '', 'In the glass room, with the door open.', 'She wrote that trust deed to help me and I made it sound like she’d paid for me.', '', 'Say that. Say sorry. Then stop talking.'] },
+      { id: 'lec', group: 'Earlier', when: '07/10/2025', stamp: '7 October 2025 at 21:20', title: 'Lecture 7',
+        body: ['Zero-point energy. E₀ = ½ħω.', '', 'Someone asked if it applies to people.', 'Told them it’s never zero.'] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Wednesday 11 March', time: '23:40', q: 'how to apologise without making it about yourself', results: [
+      { site: 'Everyday Psychology', path: 'relationships', title: 'The apology that centres the other person', snip: 'Say what you did and what it cost them. How bad you feel about it is a separate conversation.' },
+      { site: 'The Considerate Partner', path: 'advice', title: 'Why “I’m sorry you felt that way” never works', snip: 'It moves the fault to the listener. Name the thing you said, in your own words, and stop.' }] },
+    { day: 'Monday 16 March', time: '07:02', q: 'how long does a peeled orange keep in the fridge', results: [
+      { site: 'Kitchen Basics', path: 'storage › citrus', title: 'Storing peeled citrus segments', snip: 'Peeled segments keep two to three days in a sealed box in the fridge. They dry out quickly in the open air.' }] },
+    { day: 'Saturday 14 March', time: '22:51', q: 'wash grey wool blanket without shrinking', results: [
+      { site: 'Home Care Guide', path: 'wool', title: 'How to wash a wool blanket by hand', snip: 'Cool water, a wool detergent, no wringing. Dry it flat, away from the radiator.' }] },
+    { day: 'Thursday 12 March', time: '09:14', q: 'acrylic tank 4 m first fill time', results: [
+      { site: 'Aquatic Systems Forum', path: 'large tanks', title: 'First fill of a large acrylic tank: go slowly', snip: 'Fill in stages and check the seals at each level. A four-metre circular tank can take most of a night.' }] },
+    { day: 'Friday 27 March', time: '00:12', q: 'is it controlling to find someone a flat', results: [
+      { site: 'Ask the Counsellor', path: 'q-and-a', title: 'Helping or deciding for them?', snip: 'Showing someone a place is help. Signing for it on their behalf isn’t. Let them see it and decide.' },
+      { site: 'The Marriage Column', path: 'advice', title: '“I found her somewhere to live and didn’t tell her it was me”', snip: 'A kind secret is still a secret. Tell her once she’s decided for herself.' }] }
+  ] },
+
+  photos: { widget: 3, widgetLabel: 'Featured', items: [
+    { src: 'img/proof-by-induction-wedding.webp', date: '6 October 2018', time: '19:24' },
+    { src: 'img/proof-by-induction-board.webp', date: '24 September 2025', time: '18:02' },
+    { src: 'img/proof-by-induction-cup.webp', date: '11 March 2026', time: '11:00', fav: true },
+    { src: 'img/proof-by-induction-oranges.webp', date: '17 March 2026', time: '08:51', fav: true },
+    { src: 'img/proof-by-induction-bread.webp', date: '26 March 2026', time: '20:44' }
+  ], hidden: [
+    { src: 'img/proof-by-induction-h-board.webp', date: '24 September 2025', time: '17:58' },
+    { src: 'img/proof-by-induction-h-tea.webp', date: '10 December 2025', time: '15:45' },
+    { src: 'img/proof-by-induction-h-oranges.webp', date: '17 March 2026', time: '08:49' }
+  ] },
+
+  phone: {
+    voicemail: [{ name: 'Wei Lan', photo: 'img/av-wei-lan.webp', when: 'Saturday', len: '0:34', unheard: true, transcript: 'Little brother, it’s me. You haven’t rung Mum, so Mum rang me, so now I’m ringing you. If you’ve done something stupid, undo it. If you can’t undo it, say so. Properly. Out loud. Not on a sticky note. Ring me back.' }],
+    recents: [
+      { name: 'Wei Lan', photo: 'img/av-wei-lan.webp', miss: true, when: 'Saturday', kind: 'mobile', dayLabel: 'Saturday', log: [{ time: '19:20', what: 'Missed Call', miss: true }] },
+      { name: 'Shu Mei', photo: 'img/av-shu-mei.webp', when: '05/03/2026', kind: 'work', dayLabel: 'Thursday 5 March', log: [{ time: '21:47', what: 'Outgoing Call · 3 min' }] },
+      { name: 'Ling Hao', photo: 'img/av-ling-hao.webp', when: '20/03/2026', kind: 'mobile', dayLabel: 'Friday 20 March', log: [{ time: '19:05', what: 'Incoming Call · 1 min' }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Wednesday: one cup', note: '(don’t make two)' },
+    { text: 'Blanket to Ruan’s office', due: 'Sunday 15 March', past: true, done: true },
+    { text: 'Desk lamp for her. Brass, green glass shade. For a desk by a window.', done: true },
+    { text: 'Ring Mum', due: 'Overdue', past: true }
+  ] },
+  calendar: { today: [{ title: 'Bell Street', time: '14:00' }], later: [{ title: 'Council', time: 'Thu 9 April' }] },
+
+  beats: [
+    { id: 'wl', onLock: true, target: 'thread:wl', banner: { app: 'messages', title: 'Wei Lan', body: 'Did you eat today or are you carrying boxes on an empty stomach again', when: '3m ago', open: 'thread:wl' } },
+    { id: 'yj', target: 'thread:yj', sugg: 'messages', at: '15:13', delay: 1800 },
+    { id: 'ns', target: 'note:ns', sugg: 'notes', at: '15:14', delay: 1800 },
+    { id: 'lh', target: 'thread:lh', at: '15:15', unread: 'lh', time: '15:15', push: [{ t: 'day', text: '<b>Today</b> 15:15' }, { t: 'in', text: 'Shu Mei says the tall one is carrying a suitcase up her stairs like it insulted him.' }, { t: 'in', text: 'She also says she approves.' }], banner: { app: 'messages', title: 'Ling Hao', body: 'Shu Mei says the tall one is carrying a suitcase up her stairs like it insulted him.', open: 'thread:lh' }, delay: 3200 },
+    { id: 'web', target: 'browser', sugg: 'browser', at: '15:16', delay: 1800 },
+    { id: 'ph', target: 'photos', sugg: 'photos', at: '15:17', delay: 1800 },
+    { id: 'vm', target: 'voicemail', sugg: 'phone', badge: { phone: 1 }, at: '15:18', delay: 1800 }
+  ],
+  end: {
+    delay: 3500, at: '15:19', capDelay: 1600,
+    caption: 'His steps on the second flight, slow, because the box had books in it.<br><br>She put the phone back under the lamp, face down, exactly where it had been.<br><br>When he came in she was shelving books, first by subject and then by height, and she let him think she hadn’t moved.'
+  }
+});
+
+</script>
+</body>
+</html>

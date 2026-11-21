@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Thorns · The Fourteenth Key · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Thorns · desktop · "The Fourteenth Key"
+   Zhao's study computer, Monday 1 March to Wednesday 17 March 2021.
+   Canon: Ch5 (thirteen keys), Ch22 (the anniversary: Granny Yip at seven, Xiao Pan sworn,
+   the vase of sweet peas, ranunculus and lily of the valley, the fourteenth key, nine forty-one). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'thorns',
+  title: 'Thorns · The Fourteenth Key',
+  bookUrl: '../../?novel=thorns',
+  owner: 'Zhao Zhendong',
+  me: { photo: 'img/av-zhao.webp' },
+  wall: 'img/thorns-wall-desk.webp',
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar', 'photos'],
+  calIcon: [{ wd: 'Mon', dn: '1' }, { wd: 'Thu', dn: '4' }, { wd: 'Tue', dn: '9' }, { wd: 'Fri', dn: '12' }, { wd: 'Mon', dn: '15' }, { wd: 'Wed', dn: '17' }],
+  caption: {
+    open: 'His study, the first of March.<br><br>In sixteen days they will have been married a year. She has thirteen keys to this house, one for every lock. There is one door she has no key to.<br><br>He has been thinking about it since Christmas.'
+  },
+  days: [
+    { date: 'Mon 1 Mar', dn: 1, start: '22:10',
+      beats: [
+        { id: 'plan', target: 'note:plan', auto: true, autoDelay: 300 },
+        { id: 's1', target: 'search:s1', auto: true, delay: 2200 },
+        { id: 's2', target: 'search:s2', auto: true, delay: 2600 }
+      ] },
+    { date: 'Thu 4 Mar', dn: 4, start: '21:34', lead: 'Thursday',
+      beats: [
+        { id: 'lock1', target: 'mail:lock1', mailUnread: 'lock1', notify: { app: 'mail', title: 'Old Street Locks', body: 'Re: basement door, lever lock' } },
+        { id: 'home', target: 'thread:mrs', unread: 'mrs', time: '21:41', at: '21:41', delay: 3200, notify: { app: 'messages', title: 'Mrs. Zhao', body: 'Are you coming down for dinner or am I eating with the dogs?' } }
+      ] },
+    { date: 'Tue 9 Mar', dn: 9, start: '22:47', lead: 'Tuesday',
+      beats: [
+        { id: 'lock2', target: 'mail:lock2', mailUnread: 'lock2', notify: { app: 'mail', title: 'Old Street Locks', body: 'Key’s done. Plain silver ring, no tag.' } },
+        { id: 'bao', target: 'thread:bao', unread: 'bao', time: '22:58', at: '22:58', delay: 3000, notify: { app: 'messages', title: 'Bao', body: 'Madam asked where you were this afternoon, sir.' } }
+      ] },
+    { date: 'Fri 12 Mar', dn: 12, start: '23:06', lead: 'Friday',
+      beats: [
+        { id: 'xp', target: 'thread:xp', auto: true, autoDelay: 500 },
+        { id: 'si', target: 'thread:si', auto: true, delay: 3500 },
+        { id: 'ref', target: 'photos', delay: 2600, notify: { app: 'photos', title: 'Photos', body: '1 photo saved' } }
+      ] },
+    { date: 'Mon 15 Mar', dn: 15, start: '23:28', lead: 'Monday',
+      beats: [
+        { id: 'say', target: 'note:say', auto: true, autoDelay: 400 },
+        { id: 'cal', target: 'calendar', auto: true, delay: 2600 }
+      ] },
+    { date: 'Wed 17 Mar', dn: 17, start: '06:38', lead: 'Wednesday. A year.',
+      beats: [
+        { id: 'xp2', target: 'thread:xp', unread: 'xp', time: '06:44', at: '06:44', notify: { app: 'messages', title: 'Xiao Pan', body: 'boss its today right??' } },
+        { id: 'keys', target: 'note:keys', auto: true, delay: 3000 }
+      ] }
+  ],
+
+  content: {
+    notes: { items: [
+      { id: 'old1', day: 0, date: '14/02/2021', title: 'New Year', body: ['Lin house, Thursday 11th.', 'Ah Sim: oranges, not wine.', 'Her father asked how the shop is doing. Answer properly.'] },
+      { id: 'plan', day: 0, date: '22:11', stamp: '1 March 2021 at 22:11', title: '17', body: [],
+        play: [['t', '17 March. One year.'], ['p', 900], ['t', '\n\nWedding flowers: ranunculus, Granny Yip’s lily of the valley, the cream ribbon off her bag.'], ['p', 700], ['t', '\nShe wore the red silk. The New Year one she’d never worn.'], ['p', 1200], ['t', '\n\nNecklace?'], ['p', 900], ['d', 8], ['t', 'No. She’d say thank you and put it in a drawer.'], ['p', 1300], ['t', '\n\nSame flowers as the wedding. Loads of them. Taller than her.'], ['p', 900], ['t', '\nNot from her shop or she’ll know straight away.'], ['p', 1600], ['t', '\n\nThe key.'], ['p', 1200], ['t', '\n\nwhat do people even give'], ['p', 700]] },
+      { id: 'say', day: 4, date: '23:29', stamp: '15 March 2021 at 23:29', title: 'What to say', body: [],
+        play: [['t', 'This is for the armory.'], ['p', 1400], ['d', 30], ['p', 500], ['t', 'It’s yours.'], ['p', 1300], ['d', 15], ['p', 700], ['t', 'Every other key you’ve got is for something.'], ['p', 900], ['t', '\nGates. Shop. Plant room.'], ['p', 800], ['t', '\nThe safe room’s a code in case you need it fast.'], ['p', 1300], ['t', '\nThis one isn’t for anything.'], ['p', 1600], ['t', '\n\nIt’s for if you just want to come in.'], ['p', 900], ['t', '\nWhen I’m down there.'], ['p', 700], ['t', '\nYou don’t have to knock. You don’t have to tell me why.'], ['p', 1800], ['t', '\n\nThen stop. No speech.']] },
+      { id: 'keys', day: 5, date: '06:41', stamp: '17 March 2021 at 06:41', title: 'Keys', body: [],
+        play: [['t', 'She has 13.'], ['p', 1100], ['t', '\n14th = armory door. Give it to her today.'], ['p', 2000], ['t', '\n\nRegistry was 09:41.']] }
+    ] },
+
+    mail: { items: [
+      { id: 'm1', day: 0, from: 'Harbour Board', subject: 'Berth allocation, week 10', date: '26/02/2021', full: '26 February 2021 at 09:12', body: 'Dear Mr Zhao,\n\nPlease find attached the berth allocation for week 10. North quay berths 3 and 4 remain closed for resurfacing until Friday 12 March.\n\nRegards,\nAllocations Office' },
+      { id: 'm2', day: 0, from: 'Wen Tea Estate', subject: 'The old tree', date: '22/02/2021', full: '22 February 2021 at 07:40', body: 'Mr Zhao,\n\nThe old camellia on the east slope is in flower, as you said it would be. Your wife asked me in the autumn to let her know when. I have written to her.\n\nThe weather is poor and the road is slow. Tell her not to drive up in the rain.\n\nWen' },
+      { id: 'lock1', day: 1, from: 'Old Street Locks', subject: 'Re: basement door, lever lock', date: '21:33', full: 'Thursday 4 March 2021 at 21:33', body: 'Mr Zhao,\n\nI came up on Tuesday as arranged and had a look at the basement door. It’s an old five-lever mortice, 1960s. They don’t make them any more, but it’s in good order.\n\nI can cut a second key by hand from yours. As you asked, no record kept and no spare blank. I don’t keep records for jobs like this anyway.\n\nPlain silver ring, no tag. I’ve got one.\n\nReady Tuesday 9th. I can drop it round or you can collect.\n\nOld Street Locks' },
+      { id: 'lock2', day: 2, from: 'Old Street Locks', subject: 'Ready', date: '22:46', full: 'Tuesday 9 March 2021 at 22:46', body: 'Mr Zhao,\n\nKey’s done, cut by hand from yours this afternoon and tried in the door while you were there. Plain silver ring, no tag. No copy made, no blank kept.\n\nIt’s heavier than a modern key because it’s the old brass. It’ll last.\n\nOld Street Locks' }
+    ] },
+
+    messages: { threads: [
+      { id: 'mrs', day: 0, name: 'Mrs. Zhao', photo: 'img/av-elowen.webp', time: 'Sun', order: 40, items: [
+        { t: 'day', text: '<b>Sun 28 Feb</b> 18:02' },
+        { t: 'in', text: 'Mr. Wen wrote. The old tree on the east slope is flowering.' },
+        { t: 'out', text: 'I told you. February and March.' },
+        { t: 'in', text: 'I want to go up and see it.' },
+        { t: 'out', text: 'It’s raining up there.' },
+        { t: 'in', text: 'It’s always raining up there.' },
+        { t: 'day', text: '<b>Thu 4 Mar</b> 21:41', beat: 'home', day: 1 },
+        { t: 'in', text: 'Are you coming down for dinner or am I eating with the dogs?', day: 1 },
+        { t: 'out', text: 'Coming.', day: 1, live: true, play: [['t', 'Working late. Start without'], ['p', 900], ['d', 27], ['p', 600], ['t', 'Coming.']] },
+        { t: 'in', text: 'You said that twenty minutes ago.', day: 1, live: true, wait: 1800 },
+        { t: 'out', text: 'Now.', day: 1, live: true, play: [['p', 400], ['t', 'Now.']] }
+      ] },
+      { id: 'si', day: 0, name: 'Si', photo: 'img/av-chen-si.webp', time: 'Fri', order: 30, items: [
+        { t: 'day', text: '<b>Fri 26 Feb</b> 23:40' },
+        { t: 'in', text: 'Aurelia wants you both on Saturday.' },
+        { t: 'out', text: 'Ask Elowen.' },
+        { t: 'in', text: 'Aurelia already did. She said yes.' },
+        { t: 'out', text: 'Then we’re coming.' },
+        { t: 'day', text: '<b>Fri 12 Mar</b> 23:31', beat: 'si', day: 3 },
+        { t: 'out', text: 'What did you get Aurelia for your first anniversary', day: 3, live: true, play: [['t', 'what do you even get'], ['p', 1100], ['d', 20], ['p', 500], ['t', 'What did you get Aurelia for your first anniversary']] },
+        { t: 'in', text: 'She told me what she wanted.', day: 3, live: true, wait: 2600 },
+        { t: 'out', text: 'And if she doesn’t tell you.', day: 3, live: true },
+        { t: 'in', text: 'Then think about what she’s said this year. You’ll know.', day: 3, live: true, wait: 3000 },
+        { t: 'in', text: 'You’ve been listening. Go to bed.', day: 3, live: true, wait: 1800 }
+      ] },
+      { id: 'bao', day: 0, name: 'Bao', photo: 'img/av-bao.webp', time: 'Mon', order: 20, items: [
+        { t: 'day', text: '<b>Mon 1 Mar</b> 18:30' },
+        { t: 'in', text: 'Madam’s home. Shop shut at six. She bought Granny Yip’s lilies again.' },
+        { t: 'day', text: '<b>Tue 9 Mar</b> 22:58', beat: 'bao', day: 2 },
+        { t: 'in', text: 'Madam asked where you were this afternoon, sir. I said the port.', day: 2 },
+        { t: 'out', text: 'Did she believe you?', day: 2, live: true, play: [['p', 900], ['t', 'Did she believe you?']] },
+        { t: 'in', text: 'No, sir.', day: 2, live: true, wait: 2200 },
+        { t: 'out', text: 'Good.', day: 2, live: true, play: [['p', 1200], ['t', 'Good.']] }
+      ] },
+      { id: 'xp', day: 3, name: 'Xiao Pan', photo: 'img/av-xiao-pan.webp', time: '23:07', order: 50, items: [
+        { t: 'day', text: '<b>Fri 12 Mar</b> 23:07' },
+        { t: 'out', text: 'Sweet peas, ranunculus and lily of the valley. White and the palest pink.', live: true },
+        { t: 'out', text: 'Taller than she is. In the courtyard by the lemon tree. Wednesday the 17th, while she’s at the shop.', live: true },
+        { t: 'in', text: 'from the market??', live: true, wait: 2400 },
+        { t: 'in', text: 'not from our shop??', live: true, wait: 900 },
+        { t: 'out', text: 'Not from her shop or she’ll know straight away.', live: true },
+        { t: 'in', text: 'boss she’ll know anyway', live: true, wait: 1600 },
+        { t: 'out', text: 'Granny Yip will ring her at seven and tell her I’ve forgotten.', live: true },
+        { t: 'in', text: 'omg', live: true, wait: 1500 },
+        { t: 'in', text: 'ok', live: true, wait: 900 },
+        { t: 'in', text: 'i know nothing', live: true, wait: 1100 },
+        { t: 'out', text: 'Swear.', live: true, play: [['p', 700], ['t', 'Swear.']] },
+        { t: 'in', text: 'i swear on the FLOWER POWER hoodie', live: true, wait: 1700 },
+        { t: 'day', text: '<b>Wed 17 Mar</b> 06:44', day: 5 },
+        { t: 'in', text: 'boss its today right??', day: 5 },
+        { t: 'in', text: 'market at 12. at the house by 2. madam is at the shop all day right', day: 5 },
+        { t: 'out', text: 'Until six.', day: 5, live: true, play: [['p', 1000], ['t', 'Until six.']] },
+        { t: 'in', text: 'ok ok ok', day: 5, live: true, wait: 1400 },
+        { t: 'in', text: 'happy anniversary mr zhao', day: 5, live: true, wait: 1600 }
+      ] }
+    ] },
+
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Saturday 27 February', time: '01:12', q: 'camellia east slope flowering time', results: [{ site: 'Garden Notes', path: 'camellia', title: 'When do old camellias flower?', snip: 'Most flower from late winter into spring, February to April, depending on the altitude and the year.' }] },
+      { id: 's1', day: 0, dayLabel: 'Monday 1 March', time: '22:18', q: 'first wedding anniversary traditional gift', live: true,
+        play: [['t', 'what to give your wife for'], ['p', 900], ['d', 26], ['p', 500], ['t', 'first wedding anniversary traditional gift']],
+        results: [
+          { site: 'Wedding Almanac', path: 'anniversaries › first', title: 'First anniversary: paper', snip: 'The traditional first anniversary gift is paper: a letter, a book, a map, tickets, a deed. Something you can hold that says where you started.' },
+          { site: 'The Considerate Husband', path: 'gifts', title: 'Twelve first anniversary ideas she won’t put in a drawer', snip: 'Avoid the jewellery-box reflex. The best first-year gifts are the ones only you could have known to give.' },
+          { site: 'Everyday Etiquette', path: 'marriage', title: 'Does a first anniversary need a gift at all?', snip: 'Many couples simply mark the day. Flowers like the ones from the wedding are a common, quiet choice.' }
+        ] },
+      { id: 's2', day: 0, dayLabel: 'Monday 1 March', time: '22:24', q: 'lily of the valley in march', live: true,
+        results: [
+          { site: 'The Cut Flower Grower', path: 'convallaria', title: 'Lily of the valley: forcing for early spring', snip: 'Outdoors it flowers in late spring, but growers force the crowns indoors for February and March. Ask a good market stall a week ahead.' },
+          { site: 'Flower Market Guide', path: 'seasonal', title: 'What’s at the market in March', snip: 'Ranunculus are at their best, sweet peas are starting, and forced lily of the valley appears in small bunches, usually at a price.' }
+        ] }
+    ] },
+
+    calendar: { year: 2021, month: 2, label: 'March', events: [
+      { d: 4, text: 'North quay 10:00' },
+      { d: 9, text: 'Locks 15:00', day: 1 },
+      { d: 12, text: 'Berths 3 and 4 reopen' },
+      { d: 17, text: 'Port review (all day)', day: 4 },
+      { d: 17, text: '9:41', red: true, day: 4 },
+    ] },
+
+    files: { folders: [
+      { name: 'Documents', items: [
+        { name: 'North quay lease 2021.pdf', kind: 'pdf', date: '11 Jan 2021', body: ['NORTH QUAY · BERTHS 3–4', '', 'Lease renewal, five years from 1 April 2021.', 'Lessee: Harbourline Logistics Ltd.', '', 'Signed and returned.'] },
+        { name: 'House', kind: 'doc', date: '21 Mar 2020', body: ['Locks', '', 'Front. Side. Garage. Garden store. East and west wing doors. Study. Plant room (from Oct). Gate, both. Shop: hers, not mine. Safe room: code.', '', 'Thirteen keys on her ring.', '', 'Basement: mine.'] }
+      ] },
+      { name: 'Downloads', items: [
+        { name: 'ranunculus.jpg', src: 'img/thorns-ranun.webp', date: '12 Mar 2021', day: 3 }
+      ] },
+      { name: 'Trash', trash: true, items: [
+        { name: 'card.rtf', kind: 'doc', date: '14 Mar 2021', day: 3, body: ['Elowen,', '', '~~A year ago you married a man you had known for fifteen days.~~', '', '~~I am not good at cards.~~', '', 'This is your fourteenth key.', '', '~~It opens~~'] }
+      ] }
+    ] },
+    photos: { items: [
+      { src: 'img/thorns-lemon.webp', day: 0, date: '17 Oct 2020', caption: '' },
+      { src: 'img/thorns-glass.webp', day: 0, date: '29 Oct 2020', caption: '' },
+      { src: 'img/thorns-port.webp', day: 0, date: '12 Jan 2021', caption: '' },
+      { src: 'img/thorns-ranun.webp', day: 3, date: '12 Mar 2021', caption: '' }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'He went to work and asked Granny Yip to ring her at seven.<br><br>When he came home she was in the glass room with her sleeves pushed up, and she held out a flat parcel in brown paper before he could pretend any longer: a camellia from the east slope, fallen on its own, pressed and framed.<br><br>The key was in his jacket pocket the whole time.<br><br>That night at the mirror she asked him what time it had been at the registry, and he told her the minute.'
+  }
+});
+
+</script>
+</body>
+</html>

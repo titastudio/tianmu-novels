@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Ten Minutes · No Signal · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Ten Minutes · phone · "No Signal"
+   Isla holds Wei Long's phone, Sunday 18 October 2026, late, in Lima, in a small rest room on the embassy's ninth floor
+   after nine hours of carrying water. His phone is still on home time: Monday, 12:40 in the afternoon.
+   Canon: Ch24 (16:03 Lima; her 4:16 message "Earthquake. I’m safe at the moment. Trying to get out of the building.",
+   one grey tick; received 5:16 at home; Liu; the numbers in his notebook, one crossed out, one underlined twice;
+   10:41 p.m. consular team at assembly point; 2:47, 2:48, 3:12, 3:56; Ren Hao (Civil); "I love you. I’m waiting." at 4:16),
+   Ch25 (the satellite phone, "Watch me.", the Vancouver voicemail he didn't need to play, item three on her fridge list:
+   "My mother will ring you. Answer."), Ch26 (first leave in six years; Ren Hao pays for the only seat, loudly; the 23:55),
+   Ch27 (the warrant card means nothing at the checkpoint; the list under her cheek; "I have your tea"; nine floors;
+   "Are you still carrying water?"). Contacts as canon: Thank You (Paid), Ren Hao (Civil), Yu Chen (Eaten?), Sir (Retired). */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'ten-minutes',
+  title: 'Ten Minutes · No Signal',
+  bookUrl: '../../?novel=ten-minutes',
+  battery: 17,
+  dark: true,
+  caption: {
+    open: 'Lima. Sunday night, the eighteenth of October. Three days after the ground moved.<br><br>He came through a checkpoint where his warrant card meant nothing, and found her asleep on a list, and then carried water up nine floors for nine hours because somebody needed it.<br><br>Now he is asleep on a folding bed in the little room with the medical gloves, still in his dusty shirt, and she is sitting on the floor beside him.<br><br>For three days she didn’t know if her messages had reached him. She doesn’t know what his said back.<br><br>His phone is on his chest, rising and falling. It still says Monday. He never let it change to her time.'
+  },
+  clock: { start: '12:40', date: 'Monday 19 October' },
+  calIcon: { wd: 'Mon', dn: '19', wdLong: 'Monday' },
+  lock: { code: '0303', wall: 'img/ten-minutes-wall-phone.webp', hintAfter: 2, nudge: 'The terminal. Eleven minutes. The third of the third.' },
+  home: {
+    wall: 'img/ten-minutes-wall-phone.webp',
+    widgets: ['world', 'sugg'],
+    world: [{ city: 'Home', label: 'Today', off: 0 }, { city: 'Lima', label: '13 hours behind', off: -13 }],
+    sugg: ['messages', 'notes', 'phone', 'browser'],
+    apps: ['calendar', 'photos', 'clock', 'notes', 'reminders', 'weather', 'settings', 'camera'],
+    dock: ['phone', 'messages', 'mail', 'browser'],
+    badges: {}
+  },
+  stubText: { mail: 'Station. 63 unread. Leave approved.', settings: 'Date & Time: Set Automatically — Off.' },
+  me: { name: 'Song Wei Long', photo: 'img/av-song-wei-long.webp', initials: 'S' },
+  contacts: [
+    { name: 'Thank You (Paid)', photo: 'img/av-isla.webp', initials: 'I', fav: true, thread: 'is', phone: '+51 1 9047 2216', notes: 'Was Thank You (Owed). Changed 3 March 2025.' },
+    { name: 'Ren Hao (Civil)', photo: 'img/av-ren-hao.webp', initials: 'R', fav: true, thread: 'rh', phone: '6233 3200', sub: 'Thirty-second floor' },
+    { name: 'Yu Chen (Eaten?)', initials: 'Y', fav: true, thread: 'yc', phone: '6181 2002' },
+    { name: 'Sir (Retired)', photo: 'img/av-pun.webp', initials: 'P', thread: 'pun', phone: '2730 1948' },
+    { name: 'Liu', photo: 'img/av-liu.webp', initials: 'L', thread: 'liu', phone: '6391 0420', sub: 'Sergeant' },
+    { name: 'Next Door', photo: 'img/av-eliana.webp', initials: 'E', phone: '6115 2003' },
+    { name: 'Hau', photo: 'img/av-hau.webp', initials: 'H', phone: '2311 0001', sub: 'Front desk' },
+    { name: 'Sham', photo: 'img/av-sham.webp', initials: 'S', phone: '6391 0433' },
+    { name: 'Det. Supt Chiang', initials: 'C', phone: '2311 0100' },
+    { name: 'Ministry, overseas emergency desk', initials: 'M', phone: '2522 0180' },
+    { name: 'Mrs. Ren', initials: 'R', phone: '+1 604 822 4410', notes: 'Isla’s mum. Vancouver. Always answer.' }
+  ],
+  clockApp: { world: [{ city: 'Home', label: 'Today, +0HRS', off: 0 }, { city: 'Lima', label: 'Today, −13HRS', off: -13 }, { city: 'Vancouver', label: 'Yesterday, −15HRS', off: -15 }], alarms: [{ time: '06:15', label: 'Alarm', days: 'Weekdays', on: false }, { time: '20:50', label: 'Ring Lima (9 a.m. hers)', days: 'Every day', on: true }] },
+
+  messages: {
+    placeholder: 'Message',
+    threads: [
+      { id: 'rh', name: 'Ren Hao (Civil)', photo: 'img/av-ren-hao.webp', initials: 'R', time: '10:31', order: 50, items: [
+        { t: 'day', text: '<b>Fri 16 Oct</b> 06:02' },
+        { t: 'in', text: 'I’ve seen the news. Have you heard from her?' },
+        { t: 'out', text: 'No. Her last message was 4:16 p.m. Lima time. She said she was trying to leave the building.' },
+        { t: 'in', text: 'Have you called the ministry?' },
+        { t: 'out', text: 'Three times.' },
+        { t: 'in', text: 'I’m calling everyone I can reach.' },
+        { t: 'out', text: 'Don’t call the same people I call.' },
+        { t: 'in', text: 'I know. Wei Long. Tell me if you hear anything.' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 06:51' },
+        { t: 'in', text: 'Two minutes. On a satellite phone. You’re going.' },
+        { t: 'in', text: 'Don’t answer that, it isn’t a question.' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 09:40' },
+        { t: 'in', text: 'There is one seat left on the 23:55. I have bought it. I am paying. Do not argue with me, I am on a break from Song-Zhu and I have nothing else to spend money on.' },
+        { t: 'out', text: 'Thank you.' },
+        { t: 'in', text: 'Say it properly when you’ve found her.' },
+        { t: 'day', text: '<b>Today</b> 10:31' },
+        { t: 'in', text: 'Did you find her? Did you eat? Answer one.' }
+      ] },
+      { id: 'is', name: 'Thank You (Paid)', photo: 'img/av-isla.webp', initials: 'I', color: 'linear-gradient(180deg,#9fb6d6,#5b7aa6)', time: '04:22', order: 45, items: [
+        { t: 'day', text: '<b>Thu 8 Oct</b> 21:10' },
+        { t: 'in', text: 'I found the best peaches.' },
+        { t: 'out', text: 'You said that last week.' },
+        { t: 'in', text: 'These are better.' },
+        { t: 'out', text: 'Evidence?' },
+        { t: 'in', img: 'img/blueprint-peaches.webp' },
+        { t: 'day', text: '<b>Thu 15 Oct</b> 09:50' },
+        { t: 'in', text: 'I have eaten. Don’t ask.' },
+        { t: 'out', text: 'I was going to ask.' },
+        { t: 'in', text: 'Evidence.' },
+        { t: 'out', text: 'Insufficient.' },
+        { t: 'in', text: 'You’re ridiculous.' },
+        { t: 'out', text: 'You’re welcome.' },
+        { t: 'day', text: '<b>Fri 16 Oct</b> 05:16' },
+        { t: 'in', text: 'Earthquake. I’m safe at the moment. Trying to get out of the building.' },
+        { t: 'call', text: 'Call Failed', miss: true, time: '05:45' },
+        { t: 'call', text: 'Call Failed', miss: true, time: '05:46' },
+        { t: 'call', text: 'Call Failed', miss: true, time: '07:15' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 02:48' },
+        { t: 'out', text: 'I’m here. Ring when you can.', status: 'Not Delivered' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 03:12' },
+        { t: 'out', text: 'I’ve spoken to the ministry. They’re accounting for the consular team.', status: 'Not Delivered' },
+        { t: 'call', text: 'Call Failed', miss: true, time: '03:56' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 04:16' },
+        { t: 'out', text: 'I love you. I’m waiting.', status: 'Not Delivered' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 08:02' },
+        { t: 'in', text: 'I’m still in the shelter. I’m safe. We’re working the list. I wish you were here.' },
+        { t: 'out', text: 'So do I. I’m working on it.' },
+        { t: 'day', text: '<b>Today</b> 04:05' },
+        { t: 'in', text: 'Are you still carrying water?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'How much?' },
+        { t: 'out', text: 'I haven’t counted.' },
+        { t: 'in', text: 'Of course you haven’t. I love you.' },
+        { t: 'out', text: 'I love you too. Finish your work.' },
+        { t: 'in', text: 'You’re bossy for a man who’s been carrying bottled water all afternoon.' },
+        { t: 'out', text: 'I learned from you.' }
+      ] },
+      { id: 'liu', name: 'Liu', photo: 'img/av-liu.webp', initials: 'L', time: 'Saturday', order: 30, items: [
+        { t: 'day', text: '<b>Fri 16 Oct</b> 08:31' },
+        { t: 'in', text: 'Coffee by your elbow, sir. You haven’t slept.' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 07:20' },
+        { t: 'in', text: 'Sir. I have your cases. All of them. Sham has the Tanner’s Row file. Go.' },
+        { t: 'out', text: 'I haven’t asked.' },
+        { t: 'in', text: 'No, sir. You wouldn’t. That’s why I’m telling you.' }
+      ] },
+      { id: 'pun', name: 'Sir (Retired)', photo: 'img/av-pun.webp', initials: 'P', time: 'Saturday', order: 25, items: [
+        { t: 'day', text: '<b>Sat 17 Oct</b> 11:05' },
+        { t: 'in', text: 'Liu tells me you have taken leave. First time in six years. Good.' },
+        { t: 'in', text: 'Don’t show your warrant card at their checkpoints. It means nothing there and they’ll think less of you for trying.' },
+        { t: 'out', text: 'Understood, sir.' },
+        { t: 'in', text: 'Carry something. Whatever they need carried. That is what you are there for.' }
+      ] },
+      { id: 'yc', name: 'Yu Chen (Eaten?)', initials: 'Y', time: 'Saturday', order: 20, items: [
+        { t: 'day', text: '<b>Fri 16 Oct</b> 22:10' },
+        { t: 'in', text: 'Ge. Have you eaten?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'You haven’t. Auntie Tsoi is coming over with soup and she says she’s not leaving until the bowl’s empty.' },
+        { t: 'day', text: '<b>Sat 17 Oct</b> 19:40' },
+        { t: 'in', text: 'Eliana says the ministry page has her name under “accounted for”. She refreshes it for you so you don’t have to.' },
+        { t: 'in', text: 'Go, Ge. Bring her back. Or don’t. Just go.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    items: [
+      { id: 'lima', group: 'Previous 7 Days', when: '17/10/2026', stamp: '17 October 2026 at 04:20', title: 'Lima',
+        body: [
+          'Thu 15 Oct, ~16:03 Lima. Offshore, south-west. Magnitude being revised.',
+          '05:16 (ours) her message. One grey tick.',
+          '05:44 the news. Liu.',
+          '07:12 first casualty figure. Preliminary.',
+          '~~09:30 consular building damaged~~ (wrong building. checked.)',
+          '22:41 Consular team at assembly point. Not confirmed by name.',
+          '**Not confirmed by name.**',
+          '02:47 rang. Failed.',
+          '02:48 wrote.',
+          '03:12 wrote.',
+          '03:56 rang. Failed.',
+          '04:00 the count past three hundred.',
+          '04:16 wrote.',
+          '',
+          'What I know: the time. The districts. The network is down. She was safe at 4:16 their time and trying to get out.',
+          'What I don’t know: everything after that.',
+          '',
+          'The other list is on the back of a case file. Copied it here in case the file goes back to registry.'
+        ] },
+      { id: 'never', group: 'Previous 7 Days', when: '16/10/2026', stamp: '16 October 2026 at 23:58', title: 'Never told her',
+        body: [
+          'Read your consular file the week we met. Told myself it was for work.',
+          '',
+          'Night after the stairwell: sat outside your building in the car for an hour. Didn’t ring. Knew I wouldn’t want to leave.',
+          '',
+          'Told you to take Lima because you wanted it. Then stood in your kitchen not knowing what to do with myself.',
+          '',
+          'Didn’t know I was lonely before you. Thought I just liked it quiet.',
+          '',
+          'I’ve kept the date of every ten minutes.',
+          '',
+          'Never wanted you quieter. Or easier.',
+          '',
+          'Want: ordinary mornings. With you.',
+          '',
+          '(When they find her, tell her all of it. In order.)'
+        ] },
+      { id: 'tea', group: 'Previous 7 Days', when: '17/10/2026', stamp: '17 October 2026 at 21:30', title: 'Pack',
+        body: ['[x] Passport', '[x] Her tea (the tin from the kitchen, ISLA’S)', '[x] Charger, two', '[x] Plasters', '[ ] Warrant card (Sir says leave it in the case)', '[x] One shirt more than I think'] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Friday 16 October', time: '05:50', q: 'lima earthquake', results: [
+      { site: 'World News Desk', path: 'live', title: 'Strong earthquake strikes off the coast near Lima', snip: 'Buildings damaged along the seafront. Phone networks down across the city. Figures are preliminary.' }] },
+    { day: 'Friday 16 October', time: '02:20', q: 'how long are phone networks down after an earthquake', results: [
+      { site: 'Disaster Response Guide', path: 'communications', title: 'Why calls fail after a big quake', snip: 'Damaged masts, lost power and everyone calling at once. Text messages often get through before calls do, sometimes hours late.' }] },
+    { day: 'Saturday 17 October', time: '07:02', q: 'flights to lima today', results: [
+      { site: 'Airport Information', path: 'departures', title: 'Lima: flights operating with delays', snip: 'The airport has reopened to limited traffic. Seats are very limited.' }] },
+    { day: 'Saturday 17 October', time: '07:09', q: 'police warrant card valid abroad', results: [
+      { site: 'Everyday Law Guide', path: 'policing', title: 'Your warrant card outside your jurisdiction', snip: 'It identifies you. It gives you no powers. Expect to be treated as a private visitor.' }] }
+  ] },
+
+  photos: { items: [
+    { src: 'img/ten-minutes-g-isla-desk.webp', date: '7 March 2025', time: '19:52' },
+    { src: 'img/ten-minutes-g-isla-ranunculus.webp', date: '26 April 2025', time: '10:15', fav: true },
+    { src: 'img/ten-minutes-ranun.webp', date: '3 May 2025', time: '10:12', fav: true },
+    { src: 'img/ten-minutes-g-isla-tea.webp', date: '8 January 2026', time: '22:40' },
+    { src: 'img/ten-minutes-g-isla-cliff.webp', date: '16 August 2026', time: '17:20' },
+    { src: 'img/ten-minutes-runway.webp', date: '17 October 2026', time: '23:41' }
+  ] },
+
+  phone: {
+    voicemail: [{ name: 'Mrs. Ren', when: 'Saturday', len: '0:38', unheard: true, transcript: 'Wei Long, it’s Isla’s mother. We haven’t heard anything and the ministry here keeps saying they are accounting for people. I’m sorry to ring you in the night. She told us that if anything ever happened you would know before anybody, and you would tell us. Please ring us. Her father is right here.' }],
+    recents: [
+      { name: 'Mrs. Ren', miss: true, when: 'Saturday', kind: 'mobile', dayLabel: 'Saturday 17 October', log: [{ time: '03:00', what: 'Missed Call', miss: true }] },
+      { name: 'Unknown (+870)', when: 'Saturday', kind: 'satellite', dayLabel: 'Saturday 17 October', log: [{ time: '06:40', what: 'Incoming Call · 2 min' }] },
+      { name: 'Ministry, overseas emergency desk', when: 'Friday', kind: 'work', dayLabel: 'Friday 16 October', log: [{ time: '22:41', what: 'Outgoing Call · 8 min' }, { time: '14:10', what: 'Outgoing Call · 5 min' }, { time: '06:30', what: 'Outgoing Call · 11 min' }] },
+      { name: 'Thank You (Paid)', photo: 'img/av-isla.webp', miss: true, count: 7, when: 'Friday', kind: 'mobile', dayLabel: 'Friday 16 October', log: [{ time: '05:45', what: 'Call Failed', miss: true }, { time: '05:46', what: 'Call Failed', miss: true }, { time: '07:15', what: 'Call Failed', miss: true }, { time: '11:02', what: 'Call Failed', miss: true }, { time: '19:30', what: 'Call Failed', miss: true }, { time: '02:47', what: 'Call Failed', miss: true }, { time: '03:56', what: 'Call Failed', miss: true }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Ring her mother back', due: 'Saturday', done: true },
+    { text: 'Leave form to Chiang', done: true },
+    { text: 'Tell Ren Hao properly', due: 'When I’ve found her' },
+    { text: 'Reply to Mrs. Ren’s message', done: true }
+  ] },
+  calendar: { today: [{ title: 'Leave', time: 'All day' }], later: [{ title: 'Lima', time: 'Until she says' }] },
+
+  beats: [
+    { id: 'rh', onLock: true, target: 'thread:rh', banner: { app: 'messages', title: 'Ren Hao (Civil)', body: 'Did you find her? Did you eat? Answer one.', when: '2h ago', open: 'thread:rh' } },
+    { id: 'is', target: 'thread:is', sugg: 'messages', delay: 1800 },
+    { id: 'lima', target: 'note:lima', sugg: 'notes', delay: 1800 },
+    { id: 'never', target: 'note:never', delay: 1200, hold: 9000 },
+    { id: 'vm', target: 'voicemail', sugg: 'phone', badge: { phone: 1 }, at: '12:52', delay: 1800 },
+    { id: 'liu', target: 'thread:liu', at: '12:55', unread: 'liu', time: '12:55', push: [{ t: 'day', text: '<b>Today</b> 12:55' }, { t: 'in', text: 'Sir. Sham asks whether the ten-minute sheet continues in your absence. I have told him no. Hau has closed the book until further notice.' }], banner: { app: 'messages', title: 'Liu', body: 'Sir. Sham asks whether the ten-minute sheet continues in your absence.', open: 'thread:liu' }, delay: 3000 }
+  ],
+  end: {
+    delay: 3400, at: '12:58', capDelay: 1800,
+    caption: 'She put his phone back on his chest, face down, and rested her hand over it, the way you hold someone’s hand in a hospital corridor.<br><br>In the last week of October the last missing name on her list turned up alive, spelt wrong, in a field hospital outside the city.<br><br>She never told him she had read the list. She waited for him to say it himself, in his own time, in order.'
+  }
+});
+
+</script>
+</body>
+</html>

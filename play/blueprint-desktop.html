@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Blueprint · Architect · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Blueprint · desktop · "Architect"
+   Jinx's shop computer at Tai Hing, Monday 1 August to Saturday 10 September 2022.
+   Canon: Ch10 ("I’ve always wondered what it would be like to ride beside you. Not behind." "Maybe. I like being able
+   to see your face."; the gold bike handed over at the end of July; the chair on the left, the kerb side; lean two
+   degrees away from the chair, chair wheel a centimetre toe-in; seat built round him, more leg room, backrest, grab rail,
+   locker, a low screen; dark green; brass plate ARCHITECT; finished the morning of Sat 10 Sep: "Petrol station. Bring
+   your helmet." … "Coming."; "Happy birthday. Late."), Ch12 (cats at 2 a.m.). His birthday is 9 April. */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'blueprint',
+  title: 'Blueprint · Architect',
+  bookUrl: '../../?novel=blueprint',
+  owner: 'Cao Jia',
+  me: { photo: 'img/av-jinx.webp' },
+  wall: 'img/blueprint-wall-desk.webp',
+  dark: true,
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'sheets', 'photos'],
+  calIcon: [{ wd: 'Mon', dn: '1' }, { wd: 'Sat', dn: '13' }, { wd: 'Thu', dn: '1' }, { wd: 'Sat', dn: '10' }],
+  caption: { open: 'August. The gold bike went to Serafina at a petrol station on the edge of the city, and the bench is empty for the first time in three months.<br><br>One evening in the spring, watching her set up the suspension on an old bike, he said something almost to himself, and she laughed and went back to work.<br><br>He hasn’t asked again. She remembered.' },
+  days: [
+    { date: 'Mon 1 Aug', dn: 1, start: '23:38', beats: [
+      { id: 's1', target: 'search:s1', auto: true, autoDelay: 500 },
+      { id: 'a', target: 'note:a', auto: true, delay: 2400 },
+      { id: 'ph', target: 'photos', delay: 2400, notify: { app: 'photos', title: 'Photos', body: '1 photo saved from Browser' } }
+    ] },
+    { date: 'Sat 13 Aug', dn: 13, start: '01:12', lead: 'Two weeks in. The frame came on Tuesday.', beats: [
+      { id: 'sh', target: 'sheet:set', auto: true, autoDelay: 600 },
+      { id: 'ra', target: 'thread:ra', unread: 'ra', time: '02:07', at: '02:07', delay: 2600, notify: { app: 'messages', title: 'Raiden', body: 'Photo' } }
+    ] },
+    { date: 'Thu 1 Sep', dn: 1, start: '18:22', lead: 'Thursday. Paint.', beats: [
+      { id: 'ml', target: 'mail:plate', mailUnread: 'plate', notify: { app: 'mail', title: 'Kwan Brass & Engraving', body: 'Your plate: ARCHITECT' } },
+      { id: 'tg', target: 'thread:tong', unread: 'tong', time: '18:40', at: '18:40', delay: 2600, notify: { app: 'messages', title: 'Mrs. Tong', body: 'Your husband asked me what you are building.' } },
+      { id: 'a2', target: 'note:a2', auto: true, delay: 2600 }
+    ] },
+    { date: 'Sat 10 Sep', dn: 10, start: '07:48', lead: 'Saturday morning.', beats: [
+      { id: 'fin', target: 'sheet:fin', auto: true, autoDelay: 600 },
+      { id: 'go', target: 'thread:ra', auto: true, delay: 2600 }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'a', day: 0, date: '23:40', stamp: '1 August 2022 at 23:40', title: 'Architect', body: [],
+        play: [['t', 'What he said. April, after closing.'], ['p', 800], ['t', '\n“I’ve always wondered what it would be like to ride beside you. Not behind.”'], ['p', 1400], ['t', '\n“You want a sidecar?”'], ['p', 700], ['t', '\n“Maybe. I like being able to see your face.”'], ['p', 1600], ['t', '\n\nI laughed. He didn’t ask again.'], ['p', 1500], ['t', '\n\nChair on the left. Kerb side.'], ['p', 600], ['t', '\nHas to actually carry a person. Not just look nice.'], ['p', 900], ['t', '\nHim.'], ['p', 1300], ['t', '\n\nDon’t tell Mrs. Tong. Mrs. Tong is a radio.']] },
+      { id: 'a2', day: 2, date: '18:44', stamp: '1 September 2022 at 18:44', title: 'Architect (things he’d complain about)', body: [],
+        play: [['t', '[x] Leg room. More than anyone.'], ['p', 600], ['t', '\n[x] A backrest, because he sits like a folded ruler.'], ['p', 700], ['t', '\n[x] A grab rail, because he’ll say “is this safe” on the first corner.'], ['p', 700], ['t', '\n[x] A locker under the seat. Pencils. Tea. The ruler.'], ['p', 700], ['t', '\n[x] Screen low. He looks at buildings. Don’t get in the way of him looking at buildings.'], ['p', 900], ['t', '\n[ ] Brass plate. Saturday.'], ['p', 1300], ['t', '\n\nPaint: dark green, sample 3. Nearly black under the shop lights, proper green in the sun.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Serafina Song', subject: 'Third gear', date: '31/07/2022', full: '31 July 2022 at 22:12', body: 'Like butter. You remembered the lever reach.\n\nI am telling everyone you are the meanest engineer in the city. It is a compliment. Your husband agrees, I can tell from his face.\n\nS.' },
+      { id: 'fr', day: 0, from: 'Yard 9 Salvage', subject: 'Re: sidecar frame, left-hand', date: '01/08/2022', full: '1 August 2022 at 16:30', body: 'Left-hand chassis, old, straight, no cracks at the mounts. Wheel and hub included. Body is rubbish, you said you don’t want the body.\n\nTuesday delivery. Cash is fine.' },
+      { id: 'plate', day: 2, from: 'Kwan Brass & Engraving', subject: 'Your plate: ARCHITECT', date: '18:20', full: 'Thursday 1 September 2022 at 18:20', body: 'Miss Cao,\n\nBrass, 80 × 20 mm, two fixing holes, capitals as drawn:\n\nARCHITECT\n\nReady Saturday after nine. You asked if we could make the letters look like a draftsman’s lettering. We tried. The old man did it by hand.' }
+    ] },
+    messages: { threads: [
+      { id: 'ra', day: 0, name: 'Raiden', photo: 'img/av-raiden.webp', time: 'Jul', order: 40, items: [
+        { t: 'day', text: '<b>Sat 30 Jul</b> 21:10' },
+        { t: 'in', text: 'Serafina hugged you. I saw. You went stiff for half a second and then you laughed.' },
+        { t: 'out', text: 'Don’t.' },
+        { t: 'day', text: '<b>Sat 13 Aug</b> 02:07', beat: 'ra', day: 1 },
+        { t: 'in', img: 'img/blueprint-cat.webp', day: 1 },
+        { t: 'in', text: 'This is you when the bolt won’t come out.', day: 1, live: true, wait: 900 },
+        { t: 'out', text: 'Go to sleep.', day: 1, live: true },
+        { t: 'in', text: 'Are you still downstairs?', day: 1, live: true, wait: 1500 },
+        { t: 'out', text: 'Working.', day: 1, live: true },
+        { t: 'in', text: 'On what?', day: 1, live: true, wait: 1300 },
+        { t: 'out', text: 'A customer.', day: 1, live: true, play: [['p', 900], ['t', 'A side'], ['p', 700], ['d', 6], ['t', 'A customer.']] },
+        { t: 'in', text: 'Which customer?', day: 1, live: true, wait: 1500 },
+        { t: 'out', text: 'A difficult one.', day: 1, live: true },
+        { t: 'in', text: 'Do I know them?', day: 1, live: true, wait: 1700 },
+        { t: 'out', text: 'Go to sleep, Raiden.', day: 1, live: true },
+        { t: 'day', text: '<b>Sat 10 Sep</b> 08:02', beat: 'go', day: 3 },
+        { t: 'out', text: 'Petrol station. Bring your helmet.', day: 3, live: true, play: [['p', 900], ['t', 'Petrol station. Bring your helmet.']] },
+        { t: 'in', text: 'Is something wrong?', day: 3, live: true, wait: 1100 },
+        { t: 'out', text: 'No.', day: 3, live: true },
+        { t: 'in', text: 'Are you sure?', day: 3, live: true, wait: 1300 },
+        { t: 'out', text: 'Raiden.', day: 3, live: true },
+        { t: 'in', text: 'Coming.', day: 3, live: true, wait: 1200 }
+      ] },
+      { id: 'tong', day: 0, name: 'Mrs. Tong', photo: 'img/av-mrs-tong.webp', time: 'Aug', order: 30, items: [
+        { t: 'day', text: '<b>Tue 2 Aug</b> 13:05' },
+        { t: 'in', text: 'Why is there a man unloading half a motorbike outside your shutter.' },
+        { t: 'out', text: 'Work.' },
+        { t: 'day', text: '<b>Thu 1 Sep</b> 18:40', beat: 'tg', day: 2 },
+        { t: 'in', text: 'Your husband asked me what you are building.', day: 2 },
+        { t: 'in', text: 'I said I am a noodle shop, how would I know.', day: 2, live: true, wait: 1400 },
+        { t: 'out', text: 'Thank you.', day: 2, live: true },
+        { t: 'in', text: 'Then he asked if it was for him. With his face. You know the face.', day: 2, live: true, wait: 1800 },
+        { t: 'out', text: 'What did you say?', day: 2, live: true },
+        { t: 'in', text: 'I gave him more brisket. Brisket says nothing.', day: 2, live: true, wait: 1600 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Saturday 30 July', time: '19:20', q: 'selector fork true check', results: [{ site: 'Gearbox Bench', path: 'sequential', title: 'Checking a bent selector fork', snip: 'Measure the pad thickness and the fork against a surface plate. A hammered fork will never hold the dogs square.' }] },
+      { id: 's1', day: 0, dayLabel: 'Monday 1 August', time: '23:39', q: 'sidecar frame left hand for sale', live: true, play: [['t', 'sidecar for'], ['p', 700], ['t', ' a draftsman'], ['p', 1300], ['d', 12], ['p', 500], ['t', ' frame left hand for sale']], results: [
+        { site: 'Classic Bike Classifieds', path: 'sidecars', title: 'Sidecar chassis, left-hand mount, no body', snip: 'Straight frame, original wheel. Collection from the salvage yard.' },
+        { site: 'Sidecar Builders’ Forum', path: 'setup', title: 'Setting lean-out and toe-in for an outfit', snip: 'Lean the bike a degree or two away from the chair and run the chair wheel slightly toe-in, or the outfit pulls for the gutter.' }
+      ] }
+    ] },
+    sheets: { items: [
+      { id: 'set', day: 1, title: 'Architect — setup', cols: ['Item', 'Value', 'Why', 'Done'], rows: [
+        ['Chair side', 'Left (kerb)', 'how the road goes here', '✓'],
+        ['Lean-out', '2° away from chair', 'stops the pull', '✓'],
+        ['Chair wheel toe-in', '10 mm', 'won’t drift for the gutter', '✓'],
+        ['Mounts', '4-point, braced', 'carries a person, not a box', '✓'],
+        ['Leg room', '+12 cm over standard', 'he folds up like a ruler', ''],
+        ['Seat height', '41 cm', 'his knees at the dyno stool', ''],
+        ['Backrest', 'yes', '', ''],
+        ['Grab rail', 'yes', 'first corner: “is this safe”', ''],
+        ['Locker', 'under seat', 'pencils, tea, ruler', ''],
+        ['Screen', 'low', 'so he can look at buildings', '']
+      ] },
+      { id: 'fin', day: 3, title: 'Architect — finished', cols: ['Item', 'Value', 'Why', 'Done'], rows: [
+        ['Chair side', 'Left (kerb)', 'how the road goes here', '✓'],
+        ['Lean-out', '2° away from chair', 'stops the pull', '✓'],
+        ['Chair wheel toe-in', '10 mm', 'won’t drift for the gutter', '✓'],
+        ['Mounts', '4-point, braced', 'carries a person, not a box', '✓'],
+        ['Leg room', '+12 cm over standard', 'he folds up like a ruler', '✓'],
+        ['Seat height', '41 cm', 'his knees at the dyno stool', '✓'],
+        ['Backrest / rail / locker', 'yes', 'everything he’d complain about', '✓'],
+        ['Screen', 'low', 'so he can look at buildings', '✓'],
+        ['Paint', 'dark green, sample 3', 'green like the old trams', '✓'],
+        ['Plate', 'ARCHITECT (brass)', 'late birthday', '✓'],
+        ['Test', 'petrol station, 08:30', '', '']
+      ] }
+    ] },
+    photos: { items: [
+      { src: 'img/blueprint-frame.webp', day: 0, date: '1 Aug 2022', caption: 'Frame like this. Not this colour.' },
+      { src: 'img/blueprint-cat.webp', day: 1, date: '13 Aug 2022', caption: 'From Raiden, 2:07' }
+    ] },
+    files: { folders: [
+      { name: 'Jobs', day: 0, items: [
+        { name: 'Gold bike — Serafina (handed over).pdf', kind: 'pdf', date: '29 Jul 2022', body: ['ROAD BIKE · S. SONG', '', 'Lever reach set to her hand. Pegs to her feet. Engine tuned for the middle of the range. Dark gold.', '', 'Handed over, petrol station, end of July.'] },
+        { name: 'Nonna gearbox (trade).pdf', kind: 'pdf', date: '20 Apr 2022', body: ['Third gear dogs rounded, fork hammered. Good used gears. Fork set true.', 'Trade: close-ratio sequential from the team’s old car.'] },
+        { name: 'Waiting list.txt', kind: 'doc', date: '12 Aug 2022', body: ['1. Xiao Pan (since May 2020). Next.', '2. …'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'He stopped at the edge of the forecourt when he saw it, and walked round it slowly, and found the brass plate and stopped again.<br><br>“You built this?”<br><br>“Unless you know another idiot called Architect.”<br><br>She strapped him in and checked the rail and let the clutch out, and he laughed out loud, the same helpless laugh as the first time on the back of her bike.<br><br>She heard it over the engine, and took the long way home.'
+  }
+});
+
+</script>
+</body>
+</html>

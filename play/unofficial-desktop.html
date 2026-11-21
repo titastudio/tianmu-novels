@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Unofficial · Lin Yu · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Unofficial · desktop · "Lin Yu"
+   Eliana's laptop, Sunday 16 January to Friday 11 March 2022.
+   Canon: Ch8 (the boiler; the weekend at Zhao's: guest network on its own line, the garage, the guardhouse split, the
+   garage code her birthday backwards; Sunday night at the wall, the blanket with the torn corner, the camera's blind
+   spot; "Inside? Warm enough?" … "I’ll see you tomorrow."), Ch9 (Fri 18 Feb, the red egg, the grave at six, Baba never
+   looks at her; "Home? How was this morning?" … "I’ll pick you up at seven."; the planetarium, narration off, LIN YU;
+   "home. i think this was my favourite birthday" "Sleep well, nineteen."), Ch10 (a Friday in March just after two,
+   He Si-Mei's invoice; Qian; eleven days; "hi." in the config; "she said hi. IN MY CONFIG" "The nerve.").
+   No technique is shown, only that it happened. */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'unofficial',
+  title: 'Unofficial · Lin Yu',
+  bookUrl: '../../?novel=unofficial',
+  owner: 'Eliana Lin',
+  me: { photo: 'img/av-eliana.webp' },
+  wall: 'img/unofficial-wall-desk.webp',
+  dark: true,
+  h12: true,
+  login: { pass: 'persimmon', hint: 'Hint: its best branch hangs over the wrong side of the wall.', atStart: true },
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'code', 'photos'],
+  calIcon: [{ wd: 'Sun', dn: '16' }, { wd: 'Fri', dn: '18' }, { wd: 'Fri', dn: '11' }],
+  caption: { open: 'Sunday, the sixteenth of January. The boiler in the tall house is mended, which feels like an insult.<br><br>She spent the weekend at her sister’s on the hill, fixing Zhao’s network, while her father said no to the warm room next door.<br><br>Tonight she took the cream blanket with the torn corner down through the kitchen to the low wall between the two back gardens. He was already there. He’d seen her light.<br><br>She is back at her desk now. The blanket isn’t.' },
+  days: [
+    { date: 'Sun 16 Jan', dn: 16, start: '22:52', beats: [
+      { id: 'yc', target: 'thread:yc', auto: true, autoDelay: 600 },
+      { id: 'zn', target: 'code:zhao/network.md', auto: true, delay: 2600 }
+    ] },
+    { date: 'Fri 18 Feb', dn: 18, start: '08:36', lead: 'Her birthday. A red egg outside her door, still warm. The grave at six.', beats: [
+      { id: 'yc2', target: 'thread:yc', unread: 'yc', time: '8:40 AM', at: '08:40', notify: { app: 'messages', title: 'Yu Chen', body: 'Home? How was this morning?' } },
+      { id: 'yc3', target: 'thread:yc', unread: 'yc', time: '10:04 PM', at: '22:04', delay: 3600, notify: { app: 'messages', title: 'Yu Chen', body: 'I’m glad I was part of it. Sleep well, nineteen.' } },
+      { id: 'ni', target: 'note:ni', auto: true, delay: 2600 },
+      { id: 's1', target: 'search:s1', auto: true, delay: 2600 }
+    ] },
+    { date: 'Fri 11 Mar', dn: 11, start: '14:03', lead: 'A Friday in March.', beats: [
+      { id: 'inv', target: 'mail:inv', mailUnread: 'inv', notify: { app: 'mail', title: 'Qian', body: 'Fwd: SECURITY AUDIT: REMEDIATION COMPLETED' } },
+      { id: 'qi', target: 'thread:qi', unread: 'qi', time: '2:06 PM', at: '14:06', delay: 2400, notify: { app: 'messages', title: 'Qian', body: 'Have you seen the report?' } },
+      { id: 'cfg', target: 'code:boundary/config.yaml', at: '21:48', delay: 3200, notify: { app: 'code', title: 'Code', body: 'boundary/config.yaml changed yesterday by an unknown session' } },
+      { id: 'yc4', target: 'thread:yc', auto: true, delay: 2600 },
+      { id: 'qi2', target: 'thread:qi', unread: 'qi', time: '11:52 PM', at: '23:52', delay: 3000, notify: { app: 'messages', title: 'Qian', body: 'He Si-Mei has agreed to speak to you.' } }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'old', day: 0, date: '1/2/22', stamp: '2 January 2022 at 3:10 AM', title: 'headphones', body: ['on the desk: 2', 'in the wardrobe: 8', 'the eleventh: in the paper bag. still in the paper bag.', '', 'he untangles them. i let him.'] },
+      { id: 'ni', day: 1, date: '10:09 PM', stamp: '18 February 2022 at 10:09 PM', title: 'nineteen', body: [],
+        play: [['t', 'what baba said today:'], ['p', 900], ['t', '\nat the grave, in the car, at the door, in the sitting room: nothing. then “put it in the fridge.”'], ['p', 1600], ['t', '\n\nthings he said:'], ['p', 800], ['t', '\nhappy birthday, eliana.'], ['p', 1300], ['t', '\nhappy nineteenth birthday, yu-er.'], ['p', 1600], ['t', '\n\nhe turned the narration off. no facts, no distances, nobody telling me where to look.'], ['p', 1300], ['t', '\none point of light near the top of the dome and my other name next to it.'], ['p', 1100], ['t', '\nLIN YU.'], ['p', 1600], ['t', '\n\nwe shared the egg. cold, same as every year.'], ['p', 1300], ['t', '\ndidn’t mind this time.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Faculty Office', subject: 'Second semester timetable', date: '1/14/22', full: '14 January 2022 at 10:00 AM', body: 'Networks and Security II: Mondays 9:00, room 2.14.\n\nPlease note there is a 7:40 bus.' },
+      { id: 'inv', day: 2, from: 'Qian', subject: 'Fwd: SECURITY AUDIT: REMEDIATION COMPLETED', date: '2:02 PM', full: 'Friday 11 March 2022 at 2:02 PM', body: 'SECURITY AUDIT: REMEDIATION COMPLETED\n\nClient: the Syndicate.\nIssue: structural weakness in an existing access boundary.\nAction taken: unauthorised entry prevented; flaw corrected.\nAmount due: confidential.\n\nHe Si-Mei' }
+    ] },
+    messages: { threads: [
+      { id: 'yc', day: 0, name: 'Yu Chen', time: 'Sun', order: 50, items: [
+        { t: 'day', text: '<b>Sat 15 Jan</b> 1:02 AM' },
+        { t: 'in', text: 'Your light’s on.' },
+        { t: 'out', text: 'i didn’t leave it on' },
+        { t: 'in', text: 'Someone did.' },
+        { t: 'out', text: 'ah sim probably. why are you photographing my window' },
+        { t: 'in', text: 'Habit. I’m only looking at the light. Not the curtains.' },
+        { t: 'out', text: 'good. and don’t stand outside in the cold' },
+        { t: 'in', text: 'I’m in bed. Did you eat?' },
+        { t: 'out', text: 'fish. my brother-in-law took all the bones out for me like i’m four' },
+        { t: 'in', text: 'I like him already.' },
+        { t: 'day', text: '<b>Sun 16 Jan</b> 10:53 PM', beat: 'yc' },
+        { t: 'in', text: 'Inside? Warm enough?', live: true, wait: 400 },
+        { t: 'out', text: 'yes. thank you for today', live: true },
+        { t: 'in', text: 'You don’t have to thank me.', live: true, wait: 1500 },
+        { t: 'out', text: 'i know. but i want to', live: true },
+        { t: 'in', text: 'Then you’re welcome. Your blanket’s on my chair.', live: true, wait: 1700 },
+        { t: 'out', text: 'keep it. your room’s cold', live: true },
+        { t: 'in', text: 'I’m fine.', live: true, wait: 1200 },
+        { t: 'out', text: 'you always say that', live: true },
+        { t: 'in', text: 'Then I’ll keep it. I’ll see you tomorrow.', live: true, wait: 1800 },
+        { t: 'day', text: '<b>Fri 18 Feb</b> 8:40 AM', beat: 'yc2', day: 1 },
+        { t: 'in', text: 'Home? How was this morning?', day: 1 },
+        { t: 'out', text: 'normal', day: 1, live: true, play: [['p', 1200], ['t', 'awful'], ['p', 900], ['d', 5], ['t', 'normal']] },
+        { t: 'in', text: 'Did you eat?', day: 1, live: true, wait: 1300 },
+        { t: 'out', text: 'not yet', day: 1, live: true },
+        { t: 'in', text: 'Please eat something.', day: 1, live: true, wait: 1200 },
+        { t: 'out', text: 'you sound old', day: 1, live: true },
+        { t: 'in', text: 'I’m the same age I was yesterday.', day: 1, live: true, wait: 1500 },
+        { t: 'in', text: 'I have something for you. You’ll get it tonight. Properly.', day: 1, live: true, wait: 1800 },
+        { t: 'out', text: 'is it expensive', day: 1, live: true },
+        { t: 'in', text: 'No.', day: 1, live: true, wait: 900 },
+        { t: 'out', text: 'is it alive', day: 1, live: true },
+        { t: 'in', text: 'No.', day: 1, live: true, wait: 900 },
+        { t: 'out', text: 'is it going to explode', day: 1, live: true },
+        { t: 'in', text: 'I hope not. I’ll pick you up at seven.', day: 1, live: true, wait: 1600 },
+        { t: 'day', text: '<b>Fri 18 Feb</b> 10:03 PM', beat: 'yc3', day: 1 },
+        { t: 'out', text: 'home. i think this was my favourite birthday', day: 1 },
+        { t: 'in', text: 'I’m glad I was part of it. Sleep well, nineteen.', day: 1 },
+        { t: 'day', text: '<b>Fri 11 Mar</b> 9:56 PM', beat: 'yc4', day: 2 },
+        { t: 'out', text: 'she said hi. IN MY CONFIG', day: 2, live: true, play: [['p', 800], ['t', 'she said hi. IN MY CONFIG']] },
+        { t: 'in', text: 'The nerve.', day: 2, live: true, wait: 1300 },
+        { t: 'out', text: 'thank you', day: 2, live: true },
+        { t: 'in', text: 'Are you going to say hi back?', day: 2, live: true, wait: 1500 },
+        { t: 'out', text: 'absolutely not', day: 2, live: true },
+        { t: 'day', text: '<b>Fri 11 Mar</b> 11:58 PM', beat: 'qi2', day: 2 },
+        { t: 'out', text: 'she’s doing it again. she’s being pleased with herself', day: 2 },
+        { t: 'in', text: 'That’s unfortunate. You should meet her.', day: 2 },
+        { t: 'out', text: 'whose side are you on', day: 2 },
+        { t: 'in', text: 'Yours. You’re curious.', day: 2 },
+        { t: 'out', text: 'maybe', day: 2 },
+        { t: 'in', text: 'Goodnight, sweetheart.', day: 2 }
+      ] },
+      { id: 'qi', day: 0, name: 'Qian', photo: 'img/av-qian.webp', time: 'Jan', order: 30, items: [
+        { t: 'day', text: '<b>Mon 10 Jan</b> 1:00 AM' },
+        { t: 'in', text: 'Two records to review when convenient. Not urgent.' },
+        { t: 'out', text: 'everything you send at 1am is urgent' },
+        { t: 'day', text: '<b>Fri 11 Mar</b> 2:06 PM', beat: 'qi', day: 2 },
+        { t: 'in', text: 'Have you seen the report?', day: 2 },
+        { t: 'out', text: 'yes. she’s very pleased with herself', day: 2, live: true },
+        { t: 'in', text: 'She is.', day: 2, live: true, wait: 1300 },
+        { t: 'out', text: 'who is she', day: 2, live: true },
+        { t: 'in', text: 'He Si-Mei. Nineteen. Independent. She approached us.', day: 2, live: true, wait: 1700 },
+        { t: 'out', text: 'tell her not to touch my work again', day: 2, live: true, play: [['p', 1500], ['t', 'tell her not to touch my work again']] },
+        { t: 'in', text: 'She says she’ll consider it after payment.', day: 2, live: true, wait: 1900 },
+        { t: 'day', text: '<b>Fri 11 Mar</b> 11:52 PM', beat: 'qi2', day: 2 },
+        { t: 'in', text: 'He Si-Mei has agreed to speak to you. Her note: “I’m free tomorrow afternoon. If you want to discuss the flaw, bring your own coffee. I don’t work for free.”', day: 2 },
+        { t: 'out', text: 'tell her i don’t pay people who insult my work', day: 2, live: true },
+        { t: 'in', text: 'She says she didn’t insult your work. She corrected it.', day: 2, live: true, wait: 1800 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Sunday 16 January', time: '6:10 PM', q: 'boiler pressure low after repair', results: [{ site: 'Home Heating Help', path: 'boilers', title: 'Why boiler pressure drops after a repair', snip: 'Air in the system. Bleed the radiators and top up to the mark.' }] },
+      { id: 's1', day: 1, dayLabel: 'Friday 18 February', time: '10:12 PM', q: 'how much does it cost to hire a planetarium', live: true, play: [['t', 'can a planetarium put a name on a star'], ['p', 1300], ['d', 38], ['p', 600], ['t', 'how much does it cost to hire a planetarium']], results: [
+        { site: 'City Planetarium', path: 'private events', title: 'Private hire of the dome', snip: 'Evening hire available on request. Narration can be switched off. Labels for a single point of light can be added for private shows. Please ask for a quote.' },
+        { site: 'Star Registry Facts', path: 'myths', title: 'Can you really name a star?', snip: 'Not officially. Only the international body names stars. A label on a planetarium dome lasts for one evening.' }
+      ] }
+    ] },
+    code: { project: 'work', prompt: 'eliana@desk:~/work$', files: [
+      { path: 'zhao/network.md', day: 0, open: true, text: '# the house on the hill — done this weekend\n\n- guest network on its own line\n- garage does not share credentials with the house\n- guardhouse box split in two (bao has the steps)\n- sixth thing in the garage: fixed\n- list of kit that should go in the harbour: sent to zhao\n\n# garage code\n# zhao: “your birthday backwards.”\n# me: that is not secure.\n# zhao: “no. but you’ll never be locked out.”\n\n# left as he asked.' },
+      { path: 'boundary/config.yaml', day: 2, mark: 9, text: '# access boundary\n# maintained by: e.l.\n\nboundary:\n  zones: [archive, transfers]\n  separate: true\n  # 2022-03-11: overlap closed. not by me.\n\nhi.\n\nlogging:\n  keep_days: 400' }
+    ], terminal: [
+      { day: 0, text: 'eliana@desk:~/work$ git log -1 zhao/' },
+      { day: 0, text: 'Sun Jan 16  e.l.  “hill house: done. zhao says thank you. he didn’t. he made me tea.”' },
+      { day: 2, text: 'eliana@desk:~/work$ git log -1 boundary/config.yaml' },
+      { day: 2, text: 'Thu Mar 10  (unknown)  “”' },
+      { day: 2, text: 'eliana@desk:~/work$ # eleven days. she read for eleven days and touched nothing.' }
+    ] },
+    photos: { items: [
+      { src: 'img/unofficial-sky.webp', day: 1, date: '18 Feb 2022', caption: 'LIN YU. Not officially.' },
+      { src: 'img/unofficial-persimmon.webp', day: 0, date: '21 Sep 2021', caption: 'His tree. My side.' }
+    ] },
+    files: { folders: [
+      { name: 'Coursework', day: 0, items: [
+        { name: 'Networks II — week 1.pdf', kind: 'pdf', date: '17 Jan 2022', body: ['NETWORKS AND SECURITY II', '', 'Week 1. Trust boundaries.', '', '(Margin, in pencil: “i know.”)'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'She left the line exactly where it was. She told herself it was evidence, so she’d recognise the girl’s habits next time, and not because nobody had ever said hi to her inside a system before.<br><br>Across the gap his light was still on.<br><br>Tomorrow she was going to make He Si-Mei explain herself. And she was absolutely not bringing coffee.'
+  }
+});
+
+</script>
+</body>
+</html>

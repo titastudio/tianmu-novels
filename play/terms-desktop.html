@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Terms · Lo Prometto · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Terms · desktop · "Lo Prometto"
+   Chen Si's laptop, Tuesday 12 March to Thursday 16 May 2019.
+   Canon: Ch7 (10:17 the envelope, 11:29 the counter, eleven pages in red, clauses 1–11, the additional disclosure,
+   "Keep it", the broken chain), Ch8 (thirty-seven nights of Italian with Enzo, "Lo prometto", the hotel above the
+   Navigli at 2:13, the planner and the translator refused, eleven guests, the vows and the one sentence nobody taught him). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'terms',
+  title: 'Terms · Lo Prometto',
+  bookUrl: '../../?novel=terms',
+  owner: 'Chen Si',
+  me: { photo: 'img/av-chen-si.webp' },
+  wall: 'img/terms-wall-desk.webp',
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar'],
+  calIcon: [{ wd: 'Tue', dn: '12' }, { wd: 'Tue', dn: '9' }, { wd: 'Thu', dn: '2' }, { wd: 'Thu', dn: '16' }],
+  caption: { open: 'Tuesday, the twelfth of March. A quarter to midnight.<br><br>At eleven twenty-nine this morning a woman in an ivory suit slid eleven pages of red ink across a glass counter and asked him to marry her.<br><br>He signed every page. She kept the only copy.<br><br>He keeps records of everything. This time all he has is what he remembers.' },
+  days: [
+    { date: 'Tue 12 Mar', dn: 12, start: '23:46', beats: [
+      { id: 'cl', target: 'note:cl', auto: true, autoDelay: 500 },
+      { id: 'au', target: 'thread:au', unread: 'au', time: '23:58', at: '23:58', delay: 2400, notify: { app: 'messages', title: 'Aurelia', body: 'Lily says you left my shop with my lipstick on your mouth.' } },
+      { id: 'zh', target: 'thread:zh', unread: 'zh', time: '00:04', at: '00:04', delay: 2600, notify: { app: 'messages', title: 'Brother', body: 'Qian says you cancelled the consortium.' } }
+    ] },
+    { date: 'Tue 9 Apr', dn: 9, start: '23:22', lead: 'Four weeks later.', beats: [
+      { id: 'm1', target: 'mail:m1', mailUnread: 'm1', notify: { app: 'mail', title: 'Enzo', body: 'Lezione uno' } },
+      { id: 's1', target: 'search:s1', auto: true, delay: 2400 },
+      { id: 'v', target: 'note:v', auto: true, delay: 2600 }
+    ] },
+    { date: 'Thu 2 May', dn: 2, start: '00:38', lead: 'Night twenty-four.', beats: [
+      { id: 'pl', target: 'mail:pl', mailUnread: 'pl', notify: { app: 'mail', title: 'Casa Navigli Events', body: 'Ceremony language: a recommendation' } },
+      { id: 'au2', target: 'thread:au', unread: 'au', time: '00:44', at: '00:44', delay: 2600, notify: { app: 'messages', title: 'Aurelia', body: 'Why are you always on the phone at half past eleven?' } },
+      { id: 'gl', target: 'file:Guest list.txt', delay: 2400, notify: { app: 'finder', title: 'Qian shared a file', body: 'Guest list.txt' } }
+    ] },
+    { date: 'Thu 16 May', dn: 16, start: '02:13', lead: 'A hotel above the Navigli. The morning of the wedding.', beats: [
+      { id: 'en', target: 'thread:en', unread: 'en', time: '02:31', at: '02:31', notify: { app: 'messages', title: 'Enzo', body: 'Better. Not good. Better.' } },
+      { id: 'fin', target: 'note:vf', auto: true, delay: 2600 },
+      { id: 'zh2', target: 'thread:zh', unread: 'zh', time: '02:44', at: '02:44', delay: 2600, notify: { app: 'messages', title: 'Brother', body: 'Rings are in my pocket.' } }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'cl', day: 0, date: '23:47', stamp: '12 March 2019 at 23:47', title: 'Eleven pages', body: [],
+        play: [['t', 'From memory. She has the only copy.'], ['p', 900], ['t', '\n\n1. Both of us freely. Nobody gives up who they are. Her shop, her designs, her staff, every collection: hers.'], ['p', 600], ['t', '\n2. Separate property.'], ['p', 300], ['t', '\n3. What we own together.'], ['p', 300], ['t', '\n4. Our own friends, our own hours, one room each. Knock.'], ['p', 500], ['t', '\n5. No family has a say in our house.'], ['p', 400], ['t', '\n6. The press. She may refuse every interview ever asked for.'], ['p', 400], ['t', '\n7. The money, all of it, open to both.'], ['p', 400], ['t', '\n8. What is private stays private.'], ['p', 1100], ['t', '\n9. Under the Wife’s direction until she says otherwise.'], ['p', 1400], ['t', '\n10. The word is Milan. Rotterdam is reserved for Rotterdam.'], ['p', 900], ['t', '\n11. Choice. Ten years. At the renewal she may rewrite every clause.'], ['p', 1600], ['t', '\n\nOn the back I wrote that I’ve loved her since the balcony.'], ['p', 1300], ['t', '\nShe read it three times and said I couldn’t put that in a contract.'], ['p', 900], ['t', '\nShe didn’t cross it out.']] },
+      { id: 'vf', day: 3, date: '02:36', stamp: '16 May 2019 at 02:36', title: 'Vows (final)', body: [],
+        play: [['t', 'Aurelia.'], ['p', 900], ['t', '\nPrometto di non scambiare la tua indipendenza per distanza.'], ['p', 800], ['t', '\nPrometto di non trattare il tuo amore come qualcosa che si compra, o che si guadagna tenendoti al sicuro.'], ['p', 900], ['t', '\nPrometto di non prendere le decisioni al posto tuo e chiamarlo cura.'], ['p', 800], ['t', '\nPrometto di ascoltarti quando mi dici che ho torto.'], ['p', 800], ['t', '\nPrometto di continuare a sceglierti.'], ['p', 1200], ['t', '\nLo prometto.'], ['p', 2200], ['t', '\n\n'], ['p', 1400], ['t', 'Wherever you stand, I’ll stand beside you.'], ['p', 1200], ['t', '\n\n(This line’s mine. Not Enzo’s.)']] },
+      { id: 'v', day: 1, date: '23:41', stamp: '9 April 2019 at 23:41', title: 'Vows', body: [],
+        play: [['t', 'Saying them myself. In Italian. No translator.'], ['p', 1000], ['t', '\n\nI will not mistake her independence for distance.'], ['p', 700], ['t', '\nI will not treat her love as something I bought, or earned by keeping her safe.'], ['p', 900], ['t', '\nI will not make her decisions for her and call it care.'], ['p', 700], ['t', '\nI will listen when she tells me I’m wrong.'], ['p', 700], ['t', '\nI will keep choosing her.'], ['p', 1400], ['t', '\n\nItalian (Enzo, night 1):'], ['p', 600], ['t', '\nPrometto di non scambiare la tua indipendenza per distanza.'], ['p', 1200], ['t', '\n(“Indipendenza. Five syllables, Mr. Chen. You have found three.”)']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Qian', subject: 'Shipping consortium: moved to Tuesday 19th', date: '12/03/2019', full: '12 March 2019 at 10:24', body: 'Mr. Chen,\n\nThe consortium is moved to next Tuesday at 11:30. They didn’t ask why and I didn’t say.\n\nI found you a pen, as asked. You left with it.\n\nQian' },
+      { id: 'm1', day: 1, from: 'Enzo', subject: 'Lezione uno', date: '23:20', full: 'Tuesday 9 April 2019 at 23:20', body: 'Mr. Chen,\n\nYou rang me at the workshop and asked, very politely, as if you were buying a building, whether I would teach you to make promises in Italian.\n\nVery well. Every night, half past eleven, by telephone, until the wedding. Thirty-seven nights. I have counted. You will hate me by the fourth.\n\nShe will not hear of it from me. If she asks, you are learning nothing and I have never heard of you.\n\nTonight: “Lo prometto.” Say it to the mirror before I ring. Do not say it like a man collecting a debt.\n\nEnzo' },
+      { id: 'pl', day: 2, from: 'Casa Navigli Events', subject: 'Ceremony language: a recommendation', date: '00:31', full: 'Thursday 2 May 2019 at 00:31', body: 'Dear Mr. Chen,\n\nFurther to our call, may we gently recommend once more that the ceremony be conducted in English, for the comfort of the guests, with our translator present to assist the groom with any Italian passages.\n\nShe is very experienced and extremely discreet.\n\nWith warm regards,\nThe events office, Casa Navigli' },
+      { id: 'pr', day: 2, from: 'Chen Si', to: 'Casa Navigli Events', subject: 'Re: Ceremony language: a recommendation', date: '00:36', full: 'Thursday 2 May 2019 at 00:36', body: 'No.\n\nThank you.\n\nC.' }
+    ] },
+    messages: { threads: [
+      { id: 'au', day: 0, name: 'Aurelia', photo: 'img/av-aurelia.webp', time: 'Tue', order: 40, items: [
+        { t: 'day', text: '<b>Thu 7 Mar</b> 21:40' },
+        { t: 'in', text: 'What are you doing on Tuesday morning?' },
+        { t: 'out', text: 'A shipping consortium. Why?' },
+        { t: 'in', text: 'No reason.' },
+        { t: 'day', text: '<b>Tue 12 Mar</b> 23:58', beat: 'au' },
+        { t: 'in', text: 'Lily says you left my shop with my lipstick on your mouth.', live: true, wait: 400 },
+        { t: 'out', text: 'Lily is mistaken.', live: true, play: [['p', 700], ['t', 'Lily is mistaken.']] },
+        { t: 'in', text: 'Lily has eyes.', live: true, wait: 1500 },
+        { t: 'in', text: 'Are you sleeping?', live: true, wait: 1300 },
+        { t: 'out', text: 'I’m writing it down.', live: true, play: [['p', 900], ['t', 'I’m reading'], ['p', 800], ['d', 7], ['t', 'writing it down.']] },
+        { t: 'in', text: 'Writing what down?', live: true, wait: 1600 },
+        { t: 'out', text: 'The terms. You kept the copy.', live: true },
+        { t: 'in', text: 'Of course I kept the copy. Go to sleep, fiancé.', live: true, wait: 2000 },
+        { t: 'day', text: '<b>Thu 2 May</b> 00:44', beat: 'au2', day: 2 },
+        { t: 'in', text: 'Why are you always on the phone at half past eleven?', day: 2 },
+        { t: 'out', text: 'Shipping.', day: 2, live: true, play: [['p', 1100], ['t', 'Business'], ['p', 700], ['d', 8], ['t', 'Shipping.']] },
+        { t: 'in', text: 'At half past eleven at night?', day: 2, live: true, wait: 1500 },
+        { t: 'out', text: 'The ships are in Europe.', day: 2, live: true },
+        { t: 'in', text: 'You’re a terrible liar, Chen Si.', day: 2, live: true, wait: 1900 },
+        { t: 'in', text: 'I’ll find out.', day: 2, live: true, wait: 1100 },
+        { t: 'out', text: 'On the sixteenth.', day: 2, live: true }
+      ] },
+      { id: 'zh', day: 0, name: 'Brother', photo: 'img/av-zhao.webp', time: 'Mar', order: 30, items: [
+        { t: 'day', text: '<b>Wed 13 Mar</b> 00:04', beat: 'zh' },
+        { t: 'in', text: 'Qian says you cancelled the consortium.', live: true, wait: 300 },
+        { t: 'out', text: 'She proposed.', live: true, play: [['p', 900], ['t', 'I was'], ['p', 700], ['d', 5], ['t', 'She proposed.']] },
+        { t: 'in', text: 'With what.', live: true, wait: 1800 },
+        { t: 'out', text: 'Eleven pages.', live: true },
+        { t: 'in', text: 'Red?', live: true, wait: 1400 },
+        { t: 'out', text: 'Red.', live: true },
+        { t: 'in', text: 'Hm.', live: true, wait: 1600 },
+        { t: 'in', text: 'Best man is me.', live: true, wait: 1200 },
+        { t: 'out', text: 'Nobody else was considered.', live: true },
+        { t: 'day', text: '<b>Thu 16 May</b> 02:44', beat: 'zh2', day: 3 },
+        { t: 'in', text: 'Rings are in my pocket.', day: 3 },
+        { t: 'in', text: 'Checked three times.', day: 3, live: true, wait: 1200 },
+        { t: 'out', text: 'Go to sleep, Brother.', day: 3, live: true },
+        { t: 'in', text: 'You first.', day: 3, live: true, wait: 1700 },
+        { t: 'in', text: 'Your hands are steady. I watched at dinner.', day: 3, live: true, wait: 1500 },
+        { t: 'out', text: 'I know.', day: 3, live: true, play: [['p', 1200], ['t', 'I know.']] }
+      ] },
+      { id: 'qi', day: 0, name: 'Qian', photo: 'img/av-qian.webp', time: 'Mar', order: 20, items: [
+        { t: 'day', text: '<b>Tue 12 Mar</b> 10:19' },
+        { t: 'out', text: 'Cancel the half past eleven.' },
+        { t: 'in', text: 'That is the shipping consortium, sir. They have waited three weeks.' },
+        { t: 'out', text: 'Then they can wait a fourth. And find me a pen.' },
+        { t: 'day', text: '<b>Tue 12 Mar</b> 19:12' },
+        { t: 'in', text: 'Shall I have the chain mended, sir? The link near the clasp.' },
+        { t: 'out', text: 'No. She says leave it as it is.' }
+      ] },
+      { id: 'en', day: 2, name: 'Enzo', photo: 'img/av-enzo.webp', time: 'Apr', order: 10, items: [
+        { t: 'day', text: '<b>Fri 12 Apr</b> 23:59' },
+        { t: 'in', text: 'Night four. I said you would hate me by the fourth.' },
+        { t: 'out', text: 'I don’t hate you.' },
+        { t: 'in', text: 'Then I am not doing it properly.' },
+        { t: 'day', text: '<b>Sat 27 Apr</b> 00:20' },
+        { t: 'in', text: '“Indipendenza.” You have it now. Do not get arrogant.' },
+        { t: 'day', text: '<b>Thu 16 May</b> 02:31', beat: 'en', day: 3 },
+        { t: 'in', text: 'Better. Not good. Better.', day: 3 },
+        { t: 'in', text: 'There is a difference and it is my whole life’s work.', day: 3, live: true, wait: 900 },
+        { t: 'in', text: 'Your mother. Would she have liked this?', day: 3, live: true, wait: 1800 },
+        { t: 'out', text: 'She’d have corrected my pronunciation.', day: 3, live: true, play: [['p', 1600], ['t', 'Yes'], ['p', 900], ['d', 3], ['t', 'She’d have corrected my pronunciation.']] },
+        { t: 'in', text: 'Good woman. Go to sleep. You are getting married tomorrow.', day: 3, live: true, wait: 2100 },
+        { t: 'out', text: 'Today.', day: 3, live: true },
+        { t: 'in', text: 'Then you are already late.', day: 3, live: true, wait: 1400 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Tuesday 12 March', time: '08:02', q: 'harbour road jewellers opening hours', results: [{ site: 'City Guide', path: 'shopping', title: 'Harbour Road: independent jewellers', snip: 'Most open at ten. One opens at nine on Tuesdays for appointments only.' }] },
+      { id: 's1', day: 1, dayLabel: 'Tuesday 9 April', time: '23:24', q: 'lo prometto pronunciation', live: true, play: [['t', 'italian wedding vows'], ['p', 1100], ['d', 20], ['p', 500], ['t', 'lo prometto pronunciation']], results: [
+        { site: 'Language Desk', path: 'italian › phrases', title: '“Lo prometto”: I promise', snip: 'Three syllables in prometto. Stress the second: pro-MET-to. Double the t. Do not rush it.' },
+        { site: 'Wedding Almanac', path: 'ceremonies abroad', title: 'Civil ceremonies in Milan', snip: 'Couples may write their own words. Many grooms who don’t speak Italian ask for a translator. Some insist on learning it.' }
+      ] }
+    ] },
+    calendar: { year: 2019, month: 4, label: 'May', events: [
+      { d: 1, text: 'Enzo 23:30', day: 1 }, { d: 2, text: 'Enzo 23:30', day: 1 }, { d: 7, text: 'Consortium' }, { d: 13, text: 'Fly to Milan', day: 1 }, { d: 15, text: 'Enzo 23:30 (by phone)', day: 1 }, { d: 16, text: 'Naviglio · 11:00', red: true, day: 1 }, { d: 20, text: 'Home' }
+    ] },
+    files: { folders: [
+      { name: 'Milan', day: 0, items: [
+        { name: 'Guest list.txt', kind: 'doc', date: '1 May 2019', day: 2, body: ['11 guests. Her number. Fine by me.', '', 'Zhao', 'Qian, and Mrs. Qian', 'Enzo', 'Lily', 'Two friends from Milan (hers)', 'Uncle Fan', 'Two from the Jade Hall', 'Serafina: invited. A. says she won’t come. She’s checked the post twice.', '', 'Not invited: her parents. They read Gilt.'] },
+        { name: 'Palazzo, courtyard.pdf', kind: 'pdf', date: '3 Apr 2019', day: 1, body: ['NAVIGLIO PALAZZO · COURTYARD', '', 'Arches on three sides. Long table under the arches for twelve.', 'A small room off the courtyard for the groom.'] }
+      ] },
+      { name: 'Holdings', day: 0, items: [
+        { name: 'Consortium terms v4.pdf', kind: 'pdf', date: '11 Mar 2019', body: ['SHIPPING CONSORTIUM · HEADS OF TERMS', '', 'Draft 4. Rescheduled.'] }
+      ] },
+      { name: 'Trash', trash: true, day: 0, items: [
+        { name: 'vows (english, for the translator).txt', kind: 'doc', date: '20 Apr 2019', day: 1, body: ['~~For the translator to read aloud after me:~~', '', '~~I promise not to mistake your independence for distance.~~', '', 'No. Nobody else says these to her.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'In the courtyard under the arches he said it all in Italian, deliberately, looking at her the whole way through.<br><br>At the end, low, in his own language, the one sentence nobody had taught him: <i>Wherever you stand, I’ll stand beside you.</i><br><br>Enzo was crying openly. Aurelia was staring.<br><br>“Every night?” she said.<br><br>“Unfortunately,” said Chen Si.'
+  }
+});
+
+</script>
+</body>
+</html>

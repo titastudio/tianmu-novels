@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Unofficial · Since Summer · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Unofficial · phone · "Since Summer"
+   Eliana holds Yu Chen's phone, just after midnight, Saturday 27 November 2021, in Qian's empty flat, while he washes the bowl.
+   Canon: Prologue (Fri 18 Jun 2021, the step, honey lemon, his mother's blanket, 3:52; the bus routes and campus maps;
+   he declined the north that afternoon), Ch7 ("Have you eaten?" "yes" … "you’re not my mother" "I know."; she rang him;
+   twenty minutes; the kit in his bag; Auntie Tsoi's chicken congee in a cloth, warm soy milk; "Since summer"; the lamp
+   till four or five; iced coffee, crackers; her orders on his card; "You counted me."; two rules: never ask what she
+   finds, never touch her computers; "Don’t stop watching."). He calls her sweetheart; he calls Wei Long Ge. */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'unofficial',
+  title: 'Unofficial · Since Summer',
+  bookUrl: '../../?novel=unofficial',
+  battery: 52,
+  h12: true,
+  caption: {
+    open: 'Just after midnight. A flat that isn’t anybody’s, covered windows, new locks.<br><br>She rang him for the first time in her life tonight, and he came in twenty minutes with congee wrapped in a cloth so it would stay warm, and he wasn’t surprised by anything. He has known the outline since the summer. He counted her light.<br><br>She has just made a rule that he never touches her computers. She didn’t make one about his phone.<br><br>He’s at the sink with his back to her, washing her bowl. His phone is on the table by the soy milk.'
+  },
+  clock: { start: '00:38', date: 'Saturday 27 November' },
+  calIcon: { wd: 'Sat', dn: '27', wdLong: 'Saturday' },
+  lock: { code: '0352', wall: 'img/unofficial-wall-phone.webp', hintAfter: 2, nudge: 'The step in June. He checked the time on his phone before he let her sleep on his arm.' },
+  home: {
+    wall: 'img/unofficial-wall-phone.webp',
+    widgets: ['photo', 'sugg'],
+    sugg: ['messages', 'notes', 'browser', 'phone'],
+    apps: ['calendar', 'photos', 'notes', 'reminders', 'clock', 'weather', 'camera', 'settings'],
+    dock: ['phone', 'messages', 'browser', 'mail'],
+    badges: {}
+  },
+  stubText: { mail: 'Faculty of Medicine. Pharmacology, week 11.' },
+  me: { name: 'Wang Yu Chen', initials: 'W' },
+  contacts: [
+    { name: 'Eliana', photo: 'img/av-eliana.webp', initials: 'E', fav: true, thread: 'el', phone: '6115 2003', notes: 'Sleeps better when it rains. Takes the last dumpling. Don’t ask her where she’s going.' },
+    { name: 'Ge', photo: 'img/av-song-wei-long.webp', initials: 'S', fav: true, thread: 'ge', phone: '9902 4417' },
+    { name: 'Auntie Tsoi', photo: 'img/av-auntie-tsoi.webp', initials: 'T', fav: true, thread: 'ts', phone: '2618 1150' },
+    { name: 'Nainai', photo: 'img/av-nainai.webp', initials: 'N', phone: '2766 1001', sub: 'The hills. Letters, not calls.' },
+    { name: 'Dr. Wang Xing Yue', photo: 'img/av-xing-yue.webp', initials: 'X', thread: 'xy', phone: '6019 4400', sub: 'Mentor (Nainai’s idea)' },
+    { name: 'Raiden', photo: 'img/av-raiden.webp', initials: 'R', phone: '6390 2212' },
+    { name: 'Elowen', photo: 'img/av-elowen.webp', initials: 'E', phone: '9031 5521' },
+    { name: 'Bai Qing', initials: 'B', phone: '6402 7781', sub: 'Lab partner' }
+  ],
+  clockApp: { alarms: [{ time: '6:30', label: 'Alarm', days: 'Weekdays', on: true }, { time: '7:40', label: 'Her bus', days: 'Mon, Wed', on: false }] },
+
+  messages: {
+    placeholder: 'iMessage',
+    threads: [
+      { id: 'el', name: 'Eliana', photo: 'img/av-eliana.webp', initials: 'E', color: 'linear-gradient(180deg,#c7b8e8,#8f78c9)', time: '11:52 PM', order: 50,
+        draft: 'I can see your light from my room.',
+        items: [
+          { t: 'day', text: '<b>Sat 19 Jun</b> 4:31 AM' },
+          { t: 'in', text: 'did i fall asleep on you' },
+          { t: 'out', text: 'Yes.' },
+          { t: 'in', text: 'for how long' },
+          { t: 'out', text: 'Not long.' },
+          { t: 'day', text: '<b>Wed 22 Sep</b> 11:40 PM' },
+          { t: 'in', text: 'rule 7 is the important one. read rule 7' },
+          { t: 'out', text: 'I’ve read it four times.' },
+          { t: 'in', text: 'good' },
+          { t: 'day', text: '<b>Sat 13 Nov</b> 2:14 AM' },
+          { t: 'out', text: 'Are you asleep?' },
+          { t: 'in', text: 'no. you said a thing' },
+          { t: 'out', text: 'I meant it.' },
+          { t: 'in', text: 'i know. i’m not saying it back yet' },
+          { t: 'out', text: 'I know. That’s all right.' },
+          { t: 'day', text: '<b>Yesterday</b> 11:46 PM' },
+          { t: 'out', text: 'Have you eaten?' },
+          { t: 'in', text: 'yes' },
+          { t: 'out', text: 'What did you eat?' },
+          { t: 'in', text: 'food' },
+          { t: 'out', text: 'That’s not an answer.' },
+          { t: 'in', text: 'you’re not my mother' },
+          { t: 'out', text: 'I know.' },
+          { t: 'call', text: 'Incoming call · 1 min', time: '11:52 PM' },
+          { t: 'in', text: 'here' },
+          { t: 'in', text: 'it’s the building with the covered windows. 6th floor. door on the left' },
+          { t: 'out', text: 'Twenty minutes.' }
+        ] },
+      { id: 'ts', name: 'Auntie Tsoi', photo: 'img/av-auntie-tsoi.webp', initials: 'T', time: '12:31 AM', order: 45, items: [
+        { t: 'day', text: '<b>Sat 13 Feb</b> 9:10 PM' },
+        { t: 'in', text: 'The girl next door had three bowls. Three. She said she doesn’t like my dumplings and she took the last one.' },
+        { t: 'day', text: '<b>Yesterday</b> 11:55 PM' },
+        { t: 'out', text: 'Is there congee left? Chicken.' },
+        { t: 'in', text: 'At midnight? Who is it for?' },
+        { t: 'out', text: 'Someone who hasn’t been eating.' },
+        { t: 'in', text: 'Wrap it in the thick cloth so it stays warm. Take pickles. Take soy milk, warm, not hot.' },
+        { t: 'in', text: 'Is it the someone who had three bowls?' },
+        { t: 'day', text: '<b>Today</b> 12:31 AM' },
+        { t: 'in', text: 'Did she eat it?' }
+      ] },
+      { id: 'ge', name: 'Ge', photo: 'img/av-song-wei-long.webp', initials: 'S', time: '12:02 AM', order: 40, items: [
+        { t: 'day', text: '<b>Fri 18 Jun</b> 5:10 PM' },
+        { t: 'out', text: 'I’ve accepted the hill. Not the north.' },
+        { t: 'in', text: 'You wanted the north since you were fourteen.' },
+        { t: 'out', text: 'I changed my mind.' },
+        { t: 'in', text: 'Hm. Does she know?' },
+        { t: 'out', text: 'There’s nothing for her to know.' },
+        { t: 'in', text: 'Right.' },
+        { t: 'day', text: '<b>Today</b> 12:02 AM' },
+        { t: 'in', text: 'Your door went at midnight. Where are you?' },
+        { t: 'out', text: 'Taking food to someone.' },
+        { t: 'in', text: 'Someone who isn’t eating.' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Take the good flask. And text me when you’re both home.' }
+      ] },
+      { id: 'xy', name: 'Dr. Wang Xing Yue', photo: 'img/av-xing-yue.webp', initials: 'X', time: 'Thursday', order: 20, items: [
+        { t: 'day', text: '<b>Thu 25 Nov</b> 7:15 PM' },
+        { t: 'in', text: 'Pharmacology quiz: 94. The six marks were dosing. Don’t guess doses.' },
+        { t: 'out', text: 'Understood.' },
+        { t: 'in', text: 'Suture pad. Fifty square knots a night. You’re pulling them too tight.' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Nainai asks if you’re eating. I said I’m your mentor, not your aunt. She said ask anyway. Are you eating.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    items: [
+      { id: 'light', group: 'Previous 30 Days', when: '26/11/2021', stamp: '26 November 2021 at 11:48 PM', title: 'Light',
+        body: [
+          'Sat 3 Jul. Her lamp on at 4:12. Still on at 5.',
+          'Thu 15 Jul. Off at 2:30. On again at 3:05. Off at 5:20.',
+          'Aug. Gone two nights. Back Sunday. Monday: iced coffee, 11:48 PM. Crackers. (My card.) Nothing else.',
+          'Mon 6 Sep. First day. Off at 11:15. She slept.',
+          'Tue 21 Sep. Off at 1:10. (The roof.)',
+          'Wed 22 Sep. Off at 11:40. Rule 7.',
+          'Oct. Fine. Mostly fine. Off before 1 most nights.',
+          'Thu 11 Nov. On at 1:00. Her phone, then her coat. Gone till 4.',
+          'Wed 24 Nov. On till 4:50. Iced coffee. Half a sandwich left in the bag on the step.',
+          'Thu 25 Nov. On till 5. Crackers.',
+          'Fri 26 Nov. 11:45 PM. Water, crackers, iced coffee. Third night without dinner.',
+          '',
+          '~~Stop doing this.~~',
+          '~~Ask her.~~ She won’t tell you.',
+          '',
+          'Not checking what she does. Just whether she got home.'
+        ] },
+      { id: 'hill', group: 'Earlier', when: '18/06/2021', stamp: '18 June 2021 at 4:40 PM', title: 'Hill campus',
+        body: [
+          'Her faculty: the hill. (She sent hers on 2 Mar. Mine: north, hill.)',
+          '',
+          'Walled City mouth → 41 bus → hill gate: 34 min. 7:40 bus gets her to a 9:00. She will never get the 7:40.',
+          '8:10 bus → 9:00 lecture: 2 min late. She’ll be 2 min late every Monday for four years.',
+          'Medicine is the next building. Pharmacology lab windows face her faculty.',
+          '',
+          'North = four years away from here.',
+          '',
+          'Declined the north. 4:38 PM. Ge says hm.',
+          '',
+          'She doesn’t need to know.'
+        ] },
+      { id: 'flask', group: 'Earlier', when: '02/10/2021', stamp: '2 October 2021 at 9:20 PM', title: 'Flask',
+        body: ['Chrysanthemum. Dried pear. Rock sugar.', '', 'She says it’s too sweet.', 'She drinks all of it.', '', 'The dented blue flask. Not the good one. She likes the dent.'] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Tuesday 3 August', time: '4:20 AM', q: 'how long can you go without eating before it’s dangerous', results: [
+      { site: 'Family Health', path: 'nutrition', title: 'Skipping meals under stress', snip: 'A day or two of eating little is not an emergency, but it shows. Watch for dizziness, shaking hands, and drinking only coffee.' }] },
+    { day: 'Thursday 15 July', time: '3:10 AM', q: 'how much caffeine is too much for an 18 year old', results: [
+      { site: 'Student Health', path: 'caffeine', title: 'Caffeine and sleep', snip: 'Several iced coffees a night will keep anyone awake until dawn, whatever they tell you.' }] },
+    { day: 'Wednesday 10 November', time: '1:02 AM', q: 'how to tell someone you love them without scaring them', results: [
+      { site: 'The Considerate Partner', path: 'advice', title: 'Saying it first', snip: 'Say it plainly and don’t ask for anything back. Tell them they don’t have to answer.' }] },
+    { day: 'Thursday 25 November', time: '5:02 AM', q: 'is it creepy to notice when someone’s light is on', results: [
+      { site: 'Ask the Counsellor', path: 'q-and-a', title: '“I can see her window from mine”', snip: 'Noticing is human. Keeping a record of it without telling them is something else. Ask yourself whether they’d be glad, or frightened, if they knew.' },
+      { site: 'Everyday Psychology', path: 'relationships', title: 'Care or surveillance?', snip: 'The difference is consent. Tell them what you’ve noticed, and let them decide what you get to know.' }] }
+  ] },
+
+  photos: { widget: 0, widgetLabel: 'Featured', items: [
+    { src: 'img/unofficial-window.webp', date: '25 November 2021', time: '4:58 AM', fav: true },
+    { src: 'img/unofficial-persimmon.webp', date: '21 September 2021', time: '4:40 PM', fav: true },
+    { src: 'img/unofficial-g-eliana-window.webp', date: '3 July 2021', time: '4:12 AM' }
+  ] },
+
+  phone: {
+    recents: [
+      { name: 'Eliana', photo: 'img/av-eliana.webp', when: 'Yesterday', kind: 'mobile', dayLabel: 'Friday 26 November', log: [{ time: '11:52 PM', what: 'Incoming Call · 1 min' }] },
+      { name: 'Ge', photo: 'img/av-song-wei-long.webp', when: '11/11/2021', kind: 'mobile', dayLabel: 'Thursday 11 November', log: [{ time: '1:20 AM', what: 'Outgoing Call', miss: true }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Kit in bag: dressings, saline, tape', done: true },
+    { text: 'Congee in the thick cloth', done: true },
+    { text: 'Soy milk, warm not hot', done: true },
+    { text: 'Spare button for the green jumper (drawer)', done: true },
+    { text: 'Suture pad, 50 knots', due: 'Today' }
+  ] },
+  calendar: { today: [{ title: 'Nothing. Saturday.', time: '' }], later: [{ title: 'Pharmacology lab', time: 'Mon 29 November, 9:00 AM' }] },
+
+  beats: [
+    { id: 'ts', onLock: true, target: 'thread:ts', banner: { app: 'messages', title: 'Auntie Tsoi', body: 'Did she eat it?', when: '7m ago', open: 'thread:ts' } },
+    { id: 'el', target: 'thread:el', sugg: 'messages', delay: 1800 },
+    { id: 'light', target: 'note:light', sugg: 'notes', delay: 1800 },
+    { id: 'ge', target: 'thread:ge', at: '12:44', unread: 'ge', time: '12:44 AM', push: [{ t: 'in', text: 'Nainai’s letter came. She asks again why you turned down the north. I told her to ask the girl next door.' }], banner: { app: 'messages', title: 'Ge', body: 'She asks again why you turned down the north.', open: 'thread:ge' }, delay: 3000 },
+    { id: 'hill', target: 'note:hill', delay: 1200, hold: 9000 },
+    { id: 'web', target: 'browser', sugg: 'browser', at: '12:47', delay: 1800 }
+  ],
+  end: {
+    delay: 3400, at: '12:49', capDelay: 1800,
+    caption: 'The tap went off behind her. She put the phone back by the soy milk, face down, exactly where it had been.<br><br>She didn’t tell him. She told him something else, at her step, with her hands up her sleeves against the cold.<br><br>“Don’t stop watching. Not my work. My window.”<br><br>He went up to his room and turned his lamp off. Across the gap her light came on. He didn’t check the time and didn’t count. He watched the small square of light until it went out, and for the first time since the summer, she had asked him to.'
+  }
+});
+
+</script>
+</body>
+</html>

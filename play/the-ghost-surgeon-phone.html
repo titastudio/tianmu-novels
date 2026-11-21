@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>The Ghost Surgeon · Bottom Step · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* The Ghost Surgeon · phone · "Bottom Step"
+   Elara holds Xing Yue's phone, the small hours of Thursday 12 February 2026, Evangeline's spare room at No. 9 Fig Tree Lane,
+   the night in the fifth week when she came down.
+   Canon: Ch20 (the envelope in the glovebox, 14 March 2025, QU XIAOYUE · LITTLE MOON; eleven days' silence; NOT CROSS;
+   Christmas Eve squares; "I want everything… the day you find it out"), Ch21 (splint off the first Monday in January;
+   the ring given back on the Thursday; Fig Tree Lane; "I’m outside. You don’t have to come down."; the practical messages;
+   Jun Hyuk and the rosemary; the sleeve on the fourth Friday; the cold snap; "May I kiss you?"; the spare room;
+   Lunar New Year at Fig Tree Lane). His phone's wallpaper is a moon. Xiaoyue means little moon. */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'the-ghost-surgeon',
+  title: 'The Ghost Surgeon · Bottom Step',
+  bookUrl: '../../?novel=the-ghost-surgeon',
+  battery: 47,
+  caption: {
+    open: 'The small hours of Thursday, the twelfth of February. Her sister’s spare room, Fig Tree Lane.<br><br>For five weeks he sat on the bottom step under the porch light. He never rang the bell. Tonight it was cold, and she came down, and sat beside him, and told him not to drive home.<br><br>He’s asleep now with his arm across her and his face in her hair. It is the first time in five weeks either of them has slept.<br><br>She asked him at Christmas for everything, the day he found it out. She wants to see whether he meant it.'
+  },
+  clock: { start: '03:14', date: 'Thursday 12 February' },
+  calIcon: { wd: 'Thu', dn: '12', wdLong: 'Thursday' },
+  lock: { code: '1611', wall: 'img/the-ghost-surgeon-wall-phone.webp', hintAfter: 2, nudge: 'He changed it last March. Her birthday. The real one.' },
+  home: {
+    wall: 'img/the-ghost-surgeon-wall-phone.webp',
+    widgets: ['cal:s', 'weather:s', 'sugg'],
+    weather: { city: 'Northern hills', temp: 6, cond: 'Clear, cold', hi: 11, lo: 4, night: true },
+    sugg: ['messages', 'notes', 'browser', 'phone'],
+    apps: ['photos', 'clock', 'reminders', 'notes', 'calendar', 'weather', 'settings', 'camera'],
+    dock: ['phone', 'browser', 'messages', 'mail'],
+    badges: {}
+  },
+  stubText: { mail: 'Ward 9B rota, February. 41 unread.' },
+  me: { name: 'Wang Xing Yue', photo: 'img/av-xing-yue.webp', initials: 'W' },
+  contacts: [
+    { name: 'Elara', photo: 'img/av-elara.webp', initials: 'E', fav: true, thread: 'el', phone: '6228 1199', notes: 'Peach yoghurt. Talks a lot when she’s scared. Hums when she’s happy.' },
+    { name: 'An Yu', photo: 'img/av-an-yu.webp', initials: 'A', fav: true, thread: 'ay', phone: '6019 4402' },
+    { name: 'Nainai', photo: 'img/av-nainai.webp', initials: 'N', thread: 'nn', phone: '2766 1001', sub: 'The hills' },
+    { name: 'Evangeline', photo: 'img/av-evangeline.webp', initials: 'E', thread: 'ev', phone: '6403 0409', sub: 'No. 9 Fig Tree Lane' },
+    { name: 'Jun Hyuk', photo: 'img/av-jun-hyuk.webp', initials: 'J', thread: 'jh', phone: '6403 1190', sub: 'No. 9 Fig Tree Lane' },
+    { name: 'Dr. Meng', initials: 'M', thread: 'mg', phone: '2468 7310', sub: 'Hand surgery' },
+    { name: 'Lin Jian', photo: 'img/av-lin-jian.webp', initials: 'L', thread: 'lj', phone: '2618 0001' },
+    { name: 'Song Wei Long', photo: 'img/av-song-wei-long.webp', initials: 'S', phone: '9902 4417' },
+    { name: 'Sister Miao', photo: 'img/av-sister-miao.webp', initials: 'M', phone: '2468 9090', sub: 'City Hospital' },
+    { name: 'Yu Chen', initials: 'Y', phone: '6181 2002' },
+    { name: '9B night desk', initials: '9', thread: 'nb', phone: '2468 9092' }
+  ],
+  clockApp: { alarms: [{ time: '05:45', label: 'Alarm', days: 'Weekdays', on: true }, { time: '21:30', label: 'Fig Tree Lane', days: 'Every day', on: true }, { time: '18:00', label: 'Her tablets', days: 'Every day', on: false }] },
+
+  messages: {
+    placeholder: 'iMessage',
+    threads: [
+      { id: 'jh', name: 'Jun Hyuk', photo: 'img/av-jun-hyuk.webp', initials: 'J', time: '23:58', order: 55, items: [
+        { t: 'day', text: '<b>Sun 25 Jan</b> 22:40' },
+        { t: 'in', text: 'Water it when the top two centimetres are dry. Not before. People love rosemary to death.' },
+        { t: 'in', text: 'Grit in the bottom. Not beach sand. Grit. It matters.' },
+        { t: 'out', text: 'Understood.' },
+        { t: 'in', text: 'Also it is in the wrong place. The wind takes it by the wall.' },
+        { t: 'day', text: '<b>Fri 30 Jan</b> 21:15' },
+        { t: 'out', text: 'Watered it.' },
+        { t: 'in', text: 'Did you check the top two centimetres?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Good man.' },
+        { t: 'day', text: '<b>Yesterday</b> 23:58' },
+        { t: 'in', text: 'I have moved the rosemary. It was in the wrong place.' },
+        { t: 'in', text: 'You can stop sitting on the step now. Ev says. I agree.' }
+      ] },
+      { id: 'el', name: 'Elara', photo: 'img/av-elara.webp', initials: 'E', color: 'linear-gradient(180deg,#f3c7a8,#d98f6a)', time: 'Yesterday', order: 50,
+        draft: 'I’m sorry I chose the day. It was yours.',
+        items: [
+          { t: 'day', text: '<b>Wed 24 Dec</b> 23:40' },
+          { t: 'in', text: 'Everything. The day you find it out. Even if it’s three in the morning. Even if I’m in theatre.' },
+          { t: 'out', text: 'Everything. The day I find it out.' },
+          { t: 'day', text: '<b>Fri 9 Jan</b> 21:42' },
+          { t: 'out', text: 'I’m outside. You don’t have to come down.' },
+          { t: 'day', text: '<b>Tue 13 Jan</b> 19:05' },
+          { t: 'out', text: 'Meng’s moved you to ten.' },
+          { t: 'day', text: '<b>Fri 16 Jan</b> 17:30' },
+          { t: 'out', text: 'Your prescription’s ready at the pharmacy by the gate.' },
+          { t: 'day', text: '<b>Wed 21 Jan</b> 22:10' },
+          { t: 'out', text: 'It’s raining. I’ve left the umbrella in the porch.' },
+          { t: 'day', text: '<b>Thu 29 Jan</b> 14:20' },
+          { t: 'out', text: 'Song rang. Your uncle’s hearing is set for March. I’m telling you the day I find out.' },
+          { t: 'day', text: '<b>Fri 30 Jan</b> 21:50' },
+          { t: 'out', text: 'There’s a bag on the step. It’s only a sleeve. For the scar, so your cuffs don’t catch.' },
+          { t: 'day', text: '<b>Yesterday</b> 21:58' },
+          { t: 'out', text: 'Late from theatre. I’m outside. It’s cold. You don’t have to come down.' }
+        ] },
+      { id: 'ev', name: 'Evangeline', photo: 'img/av-evangeline.webp', initials: 'E', time: 'Yesterday', order: 45, items: [
+        { t: 'day', text: '<b>Fri 9 Jan</b> 22:15' },
+        { t: 'in', text: 'Blanket on the mat.' },
+        { t: 'day', text: '<b>Sat 17 Jan</b> 20:02' },
+        { t: 'in', text: 'She ate everything tonight.' },
+        { t: 'out', text: 'Thank you.' },
+        { t: 'day', text: '<b>Sat 31 Jan</b> 08:30' },
+        { t: 'in', text: 'She kept it. The sleeve. She’s wearing it.' },
+        { t: 'day', text: '<b>Yesterday</b> 21:55' },
+        { t: 'in', text: 'Too cold for the step. I’ll tell her that.' }
+      ] },
+      { id: 'ay', name: 'An Yu', photo: 'img/av-an-yu.webp', initials: 'A', time: 'Sunday', order: 30, items: [
+        { t: 'day', text: '<b>Sun 11 Jan</b> 11:20' },
+        { t: 'in', text: 'Nainai says you haven’t been home at night all week. Where are you sleeping?' },
+        { t: 'out', text: 'Here. After her sister’s step.' },
+        { t: 'in', text: 'A step.' },
+        { t: 'out', text: 'Under a porch light.' },
+        { t: 'in', text: 'You slept in worse in the on-call room. Take a cushion.' },
+        { t: 'day', text: '<b>Sun 8 Feb</b> 10:02' },
+        { t: 'in', text: 'Week five. Is she coming down?' },
+        { t: 'out', text: 'Not yet.' },
+        { t: 'in', text: 'You don’t sound like someone who will stop.' },
+        { t: 'out', text: 'I’m not.' }
+      ] },
+      { id: 'mg', name: 'Dr. Meng', initials: 'M', time: '06/02', order: 25, items: [
+        { t: 'day', text: '<b>Mon 5 Jan</b> 16:00' },
+        { t: 'in', text: 'There’s progress. I won’t guess before the summer. Don’t let her force it, and don’t let her catch you watching her fingers.' },
+        { t: 'day', text: '<b>Fri 6 Feb</b> 12:40' },
+        { t: 'in', text: 'She dropped the peg fourteen times today and picked it up fifteen. Her sister’s phrase, not mine. I’d like it on the record.' }
+      ] },
+      { id: 'lj', name: 'Lin Jian', photo: 'img/av-lin-jian.webp', initials: 'L', time: '28/01', order: 20, items: [
+        { t: 'day', text: '<b>Wed 28 Jan</b> 21:00' },
+        { t: 'in', text: 'Is she eating?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'in', text: 'Thank you.' },
+        { t: 'in', text: 'The biscuits were the ones she liked when she was six. I don’t know if she still does.' }
+      ] },
+      { id: 'nn', name: 'Nainai', photo: 'img/av-nainai.webp', initials: 'N', time: '01/02', order: 15, items: [
+        { t: 'day', text: '<b>Sun 1 Feb</b> 09:00' },
+        { t: 'in', text: 'Wang Xing Yue. Your grandfather once slept in a corridor for a week because I was angry with him.' },
+        { t: 'in', text: 'I let him in on the eighth day. It was the right day. She will know hers.' }
+      ] },
+      { id: 'nb', name: '9B night desk', initials: '9', time: 'Yesterday', order: 10, items: [
+        { t: 'day', text: '<b>Yesterday</b> 19:40' },
+        { t: 'in', text: 'Bed 14 back from theatre, obs fine.' },
+        { t: 'out', text: 'Ring me if anything changes.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    items: [
+      { id: 'step', group: 'Previous 30 Days', when: '11/02/2026', stamp: '11 February 2026 at 23:50', title: 'Step',
+        body: [
+          'Night 1. Fri 9 Jan. 21:42–23:12. Her light out 23:12. Ev brought a blanket and sat with me for a minute. Didn’t say anything, which helped.',
+          'Night 2. 21:50–23:30.',
+          'Night 3. Her light went out at 22:41. Stayed till 23:00 in case.',
+          'Night 5. Raining. Umbrella in the porch.',
+          'Night 9. Came from theatre with my hair wet. Ev: “You’ll catch your death.” Me: “I’m a doctor.” Ev: “Then you know.”',
+          'Night 17. Jun Hyuk. Rosemary. Fifty-eight minutes. Root rot, pruning, frost, grit. I asked how often to water it and he looked as though I’d given him a present.',
+          'Night 22. Fourth Friday. A sleeve, in a paper bag.',
+          'Night 23. The bag by the door, empty. She kept it.',
+          'Night 30. The window. She stepped back from the glass when I looked up.',
+          '',
+          'Night 34. Cold snap. No blanket. Ev brought one anyway and said, “She’s been at that window every night.”',
+          '22:04. The door.',
+          'One step. Another. She sat down. I left a space.',
+          '“Have you still got it?”',
+          'Coat, inside pocket. Where I always keep it.',
+          '“May I kiss you?” “Yes.”',
+          '',
+          'She told me not to drive home.',
+          '',
+          'The rest is in the March note.'
+        ] },
+      { id: 'mar', group: '2025', when: '14/03/2025', stamp: '14 March 2025 at 16:10', title: 'Plum Steps',
+        body: [
+          'Copied by hand from Matron Sima’s red ledger. Friday.',
+          '',
+          '**QU XIAOYUE. LITTLE MOON.**',
+          'Born 16 Nov 1999.',
+          'Brought by police 12 Oct 2002, from the fire at Qu Lighterage, Walled City piers.',
+          'Father: QU MINGDE. Four lighters.',
+          'Mother: SHI YUNING, nurse. Nights, the old block, City Hospital.',
+          '“The bell girl.” She told the man fixing the roof what his ladder was called.',
+          '',
+          'Envelope. Glovebox. Give it to her in the garden in May, on the day.',
+          '',
+          '~~She has a right to a good day for it.~~',
+          '',
+          'Added 13 Dec 2025: I picked the day, and it wasn’t mine to pick. She tore it open on the harbour road herself.',
+          '',
+          'Added 24 Dec 2025: Everything, the day I find it out. Even at three in the morning.'
+        ] },
+      { id: 'sq', group: 'Previous 30 Days', when: '24/12/2025', stamp: '24 December 2025 at 21:02', title: 'Christmas Eve',
+        body: ['Chicken with ginger. Greens. Rice.', '', 'I cut it into squares without thinking. A centimetre and a half.', '', '“You measured my dinner.”', '', 'First words in eleven days.'] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Saturday 13 December', time: '03:30', q: 'how to apologise for keeping something you meant to tell', results: [
+      { site: 'The Considerate Partner', path: 'advice', title: 'When you chose the moment for them', snip: 'Don’t explain the good reason. Say that it was theirs and you kept it. Then let them decide what happens next.' }] },
+    { day: 'Tuesday 6 January', time: '01:15', q: 'ulnar nerve repair recovery timeline', results: [
+      { site: 'Hand Surgery Journal (lay summary)', path: 'nerves', title: 'Nerves regrow about a millimetre a day', snip: 'From the wrist to the fingertips that means months. Therapy matters more than anything else in the first year.' }] },
+    { day: 'Sunday 25 January', time: '23:20', q: 'rosemary how often to water', results: [
+      { site: 'Gardeners’ Notebook', path: 'herbs', title: 'Rosemary: the herb people kill with kindness', snip: 'Water only when the top of the soil is dry. Sharp drainage, full sun, shelter from cold wind.' }] },
+    { day: 'Wednesday 28 January', time: '00:40', q: 'scar sleeve wrist stop clothes catching', results: [
+      { site: 'Scar Care', path: 'after surgery', title: 'Soft sleeves for new scars', snip: 'A light compression sleeve stops cuffs rubbing a healing scar. Choose seamless and soft.' }] }
+  ] },
+
+  photos: { items: [
+    { src: 'img/the-ghost-surgeon-pond.webp', date: '30 June 2024', time: '06:58', fav: true },
+    { src: 'img/the-ghost-surgeon-g-elara-koi.webp', date: '30 June 2024', time: '07:02', fav: true },
+    { src: 'img/the-ghost-surgeon-koi.webp', date: '30 June 2024', time: '07:21' },
+    { src: 'img/the-ghost-surgeon-g-elara-car.webp', date: '12 July 2024', time: '08:10' },
+    { src: 'img/the-ghost-surgeon-fig.webp', date: '13 October 2024', time: '11:02' },
+    { src: 'img/the-ghost-surgeon-g-elara-hand.webp', date: '3 November 2024', time: '15:30' },
+    { src: 'img/the-ghost-surgeon-g-elara-canteen.webp', date: '18 September 2025', time: '13:05' }
+  ] },
+
+  phone: {
+    recents: [
+      { name: 'Dr. Meng', when: '06/02/2026', kind: 'work', dayLabel: 'Friday 6 February', log: [{ time: '12:45', what: 'Incoming Call · 4 min' }] },
+      { name: 'Song Wei Long', photo: 'img/av-song-wei-long.webp', when: '29/01/2026', kind: 'mobile', dayLabel: 'Thursday 29 January', log: [{ time: '14:02', what: 'Incoming Call · 6 min' }] },
+      { name: 'Elara', photo: 'img/av-elara.webp', when: '13/12/2025', kind: 'mobile', dayLabel: 'Saturday 13 December', log: [{ time: '18:40', what: 'Outgoing Call', miss: true }, { time: '18:44', what: 'Outgoing Call', miss: true }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Her prescription, pharmacy by the gate', done: true },
+    { text: 'Umbrella in the porch', done: true },
+    { text: 'Ring: coat, inside pocket', note: 'Every day.' },
+    { text: 'Tell her what Song said, the day he says it', done: true }
+  ] },
+  calendar: { today: [{ title: 'Therapy (hers)', time: '10:00' }, { title: 'Theatre list', time: '13:00' }], later: [{ title: 'Lunar New Year, Fig Tree Lane', time: 'Tue 17 February' }] },
+
+  beats: [
+    { id: 'jh', onLock: true, target: 'thread:jh', banner: { app: 'messages', title: 'Jun Hyuk', body: 'I have moved the rosemary. It was in the wrong place.', when: '3h ago', open: 'thread:jh' } },
+    { id: 'el', target: 'thread:el', sugg: 'messages', delay: 1800 },
+    { id: 'step', target: 'note:step', sugg: 'notes', delay: 1800 },
+    { id: 'mar', target: 'note:mar', delay: 1200, hold: 9000 },
+    { id: 'web', target: 'browser', sugg: 'browser', at: '03:24', delay: 1800 },
+    { id: 'nb', target: 'thread:nb', at: '03:27', unread: 'nb', time: '03:27', push: [{ t: 'day', text: '<b>Today</b> 03:27' }, { t: 'in', text: 'Dr. Wang, bed 14 settled. Nothing to report. Sister Miao says go back to sleep, wherever you are.' }], banner: { app: 'messages', title: '9B night desk', body: 'Dr. Wang, bed 14 settled. Nothing to report.', open: 'thread:nb' }, delay: 3000 }
+  ],
+  end: {
+    delay: 3400, at: '03:30', capDelay: 1800,
+    caption: 'She put the phone back on the sill, under the moon he’d chosen for it, and lay down again inside his arm.<br><br>He didn’t wake. His hand found her wrist in his sleep, and moved off it, and settled on her hand instead.<br><br>At New Year, at Fig Tree Lane, she picked up her chopsticks in her right hand. The grip was wrong and the tips shook. She lifted a dumpling, and lost it, and caught it, and looked straight at him.<br><br>“Don’t,” she said.<br><br>“I didn’t say anything.”'
+  }
+});
+
+</script>
+</body>
+</html>

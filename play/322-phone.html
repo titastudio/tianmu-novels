@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>322 · Car? · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* 322 · phone · "Car?"
+   Serafina holds Haozhen's phone, Thursday 25 September 2025, the garage under the railway bridge, the night she came home.
+   Canon: Ch34–36 (lap 31, the Needle, 191 km/h; ninth floor; collarbone, three ribs, bruised lung, concussion, ventilator;
+   "He's her husband"; Mouse rang eleven times; the photographer on Ferry Street; Tue 16 Sep 2:10 "Car?";
+   home Thu 25 Sep; her father's bed downstairs and soup; the red Baizhang sling from his mother two days later;
+   no screens for more than twenty minutes). Blueprint canon: Haozhen's 2:14 message "She said Car?". */
+StoryEngine.start({
+  kind: 'phone',
+  id: '322',
+  title: '322 · Car?',
+  bookUrl: '../../?novel=322',
+  battery: 88,
+  caption: {
+    open: 'Thursday, the twenty-fifth of September. Eleven days after the Needle.<br><br>Her father has put a bed in the back room behind the workbench, because she can’t manage the iron stairs. No driving. No lifting. No screens for more than twenty minutes. She considers all of it a personal insult.<br><br>He has walked round to the pharmacy by the ferry pier for the tablets the hospital forgot. His phone is charging on the bench beside the chipped white mug, which faces the room.<br><br>She has never once looked at his phone. He has never once given her a reason to.<br><br>Tonight she wants to know where he was while she wasn’t anywhere.'
+  },
+  clock: { start: '21:12', date: 'Thursday 25 September' },
+  calIcon: { wd: 'Thu', dn: '25', wdLong: 'Thursday' },
+  lock: { code: '0207', wall: 'img/322-wall-lock.webp', hintAfter: 2, nudge: 'The first night, three knocks. The clock on the bench said seven minutes past two.' },
+  home: {
+    wall: 'img/322-wall-home.webp',
+    widgets: [],
+    apps: ['calendar', 'clock', 'reminders', 'photos', 'browser', 'settings'],
+    dock: ['phone', 'messages', 'notes'],
+    badges: { phone: 12 }
+  },
+  stubText: { settings: 'Screen Time: 6 minutes a day, average.' },
+  me: { name: 'Qin Haozhen', photo: 'img/av-haozhen.webp', initials: 'Q' },
+  contacts: [
+    { name: 'Sera', photo: 'img/av-serafina.webp', initials: 'S', fav: true, phone: '9417 0322', notes: 'Coffee, no sugar. Left shoulder aches if she sleeps badly.' },
+    { name: 'Mother', photo: 'img/av-liang-shufen.webp', initials: 'M', fav: true, thread: 'ma', phone: '0471 6203 118', sub: 'Above the tailor’s' },
+    { name: 'Mouse', photo: 'img/av-mouse.webp', initials: 'M', fav: true, thread: 'mo', phone: '6620 4417' },
+    { name: 'Big Wu', photo: 'img/av-big-wu.webp', initials: 'W', thread: 'wu', phone: '6188 0044', notes: 'Superstitious about fours.' },
+    { name: 'Mr. Kwok', photo: 'img/av-mr-kwok.webp', initials: 'K', phone: '2390 7715' },
+    { name: 'Granny Shum', photo: 'img/av-granny-shum.webp', initials: 'S', phone: '2713 6420', sub: 'Saturdays, the paint works' },
+    { name: 'Mrs. Song', photo: 'img/av-vittoria.webp', initials: 'V', thread: 'vs', phone: '2811 4073', sub: 'The Peak' },
+    { name: 'Mr. Song', initials: 'W', phone: '2811 4070', sub: 'The Peak' },
+    { name: 'Aurelia', photo: 'img/av-aurelia.webp', initials: 'A', phone: '9126 3408' },
+    { name: 'Chen Si', photo: 'img/av-chen-si.webp', initials: 'C', phone: '6301 0001' },
+    { name: 'Jinx', photo: 'img/av-jinx.webp', initials: 'J', phone: '6390 2211', sub: 'Tai Hing, by the docks' },
+    { name: 'Raiden', photo: 'img/av-raiden.webp', initials: 'R', phone: '6390 2212' },
+    { name: 'Donatella Ferri', photo: 'img/av-donatella.webp', initials: 'D', thread: 'df', phone: '+39 059 412 2271', sub: 'Orsini Corse, Modena' },
+    { name: 'Matteo', initials: 'M', phone: '+39 335 608 1194', sub: 'Race engineer' },
+    { name: 'Callum Hart', initials: 'C', phone: '+44 7700 914 382' },
+    { name: 'Ward 9, ICU desk', initials: '9', phone: '2468 9009' }
+  ],
+  clockApp: { alarms: [{ time: '02:00', label: 'Her tablets', days: 'Every day', on: true }, { time: '06:00', label: 'Her tablets', days: 'Every day', on: true }, { time: '05:30', label: 'Alarm', days: 'Weekdays', on: false }] },
+
+  messages: {
+    placeholder: 'Message',
+    threads: [
+      { id: 'ma', name: 'Mother', photo: 'img/av-liang-shufen.webp', initials: 'M', time: '21:10', order: 50, items: [
+        { t: 'day', text: '<b>Sun 14 Sep</b> 19:02' },
+        { t: 'in', text: 'I saw on the television. Is it her?' },
+        { t: 'out', text: 'Yes. She’s alive. They’ve put her to sleep for her lungs.' },
+        { t: 'in', text: 'Are you with her?' },
+        { t: 'out', text: 'Outside. Family only.' },
+        { t: 'in', text: 'You are family. Sit where they can see you.' },
+        { t: 'day', text: '<b>Tue 16 Sep</b> 02:20' },
+        { t: 'out', text: 'She woke up.' },
+        { t: 'in', text: 'I was awake. I am always awake at two, you know that.' },
+        { t: 'in', text: 'What did she say?' },
+        { t: 'out', text: 'She asked about the car.' },
+        { t: 'in', text: 'Good. Then she is still herself.' },
+        { t: 'day', text: '<b>Sun 21 Sep</b> 15:40' },
+        { t: 'in', text: 'What do they give her for the shoulder?' },
+        { t: 'out', text: 'A sling. Grey. From the hospital.' },
+        { t: 'in', text: 'Grey is miserable. Which arm?' },
+        { t: 'out', text: 'Left. Collarbone.' },
+        { t: 'in', text: 'Is she tall or small?' },
+        { t: 'out', text: 'Small. She says she isn’t.' },
+        { t: 'day', text: '<b>Today</b> 21:10' },
+        { t: 'in', text: 'I have started it. Red cotton. Is red her colour?' }
+      ] },
+      { id: 'ninth', name: 'Ninth floor', group: true, initials: '9', color: 'linear-gradient(180deg,#a5b4c7,#6d7f99)', time: '16/09', order: 40, items: [
+        { t: 'day', text: '<b>Mon 15 Sep</b> 08:11' },
+        { t: 'in', who: 'Aurelia', text: 'I’m making a group so you only have to say things once.' },
+        { t: 'in', who: 'Aurelia', text: 'Clean shirts and a charger coming at ten. Don’t argue.' },
+        { t: 'in', who: 'Jinx', text: 'Raiden and me after work.' },
+        { t: 'in', who: 'Mouse', text: 'ok' },
+        { t: 'day', text: '<b>Mon 15 Sep</b> 22:06' },
+        { t: 'in', who: 'Aurelia', text: 'The photographer?' },
+        { t: 'out', text: 'Handled.' },
+        { t: 'in', who: 'Aurelia', text: 'Thank you.' },
+        { t: 'day', text: '<b>Tue 16 Sep</b> 02:14' },
+        { t: 'out', text: 'She said Car?' },
+        { t: 'in', who: 'Jinx', text: 'Of course she did.' },
+        { t: 'in', who: 'Aurelia', text: 'Oh thank God.' },
+        { t: 'in', who: 'Mouse', text: 'tell her the car is ugly' },
+        { t: 'in', who: 'Raiden', text: 'Tell her Nobody sends its regards.' },
+        { t: 'in', who: 'Jinx', text: 'Did you tell her about the car?' },
+        { t: 'out', text: 'Front-left wishbone. The cell held. Matteo has the data. She fell asleep before I got to the gearbox.' },
+        { t: 'in', who: 'Jinx', text: 'Rude of her.' }
+      ] },
+      { id: 'vs', name: 'Mrs. Song', photo: 'img/av-vittoria.webp', initials: 'V', time: '18:40', order: 30, items: [
+        { t: 'day', text: '<b>Mon 15 Sep</b> 23:41' },
+        { t: 'in', text: 'Mr. Qin. Go home for four hours. I will sit.' },
+        { t: 'out', text: 'Thank you. No.' },
+        { t: 'in', text: 'I thought you would say that. I have told the nurse you take your coffee black.' },
+        { t: 'day', text: '<b>Wed 17 Sep</b> 07:58' },
+        { t: 'in', text: 'She asked for you before she asked for me. I am told I should mind. I find that I don’t.' },
+        { t: 'day', text: '<b>Today</b> 18:40' },
+        { t: 'in', text: 'Weiren has put a bed in the back room. Do not tell her he cried in the furniture shop.' },
+        { t: 'in', text: 'The soup is for both of you. You have not eaten since the fourteenth. I have eyes.' },
+        { t: 'out', text: 'I won’t tell her.' }
+      ] },
+      { id: 'mo', name: 'Mouse', photo: 'img/av-mouse.webp', initials: 'M', time: 'Monday', order: 20, items: [
+        { t: 'day', text: '<b>Sun 14 Sep</b> 15:36' },
+        { t: 'in', text: 'pick up' },
+        { t: 'in', text: 'PICK UP' },
+        { t: 'in', text: 'is she' },
+        { t: 'day', text: '<b>Sun 14 Sep</b> 18:20' },
+        { t: 'out', text: 'Alive. Ninth floor. They won’t let you in. Come anyway.' },
+        { t: 'in', text: 'coming' },
+        { t: 'day', text: '<b>Tue 16 Sep</b> 13:02' },
+        { t: 'in', text: 'stop googling ventilators' },
+        { t: 'out', text: 'How do you know.' },
+        { t: 'in', text: 'because i would be' },
+        { t: 'day', text: '<b>Mon 22 Sep</b> 09:15' },
+        { t: 'in', text: 'data says it wasn’t her' },
+        { t: 'in', text: 'oil on the line 4 seconds before. no flag. she couldn’t have' },
+        { t: 'out', text: 'I know. Tell her yourself. She’ll believe you.' },
+        { t: 'in', text: 'she never believes me' },
+        { t: 'in', text: 'ok i’ll tell her' }
+      ] },
+      { id: 'wu', name: 'Big Wu', photo: 'img/av-big-wu.webp', initials: 'W', time: '19/09', order: 15, items: [
+        { t: 'day', text: '<b>Sun 14 Sep</b> 21:30' },
+        { t: 'in', text: 'Lap thirty-one. Three and one. Four.' },
+        { t: 'in', text: 'I told her. Never four.' },
+        { t: 'out', text: 'It was oil, Wu.' },
+        { t: 'in', text: 'It was four.' },
+        { t: 'day', text: '<b>Fri 19 Sep</b> 12:44' },
+        { t: 'in', text: 'Ma says you are to eat. She is sending fish belly.' },
+        { t: 'out', text: 'Thank her.' },
+        { t: 'in', text: 'Thank her yourself. You are her son now, she says. I had no say in it.' }
+      ] },
+      { id: 'df', name: 'Donatella Ferri', photo: 'img/av-donatella.webp', initials: 'D', time: '15/09', order: 10, items: [
+        { t: 'day', text: '<b>Mon 15 Sep</b> 19:40' },
+        { t: 'in', text: 'Haozhen. The chassis did its job. The cell held. Matteo has the data locked.' },
+        { t: 'in', text: 'Take the time. Both of you. The team will hold.' },
+        { t: 'out', text: 'Thank you.' },
+        { t: 'in', text: 'Head of Security can work from a plastic chair, I am told. I don’t want to see your name on a single report until she is home.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    items: [
+      { id: 'ninth', group: 'Previous 30 Days', when: '16/09/2025', stamp: '16 September 2025 at 02:31', title: 'Ninth floor',
+        body: [
+          'Sun 14. 15:31. Lap 31, the Needle. 191 km/h.',
+          '15:32 Helicopter.',
+          '17:05 Left collarbone broken in two places. 3 ribs, left. Bruised lung. Head injury. Tube in. Keeping her sedated for the lung and the swelling.',
+          '23:00 Plate in the collarbone.',
+          '',
+          'Mon 15. 03:17 Still awake. The windows on this floor don’t open.',
+          '04:00 Nurse told me to sit down. Sat.',
+          '10:02 Her mother told them “He’s her husband.” Ten minutes at a time. Don’t touch the equipment.',
+          'Held her fingers. Didn’t touch anything else.',
+          '21:40 Photographer, Ferry Street. Dealt with.',
+          '',
+          'Tue 16. 01:45 Sedation lowered.',
+          '02:10 Fingers moved.',
+          '',
+          '**Car?**',
+          '',
+          'Asked four times. Very patient with me, like I was being slow.',
+          '',
+          'Told her she was alive. Then told her she’d scared me.',
+          'She squeezed my hand.',
+          '',
+          'Sleep since Sunday: 11 min (Mon, 19:00).'
+        ] },
+      { id: 'home', group: 'Previous 7 Days', when: '24/09/2025', stamp: '24 September 2025 at 23:58', title: 'Home',
+        body: [
+          '[x] Bed downstairs, back room (her father)',
+          '[x] Lamp on the table, low',
+          '[x] Fridge: water, fruit, the four things she can keep down',
+          '[x] Old sofa against the wall',
+          '[ ] Flowers in a jam jar (not hospital ones)',
+          '[x] Nonna’s cover on',
+          '[x] Gilded on the transporter, Saturday',
+          '[x] My mug back on the bench, facing the room'
+        ] },
+      { id: 'ask', group: 'Previous 7 Days', when: '22/09/2025', stamp: '22 September 2025 at 04:10', title: 'Things she will ask',
+        body: [
+          'The car. (Front-left wishbone. Cell held. Gilded comes home Saturday.)',
+          'The data. (Matteo has it. Four litres of oil in under two seconds. No flag in time.)',
+          'Whether it was her. (No. Mouse will tell her. She believes Mouse.)',
+          'Who came. (Everyone.)',
+          'When she can drive. (Not yet. Don’t say not yet. Say the consultant will tell us.)',
+          '',
+          'Whether I was frightened.',
+          '',
+          '(Yes.)'
+        ] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Monday 15 September', time: '03:40', q: 'bruised lung ventilator how long', results: [
+      { site: 'Critical Care Explained', path: 'lungs', title: 'Why patients with lung contusion are ventilated', snip: 'Usually days, not weeks. The machine lets the bruised lung rest while the swelling settles.' }] },
+    { day: 'Monday 15 September', time: '04:02', q: 'sedation and head injury when do they wake', results: [
+      { site: 'Brain Injury Guide', path: 'hospital', title: 'Bringing a patient out of sedation', snip: 'Doctors lower the sedation slowly and watch. The first movement is often small: a hand, an eyelid.' }] },
+    { day: 'Tuesday 16 September', time: '12:58', q: 'what to say when someone wakes up from sedation', results: [
+      { site: 'Family Room', path: 'intensive care', title: 'The first conversation', snip: 'Tell them where they are and that they are safe. Keep it short. They may ask about something that seems unimportant. Answer it.' }] },
+    { day: 'Saturday 20 September', time: '01:11', q: 'concussion word finding recovery', results: [
+      { site: 'Brain Injury Guide', path: 'recovery', title: 'Losing words after a concussion', snip: 'It is common, frightening, and usually improves over weeks to months. Don’t finish their sentences unless they ask.' }] },
+    { day: 'Tuesday 23 September', time: '23:30', q: 'collarbone plate when can you drive again', results: [
+      { site: 'Fracture Clinic Notes', path: 'shoulder', title: 'Driving after a clavicle fixation', snip: 'Not until you can control the vehicle in an emergency, and your surgeon agrees. For most people that is weeks.' }] }
+  ] },
+
+  photos: { items: [
+    { src: 'img/322-loop.webp', date: '27 December 2022', time: '03:25', fav: true },
+    { src: 'img/322-s-bonnet.webp', date: '18 January 2023', time: '06:04', fav: true },
+    { src: 'img/322-wall-home.webp', date: '11 March 2023', time: '02:58' },
+    { src: 'img/322-s-hand.webp', date: '6 September 2025', time: '16:20' },
+    { src: 'img/322-s-visor.webp', date: '14 September 2025', time: '13:41' },
+    { src: 'img/322-garage.webp', date: '24 September 2025', time: '23:40' },
+    { src: 'img/322-s-sling.webp', date: '25 September 2025', time: '18:47', fav: true }
+  ] },
+
+  phone: {
+    voicemail: [{ name: 'Mouse', photo: 'img/av-mouse.webp', when: '14/09/2025', len: '0:21', unheard: true, transcript: 'It’s me. Pick up. Pick up pick up. Tell her the car is ugly. Tell her she should be ashamed of crashing it. Tell her I’m coming. Don’t let them make you leave.' }],
+    recents: [
+      { name: 'Mouse', photo: 'img/av-mouse.webp', miss: true, count: 11, when: '14/09/2025', kind: 'mobile', dayLabel: 'Sunday 14 September', log: [{ time: '15:33', what: 'Missed Call', miss: true }, { time: '15:34', what: 'Missed Call', miss: true }, { time: '15:34', what: 'Missed Call', miss: true }, { time: '15:36', what: 'Missed Call', miss: true }, { time: '15:39', what: 'Missed Call', miss: true }, { time: '15:44', what: 'Missed Call', miss: true }, { time: '15:51', what: 'Missed Call', miss: true }, { time: '16:02', what: 'Missed Call', miss: true }, { time: '16:20', what: 'Missed Call', miss: true }, { time: '16:41', what: 'Missed Call', miss: true }, { time: '17:15', what: 'Missed Call', miss: true }] },
+      { name: 'Chen Si', photo: 'img/av-chen-si.webp', when: '15/09/2025', kind: 'mobile', dayLabel: 'Monday 15 September', log: [{ time: '22:31', what: 'Incoming Call · 2 min' }] },
+      { name: 'Mother', photo: 'img/av-liang-shufen.webp', when: '16/09/2025', kind: 'mobile', dayLabel: 'Tuesday 16 September', log: [{ time: '02:22', what: 'Outgoing Call · 9 min' }] },
+      { name: 'Ward 9, ICU desk', when: 'Monday', kind: 'work', dayLabel: 'Monday 22 September', log: [{ time: '06:30', what: 'Outgoing Call · 1 min' }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Her tablets, 22:00', due: 'Today, 22:00' },
+    { text: 'No screens more than 20 minutes (hers)', note: 'Don’t tell her I wrote this down.' },
+    { text: 'Transporter, Saturday. Gilded home.', due: 'Saturday 27 September' },
+    { text: 'Fracture clinic', due: 'Thursday 6 November' }
+  ] },
+  calendar: { today: [{ title: 'Discharge, ninth floor', time: '11:00' }], later: [{ title: 'Fracture clinic', time: 'Thu 6 November' }] },
+
+  beats: [
+    { id: 'ma', onLock: true, target: 'thread:ma', banner: { app: 'messages', title: 'Mother', body: 'I have started it. Red cotton. Is red her colour?', when: '2m ago', open: 'thread:ma' } },
+    { id: 'ninth', target: 'thread:ninth', at: '21:15', unread: 'ninth', time: '21:15', push: [{ t: 'day', text: '<b>Today</b> 21:15' }, { t: 'in', who: 'Jinx', text: 'Is she home? Is she being terrible?' }], banner: { app: 'messages', title: 'Ninth floor', body: 'Jinx: Is she home? Is she being terrible?', open: 'thread:ninth' }, delay: 2600 },
+    { id: 'vs', target: 'thread:vs', at: '21:17', unread: 'vs', time: '21:17', push: [{ t: 'in', text: 'Mr. Qin, the consultant’s numbers for her own doctor. You wrote them all down. I saw you, in that little notebook of yours.' }], banner: { app: 'messages', title: 'Mrs. Song', body: 'Mr. Qin, the consultant’s numbers for her own doctor. You wrote them all down.', open: 'thread:vs' }, delay: 2800 },
+    { id: 'note', target: 'note:ninth', delay: 600, hold: 9000 },
+    { id: 'mo', target: 'browser', at: '21:20', unread: 'mo', time: '21:20', push: [{ t: 'day', text: '<b>Today</b> 21:20' }, { t: 'in', text: 'is she home' }, { t: 'in', text: 'did you stop googling' }], banner: { app: 'messages', title: 'Mouse', body: 'did you stop googling', open: 'thread:mo' }, delay: 2600 },
+    { id: 'vm', target: 'voicemail', at: '21:22', delay: 2200 },
+    { id: 'ma2', target: 'thread:ma', at: '21:25', unread: 'ma', time: '21:25', push: [{ t: 'in', text: 'I will put a road on it. Up from one corner, with trees. A very small car near the top.' }, { t: 'in', text: 'For the girl who wants to climb mountains before she’s healed. Don’t tell her. Let it arrive as a parcel.' }], banner: { app: 'messages', title: 'Mother', body: 'I will put a road on it.', open: 'thread:ma' }, delay: 3000 }
+  ],
+  end: {
+    delay: 3800, at: '21:31', capDelay: 1800,
+    caption: 'The side door. His step on the concrete, quiet, because he thought she was asleep.<br><br>She put the phone back on the charger, face down, beside the mug.<br><br>The parcel came on Saturday from the north. Red cotton, softer than the hospital’s grey, with a mountain road winding up it from one corner to the other and a very small car near the top.<br><br>“Baizhang,” she said, as if she hadn’t known.<br><br>“She sent you a road,” said Haozhen.'
+  }
+});
+
+</script>
+</body>
+</html>

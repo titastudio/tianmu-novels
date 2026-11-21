@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Stay Behind Me · Paper Birthday · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Stay Behind Me · desktop · "Paper Birthday"
+   Evangeline's laptop, Sunday 22 January to Saturday 11 March 2023, the room over the Golden Nightingale.
+   Canon: Ch7 (Lunar New Year at Nam's, the crooked dumpling, the coin in Nam's yard), Ch8 (Fri 10 Feb 2:43, 40.0 °C,
+   the county hospital; Wed 15 stitches out, she counts; Thu 16 Feb 2:26 the fever breaks),
+   Ch9 (papers say 11 March, a clerk when he was nine; Old Ko's extra egg, socks too big; the silver spoon from the
+   antique shop by the old market, Old Ko's buried in his top pocket; cake with four strawberries and one candle;
+   Nam: "you should marry her", the registry open Saturdays; "Will you marry me?" "Yes."; E-van-ge-line in the shower). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'stay-behind-me',
+  title: 'Stay Behind Me · Paper Birthday',
+  bookUrl: '../../?novel=stay-behind-me',
+  owner: 'Evangeline Lin',
+  me: { photo: 'img/av-evangeline.webp' },
+  wall: 'img/stay-behind-me-wall-desk.webp',
+  h12: true,
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar'],
+  calIcon: [{ wd: 'Sun', dn: '22' }, { wd: 'Thu', dn: '16' }, { wd: 'Sat', dn: '25' }, { wd: 'Sat', dn: '11' }],
+  caption: { open: 'Lunar New Year. Nam’s Noodles, three hours north. A crooked dumpling, and a coin in a pot in Nam’s yard.<br><br>Tonight she asked him when his birthday was. He told her the date on his papers, the way you’d read out a form.<br><br>She wrote it down. He has already forgotten that she did.' },
+  days: [
+    { date: 'Sun 22 Jan', dn: 22, start: '23:08', beats: [
+      { id: 'd', target: 'note:d', auto: true, autoDelay: 500 },
+      { id: 'nam', target: 'thread:nam', auto: true, delay: 2600 }
+    ] },
+    { date: 'Thu 16 Feb', dn: 16, start: '02:31', lead: 'The county hospital, then home. Six nights.', beats: [
+      { id: 'f', target: 'note:f', auto: true, autoDelay: 500 },
+      { id: 's1', target: 'search:s1', auto: true, delay: 2600 }
+    ] },
+    { date: 'Sat 25 Feb', dn: 25, start: '15:18', lead: 'Saturday. The old market.', beats: [
+      { id: 's2', target: 'search:s2', auto: true, autoDelay: 500 },
+      { id: 'el', target: 'thread:el', unread: 'el', time: '15:31', at: '15:31', delay: 2600, notify: { app: 'messages', title: 'Elowen', body: 'You haven’t slept here in a week, sweetheart.' } },
+      { id: 'sp', target: 'note:sp', auto: true, delay: 2600 }
+    ] },
+    { date: 'Sat 11 Mar', dn: 11, start: '21:36', lead: 'The eleventh of March. The date on his papers.', beats: [
+      { id: 'sa', target: 'note:sa', auto: true, autoDelay: 500 },
+      { id: 'nam2', target: 'thread:nam', unread: 'nam', time: '21:52', at: '21:52', delay: 2800, notify: { app: 'messages', title: 'Nam', body: 'Did he ask properly?' } }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'd', day: 0, date: '11:09 PM', stamp: '22 January 2023 at 11:09 PM', title: 'Dates', body: [],
+        play: [['t', 'His birthday: 11 March.'], ['p', 1200], ['t', ' (Papers.)'], ['p', 1300], ['t', '\nHe said it like a form.'], ['p', 1600], ['t', '\n\nMine: 9 April. (Papers.) 7 April. (Not papers.)'], ['p', 1400], ['t', '\n\nAsk Nam.']] },
+      { id: 'f', day: 1, date: '2:32 AM', stamp: '16 February 2023 at 2:32 AM', title: 'Fever', body: [],
+        play: [['t', 'Fri 10. 2:43. 40.0. Nam’s truck. The county hospital. Six days of lying to me about a cut under his ribs.'], ['p', 1300], ['t', '\nHe couldn’t talk, so I talked. All night. I didn’t know I had that much to say.'], ['p', 1400], ['t', '\nWed 15. Stitches out. Eleven. I counted.'], ['p', 1500], ['t', '\n\nThu 16. 2:26.'], ['p', 1600], ['t', '\nFever broke.'], ['p', 1500], ['t', '\nHe opened his eyes and said half my name, then went back to sleep.'], ['p', 1300], ['t', '\n\nI’m not going to my sister’s tonight.']] },
+      { id: 'sp', day: 2, date: '3:40 PM', stamp: '25 February 2023 at 3:40 PM', title: 'Spoon', body: [],
+        play: [['t', 'Old Ko’s spoon was buried with him, in his top pocket.'], ['p', 1200], ['t', '\n\nThe woman at the shop by the old market listened while I described it.'], ['p', 900], ['t', '\nOld. Heavy. Worn smooth where the fingers go. Dark in the grooves of the pattern on the stem.'], ['p', 1300], ['t', '\nShe went into the back and came out with one from the same years.'], ['p', 1500], ['t', '\n\nNot his. Same shape and weight though.'], ['p', 1200], ['t', '\n\nCake: white icing, four strawberries, one candle. Don’t ask him to wish.']] },
+      { id: 'sa', day: 3, date: '9:37 PM', stamp: '11 March 2023 at 9:37 PM', title: 'Saturday', body: [],
+        play: [['t', '“It’s not my birthday.” “It is on your papers.”'], ['p', 1300], ['t', '\nHe didn’t blow the candle out. I didn’t ask him to.'], ['p', 1400], ['t', '\n\nThe spoon. He turned it over in his hand and couldn’t say anything.'], ['p', 1100], ['t', '\nHe didn’t put it away. It’s on the table beside his cup.'], ['p', 1600], ['t', '\n\nNam: “Before you go chasing men across rivers, you should marry her.”'], ['p', 1200], ['t', '\nApril. He’s going over the river in April.'], ['p', 1400], ['t', '\n\n“Would you?” “Yes.”'], ['p', 900], ['t', '\n“Then ask properly.”'], ['p', 900], ['t', '\n“Will you marry me?”'], ['p', 1600], ['t', '\n\nHe’s in the shower now.'], ['p', 1500], ['t', '\nHe’s saying my name under the water.'], ['p', 1400], ['t', ' Slowly.'], ['p', 1600], ['t', '\nE-van-ge-line.'], ['p', 2000], ['t', '\n\nAll four syllables. Didn’t get stuck once.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Viaduct Flower Market', subject: 'Stall rota, February', date: '1/20/2023', full: '20 January 2023 at 9:02 AM', body: 'Tuesdays and Saturdays as usual. The orchid man says you are the only one who carries his trays uphill without a trolley and he would like you to stop.' },
+      { id: 'm1', day: 1, from: 'County Hospital, River Bridge', subject: 'Outpatient appointment: wound check', date: '2/14/2023', full: '14 February 2023 at 11:20 AM', body: 'Patient: LEE J. H.\n\nWound review and removal of sutures, Wednesday 15 February, 10:30.\n\nPlease make sure the patient attends. Missed appointments can’t always be rebooked.' }
+    ] },
+    messages: { threads: [
+      { id: 'nam', day: 0, name: 'Nam', photo: 'img/av-nam.webp', time: 'Sun', order: 40, items: [
+        { t: 'day', text: '<b>Sun 22 Jan</b> 11:21 PM', beat: 'nam' },
+        { t: 'out', text: 'When is his birthday?', live: true, play: [['p', 600], ['t', 'When is his birthday?']] },
+        { t: 'in', text: 'The paper says March.', live: true, wait: 1800 },
+        { t: 'in', text: 'The paper is wrong. A clerk wrote it when he was nine.', live: true, wait: 1500 },
+        { t: 'out', text: 'When is it really?', live: true },
+        { t: 'in', text: 'Old Ko knew. Ask the boy. He won’t tell you.', live: true, wait: 2000 },
+        { t: 'in', text: 'Old Ko gave him an extra egg in the rice. Once, socks. Too big.', live: true, wait: 1800 },
+        { t: 'out', text: 'Did he wear them?', live: true },
+        { t: 'in', text: 'Every day.', live: true, wait: 1400 },
+        { t: 'day', text: '<b>Fri 10 Feb</b> 2:49 AM', day: 1 },
+        { t: 'out', text: 'Forty. He can’t stand.', day: 1 },
+        { t: 'in', text: 'Truck. Ten minutes. Get his boots on.', day: 1 },
+        { t: 'day', text: '<b>Sat 11 Mar</b> 9:52 PM', beat: 'nam2', day: 3 },
+        { t: 'in', text: 'Did he ask properly?', day: 3 },
+        { t: 'out', text: 'Yes.', day: 3, live: true, play: [['p', 900], ['t', 'Yes.']] },
+        { t: 'in', text: 'Good.', day: 3, live: true, wait: 1500 },
+        { t: 'in', text: 'Now make him finish the cake. He won’t unless you make him.', day: 3, live: true, wait: 1600 },
+        { t: 'out', text: 'He’s in the shower. Practising.', day: 3, live: true, play: [['p', 1100], ['t', 'He’s in the shower. Practising.']] },
+        { t: 'in', text: 'Practising what?', day: 3, live: true, wait: 1400 },
+        { t: 'out', text: 'Me.', day: 3, live: true, play: [['p', 1600], ['t', 'Me.']] }
+      ] },
+      { id: 'el', day: 0, name: 'Elowen', photo: 'img/av-elowen.webp', time: 'Jan', order: 30, items: [
+        { t: 'day', text: '<b>Sun 22 Jan</b> 10:15 AM' },
+        { t: 'in', text: 'Happy New Year, little sister. Nam’s again?' },
+        { t: 'out', text: 'Yes. Dumplings.' },
+        { t: 'in', text: 'Did you make one?' },
+        { t: 'out', text: 'He did. It’s crooked.' },
+        { t: 'day', text: '<b>Sat 25 Feb</b> 3:31 PM', beat: 'el', day: 2 },
+        { t: 'in', text: 'You haven’t slept here in a week, sweetheart.', day: 2 },
+        { t: 'out', text: 'He was ill.', day: 2, live: true },
+        { t: 'in', text: 'Is he better?', day: 2, live: true, wait: 1600 },
+        { t: 'out', text: 'Yes.', day: 2, live: true },
+        { t: 'in', text: 'Is he the one who carried you out of the dark?', day: 2, live: true, wait: 2000 },
+        { t: 'out', text: 'Yes.', day: 2, live: true, play: [['p', 1500], ['t', 'Yes.']] },
+        { t: 'in', text: 'Then I’m not going to say anything else. Bring him one day. Or don’t. Come for lunch either way.', day: 2, live: true, wait: 2200 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Saturday 21 January', time: '6:40 PM', q: 'lunar new year dumpling coin meaning', results: [{ site: 'Festival Traditions', path: 'new year', title: 'The coin in the dumpling', snip: 'Whoever finds it is said to have a lucky year. Some families hide one coin in the whole batch.' }] },
+      { id: 's1', day: 1, dayLabel: 'Thursday 16 February', time: '2:34 AM', q: 'after a fever breaks what should he eat', live: true, play: [['t', 'after a fever breaks what should he eat']], results: [
+        { site: 'Family Health', path: 'recovery', title: 'The first days after a high fever', snip: 'Small amounts often: broth, rice porridge, water. Let them sleep. Keep the wound clean and dry.' },
+        { site: 'Nursing at Home', path: 'infection', title: 'Signs a wound infection is clearing', snip: 'Less redness, less heat, the fever settling. Finish every tablet even when they say they are fine.' }
+      ] },
+      { id: 's2', day: 2, dayLabel: 'Saturday 25 February', time: '3:19 PM', q: 'antique silver spoon pattern on the stem', live: true, play: [['t', 'old silver spoon'], ['p', 900], ['t', ' heavy worn handle'], ['p', 1100], ['d', 18], ['t', ' pattern on the stem']], results: [
+        { site: 'Collectors’ Guide', path: 'silver', title: 'Identifying old table spoons', snip: 'Heavy spoons from the middle of the last century often carry a cast pattern along the stem. The silver darkens in the grooves with use.' },
+        { site: 'Old Market Directory', path: 'antiques', title: 'Antique dealers by the old market', snip: 'Small shops open Saturdays. Ask; most of the stock is in the back.' }
+      ] }
+    ] },
+    calendar: { year: 2023, month: 2, label: 'March', events: [
+      { d: 4, text: 'Market' }, { d: 7, text: 'Market' }, { d: 11, text: 'Jun Hyuk (papers)', red: true }, { d: 11, text: 'Market' }, { d: 14, text: 'Market' }, { d: 18, text: 'Market' }
+    ] },
+    files: { folders: [
+      { name: 'Papers', day: 0, items: [
+        { name: 'birth registration (copy).pdf', kind: 'pdf', date: '3 May 2014', body: ['REGISTRATION OF BIRTH', '', 'LIN Evangeline. Female.', 'Date of birth: 9 April 1998.', '', '(It isn’t.)'] }
+      ] },
+      { name: 'Trash', trash: true, day: 2, items: [
+        { name: 'spoon shops.txt', kind: 'doc', date: '25 Feb 2023', day: 2, body: ['~~Ferry Street — only new ones~~', '~~Temple Street — plated~~', '~~The market hall — closed Saturdays~~', 'By the old market, the green door. Yes.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4000,
+    caption: 'He came out ten minutes later with a towel round his neck and found her looking at him.<br><br>“You were practising.”<br><br>He didn’t deny it. “To you, when it’s something that matters, it gets stuck.”<br><br>She took his face in both her hands. “Say it.”<br><br>“Evangeline.” All four syllables, perfectly.'
+  }
+});
+
+</script>
+</body>
+</html>

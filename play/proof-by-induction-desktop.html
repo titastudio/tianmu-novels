@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Proof by Induction · Problem Set · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Proof by Induction · desktop · "Problem Set"
+   Miles's laptop, Thursday 5 August to Tuesday 7 September 2027.
+   Canon: Ch37 (the coat in August, the box since the first Saturday of August, two desks 80 cm apart),
+   Ch38 (Aurelia chose the stone, forget-me-not blue, set low; ∀n inside; Appendix A; Problems 1–3; note 113). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'proof-by-induction',
+  title: 'Proof by Induction · Problem Set',
+  bookUrl: '../../?novel=proof-by-induction',
+  owner: 'Miles Wei',
+  me: { photo: 'img/av-miles.webp' },
+  wall: 'img/proof-by-induction-wall-desk.webp',
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar', 'photos'],
+  calIcon: [{ wd: 'Thu', dn: '5' }, { wd: 'Sat', dn: '7' }, { wd: 'Thu', dn: '26' }, { wd: 'Thu', dn: '2' }, { wd: 'Tue', dn: '7' }],
+  caption: { open: 'August, two years after a purple pen rolled under his chair.<br><br>He’s decided to ask her. He just hasn’t worked out how. He solves things on paper, so that’s where he starts.' },
+  days: [
+    { date: 'Thu 5 Aug', dn: 5, start: '23:18', beats: [
+      { id: 's1', target: 'search:s1', auto: true, autoDelay: 400 },
+      { id: 'au', target: 'thread:au', auto: true, delay: 2600 }
+    ] },
+    { date: 'Sat 7 Aug', dn: 7, start: '16:42', lead: 'Saturday', beats: [
+      { id: 'mail', target: 'mail:ring', mailUnread: 'ring', notify: { app: 'mail', title: 'Aurelia Chen', body: 'For Saturday, as discussed' } },
+      { id: 'au2', target: 'thread:au', unread: 'au', time: '16:51', at: '16:51', delay: 3000, notify: { app: 'messages', title: 'Aurelia Chen', body: 'Where is it now?' } },
+      { id: 'ph', target: 'photos', delay: 2400, notify: { app: 'photos', title: 'Photos', body: '1 photo saved' } }
+    ] },
+    { date: 'Thu 26 Aug', dn: 26, start: '23:04', lead: 'Bell Street. Two desks, eighty centimetres apart.', beats: [
+      { id: 'w', target: 'note:w', auto: true, autoDelay: 500 },
+      { id: 'yj', target: 'thread:yj', unread: 'yj', time: '23:21', at: '23:21', delay: 2200, notify: { app: 'messages', title: 'Not Stuck', body: 'You’re typing very loudly for a referee report' } }
+    ] },
+    { date: 'Thu 2 Sep', dn: 2, start: '22:37', lead: 'Thursday', beats: [
+      { id: 'p', target: 'note:prob', auto: true, autoDelay: 500 },
+      { id: 'lh', target: 'thread:lh', unread: 'lh', time: '22:58', at: '22:58', delay: 2400, notify: { app: 'messages', title: 'Ling Hao', body: 'Well?' } },
+      { id: 'wl', target: 'thread:wl', unread: 'wl', time: '23:06', at: '23:06', delay: 2400, notify: { app: 'messages', title: 'Wei Lan', body: 'Little brother. Is it this week.' } }
+    ] },
+    { date: 'Tue 7 Sep', dn: 7, start: '23:52', lead: 'The night before.', beats: [
+      { id: 'cal', target: 'calendar', auto: true, autoDelay: 600 },
+      { id: 'n113', target: 'note:n113', auto: true, delay: 2600 }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'old', day: 0, date: '20/06/2027', title: 'Anniversary', body: ['A year since 4:01 at graduation.', 'Redrew the graph for her. Labelled it NOT CONSTANT.', 'She laughed at the label for eleven seconds. I timed it.'] },
+      { id: 'w', day: 2, date: '23:05', stamp: '26 August 2027 at 23:05', title: 'W (Appendix A)', body: [],
+        play: [['t', '10 Sept. 412. Harmonic oscillator. Already solved. Pen under my chair.'], ['p', 900], ['t', '\n17 Sept. 412. Two inks. Said I hadn’t seen the pen.'], ['p', 800], ['t', '\n24 Sept. 412. Bent oscillator. She was right. Stayed till 18:02. Chalk handprint on the board, left side.'], ['p', 900], ['t', '\n1 Oct. 412. Door wedged open.'], ['p', 1400], ['t', '\n15 Oct. Back stairs.'], ['p', 1800], ['t', '\n…'], ['p', 700], ['t', '\n4 March. Glass room. I said a cruel thing.'], ['p', 1300], ['t', '\n11 March. Glass room. Absent. 18 March. Glass room. Absent. STILL HERE.'], ['p', 1000], ['t', '\n25 March. Glass room. Absent. Made her cup anyway. Poured it away at eleven.'], ['p', 1600], ['t', '\n\nWednesdays: 105. In 412 or the glass room: 52. On a screen: 46. Neither: 7.'], ['p', 1400], ['t', '\n\n(Absent doesn’t mean she chose not to come. Check before counting it.)']] },
+      { id: 'prob', day: 3, date: '22:38', stamp: '2 September 2027 at 22:38', title: 'Problems', body: [],
+        play: [['t', 'PROBLEM 1. Let W be the set of Wednesdays from the second Wednesday of September two years ago to today, inclusive. For each, record whether S.Y.J. came at 15:45. Find the number of Wednesdays and classify them. (Data: see Appendix A.)'], ['p', 1600], ['t', '\n\nPROBLEM 2. In a shared residence on Bell Street, two desks face each other. Let d be the distance between their front edges. Find d. State whether the arrangement is satisfactory.'], ['p', 1600], ['t', '\n\nPROBLEM 3. Will you'], ['p', 1300], ['d', 8], ['p', 900], ['t', 'The top drawer of the right-hand desk in the second bedroom on Bell Street contains N sticky notes.\nN = 112. Find note N + 1.\nNote N + 1 is not in office 412.'], ['p', 1200], ['t', '\nGiven: one person has been carrying the necessary object for several weeks. The other has not been told. The solution must be reached without assistance.']] },
+      { id: 'n113', day: 4, date: '23:53', stamp: '7 September 2027 at 23:53', title: 'Drawer', body: [],
+        play: [['t', '112.'], ['p', 900], ['t', ' Counted twice. Third time 111, because one was stuck to the back of another.'], ['p', 1100], ['t', '\nStill 112.'], ['p', 1800], ['t', '\n\nGraph paper, three sheets. In order.'], ['p', 1000], ['t', '\nCoat.'], ['p', 1400], ['t', '\nTea at a quarter to four. Two cups.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Professor Ruan', subject: 'Your problem class, autumn', date: '02/08/2027', full: '2 August 2027 at 08:14', body: 'Miles,\n\nThursdays, room 104, first-years. She will be very good at it and you are not to sit in the back row.\n\nR.' },
+      { id: 'ring', day: 1, from: 'Aurelia Chen', subject: 'For Saturday, as discussed', date: '16:40', full: 'Saturday 7 August 2027 at 16:40', body: 'Miles,\n\nFor your records, since you are a man who keeps records:\n\nOne narrow gold band. One small blue stone, set low, so it will not catch on her notebooks or her trays. I chose it. You stood among my cases looking lost for eleven minutes and I took pity on you. It is the colour of the forget-me-nots on Elowen’s counter.\n\nEngraving inside, as you wrote it: ∀n. I checked twice that this is what you meant. Enzo looked it up. He says it is very romantic for a mathematician.\n\nYou promised not to tell her until it is on her hand. I am holding you to that.\n\nA.' }
+    ] },
+    messages: { threads: [
+      { id: 'yj', day: 0, name: 'Not Stuck', photo: 'img/av-yu-jie.webp', time: 'Thu', order: 40, items: [
+        { t: 'day', text: '<b>Thu 5 Aug</b> 21:10' },
+        { t: 'in', text: 'Why are you wearing a coat. It is thirty degrees' },
+        { t: 'out', text: 'The air conditioning on the fourth floor.' },
+        { t: 'in', text: 'Miles' },
+        { t: 'day', text: '<b>Thu 26 Aug</b> 23:21', beat: 'yj', day: 2 },
+        { t: 'in', text: 'You’re typing very loudly for a referee report', day: 2 },
+        { t: 'out', text: 'It’s a long report.', day: 2, live: true, play: [['p', 800], ['t', 'It’s a very'], ['p', 700], ['d', 4], ['t', 'long report.']] },
+        { t: 'in', text: 'I can see your face over the top of your screen', day: 2, live: true, wait: 1800 },
+        { t: 'in', text: 'It’s eighty centimetres away', day: 2, live: true, wait: 1100 },
+        { t: 'out', text: 'Ten minutes.', day: 2, live: true },
+        { t: 'in', text: 'You said that ten minutes ago', day: 2, live: true, wait: 1600 },
+        { t: 'in', text: 'I’m stealing your tea', day: 2, live: true, wait: 1300 }
+      ] },
+      { id: 'au', day: 0, name: 'Aurelia Chen', photo: 'img/av-aurelia.webp', time: 'Thu', order: 30, items: [
+        { t: 'day', text: '<b>Sun 23 May</b> 12:40' },
+        { t: 'in', text: 'Elowen says you came to the shop and stood in front of the forget-me-nots for a quarter of an hour.' },
+        { t: 'out', text: 'I was choosing.' },
+        { t: 'in', text: 'You bought nothing.' },
+        { t: 'day', text: '<b>Thu 5 Aug</b> 23:26', beat: 'au' },
+        { t: 'out', text: 'Are you at the workshop on Saturday?', live: true, play: [['t', 'I need advice about a'], ['p', 1300], ['d', 21], ['p', 600], ['t', 'Are you at the workshop on Saturday?']] },
+        { t: 'in', text: 'For you, yes.', live: true, wait: 2600 },
+        { t: 'in', text: 'Come at eleven. Bring nothing. Don’t tell her.', live: true, wait: 1500 },
+        { t: 'out', text: 'How did you know.', live: true },
+        { t: 'in', text: 'Miles. You have never once asked me about Saturday.', live: true, wait: 2200 },
+        { t: 'day', text: '<b>Sat 7 Aug</b> 16:51', beat: 'au2', day: 1 },
+        { t: 'in', text: 'Where is it now?', day: 1 },
+        { t: 'out', text: 'Inside pocket. Coat.', day: 1, live: true },
+        { t: 'in', text: 'It is August.', day: 1, live: true, wait: 1700 },
+        { t: 'out', text: 'I know.', day: 1, live: true, play: [['p', 900], ['t', 'I know.']] }
+      ] },
+      { id: 'lh', day: 0, name: 'Ling Hao', photo: 'img/av-ling-hao.webp', time: 'Jul', order: 20, items: [
+        { t: 'day', text: '<b>Fri 30 Jul</b> 17:02' },
+        { t: 'in', text: 'Shu Mei says the flat above the watchmender is yours from the 25th. She has already decided which shelf is hers.' },
+        { t: 'day', text: '<b>Thu 2 Sep</b> 22:58', beat: 'lh', day: 3 },
+        { t: 'in', text: 'Well?', day: 3 },
+        { t: 'out', text: 'Wednesday.', day: 3, live: true },
+        { t: 'in', text: 'Which Wednesday', day: 3, live: true, wait: 1500 },
+        { t: 'out', text: 'The second one in September.', day: 3, live: true },
+        { t: 'in', text: 'Of course it is', day: 3, live: true, wait: 1500 },
+        { t: 'in', text: 'Does Wei Lan know', day: 3, live: true, wait: 1100 },
+        { t: 'out', text: 'Wei Lan knew in November.', day: 3, live: true }
+      ] },
+      { id: 'wl', day: 0, name: 'Wei Lan', photo: 'img/av-wei-lan.webp', time: 'Aug', order: 10, items: [
+        { t: 'day', text: '<b>Sun 1 Aug</b> 19:30' },
+        { t: 'in', text: 'Mum wants to know if the girl with the bread is coming for Mid-Autumn.' },
+        { t: 'out', text: 'Her name is Yu Jie.' },
+        { t: 'in', text: 'Mum knows her name. Mum wants to know if she is coming.' },
+        { t: 'day', text: '<b>Thu 2 Sep</b> 23:06', beat: 'wl', day: 3 },
+        { t: 'in', text: 'Little brother. Is it this week.', day: 3 },
+        { t: 'out', text: 'Next Wednesday.', day: 3, live: true },
+        { t: 'in', text: 'If you don’t ask her by Christmas I am asking her for you.', day: 3, live: true, wait: 2000 },
+        { t: 'in', text: 'I mean it. I’ve known since you had the flu in November.', day: 3, live: true, wait: 1500 }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Monday 2 August', time: '07:40', q: 'room 104 projector booking', results: [{ site: 'University IT', path: 'teaching rooms', title: 'Booking teaching rooms and equipment', snip: 'Room 104 has a fixed projector and two boards. Book through the faculty office.' }] },
+      { id: 's1', day: 0, dayLabel: 'Thursday 5 August', time: '23:19', q: 'how to propose', live: true, play: [['t', 'how to propose to a physicist'], ['p', 1300], ['d', 15], ['p', 700]], results: [
+        { site: 'Wedding Almanac', path: 'proposals', title: 'How to propose: a calm guide', snip: 'Choose a place that already means something. Keep it private if they are private. Say it plainly.' },
+        { site: 'The Considerate Partner', path: 'advice', title: 'Don’t make it a performance unless they love one', snip: 'The best proposals use the language the two of you already speak.' },
+        { site: 'Everyday Etiquette', path: 'rings', title: 'Should you choose the ring alone?', snip: 'Many people ask a trusted friend with a good eye. Ask someone who knows what she would actually wear every day.' }
+      ] }
+    ] },
+    calendar: { year: 2027, month: 8, label: 'September', events: [
+      { d: 2, text: 'Problem class 104' }, { d: 9, text: 'Problem class 104' }, { d: 8, text: '15:45', red: true, day: 4 }, { d: 8, text: 'Office hours' }, { d: 16, text: 'Problem class 104' }, { d: 15, text: 'Tank paper, revisions due' }
+    ] },
+    photos: { items: [
+      { src: 'img/proof-by-induction-board.webp', day: 0, date: '24 Sep 2025', caption: '' },
+      { src: 'img/proof-by-induction-cup.webp', day: 0, date: '11 Mar 2026', caption: '' },
+      { src: 'img/proof-by-induction-bread.webp', day: 0, date: '30 Mar 2026', caption: '' },
+      { src: 'img/proof-by-induction-attic.webp', day: 0, date: '14 Apr 2026', caption: '' },
+      { src: 'img/proof-by-induction-fmn.webp', day: 1, date: '7 Aug 2027', caption: 'From Aurelia: “This colour.”' }
+    ] },
+    files: { folders: [
+      { name: 'Teaching', items: [
+        { name: 'Mechanics problem set 1.pdf', kind: 'pdf', date: '30 Aug 2027', body: ['MECHANICS · PROBLEM SET 1', '', '1. A particle starts from rest with constant acceleration a. Find the distance travelled in time t. Show your working.', '', '2. …'] },
+        { name: 'Quantum Two notes.pdf', kind: 'pdf', date: '12 Jan 2026', body: ['Lecture 7. The harmonic oscillator.', '', 'Eₙ = ħω (n + ½)', '', 'It is never zero.'] }
+      ] },
+      { name: 'Lab', items: [
+        { name: 'Tank paper v9.pdf', kind: 'pdf', date: '1 Sep 2027', body: ['A horizon in a circular tank', '', 'Draft 9. Reviewer 2 asks about the drain again.'] },
+        { name: 'first light.jpg', src: 'img/proof-by-induction-cup.webp', date: '6 Apr 2026' }
+      ] },
+      { name: 'Trash', trash: true, items: [
+        { name: 'what to say.txt', kind: 'doc', date: '31 Aug 2027', day: 2, body: ['~~Yu Jie, I have prepared some remarks.~~', '', '~~Two years ago today~~', '', 'Don’t prepare remarks. Ask.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4000,
+    caption: 'At a quarter to four on Wednesday she knocked on the open door of office 412, and the second cup was already poured.<br><br>His ears were scarlet. There were three sheets of graph paper on her side of the desk.<br><br>Eleven minutes later she was standing barefoot in the doorway of the little room with two desks, out of breath, with the problems crumpled in one hand.<br><br>“Problem three,” she said.'
+  }
+});
+
+</script>
+</body>
+</html>

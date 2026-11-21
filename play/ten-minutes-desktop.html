@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Ten Minutes · Paragraph Seventeen · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Ten Minutes · desktop · "Paragraph Seventeen"
+   Wei Long's laptop at the desk in the room with the books, Monday 27 September to Monday 4 October 2027.
+   Canon: Ch35 (five evenings at the desk while she thought he was doing overtime; revised three times, printed twice;
+   the first version had a sentence beginning "At approximately" and he had to stand up and walk round the flat;
+   three pages, seventeen numbered paragraphs, paragraphs 1–3 and 12–17 as read at the custody desk; 419 evenings;
+   three Saturdays choosing the ring, the first one shown; the duty sergeant at the airport post, once a constable in
+   his first squad; her flight due 7:40, an hour late for weather), Ch36 ("Quiero que te casas conmigo"; the twenty-six
+   cards from Lima, said in the car; "Not te casas. That one wasn’t on a card. I wrote it myself. I should have checked."). */
+StoryEngine.start({
+  kind: 'desktop',
+  id: 'ten-minutes',
+  title: 'Ten Minutes · Paragraph Seventeen',
+  bookUrl: '../../?novel=ten-minutes',
+  owner: 'Song Wei Long',
+  me: { photo: 'img/av-song-wei-long.webp' },
+  wall: 'img/ten-minutes-wall-desk.webp',
+  dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'calendar', 'sheets'],
+  calIcon: [{ wd: 'Mon', dn: '27' }, { wd: 'Tue', dn: '28' }, { wd: 'Thu', dn: '30' }, { wd: 'Mon', dn: '4' }],
+  caption: { open: 'September. The new flat, both names on the lease. The room with the books.<br><br>She thinks he is doing overtime at the desk. He isn’t.<br><br>If he is going to say something that matters, he is going to say all of it, in order, so that nothing is left out. He only knows one way to do that.' },
+  days: [
+    { date: 'Mon 27 Sep', dn: 27, start: '21:04', beats: [
+      { id: 'd1', target: 'note:d1', auto: true, autoDelay: 500 },
+      { id: 'is', target: 'thread:is', unread: 'is', time: '22:31', at: '22:31', delay: 3000, notify: { app: 'messages', title: 'Thank You (Paid)', body: 'Still on the overtime? I’m going to bed.' } }
+    ] },
+    { date: 'Tue 28 Sep', dn: 28, start: '21:40', lead: 'Evening two.', beats: [
+      { id: 'sh', target: 'sheet:ten', auto: true, autoDelay: 500 },
+      { id: 'cards', target: 'note:cards', auto: true, delay: 2600 },
+      { id: 'hau', target: 'thread:hau', unread: 'hau', time: '22:15', at: '22:15', delay: 2600, notify: { app: 'messages', title: 'Hau', body: 'The book is taking bets on something. I don’t know what.' } }
+    ] },
+    { date: 'Thu 30 Sep', dn: 30, start: '23:12', lead: 'Evening four. Revision.', beats: [
+      { id: 'd2', target: 'note:d2', auto: true, autoDelay: 500 },
+      { id: 'ap', target: 'mail:ap', mailUnread: 'ap', delay: 2600, notify: { app: 'mail', title: 'Airport Police Post', body: 'Re: Monday evening, five minutes' } },
+      { id: 's1', target: 'search:s1', auto: true, delay: 2600 }
+    ] },
+    { date: 'Mon 4 Oct', dn: 4, start: '18:02', lead: 'Monday. Raining.', beats: [
+      { id: 'fin', target: 'note:fin', auto: true, autoDelay: 500 },
+      { id: 'is2', target: 'thread:is', unread: 'is', time: '18:10', at: '18:10', delay: 3000, notify: { app: 'messages', title: 'Thank You (Paid)', body: 'Weather somewhere over the sea. 7:40 now.' } }
+    ] }
+  ],
+  content: {
+    notes: { items: [
+      { id: 'cards', day: 1, date: '21:58', stamp: '28 September 2027 at 21:58', title: 'Cards (Lima)', body: [],
+        play: [['t', 'Twenty-six. Said in the car at red lights.'], ['p', 900], ['t', '\n¿Ya comiste? — Have you eaten?'], ['p', 500], ['t', '\nDuerme. — Sleep.'], ['p', 500], ['t', '\nTe extraño. — I miss you.'], ['p', 500], ['t', '\nTen cuidado. — Be careful.'], ['p', 500], ['t', '\nEstoy aquí. — I’m here.'], ['p', 500], ['t', '\nTe quiero. — (the r. practise the r.)'], ['p', 900], ['t', '\n…'], ['p', 1200], ['t', '\n\nShe doesn’t know I kept them.']] },
+      { id: 'd1', day: 0, date: '21:05', stamp: '27 September 2027 at 21:05', title: 'Statement (draft 1)', body: [],
+        play: [['t', '1. On Monday 3 March 2025 at this desk you corrected a form that was not your mistake, in three languages, in eleven minutes. I stood here and said “Correct.” I did not thank you. You left a card under my windscreen wiper that said so. I still have it. It is in my wallet behind my warrant card.'], ['p', 1600], ['t', '\n\n2. On Friday 7 March you sat on my desk on top of a stabbing file and told me the world could wait ten minutes. You were right. It has waited ten minutes on '], ['p', 1300], ['t', '[COUNT]'], ['p', 900], ['t', ' evenings since then. I have the dates.'], ['p', 1600], ['t', '\n\n3. I didn’t know I was lonely. I thought it was quiet. You came in and switched off the scanner and I found out the difference, and I would like it on the record that I was not grateful at first.']] },
+      { id: 'd2', day: 2, date: '23:13', stamp: '30 September 2027 at 23:13', title: 'Statement (draft 2)', body: [],
+        play: [['t', '12. You have never once needed me to tell you what to do. I don’t want to be a man who decides things for you. I don’t want you to be smaller or quieter or less difficult to make room for me. I like the difficulty. I’ve got used to it.'], ['p', 1500], ['t', '\n\n13. '], ['p', 600], ['t', 'At approximately'], ['p', 2800], ['d', 16], ['p', 3600], ['t', 'I would like ordinary mornings. I would like to know which tea you’re drinking and whether you’ve eaten. I would like to argue about the heating.'], ['p', 1300], ['t', '\n\n14. We will get this wrong sometimes. We have already. In July I asked you a question in a corridor that I should not have asked. You told me so. I would like you to keep telling me so for the rest of my life.']] },
+      { id: 'fin', day: 3, date: '18:03', stamp: '4 October 2027 at 18:03', title: 'Statement (final, printed)', body: [],
+        play: [['t', '15. I love you. I loved you when you sat on my desk, and in the stairwell, and in your car the night of Lantern Lane when I couldn’t make my hands stop. I loved you when you went to Lima and when you came back. I loved you in a room with a cracked wall. I love you here.'], ['p', 1600], ['t', '\n\n16. I would like to keep doing it. For the rest of my life, if you’ll let me.'], ['p', 1800], ['t', '\n\n17. Veux-tu m’épouser?'], ['p', 1300], ['t', ' Quiero que te casas conmigo.'], ['p', 1600], ['t', '\n\nThat is all.']] }
+    ] },
+    mail: { items: [
+      { id: 'm0', day: 0, from: 'Kei & Daughter, Jewellers', subject: 'Your ring: ready for collection', date: '25/09/2027', full: '25 September 2027 at 17:02', body: 'Mr. Song,\n\nThe ring is sized and ready. One clear stone, a narrow band, nothing round it.\n\nFor what it is worth, after three Saturdays, it is the first one I showed you.\n\nWith best wishes.' },
+      { id: 'ap', day: 2, from: 'Airport Police Post', subject: 'Re: Monday evening, five minutes', date: '23:20', full: 'Thursday 30 September 2027 at 23:20', body: 'Sir,\n\nFive minutes at the custody desk, Monday, after the 7:40. Understood. I’ll be at the far end of the counter with a clipboard.\n\nI won’t ask.\n\nThe screen’s been moved a metre to the left since your day, but it’s the same corner by the window.\n\nSergeant, Airport Post (your first squad, 2015)' }
+    ] },
+    messages: { threads: [
+      { id: 'is', day: 0, name: 'Thank You (Paid)', photo: 'img/av-isla.webp', time: 'Mon', order: 40, items: [
+        { t: 'day', text: '<b>Sat 25 Sep</b> 13:10' },
+        { t: 'in', text: 'Where have you gone three Saturdays in a row?' },
+        { t: 'out', text: 'Errands.' },
+        { t: 'in', text: 'You’re terrible at errands. You come back with the wrong milk.' },
+        { t: 'day', text: '<b>Mon 27 Sep</b> 22:31', beat: 'is' },
+        { t: 'in', text: 'Still on the overtime? I’m going to bed.', live: true, wait: 300 },
+        { t: 'in', text: 'Don’t stay up reading statements.', live: true, wait: 1400 },
+        { t: 'out', text: 'Writing one.', live: true, play: [['p', 1100], ['t', 'Reading'], ['p', 900], ['d', 7], ['t', 'Writing one.']] },
+        { t: 'in', text: 'Whose?', live: true, wait: 1500 },
+        { t: 'out', text: 'Mine.', live: true },
+        { t: 'in', text: 'You’re very strange. Come to bed in ten minutes.', live: true, wait: 1800 },
+        { t: 'out', text: 'Ten minutes.', live: true },
+        { t: 'day', text: '<b>Mon 4 Oct</b> 18:10', beat: 'is2', day: 3 },
+        { t: 'in', text: 'Weather somewhere over the sea. 7:40 now.', day: 3 },
+        { t: 'in', text: 'Don’t come too early. They’ve changed the chairs. Your knees will be by your ears.', day: 3, live: true, wait: 1500 },
+        { t: 'out', text: 'I’ll stand.', day: 3, live: true, play: [['p', 1300], ['t', 'I’ll stand.']] },
+        { t: 'in', text: 'Of course you will.', day: 3, live: true, wait: 1500 }
+      ] },
+      { id: 'hau', day: 0, name: 'Hau', photo: 'img/av-hau.webp', time: 'Sep', order: 30, items: [
+        { t: 'day', text: '<b>Tue 28 Sep</b> 22:15', beat: 'hau', day: 1 },
+        { t: 'in', text: 'Sir. The book is taking bets on something. I don’t know what.', day: 1 },
+        { t: 'in', text: 'Sham thinks you’re ill. Choy thinks you’re leaving. Tak has put money on “ring”.', day: 1, live: true, wait: 1500 },
+        { t: 'out', text: 'Close the book.', day: 1, live: true },
+        { t: 'in', text: 'The book has been open for two and a half years, sir. It doesn’t close for anybody.', day: 1, live: true, wait: 1800 }
+      ] },
+      { id: 'yc', day: 0, name: 'Yu Chen (Eaten?)', time: 'Sep', order: 20, items: [
+        { t: 'day', text: '<b>Sun 26 Sep</b> 19:40' },
+        { t: 'in', text: 'Ge. Eliana says you asked her what size Isla’s fingers are. She said she’s not that kind of hacker.' },
+        { t: 'out', text: 'I measured it myself.' },
+        { t: 'in', text: 'How?' },
+        { t: 'out', text: 'Her other ring. On the dresser. With a pencil.' }
+      ] }
+    ] },
+    browser: { items: [
+      { id: 'old', day: 0, dayLabel: 'Saturday 25 September', time: '11:20', q: 'jewellers harbour road saturday', results: [{ site: 'City Guide', path: 'shopping', title: 'Jewellers open on Saturdays', snip: 'Most open ten until six.' }] },
+      { id: 's1', day: 2, dayLabel: 'Thursday 30 September', time: '23:31', q: 'will you marry me in french', live: true, play: [['t', 'how long should a proposal be'], ['p', 1600], ['d', 29], ['p', 700], ['t', 'will you marry me in french']], results: [
+        { site: 'Language Desk', path: 'french › phrases', title: '“Veux-tu m’épouser ?”', snip: 'The informal and most common form. Round your lips for the u in tu.' },
+        { site: 'Wedding Almanac', path: 'proposals', title: 'How long should a proposal speech be?', snip: 'Shorter than you think. One minute is plenty. Nobody remembers the second page.' }
+      ] }
+    ] },
+    sheets: { items: [
+      { id: 'ten', day: 1, title: 'Ten minutes (from the drawer)', cols: ['Year', 'Evenings she came at nine', 'Evenings I was away', 'Evenings she was away'], rows: [
+        ['2025 (from 7 Mar)', '178', '6', '9'],
+        ['2026 (to 2 Jul)', '102', '4', '3'],
+        ['2026 (Lima)', '0', '—', 'all of them'],
+        ['2027 (from 28 Apr)', '139', '2', '5'],
+        ['', '', '', ''],
+        ['TOTAL', '419', '', ''],
+        ['', '“It has waited ten minutes on four hundred and nineteen evenings since then.”', '', '']
+      ] }
+    ] },
+    calendar: { year: 2027, month: 9, label: 'October', events: [
+      { d: 2, text: 'Collect ring' }, { d: 4, text: 'Airport · 7:40 (her)', red: true, day: 1 }, { d: 23, text: 'Yu Chen & Eliana' }, { d: 9, text: 'Pun, lunch' }
+    ] },
+    files: { folders: [
+      { name: 'Statement', day: 0, items: [
+        { name: 'statement v1.pdf', kind: 'pdf', date: '29 Sep 2027', day: 1, body: ['STATEMENT', '', '1. On Monday 3 March 2025 at this desk…', '', '(Version 1. Not this one. Paragraph 13 begins “At approximately”.)'] },
+        { name: 'statement v2 (print).pdf', kind: 'pdf', date: '1 Oct 2027', day: 2, body: ['STATEMENT', '', 'Three pages. Seventeen numbered paragraphs.', '', 'Printed twice. This is the second.'] }
+      ] },
+      { name: 'Cases', day: 0, items: [
+        { name: 'Weekly returns.pdf', kind: 'pdf', date: '24 Sep 2027', body: ['Weekly returns. Nothing outstanding over seven days.'] }
+      ] },
+      { name: 'Trash', trash: true, day: 2, items: [
+        { name: 'statement v0.txt', kind: 'doc', date: '27 Sep 2027', day: 2, body: ['~~At approximately 19:46 on Monday 4 October I will ask the complainant—~~', '', 'No.'] }
+      ] }
+    ] }
+  },
+  end: {
+    capDelay: 4200,
+    caption: 'At 7:46 she came through the doors with her case and her phone at her ear, and saw him, and her whole face changed.<br><br>He read it the way he read evidence into a record, standing straight, in his ordinary voice. By the bottom of the second page she was crying into her fingers.<br><br>“Yes,” she said, into his collar.<br><br>She found the mistake forty minutes later, in the hall, in paragraph seventeen. One letter, the difference between a fact and a wish.<br><br>“It is a fact,” said Wei Long. “You said yes.”'
+  }
+});
+
+</script>
+</body>
+</html>

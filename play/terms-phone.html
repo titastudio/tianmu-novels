@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Terms · Eleven Days · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Terms · phone · "Eleven Days"
+   Aurelia holds Chen Si's phone, Wednesday 25 September 2019, the 44th floor.
+   Canon: Ch11 (second shop Wed 11 Sep, grey saloon 18:18, garage, KISS THE COOK, the eleven-day argument,
+   red ink, Qian invoicing, three days at Zhao's range, "Since the wedding", "I lost the argument"),
+   Ch1 (letter at 8:17, Mr. Thursday), Ch2 ("Don't make a mess of it, Si."), Ch7 (clause seven, Thursday dinner). */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'terms',
+  title: 'Terms · Eleven Days',
+  bookUrl: '../../?novel=terms',
+  battery: 61,
+  dark: true,
+  caption: {
+    open: 'Wednesday, the twenty-fifth of September. The forty-fourth floor.<br><br>Four months. He turned it off in the hall without a moment’s hesitation, and gave her his location instead, and said he had lost.<br><br>Then he went to run her a bath, because she had been on her feet at Zhao’s range for three days, and left his phone on the arm of the sofa beside her.<br><br>“Anything you want to know,” he said. He didn’t tell her the code. He said she already knew it.'
+  },
+  clock: { start: '22:41', date: 'Wednesday 25 September' },
+  calIcon: { wd: 'Wed', dn: '25', wdLong: 'Wednesday' },
+  lock: { code: '0817', wall: 'img/terms-wall-phone.webp', hintAfter: 2, nudge: 'His letter came at seventeen minutes past eight. So did breakfast, the morning after.' },
+  home: {
+    wall: 'img/terms-wall-phone.webp',
+    widgets: ['sugg'],
+    sugg: ['messages', 'notes', 'browser', 'reminders'],
+    apps: ['calendar', 'photos', 'clock', 'notes', 'reminders', 'settings'],
+    dock: ['phone', 'messages', 'mail', 'browser'],
+    badges: {}
+  },
+  stubText: { mail: 'Qian reads the mail.', settings: 'Location Sharing: Aurelia. Shared since 18:24.' },
+  me: { name: 'Chen Si', photo: 'img/av-chen-si.webp', initials: 'C' },
+  contacts: [
+    { name: 'Aurelia', photo: 'img/av-aurelia.webp', initials: 'A', fav: true, thread: 'au', phone: '9126 3408', notes: 'Iced oat latte. No hearts in the foam.' },
+    { name: 'Brother', photo: 'img/av-zhao.webp', initials: 'Z', fav: true, thread: 'zh', phone: '6017 2295' },
+    { name: 'Qian', photo: 'img/av-qian.webp', initials: 'Q', fav: true, thread: 'qi', phone: '6338 0172', sub: 'Chen Holdings, 31st floor' },
+    { name: 'Uncle Fan', photo: 'img/av-uncle-fan.webp', initials: 'F', thread: 'fan', phone: '2384 5501', sub: 'Behind the old furniture market. Red lantern.' },
+    { name: 'Enzo', photo: 'img/av-enzo.webp', initials: 'E', phone: '9255 7613', sub: 'Harbour Road' },
+    { name: 'Lily', photo: 'img/av-lily.webp', initials: 'L', phone: '9480 1127', sub: 'Harbour Road' },
+    { name: 'Mr. Yuen', photo: 'img/av-mr-yuen.webp', initials: 'Y', phone: '2810 4466', sub: 'Counsel' },
+    { name: 'Sun Wei', initials: 'S', thread: 'sun', phone: '6902 3381', sub: 'Furniture' },
+    { name: 'Kuang Ming', initials: 'K', phone: '6611 2049', sub: 'Furniture' },
+    { name: 'Serafina Song', photo: 'img/av-serafina.webp', initials: 'S', phone: '9372 0588' },
+    { name: 'Jade Hall', initials: 'J', phone: '2547 9900', sub: 'Temple Street, upstairs' }
+  ],
+  clockApp: { alarms: [{ time: '05:50', label: 'Alarm', days: 'Every day', on: true }, { time: '08:17', label: 'Breakfast', days: 'Sat', on: false }] },
+
+  messages: {
+    placeholder: 'Message',
+    threads: [
+      { id: 'au', name: 'Aurelia', photo: 'img/av-aurelia.webp', initials: 'A', color: 'linear-gradient(180deg,#e9c3cf,#c98aa0)', time: '18:02', order: 40,
+        draft: 'There is something I should have told you in May.',
+        items: [
+          { t: 'day', text: '<b>Thu 16 May</b> 23:58' },
+          { t: 'in', text: 'Mrs. Chen is going to sleep now. Mr. Chen may come to bed when he has finished talking to Zhao in the corridor.' },
+          { t: 'out', text: 'He’s giving me advice.' },
+          { t: 'in', text: 'Zhao doesn’t give advice.' },
+          { t: 'out', text: 'He said “Hm.” I took it as advice.' },
+          { t: 'day', text: '<b>Wed 11 Sep</b> 10:04' },
+          { t: 'out', text: 'The sign looks good.' },
+          { t: 'in', text: 'You haven’t even come in.' },
+          { t: 'out', text: 'I can see it.' },
+          { t: 'in', text: 'You are not allowed to review my architecture from a car. Come inside, husband.' },
+          { t: 'call', text: 'Incoming call · 14 min', time: '18:19' },
+          { t: 'day', text: '<b>Wed 11 Sep</b> 18:44' },
+          { t: 'in', text: 'I’m home. Your two cars followed us all the way to the door.' },
+          { t: 'out', text: 'Good.' },
+          { t: 'in', text: 'Not good. Don’t do anything until you know who he is.' },
+          { t: 'out', text: 'I’ll wait until I know.' },
+          { t: 'day', text: '<b>Sat 14 Sep</b> 23:10' },
+          { t: 'out', text: 'Are you awake?' },
+          { t: 'in', text: 'No.' },
+          { t: 'out', text: 'Two men. One close, one at a distance.' },
+          { t: 'in', text: 'Goodnight, Chen Si.' },
+          { t: 'day', text: '<b>Tue 17 Sep</b> 12:31' },
+          { t: 'in', text: 'Your proposal arrived. I’ve returned it.' },
+          { t: 'out', text: 'With comments?' },
+          { t: 'in', text: 'With one word.' },
+          { t: 'day', text: '<b>Thu 19 Sep</b> 15:02' },
+          { t: 'call', text: 'Incoming call · 1 min', time: '15:02' },
+          { t: 'in', text: 'Thank you for removing the man with the four-hour coffee.' },
+          { t: 'out', text: 'He was leaving anyway.' },
+          { t: 'in', text: 'He was not.' },
+          { t: 'day', text: '<b>Sun 22 Sep</b> 11:47' },
+          { t: 'call', text: 'Incoming call · 6 min', time: '11:40' },
+          { t: 'in', text: 'Terms attached. In writing, as promised.' },
+          { t: 'out', text: 'You’d already written them.' },
+          { t: 'in', text: 'Of course I had.' },
+          { t: 'day', text: '<b>Today</b> 18:02' },
+          { t: 'in', text: 'Zhao says I’m better. He says it as if it hurts him.' },
+          { t: 'out', text: 'From him that’s a medal.' },
+          { t: 'in', text: 'Are you home?' },
+          { t: 'out', text: 'Yes.' }
+        ] },
+      { id: 'zh', name: 'Brother', photo: 'img/av-zhao.webp', initials: 'Z', time: '17:40', order: 30, items: [
+        { t: 'day', text: '<b>Fri 13 Sep</b> 23:20' },
+        { t: 'in', text: 'Heard about the car.' },
+        { t: 'out', text: 'He knew her hours.' },
+        { t: 'in', text: 'Hm.' },
+        { t: 'day', text: '<b>Sun 22 Sep</b> 12:05' },
+        { t: 'out', text: 'She wants three days at your range.' },
+        { t: 'in', text: 'Hm.' },
+        { t: 'out', text: 'Properly. Not ten minutes and somebody telling her where to stand.' },
+        { t: 'in', text: 'I don’t teach anything improperly.' },
+        { t: 'out', text: 'Monday.' },
+        { t: 'in', text: 'Tell her flat shoes.' },
+        { t: 'day', text: '<b>Mon 23 Sep</b> 19:12' },
+        { t: 'out', text: 'Well?' },
+        { t: 'in', text: 'Impatient.' },
+        { t: 'out', text: 'I know.' },
+        { t: 'in', text: 'Like you.' },
+        { t: 'day', text: '<b>Tue 24 Sep</b> 18:50' },
+        { t: 'out', text: 'Is she eating?' },
+        { t: 'in', text: 'She ate my lunch.' },
+        { t: 'day', text: '<b>Today</b> 17:40' },
+        { t: 'in', text: 'Dropping her at six.' },
+        { t: 'in', text: 'Don’t make a mess of it, Si.' }
+      ] },
+      { id: 'qi', name: 'Qian', photo: 'img/av-qian.webp', initials: 'Q', time: '18:31', order: 20, items: [
+        { t: 'day', text: '<b>Wed 11 Sep</b> 18:26' },
+        { t: 'in', text: 'Both cars with her. The saloon has stopped on the river road.' },
+        { t: 'out', text: 'Find out who he is. Nobody touches him tonight.' },
+        { t: 'day', text: '<b>Fri 13 Sep</b> 09:15' },
+        { t: 'in', text: 'Private investigator. Hired through a go-between, paid in cash. Photographs and a log of her hours.' },
+        { t: 'out', text: 'Who paid the go-between?' },
+        { t: 'in', text: 'Not yet known, sir.' },
+        { t: 'day', text: '<b>Mon 16 Sep</b> 09:02' },
+        { t: 'out', text: 'Send the security proposal to her office.' },
+        { t: 'in', text: 'The two-man version, sir?' },
+        { t: 'out', text: 'Yes.' },
+        { t: 'day', text: '<b>Mon 16 Sep</b> 16:48' },
+        { t: 'in', text: 'It has come back.' },
+        { t: 'in', text: 'Red ink on every page, sir. The cover as well.' },
+        { t: 'day', text: '<b>Wed 18 Sep</b> 11:20' },
+        { t: 'in', text: 'I suggested a driver with advanced training as a compromise.' },
+        { t: 'in', text: 'Mrs. Chen says that if I continue to act as your representative in a marital dispute she will begin invoicing me.' },
+        { t: 'out', text: 'Then stop.' },
+        { t: 'in', text: 'Yes, sir.' },
+        { t: 'day', text: '<b>Sun 22 Sep</b> 10:58' },
+        { t: 'in', text: 'Loose stones for her private view are being held at the port. Someone altered the declaration.' },
+        { t: 'out', text: 'She doesn’t want us there.' },
+        { t: 'in', text: 'Understood. The broker will receive a corrected form from her office.' },
+        { t: 'day', text: '<b>Today</b> 18:31' },
+        { t: 'out', text: 'One man for Mrs. Chen from tomorrow. Outside. Never in the shop.' },
+        { t: 'in', text: 'Understood.' }
+      ] },
+      { id: 'fan', name: 'Uncle Fan', photo: 'img/av-uncle-fan.webp', initials: 'F', time: 'Monday', order: 12, items: [
+        { t: 'day', text: '<b>Mon 23 Sep</b> 16:30' },
+        { t: 'in', text: 'Which Chen?' },
+        { t: 'in', text: 'I joke. The grouper is good this week. Bring the little one Thursday.' },
+        { t: 'out', text: 'She’s at Zhao’s until Wednesday.' },
+        { t: 'in', text: 'Zhao’s? Then she will be hungry Thursday. I bone the fish, you say nothing.' }
+      ] },
+      { id: 'sun', name: 'Sun Wei', initials: 'S', time: '11/09', order: 8, items: [
+        { t: 'day', text: '<b>Wed 11 Sep</b> 12:20' },
+        { t: 'in', text: 'Congratulations to Mrs. Chen on the second house. A small orchid is on its way to Harbour Road, with an old man’s respects.' },
+        { t: 'out', text: 'Thank you, Sun Wei.' },
+        { t: 'in', text: 'Sunday, as always? My wife is making the duck.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    widget: 'prop',
+    items: [
+      { id: 'prop', group: 'Previous 7 Days', when: '22/09/2019', stamp: '22 September 2019 at 11:52', title: 'Proposal',
+        body: [
+          '~~1. Two men, at all times. One close, one at a distance.~~',
+          '~~2. One man. Close.~~',
+          '~~3. Half of one.~~',
+          '~~4. Two men, but neither in the shop.~~',
+          '~~5. One man in the shop, one outside, only on private-view days.~~',
+          '~~6. A driver with advanced training. (Qian’s.)~~',
+          '~~7. Her driver, and a second car behind at a distance she can’t see.~~',
+          '~~8. Two men until the grey car is explained. Then one.~~',
+          '~~9. One man, and I ring every three hours.~~',
+          '~~10. One man, and she rings every three hours.~~',
+          '~~11. Two men. Reasonable. Temporary.~~',
+          '',
+          'Her terms. By phone, 11:40, Sunday.',
+          'One man. Outside. Never in the shop. Never in a private appointment unless she asks.',
+          'Until we know who paid for the grey car.',
+          'Her driver stays. Qian has her route when she’s off her usual hours.',
+          'Three days at Zhao’s range. Properly.',
+          '',
+          '“And you stop tracking my phone.”',
+          '',
+          'She already knew about the tracking. Didn’t say since when.'
+        ] },
+      { id: 'kiss', group: 'Previous 30 Days', when: '13/09/2019', stamp: '13 September 2019 at 23:51', title: 'Sunday',
+        body: ['She cooked. Pink apron, KISS THE COOK on the front.', '', 'So I did.', '', 'The rice burned while we were busy. She blamed the cooker.'] },
+      { id: 'letter', group: '2018', when: '14/10/2018', stamp: '14 October 2018 at 07:58', title: 'Miss Song',
+        body: [
+          'Miss Song,',
+          '',
+          'Your accounts, your suppliers and the freehold of your building have been on my desk since midnight.',
+          '',
+          '~~I would like to see you again.~~',
+          '~~You were right not to cry.~~',
+          '',
+          'Perhaps we can agree on a price.',
+          '',
+          'The other question remains open.',
+          '',
+          '(Send after 8. She’ll have had her coffee by then.)'
+        ] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Saturday 14 September', time: '02:16', q: 'how to keep someone safe who does not want to be kept safe', results: [
+      { site: 'The Considerate Partner', path: 'advice', title: 'Protecting someone who hasn’t asked you to', snip: 'Start by asking what safe means to them. It may not be what it means to you.' }] },
+    { day: 'Saturday 21 September', time: '01:40', q: 'is it legal to share someone’s location without telling them', results: [
+      { site: 'Everyday Law Guide', path: 'privacy', title: 'Tracking a partner’s phone: what the law says', snip: 'In many places it’s illegal. Even where it isn’t, finding out usually ends the trust.' },
+      { site: 'Ask the Counsellor', path: 'q-and-a', title: '“I only did it because I was afraid”', snip: 'Being scared explains it. It doesn’t excuse it. Tell them before they find out.' }] },
+    { day: 'Monday 23 September', time: '02:09', q: 'how to tell your wife you have been tracking her phone', results: [
+      { site: 'The Marriage Column', path: 'advice', title: 'Confess first, explain second', snip: 'Turn it off before you say anything. Don’t ask to be forgiven in the same breath as the confession.' }] },
+    { day: 'Tuesday 24 September', time: '23:52', q: 'how to lose an argument', results: [
+      { site: 'Everyday Psychology', path: 'relationships', title: 'Conceding gracefully', snip: 'Say “I was wrong” and don’t put a “but” after it.' },
+      { site: 'The Considerate Partner', path: 'advice', title: 'Why the person who loses an argument often wins the marriage', snip: 'Losing well is a skill. Most people never practise it.' }] }
+  ] },
+
+  photos: { items: [
+    { src: 'img/terms-wall-phone.webp', date: '14 December 2018', time: '22:40', fav: true },
+    { src: 'img/terms-a-milan.webp', date: '16 May 2019', time: '16:31', fav: true },
+    { src: 'img/terms-a-shop.webp', date: '3 July 2019', time: '11:20' },
+    { src: 'img/terms-stones.webp', date: '16 August 2019', time: '23:17' },
+    { src: 'img/terms-a-mahjong.webp', date: '18 August 2019', time: '21:40' },
+    { src: 'img/terms-a-apron.webp', date: '12 September 2019', time: '20:15', fav: true }
+  ] },
+
+  phone: {
+    recents: [
+      { name: 'Aurelia', photo: 'img/av-aurelia.webp', when: 'Sunday', kind: 'mobile', dayLabel: 'Sunday 22 September', log: [{ time: '11:40', what: 'Incoming Call · 6 min' }] },
+      { name: 'Aurelia', photo: 'img/av-aurelia.webp', when: '19/09/2019', kind: 'mobile', dayLabel: 'Thursday 19 September', log: [{ time: '15:02', what: 'Incoming Call · 1 min' }] },
+      { name: 'Brother', photo: 'img/av-zhao.webp', when: '13/09/2019', kind: 'mobile', dayLabel: 'Friday 13 September', log: [{ time: '22:58', what: 'Outgoing Call · 4 min' }] },
+      { name: 'Aurelia', photo: 'img/av-aurelia.webp', when: '11/09/2019', kind: 'mobile', dayLabel: 'Wednesday 11 September', log: [{ time: '18:19', what: 'Incoming Call · 14 min' }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Uncle Fan, Thursday. She’ll be hungry.', due: 'Thursday 26 September' },
+    { text: 'One man. Outside. Brief him myself.', due: 'Tomorrow, 08:00' },
+    { text: 'Don’t get her chain mended (she wants it left)', done: true }
+  ] },
+  calendar: { today: [{ title: 'Range (Brother)', time: 'Mon–Wed' }], later: [{ title: 'Uncle Fan', time: 'Thu 26 September, 20:00' }, { title: 'Jade Hall', time: 'Thu 26 September, 22:30' }] },
+
+  beats: [
+    { id: 'rem', onLock: true, target: 'reminders', banner: { app: 'reminders', title: 'Reminders', body: 'Tell her.', when: 'Sunday 19 May', open: 'reminders' }, reminderItem: { text: 'Tell her.', due: 'Sunday 19 May', past: true } },
+    { id: 'au', target: 'thread:au', sugg: 'messages', delay: 1800 },
+    { id: 'prop', target: 'note:prop', sugg: 'notes', delay: 1800 },
+    { id: 'qi', target: 'thread:qi', at: '22:47', unread: 'qi', time: '22:47', push: [{ t: 'day', text: '<b>Today</b> 22:47' }, { t: 'in', text: 'Sir, the household account shows Mrs. Chen’s location as no longer shared.' }, { t: 'in', text: 'And yours now shared with her. Shall I correct it?' }], banner: { app: 'messages', title: 'Qian', body: 'Sir, the household account shows Mrs. Chen’s location as no longer shared.', open: 'thread:qi' }, delay: 3000 },
+    { id: 'web', target: 'browser', sugg: 'browser', at: '22:49', delay: 1800 },
+    { id: 'zh', target: 'reply:zh', at: '22:52', unread: 'zh', time: '22:52', push: [{ t: 'day', text: '<b>Today</b> 22:52' }, { t: 'in', text: 'Well?' }],
+      reply: { options: ['He lost.', 'I won.'], after: { '*': [{ t: 'in', text: 'Hm.', wait: 1800 }, { t: 'in', text: 'Good. Goodnight, Mrs. Chen.', wait: 1400 }] } },
+      banner: { app: 'messages', title: 'Brother', body: 'Well?', open: 'thread:zh' }, delay: 3000 }
+  ],
+  end: {
+    delay: 3600, at: '22:56', capDelay: 2000,
+    caption: 'From the bathroom, over the sound of the taps: “It’s ready.”<br><br>She put the phone down on the arm of the sofa, face up this time, with his brother’s goodnight still on the screen.<br><br>On Thursday Uncle Fan boned her fish without being asked, and Chen Si said nothing at all. Thursday dinner had been clause seven once, before she crossed it out.'
+  }
+});
+
+</script>
+</body>
+</html>

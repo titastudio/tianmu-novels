@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>Blueprint · Four Visits · Interactive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%0A  %3Crect x="2" y="2" width="60" height="60" rx="14" fill="%23e8745a" stroke="%231a1a10" stroke-width="4"/%3E%0A  %3Cpath d="M32 22 C26 17 17 16 10 18 L10 47 C17 45 26 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 C38 17 47 16 54 18 L54 47 C47 45 38 46 32 51 Z" fill="%23f5f0e0" stroke="%231a1a10" stroke-width="3" stroke-linejoin="round"/%3E%0A  %3Cpath d="M32 22 L32 51" stroke="%231a1a10" stroke-width="3"/%3E%0A  %3Cpath d="M15 27 C19 26 23 26.5 27 28 M15 33 C19 32 23 32.5 27 34 M15 39 C19 38 23 38.5 27 40" stroke="%235a6e2c" stroke-width="2" stroke-linecap="round" fill="none"/%3E%0A  %3Cpath d="M43 36.5 C38.5 33 37 30.5 37 28.5 C37 26.3 38.8 25 40.4 25 C41.6 25 42.5 25.7 43 26.6 C43.5 25.7 44.4 25 45.6 25 C47.2 25 49 26.3 49 28.5 C49 30.5 47.5 33 43 36.5 Z" fill="%23e8745a" stroke="%231a1a10" stroke-width="2" stroke-linejoin="round"/%3E%0A  %3Cpath d="M46 8 L47.6 12.4 L52 14 L47.6 15.6 L46 20 L44.4 15.6 L40 14 L44.4 12.4 Z" fill="%23e8d060" stroke="%231a1a10" stroke-width="1.6" stroke-linejoin="round"/%3E%0A%3C/svg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="engine.css?v=57">
+</head>
+<body>
+<script src="engine.js?v=57"></script>
+<script>
+/* Blueprint · phone · "Four Visits"
+   Jinx holds Raiden's phone, early Sunday 25 June 2023, on the dust sheet on the shop floor at Tai Hing.
+   Canon: Ch14 (the Peak drawings found on the last Saturday in June, a six-person steel room under the stair, C.S.;
+   Qian at the practice at the beginning of June, "I said no", Chen Si in the room under Elowen's shop the night it
+   was finished; four visits, Chen Si there once, last Tuesday, about the door; "Nobody looks at me." "I looked.";
+   the registry consent letter came Thursday; Monday the safe), Ch12 (cats at two in the morning), canon: his phone
+   calls her Tyres; 15.5.21 the shipyard road; the napkins. */
+StoryEngine.start({
+  kind: 'phone',
+  id: 'blueprint',
+  title: 'Blueprint · Four Visits',
+  bookUrl: '../../?novel=blueprint',
+  battery: 9,
+  h12: true,
+  caption: {
+    open: 'Sunday, the twenty-fifth of June. Twenty past six in the morning. The floor of her shop, on the old canvas dust sheet, because neither of them could face the stairs.<br><br>Upstairs on the kitchen table there is still a roll of drawings for a house on the Peak road, and a steel room under its stair, and two initials in the corner.<br><br>He’s asleep with his arm under his head and her teeth marks on his shoulder. She is still angry. She told him so.<br><br>His phone rang yesterday beside the peaches. It’s on the bench now, nearly flat.'
+  },
+  clock: { start: '06:21', date: 'Sunday 25 June' },
+  calIcon: { wd: 'Sun', dn: '25', wdLong: 'Sunday' },
+  lock: { code: '1505', wall: 'img/blueprint-wall-phone.webp', hintAfter: 2, nudge: 'The shipyard road. The night she threw a spanner at his head.' },
+  home: {
+    wall: 'img/blueprint-wall-phone.webp',
+    widgets: ['sugg', 'photo:s', 'cal:s'],
+    sugg: ['messages', 'notes', 'calendar', 'browser'],
+    apps: ['photos', 'camera', 'clock', 'weather', 'notes', 'reminders', 'calendar', 'settings'],
+    dock: ['phone', 'browser', 'messages', 'mail'],
+    badges: { phone: 1 }
+  },
+  stubText: { mail: '41st floor, Meridian. 312 unread.' },
+  me: { name: 'Raiden Lin', photo: 'img/av-raiden.webp', initials: 'R' },
+  contacts: [
+    { name: 'Tyres', photo: 'img/av-jinx.webp', initials: 'J', fav: true, thread: 'ty', phone: '6390 2211', notes: 'Coffee: all three ways. Her favourite spanner is the 13 mm. Don’t touch her tools without asking.' },
+    { name: 'Mrs. Tong', photo: 'img/av-mrs-tong.webp', initials: 'T', fav: true, thread: 'tong', phone: '2541 0067', sub: 'Two doors down. Brisket.' },
+    { name: 'Qian', photo: 'img/av-qian.webp', initials: 'Q', thread: 'qi', phone: '6338 0172', sub: 'Chen Holdings' },
+    { name: 'Ms. Bok', initials: 'B', thread: 'bok', phone: '6277 3150', sub: 'Structural engineer' },
+    { name: 'Elowen', photo: 'img/av-elowen.webp', initials: 'E', phone: '9031 5521' },
+    { name: 'Evangeline', photo: 'img/av-evangeline.webp', initials: 'E', phone: '6403 0409', sub: 'Twin. Paper one.' },
+    { name: 'Eliana', photo: 'img/av-eliana.webp', initials: 'E', phone: '6115 2003' },
+    { name: 'Elara', photo: 'img/av-elara.webp', initials: 'E', phone: '6228 1199' },
+    { name: 'Ah Sim', photo: 'img/av-ah-sim.webp', initials: 'A', phone: '2618 0003' },
+    { name: 'Baba', photo: 'img/av-lin-jian.webp', initials: 'B', phone: '2618 0001' },
+    { name: 'Xiao Pan', photo: 'img/av-xiao-pan.webp', initials: 'X', phone: '6720 0501', sub: 'Waiting list' },
+    { name: 'The practice', initials: 'P', phone: '2101 4141', sub: '41st floor, Meridian' }
+  ],
+  clockApp: { alarms: [{ time: '7:10', label: 'Alarm', days: 'Weekdays', on: true }, { time: '2:00', label: 'Cat', days: 'Never', on: false }] },
+
+  messages: {
+    placeholder: 'iMessage',
+    threads: [
+      { id: 'ty', name: 'Tyres', photo: 'img/av-jinx.webp', initials: 'J', color: 'linear-gradient(180deg,#3a3a3c,#111)', time: 'Fri', order: 40,
+        draft: 'Jia, there’s something I said yes to',
+        items: [
+          { t: 'day', text: '<b>Sat 15 May 2021</b> 11:58 PM' },
+          { t: 'in', text: 'You’re the one who knelt in the middle of the shipyard road.' },
+          { t: 'out', text: 'I was looking at your intake manifold.' },
+          { t: 'in', text: 'Don’t.' },
+          { t: 'day', text: '<b>Tue 13 Jun</b> 2:07 AM' },
+          { t: 'out', img: 'img/blueprint-cat.webp' },
+          { t: 'out', text: 'This is you when the dyno says 2.10.' },
+          { t: 'in', text: 'It’s 2 in the morning.' },
+          { t: 'in', text: 'It’s 2.11. Fix your cat.' },
+          { t: 'day', text: '<b>Fri 16 Jun</b> 7:41 PM' },
+          { t: 'in', text: 'Where are you' },
+          { t: 'out', text: 'Site visit. Late. Sorry.' },
+          { t: 'in', text: 'Which site' },
+          { t: 'out', text: 'A house. Back by nine.' },
+          { t: 'in', text: 'Eat something' },
+          { t: 'day', text: '<b>Tue 20 Jun</b> 11:02 PM' },
+          { t: 'in', text: 'You’re quiet' },
+          { t: 'out', text: 'Tired. Long meeting.' },
+          { t: 'in', text: 'You’re never tired. You’re just quiet' },
+          { t: 'day', text: '<b>Fri 23 Jun</b> 10:15 PM' },
+          { t: 'in', text: 'There’s a tin of peaches on the table. Don’t eat it. It’s for downstairs' },
+          { t: 'out', text: 'Understood.' }
+        ] },
+      { id: 'qi', name: 'Qian', photo: 'img/av-qian.webp', initials: 'Q', time: 'Yesterday', order: 30, items: [
+        { t: 'day', text: '<b>Thu 1 Jun</b> 10:20 AM' },
+        { t: 'in', text: 'Mr. Lin. Thank you for seeing me this morning. Mr. Chen understands your answer.' },
+        { t: 'in', text: 'He asks whether you would hear the request from him directly before it is final.' },
+        { t: 'out', text: 'I don’t take private commissions.' },
+        { t: 'in', text: 'He was in the room under your sister’s shop the night it was finished. He says it is the only room in the city he would trust with his wife.' },
+        { t: 'day', text: '<b>Mon 5 Jun</b> 6:02 PM' },
+        { t: 'out', text: 'The room only. Not the house. Not his security. His engineer, his builder, his manager.' },
+        { t: 'in', text: 'Agreed on every point. Friday, 4 p.m., the Peak road. A car will collect you.' },
+        { t: 'out', text: 'I’ll take a taxi.' },
+        { t: 'day', text: '<b>Wed 14 Jun</b> 3:30 PM' },
+        { t: 'in', text: 'Second visit confirmed. The builder will meet you at the service entrance.' },
+        { t: 'day', text: '<b>Tue 20 Jun</b> 9:12 AM' },
+        { t: 'in', text: 'Mr. Chen will attend this afternoon. He would like to discuss the door.' },
+        { t: 'day', text: '<b>Fri 23 Jun</b> 5:48 PM' },
+        { t: 'in', text: 'Thank you for today. Nobody else will see the drawings.' },
+        { t: 'day', text: '<b>Yesterday</b> 4:06 PM' },
+        { t: 'in', text: 'Mr. Lin, I rang a moment ago. Mr. Chen asks whether the door detail has been revised since Tuesday.' }
+      ] },
+      { id: 'bok', name: 'Ms. Bok', initials: 'B', time: 'Thu', order: 20, items: [
+        { t: 'day', text: '<b>Thu 22 Jun</b> 8:15 PM' },
+        { t: 'in', text: 'Stair sections checked. Slab thickening acceptable. Two columns stiffened, as drawn.' },
+        { t: 'in', text: 'Acceptable.' },
+        { t: 'out', text: 'From you that’s a parade.' },
+        { t: 'in', text: 'Have you told your wife yet. You said you would before the third visit.' },
+        { t: 'out', text: 'Before the fourth.' },
+        { t: 'in', text: 'That is tomorrow, Lin.' }
+      ] },
+      { id: 'tong', name: 'Mrs. Tong', photo: 'img/av-mrs-tong.webp', initials: 'T', time: 'Wed', order: 10, items: [
+        { t: 'day', text: '<b>Wed 21 Jun</b> 1:10 PM' },
+        { t: 'in', text: 'Your wife ate standing up again. At the counter. Like a horse.' },
+        { t: 'out', text: 'Did she eat all of it?' },
+        { t: 'in', text: 'Two bowls. Then she asked if you were sick. I said how would I know, he’s your husband.' },
+        { t: 'in', text: 'Are you sick?' },
+        { t: 'out', text: 'No. Busy.' },
+        { t: 'in', text: 'Busy is what men say when they are hiding a thing. My husband was busy for eleven years.' }
+      ] }
+    ]
+  },
+
+  notes: {
+    items: [
+      { id: 'tell', group: 'Previous 30 Days', when: '23/06/2023', stamp: '23 June 2023 at 11:48 PM', title: 'Tell her',
+        body: [
+          'Thu 1 Jun. Chen Si’s man came to the practice. I said no. Tell her tonight. (It’s a no. It’s easy.)',
+          '',
+          'Mon 5 Jun. ~~Jia, I’ve said yes to something.~~',
+          '~~It’s only one room. Not the house.~~',
+          '~~It’s for Aurelia. Nobody’s meant to know they have it.~~',
+          'Tell her before the first visit.',
+          '',
+          'Fri 9 Jun. First visit. Five ways out of that house. I counted them in the drive.',
+          'Tell her before the second.',
+          '',
+          'Wed 14 Jun. Second visit.',
+          '~~I didn’t think it would affect you.~~ No. Never say that.',
+          '',
+          'Tue 20 Jun. He came himself. Wanted to talk about the door. Stood in the hall for ages without saying anything. I know that look. I had it after the freezer.',
+          'She said I was quiet. I said tired. I’m never tired.',
+          '',
+          'Fri 23 Jun. Fourth visit. Brought the roll home to finish the stair section.',
+          'Tell her tomorrow. In the morning. With coffee, all three ways.',
+          '',
+          'Put the drawings away first.'
+        ] },
+      { id: 'nap', group: 'Earlier', when: '02/04/2022', stamp: '2 April 2022 at 1:15 AM', title: 'Napkins',
+        body: [
+          '10 Sep 2021. 1:50, Mrs. Tong’s. Five conditions. Chilli oil. Witnessed.',
+          '1 Jan 2022. A ship.',
+          'Feb. A treehouse.',
+          'Mar. A crane.',
+          '2 Apr. The revised plan. CAO JIA’S HOME.',
+          '',
+          'She keeps them in the toolbox lid. She says she doesn’t.'
+        ] },
+      { id: 'ex', group: 'Previous 30 Days', when: '09/06/2023', stamp: '9 June 2023 at 6:40 PM', title: 'Exits',
+        body: [
+          'Meridian 41: four. Mrs. Tong’s: two and the kitchen window. Tai Hing: the front, the shutter, the stair, the hatch to the roof and across.',
+          '',
+          'The house on the Peak road: five.',
+          '',
+          'Ours: the room downstairs I built for us. Lamp always on.',
+          'Drawing his keeps making me think about ours.'
+        ] }
+    ]
+  },
+
+  browser: { items: [
+    { day: 'Monday 5 June', time: '1:12 AM', q: 'how to tell your wife about a job she will hate', results: [
+      { site: 'The Considerate Partner', path: 'advice', title: 'Before you say yes, not after', snip: 'If you already know how they’ll feel, that’s the conversation. Have it before the contract, not once you’re halfway through.' }] },
+    { day: 'Tuesday 20 June', time: '11:40 PM', q: 'late birth registration statutory declarations how long', results: [
+      { site: 'Births and Deaths Registry', path: 'late registration', title: 'Registering a birth many years late', snip: 'The Registrar will consider sworn declarations and documents from the time. It can take many months.' }] },
+    { day: 'Friday 23 June', time: '11:52 PM', q: 'is keeping something from your wife to protect her lying', results: [
+      { site: 'Ask the Counsellor', path: 'q-and-a', title: '“I didn’t tell her because I didn’t want her to worry”', snip: 'You decided what she was allowed to worry about. Ask yourself whether she’d have agreed to that.' }] },
+    { day: 'Tuesday 13 June', time: '2:05 AM', q: 'cat that looks annoyed', results: [
+      { site: 'Pet Pictures', path: 'funny', title: '50 cats who are deeply disappointed in you', snip: 'Number 14 has seen your browser history.' }] }
+  ] },
+
+  photos: { widget: 0, widgetLabel: 'Featured', items: [
+    { src: 'img/blueprint-peaches.webp', date: '23 June 2023', time: '10:20 PM' },
+    { src: 'img/blueprint-cat.webp', date: '13 June 2023', time: '2:06 AM', fav: true },
+    { src: 'img/blueprint-g-jinx-bench.webp', date: '14 May 2023', time: '6:40 PM' },
+    { src: 'img/blueprint-g-jinx-pillion.webp', date: '1 October 2022', time: '11:15 PM' },
+    { src: 'img/blueprint-g-jinx-sidecar.webp', date: '10 September 2022', time: '10:40 PM', fav: true },
+    { src: 'img/blueprint-wall-phone.webp', date: '21 May 2021', time: '6:02 PM', fav: true }
+  ] },
+
+  phone: {
+    recents: [
+      { name: 'Qian', photo: 'img/av-qian.webp', miss: true, when: 'Yesterday', kind: 'mobile', dayLabel: 'Saturday 24 June', log: [{ time: '4:05 PM', what: 'Missed Call', miss: true }] },
+      { name: 'Qian', photo: 'img/av-qian.webp', when: '20/06/2023', kind: 'mobile', dayLabel: 'Tuesday 20 June', log: [{ time: '9:10 AM', what: 'Incoming Call · 3 min' }] },
+      { name: 'Tyres', photo: 'img/av-jinx.webp', when: '16/06/2023', kind: 'mobile', dayLabel: 'Friday 16 June', log: [{ time: '7:44 PM', what: 'Incoming Call · 1 min' }] },
+      { name: 'Ms. Bok', when: '22/06/2023', kind: 'work', dayLabel: 'Thursday 22 June', log: [{ time: '8:20 PM', what: 'Outgoing Call · 12 min' }] }
+    ]
+  },
+  reminders: { list: 'Reminders', items: [
+    { text: 'Peaches. Not for eating.', done: true },
+    { text: 'Stair section, rev C', due: 'Monday' },
+    { text: 'Ask her about the post. She’s been watching the post.', due: 'Today' }
+  ] },
+  calendar: { today: [{ title: 'Mrs. Tong’s, brisket', time: '12:00 PM' }], later: [{ title: 'Peak road (site)', time: 'Fri 30 June' }] },
+
+  beats: [
+    { id: 'qi', onLock: true, target: 'thread:qi', banner: { app: 'messages', title: 'Qian', body: 'Mr. Lin, I rang a moment ago. Mr. Chen asks whether the door detail has been revised since Tuesday.', when: 'Yesterday', open: 'thread:qi' } },
+    { id: 'ty', target: 'thread:ty', sugg: 'messages', delay: 1800 },
+    { id: 'tell', target: 'note:tell', sugg: 'notes', delay: 1800 },
+    { id: 'bok', target: 'thread:bok', at: '6:31', unread: 'bok', time: '6:31 AM', push: [{ t: 'day', text: '<b>Today</b> 6:31 AM' }, { t: 'in', text: 'Lin. Revised door detail by Monday, please. And I am asking once more, as an engineer and not a friend. Tell her.' }], banner: { app: 'messages', title: 'Ms. Bok', body: 'Tell her.', open: 'thread:bok' }, delay: 3000 },
+    { id: 'web', target: 'browser', sugg: 'browser', at: '06:33', delay: 1800 },
+    { id: 'cal', target: 'calendar', sugg: 'calendar', at: '06:35', delay: 1800 }
+  ],
+  end: {
+    delay: 3400, at: '06:37', capDelay: 1800, banner: { app: 'settings', title: 'Low Battery', body: '1% battery remaining' },
+    caption: 'The screen went black in her hand. One per cent, and then nothing.<br><br>Behind her, on the dust sheet: “Your back?”<br><br>“Fine.”<br><br>On Monday morning he bolted a small, very heavy safe to the concrete behind the parts cabinet and asked if she wanted the combination. She put the numbers in herself. Then she went upstairs and came back with an envelope from the Births and Deaths Registry and put it in on top of his folders.<br><br>“Mine,” she said. “Read it.”'
+  }
+});
+
+</script>
+</body>
+</html>
