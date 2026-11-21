@@ -1,0 +1,94 @@
+{
+ "id": "equal-footing",
+ "badge": "IDEA",
+ "color": "#5f7f63",
+ "coverAccent": "#b5c99a",
+ "descs": {
+  "en": "The loud girl who followed him into the library in high school is now the quiet account manager on his company’s account. He asked for her by name."
+ },
+ "genre": "Office Romance",
+ "status": "idea",
+ "titles": {
+  "en": "Equal Footing"
+ },
+ "ideaNote": "Planned: 50 chapters. The Library · The Merger · Equal Footing · The Clouds · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>In high school, Tang Xi was the girl everyone knew, and Wang An Yu was the boy who only talked about exams. She followed him into the library anyway.</p>\n\n<p>Years later he chairs An-Tech Holdings, and she’s the account manager from the outside agency that runs his marketing, so quiet now that she won’t meet his eyes. He asked for her by name. She doesn’t work for him, and that matters.</p>\n\n<p>Then he says her old nickname across a conference table, and they both remember exactly who they used to be.</p>\n\n<p><em>Second chance · A high-school crush, grown up · Office romance without a boss · Coming soon</em></p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>I didn’t want a boss chasing his employee. So she works for the agency, not for him, and the turning point is her taking herself off his account so they can meet as equals.</p>\n\n<p>It’s charged and held back: years of looks finally spent, an office after hours, a tie loosened, glasses off. He’s in control until she uses the nickname. Then he isn’t.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Wang An Yu",
+     "nameChinese": "",
+     "role": "Male Lead · founder and chairman of An-Tech Holdings",
+     "age": "27",
+     "birthday": "",
+     "mbti": "INTJ",
+     "loveLanguage": "Acts of service and proximity",
+     "appearance": "Tall, cold, sandalwood and Pu’er tea; a minimalist office with nothing in it.",
+     "personality": "A strategic kind of quiet\nMade his first fortune trading at twelve\nRemembers every word she said to him in high school, and pretends not to",
+     "strengths": "Three moves ahead in every room\nShields the people he loves without telling them",
+     "weaknesses": "Mistakes control for care\nSilence as a weapon",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Scheduling the last meeting of the day so it’s always her"
+    },
+    {
+     "name": "Tang Xi",
+     "nameChinese": "",
+     "role": "Female Lead · account manager at Northlight Agency",
+     "age": "27",
+     "birthday": "",
+     "mbti": "ENFP (in shadow mode)",
+     "loveLanguage": "",
+     "appearance": "Neutral suits now; a tiny scar on her knee from a running track in high school.",
+     "personality": "Once the loudest girl in school\nReads people better than data\nLeaves tea on his desk and disappears before he can thank her",
+     "strengths": "High emotional intelligence\nBrings out the best in a team",
+     "weaknesses": "Made herself small to survive her career\nAvoids his eyes",
+     "nickname": "Xi-er (only him) · Manager Tang",
+     "favDrink": "",
+     "favHabit": "Replacing his cold coffee without a word"
+    },
+    {
+     "name": "Wang Xing Yue",
+     "nameChinese": "",
+     "role": "An Yu’s elder brother · surgeon",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "The only person An Yu considers an equal",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Wang An Yu\nRole: Male Lead · founder and chairman of An-Tech Holdings\nAge: 27\nMBTI: INTJ\nLove Language: Acts of service and proximity\nAppearance: Tall, cold, sandalwood and Pu’er tea; a minimalist office with nothing in it.\nPersonality:\nA strategic kind of quiet\nMade his first fortune trading at twelve\nRemembers every word she said to him in high school, and pretends not to\nStrengths:\nThree moves ahead in every room\nShields the people he loves without telling them\nWeaknesses:\nMistakes control for care\nSilence as a weapon\nFavorite Habit: Scheduling the last meeting of the day so it’s always her\n\n✦ Tang Xi\nRole: Female Lead · account manager at Northlight Agency\nAge: 27\nMBTI: ENFP (in shadow mode)\nAppearance: Neutral suits now; a tiny scar on her knee from a running track in high school.\nPersonality:\nOnce the loudest girl in school\nReads people better than data\nLeaves tea on his desk and disappears before he can thank her\nStrengths:\nHigh emotional intelligence\nBrings out the best in a team\nWeaknesses:\nMade herself small to survive her career\nAvoids his eyes\nNickname: Xi-er (only him) · Manager Tang\nFavorite Habit: Replacing his cold coffee without a word\n\n✦ Wang Xing Yue\nRole: An Yu’s elder brother · surgeon\nPersonality:\nThe only person An Yu considers an equal"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>A gentle book. Planned content includes:</p>\n\n<p>• Workplace pressure and a hostile merger</p>\n\n<p>• An old injury, and an older wound of a different kind</p>\n\n<p>• A power imbalance between a chairman and a contractor, faced head-on</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}
