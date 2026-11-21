@@ -6,6 +6,26 @@
   const $ = (s, r) => (r || D).querySelector(s);
   const $$ = (s, r) => Array.from((r || D).querySelectorAll(s));
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // tab bar icons: drawn, so they show on every device (iOS fonts lack some symbols)
+  const TBI = (() => {
+    const S = (b, fill) => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="${fill ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${b}</svg>`;
+    const H = 'style="fill:var(--tbbg);stroke:none"';
+    return {
+      lib: S('<rect x="3" y="3" width="8" height="8" rx="1.6" stroke="none"/><rect x="13" y="3" width="8" height="8" rx="1.6" stroke="none"/><rect x="3" y="13" width="8" height="8" rx="1.6" stroke="none"/><rect x="13" y="13" width="8" height="8" rx="1.6" stroke="none"/>', 1),
+      alb: S('<rect x="3" y="8" width="18" height="13" rx="2.4" fill="currentColor" stroke="none"/><path d="M5.5 5h13"/>'),
+      srch: S('<circle cx="10.5" cy="10.5" r="6.3"/><path d="M15.3 15.3 20.5 20.5" stroke-width="2.4"/>'),
+      fav: S('<path d="M12 2.9l2.8 5.7 6.3.9-4.6 4.5 1.1 6.3L12 17.3l-5.6 3 1.1-6.3-4.6-4.5 6.3-.9z" stroke="none"/>', 1),
+      rec: S('<circle cx="12" cy="12" r="9.6" fill="currentColor" stroke="none"/><path d="M12 6.6V12l3.6 2.3" style="stroke:var(--tbbg)" stroke-width="2"/>'),
+      con: S('<circle cx="12" cy="12" r="10" stroke="none"/><circle cx="12" cy="9.4" r="3.5" ' + H + '/><path d="M5.7 18.4c1.5-2.4 3.7-3.6 6.3-3.6s4.8 1.2 6.3 3.6a8.6 8.6 0 0 1-12.6 0z" ' + H + '/>', 1),
+      key: S([6, 12, 18].map(x => [4, 9.5, 15].map(y => `<circle cx="${x}" cy="${y}" r="2.1"/>`).join('')).join('') + '<circle cx="12" cy="20.5" r="2.1"/>', 1).replace('stroke="currentColor"', 'stroke="none"'),
+      vm: S('<circle cx="6.5" cy="12" r="3.8"/><circle cx="17.5" cy="12" r="3.8"/><path d="M6.5 15.8h11"/>'),
+      wc: S('<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="3.8" ry="9"/><path d="M3.3 9h17.4M3.3 15h17.4"/>'),
+      alm: S('<circle cx="12" cy="13" r="7.3"/><path d="M12 9v4l2.6 1.6M4 5.5 6.8 3M20 5.5 17.2 3"/>'),
+      sw: S('<circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M10 2.8h4M12 2.8V6M18.3 6.8l1.2-1.2"/>'),
+      tm: S('<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9h-9z" fill="currentColor" stroke="none"/>')
+    };
+  })();
+
   function el(tag, cls, html) { const e = D.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const store = {
@@ -16,7 +36,6 @@
   let H12 = false;
   const fromMin = m => { m = ((m % 1440) + 1440) % 1440; let h = Math.floor(m / 60); if (H12) { h = h % 12 || 12; } else h = String(h).padStart(2, '0'); return h + ':' + String(m % 60).padStart(2, '0'); };
   const fmtT = t => { if (!H12 || !/^\d{1,2}:\d{2}$/.test(String(t || ''))) return t || ''; const m = toMin(t); return fromMin(m) + (m >= 720 ? ' PM' : ' AM'); };
-  const pad2 = t => { const [a, b] = t.split(':'); return a.padStart(2, '0') + ':' + b; };
 
   /* ---------- icons (drawn here, no brand artwork) ---------- */
   const G = (a, b) => `<defs><linearGradient id="g${a.slice(1)}${b.slice(1)}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="60" height="60" fill="url(#g${a.slice(1)}${b.slice(1)})"/>`;
@@ -587,7 +606,7 @@
       const b = el('div', 'body'); v.appendChild(b);
       const tabs = el('div', 'tabbar'); v.appendChild(tabs);
       const show = t => {
-        tabs.innerHTML = [['lib', 'Library', '▦'], ['alb', 'Albums', '▤'], ['srch', 'Search', '⌕']].map(([k, l, g]) => `<button data-k="${k}" class="${k === t ? 'on' : ''}"><i>${g}</i><span>${l}</span></button>`).join('');
+        tabs.innerHTML = [['lib', 'Library'], ['alb', 'Albums'], ['srch', 'Search']].map(([k, l]) => `<button data-k="${k}" class="${k === t ? 'on' : ''}"><i>${TBI[k]}</i><span>${l}</span></button>`).join('');
         $$('button', tabs).forEach(x => x.onclick = () => show(x.dataset.k === 'srch' ? 'alb' : x.dataset.k));
         nav.innerHTML = '';
         if (t === 'lib') { nav.appendChild(navBar({ title: 'Library', big: true, act: 'Select' })); libGrid(b, S.photos.items); }
@@ -630,14 +649,6 @@
       $$('.key', m).forEach(k => k.onclick = () => { e += k.dataset.k; $$('i', dots).forEach((d, i) => d.classList.toggle('f', i < e.length)); if (e.length === code.length) setTimeout(() => { if (e === code) { m.remove(); ok(); } else { dots.classList.add('shake'); setTimeout(() => { dots.classList.remove('shake'); e = ''; $$('i', dots).forEach(d => d.classList.remove('f')); }, 450); } }, 150); });
       $('.cx', m).onclick = () => m.remove();
     }
-    function _oldPhotos() {
-      const v = view(); const b = el('div', 'body');
-      const P = S.photos.items;
-      b.innerHTML = `<div class="pgrid">${P.map((p, i) => `<button data-i="${i}"><img src="${esc(p.src)}" loading="lazy" alt="">${p.video ? `<span class="vid">${esc(p.video)}</span>` : ''}</button>`).join('')}</div><div class="pcount">${P.length} Photos${S.photos.sub ? `<span>${esc(S.photos.sub)}</span>` : ''}</div><div style="height:100px"></div>`;
-      $$('.pgrid button', b).forEach(x => x.onclick = () => photoView(+x.dataset.i));
-      requestAnimationFrame(() => { b.scrollTop = b.scrollHeight; });
-      return v;
-    }
     function photoView(i, list) {
       const P = list || S.photos.items; const p = P[i];
       const pv = el('div', 'pview');
@@ -663,10 +674,10 @@
       const v = view('phapp');
       const b = el('div', 'body'); v.appendChild(b);
       const tabs = el('div', 'tabbar'); v.appendChild(tabs);
-      const T = [['fav', 'Favourites', '★'], ['rec', 'Recents', '◷'], ['con', 'Contacts', '◉'], ['key', 'Keypad', '⣿'], ['vm', 'Voicemail', '◎']];
+      const T = [['fav', 'Favourites'], ['rec', 'Recents'], ['con', 'Contacts'], ['key', 'Keypad'], ['vm', 'Voicemail']];
       const nav = el('div'); v.insertBefore(nav, b);
       function show(t) {
-        tabs.innerHTML = T.map(([k, l, g]) => `<button data-k="${k}" class="${k === t ? 'on' : ''}"><i>${g}</i><span>${l}</span>${k === 'vm' && (S.phone.voicemail || []).some(x => x.unheard) ? '<b class="tb-badge"></b>' : ''}</button>`).join('');
+        tabs.innerHTML = T.map(([k, l]) => `<button data-k="${k}" class="${k === t ? 'on' : ''}"><i>${TBI[k]}</i><span>${l}</span>${k === 'vm' && (S.phone.voicemail || []).some(x => x.unheard) ? '<b class="tb-badge"></b>' : ''}</button>`).join('');
         $$('button', tabs).forEach(x => x.onclick = () => show(x.dataset.k));
         nav.innerHTML = ''; b.scrollTop = 0;
         if (t === 'rec') {
@@ -760,12 +771,12 @@
       const WC = S.clockApp && S.clockApp.world;
       if (WC) {
         const rows = WC.map(c => { const m = st.clock + (c.off || 0) * 60; return `<div class="alm"><div><div class="al" style="font-size:14px">${esc(c.label || 'Today')}</div><div style="font-size:24px;margin-top:2px">${esc(c.city)}</div></div><div class="at" style="font-size:44px">${fromMin(m)}</div></div>`; }).join('');
-        v.innerHTML = `<div class="nav big" style="background:#000;border:0"><div class="row1"><span class="act" style="color:#ff9f0a">Edit</span><span class="act" style="color:#ff9f0a">+</span></div><h1 style="color:#fff">World Clock</h1></div><div class="body">${rows}<div style="height:120px"></div></div><div class="tabbar dkt">${[['World Clock', '◍'], ['Alarms', '⏰'], ['Stopwatch', '◔'], ['Timers', '◷']].map(([l, g], i) => `<button class="${i === 0 ? 'on' : ''}"><i>${g}</i><span>${l}</span></button>`).join('')}</div>`;
+        v.innerHTML = `<div class="nav big" style="background:#000;border:0"><div class="row1"><span class="act" style="color:#ff9f0a">Edit</span><span class="act" style="color:#ff9f0a">+</span></div><h1 style="color:#fff">World Clock</h1></div><div class="body">${rows}<div style="height:120px"></div></div><div class="tabbar dkt">${[['World Clock', 'wc'], ['Alarms', 'alm'], ['Stopwatch', 'sw'], ['Timers', 'tm']].map(([l, g], i) => `<button class="${i === 0 ? 'on' : ''}"><i>${TBI[g]}</i><span>${l}</span></button>`).join('')}</div>`;
         $$('.tabbar button', v)[1].onclick = () => { S.clockApp.world = null; const nv = clockApp(); S.clockApp.world = WC; v.replaceWith(nv); st.views[st.views.length - 1] = nv; };
         markSeen('clock');
         return v;
       }
-      v.innerHTML = `<div class="nav big" style="background:#000;border:0"><div class="row1"><span class="act" style="color:#ff9f0a">Edit</span><span class="act" style="color:#ff9f0a">+</span></div><h1 style="color:#fff">Alarms</h1></div><div class="body">${A.map(a => `<div class="alm ${a.on ? '' : 'off'}"><div><div class="at">${esc(a.time)}</div><div class="al">${esc(a.label || 'Alarm')}${a.days ? ', ' + esc(a.days) : ''}</div></div><i class="tg ${a.on ? 'on' : ''}"><b></b></i></div>`).join('') || '<p style="padding:40px;text-align:center;color:#8e8e93">No Alarms</p>'}<div style="height:120px"></div></div><div class="tabbar dkt">${[['World Clock', '◍'], ['Alarms', '⏰'], ['Stopwatch', '◔'], ['Timers', '◷']].map(([l, g], i) => `<button class="${i === 1 ? 'on' : ''}"><i>${g}</i><span>${l}</span></button>`).join('')}</div>`;
+      v.innerHTML = `<div class="nav big" style="background:#000;border:0"><div class="row1"><span class="act" style="color:#ff9f0a">Edit</span><span class="act" style="color:#ff9f0a">+</span></div><h1 style="color:#fff">Alarms</h1></div><div class="body">${A.map(a => `<div class="alm ${a.on ? '' : 'off'}"><div><div class="at">${esc(a.time)}</div><div class="al">${esc(a.label || 'Alarm')}${a.days ? ', ' + esc(a.days) : ''}</div></div><i class="tg ${a.on ? 'on' : ''}"><b></b></i></div>`).join('') || '<p style="padding:40px;text-align:center;color:#8e8e93">No Alarms</p>'}<div style="height:120px"></div></div><div class="tabbar dkt">${[['World Clock', 'wc'], ['Alarms', 'alm'], ['Stopwatch', 'sw'], ['Timers', 'tm']].map(([l, g], i) => `<button class="${i === 1 ? 'on' : ''}"><i>${TBI[g]}</i><span>${l}</span></button>`).join('')}</div>`;
       markSeen('clock');
       return v;
     }
