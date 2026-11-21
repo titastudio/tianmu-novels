@@ -2791,6 +2791,58 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
 .search-input::-webkit-search-cancel-button, .search-input::-webkit-search-decoration { -webkit-appearance: none;appearance:none; display: none; }
 #adminLoginForm { display: contents; }
 
+
+/* ── PHOTO MOMENTS (couple photos inside chapters) ── */
+.pm {
+  display: flex; align-items: center; gap: 0.85rem;
+  max-width: 400px; margin: 0.4rem auto 1.6rem; padding: 0.55rem 0.9rem 0.55rem 0.6rem;
+  background: var(--cream); border: 2px solid var(--border); border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--border); cursor: pointer; text-indent: 0;
+  font-family: 'Instrument Serif', Georgia, serif; color: var(--ink);
+  transition: transform .15s ease, box-shadow .15s ease; -webkit-tap-highlight-color: transparent;
+}
+.pm:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--border); }
+.pm:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--border); }
+.pm:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.pm-stack { position: relative; width: 58px; height: 44px; flex-shrink: 0; }
+.pm-stack img {
+  position: absolute; top: 2px; left: 6px; width: 46px; height: 38px; object-fit: cover;
+  background: #fff; border: 3px solid #fff; border-bottom-width: 7px; border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(26,26,16,.35); transform: rotate(-6deg);
+}
+.pm-stack img:nth-child(2) { transform: rotate(5deg) translate(6px, -1px); }
+.pm-stack img:nth-child(3) { transform: rotate(-1deg) translate(3px, 1px); }
+.pm-txt { flex: 1; min-width: 0; line-height: 1.25; }
+.pm-k { font-family: 'Fraunces', Georgia, serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
+.pm-c { font-size: 1rem; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pm-go { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--coral); color: #fff; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+
+#pmViewer { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; flex-direction: column;
+  background: rgba(26,26,16,.93); padding: 3.2rem 1rem 1.2rem; overscroll-behavior: contain; }
+#pmViewer.on { display: flex; animation: pmIn .18s ease; }
+@keyframes pmIn { from { opacity: 0 } to { opacity: 1 } }
+.pmv-card { background: #fffdf6; padding: 10px 10px 0; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,.45);
+  max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; transform: rotate(-.6deg); }
+.pmv-img { display: block; width: auto; height: auto; max-width: min(92vw, 100%); max-height: calc(100vh - 11rem); object-fit: contain; background: #eee; border-radius: 2px; }
+.pmv-cap { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--ink); text-align: center; padding: .55rem .4rem .2rem; max-width: 34ch; }
+.pmv-when { font-family: 'Fraunces', Georgia, serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #8a7a60; padding-bottom: .65rem; }
+.pmv-x, .pmv-nav { position: absolute; background: var(--cream); color: var(--ink); border: 2px solid var(--border); border-radius: 50%;
+  width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer; box-shadow: 2px 2px 0 var(--border); display: flex; align-items: center; justify-content: center; }
+.pmv-x { top: .8rem; right: .8rem; }
+.pmv-nav { top: 50%; margin-top: -20px; }
+.pmv-prev { left: .6rem; } .pmv-next { right: .6rem; }
+.pmv-dots { display: flex; gap: 6px; margin-top: .7rem; }
+@media (max-width: 700px) {
+  .pmv-nav { top: auto; bottom: .9rem; margin-top: 0; width: 36px; height: 36px; }
+  .pmv-prev { left: calc(50% - 74px); } .pmv-next { right: calc(50% - 74px); }
+  .pmv-img { max-height: calc(100vh - 13rem); }
+  #pmViewer { padding-bottom: 3.6rem; }
+}
+.pmv-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.35); }
+.pmv-dots i.on { background: var(--pink); }
+.pmv-full { margin-top: .6rem; font-family: 'Fraunces', Georgia, serif; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pink); text-decoration: none; }
+.char-avatar.has-photo { padding: 0; overflow: hidden; background: var(--cream-dark) !important; cursor: zoom-in; position: relative; }
+.char-avatar.has-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 </style>
 <body>
 
@@ -3158,6 +3210,80 @@ function placeFontControls() {
   else if (fc.parentElement === pw) document.body.appendChild(fc);
 }
 window.addEventListener('resize', () => { if (document.body.classList.contains('in-reader')) placeFontControls(); });
+// ── PHOTO MOMENTS: couple photos shown inside chapters, opened full size ──
+function _pmThumb(src) { return String(src).replace(/^assets\/photos\//, 'assets/photos/thumbs/').replace(/\.(jpe?g|png|webp|jfif)$/i, '.webp'); }
+function _pmEsc(s) { return String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+let _pmItems = [], _pmAt = 0;
+function openPhotoViewer(items, start) {
+  _pmItems = items; _pmAt = start || 0;
+  let v = document.getElementById('pmViewer');
+  if (!v) {
+    v = document.createElement('div'); v.id = 'pmViewer';
+    v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true');
+    v.innerHTML = `<button class="pmv-x" aria-label="Close">✕</button>
+      <button class="pmv-nav pmv-prev" aria-label="Previous photo">‹</button><button class="pmv-nav pmv-next" aria-label="Next photo">›</button>
+      <div class="pmv-card"><img class="pmv-img" alt=""><div class="pmv-cap"></div><div class="pmv-when"></div></div>
+      <div class="pmv-dots"></div><a class="pmv-full" target="_blank" rel="noopener">Open full size ↗</a>`;
+    document.body.appendChild(v);
+    v.addEventListener('click', e => { if (e.target === v) closePhotoViewer(); });
+    v.querySelector('.pmv-x').onclick = closePhotoViewer;
+    v.querySelector('.pmv-prev').onclick = () => _pmShow(_pmAt - 1);
+    v.querySelector('.pmv-next').onclick = () => _pmShow(_pmAt + 1);
+    let sx = null;
+    v.addEventListener('touchstart', e => { if (e.touches.length === 1) sx = e.touches[0].clientX; }, { passive: true });
+    v.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50 && _pmItems.length > 1) _pmShow(_pmAt + (dx < 0 ? 1 : -1)); });
+    document.addEventListener('keydown', e => {
+      if (!v.classList.contains('on')) return;
+      if (e.key === 'Escape') closePhotoViewer();
+      if (e.key === 'ArrowRight') _pmShow(_pmAt + 1);
+      if (e.key === 'ArrowLeft') _pmShow(_pmAt - 1);
+    });
+  }
+  v.classList.add('on'); document.body.style.overflow = 'hidden';
+  _pmShow(_pmAt);
+}
+function _pmShow(i) {
+  const v = document.getElementById('pmViewer'); const n = _pmItems.length;
+  _pmAt = (i + n) % n; const it = _pmItems[_pmAt];
+  const img = v.querySelector('.pmv-img');
+  img.src = it.src; img.alt = it.caption || '';
+  v.querySelector('.pmv-cap').textContent = it.caption || '';
+  v.querySelector('.pmv-when').textContent = it.when || '';
+  v.querySelector('.pmv-when').style.display = it.when ? '' : 'none';
+  v.querySelector('.pmv-full').href = it.src;
+  v.querySelectorAll('.pmv-nav').forEach(b => b.style.display = n > 1 ? '' : 'none');
+  v.querySelector('.pmv-dots').innerHTML = n > 1 ? _pmItems.map((_, k) => `<i class="${k === _pmAt ? 'on' : ''}"></i>`).join('') : '';
+}
+function closePhotoViewer() {
+  const v = document.getElementById('pmViewer'); if (!v) return;
+  v.classList.remove('on'); document.body.style.overflow = '';
+  const img = v.querySelector('.pmv-img'); if (img) img.removeAttribute('src');
+}
+function _applyPhotoMoments(novel, chIdx) {
+  const box = document.getElementById('readerText');
+  if (!box || !Array.isArray(novel.photoMoments)) return;
+  const paras = [...box.querySelectorAll('p')];
+  novel.photoMoments.filter(m => m.ch === chIdx && m.after && Array.isArray(m.photos) && m.photos.length).forEach(m => {
+    const p = paras.find(el => el.textContent.replace(/\s+/g, ' ').includes(m.after));
+    if (!p) return;
+    const items = m.photos.map(src => ({ src, caption: m.caption, when: m.when }));
+    const strip = document.createElement('div');
+    strip.className = 'pm'; strip.setAttribute('role', 'button'); strip.tabIndex = 0;
+    strip.setAttribute('aria-label', 'Open photo: ' + (m.caption || 'a photo from this moment'));
+    strip.innerHTML = `<div class="pm-stack">${m.photos.slice(0, 3).map(src => `<img src="${_pmEsc(_pmThumb(src))}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${_pmEsc(src)}'">`).join('')}</div>
+      <div class="pm-txt"><div class="pm-k">📷 ${m.photos.length > 1 ? m.photos.length + ' photos' : 'A photo'} from this moment</div><div class="pm-c">${_pmEsc(m.caption)}</div></div>
+      <div class="pm-go" aria-hidden="true">›</div>`;
+    const open = () => openPhotoViewer(items, 0);
+    strip.addEventListener('click', open);
+    strip.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    p.after(strip);
+  });
+}
+function _charPhotoHTML(photo, name, hue, initials) {
+  const full = _pmEsc(photo), thumb = _pmEsc(_pmThumb(photo)), nm = _pmEsc(name).replace(/'/g, '&#39;');
+  return `<div class="char-avatar has-photo" style="background:hsl(${hue},40%,45%)" title="See photo" onclick="event.stopPropagation();openPhotoViewer([{src:'${full}',caption:'${nm}'}],0)"><img src="${thumb}" alt="${_pmEsc(name)}" loading="lazy" onerror="this.onerror=null;this.src='${full}'"></div>`;
+}
+
 function openChapter(idx, _noPush) {
   currentChapterIdx = idx;
   const novel = NOVELS[currentNovel];
@@ -3185,6 +3311,7 @@ function openChapter(idx, _noPush) {
   document.getElementById('readerChTitle').textContent = displayTitle;
   document.getElementById('readerText').innerHTML = processFootnotes(displayContent);
   document.getElementById('readerText').style.fontSize = fontSize + 'rem';
+  if (!novel._lite && (currentReaderLang === 'en' || !trans?.content)) _applyPhotoMoments(novel, idx);
 
   const epig = document.getElementById('readerEpigraph');
   if (ch.epigraph) { epig.textContent = ch.epigraph; epig.style.display = 'block'; }
@@ -4315,6 +4442,7 @@ const CHAR_FIELDS = [
   { key: 'nickname',     label: 'Nickname',             type: 'input',    placeholder: '"Little Trouble"',    group: 'extra' },
   { key: 'favDrink',     label: 'Favorite Drink',       type: 'input',    placeholder: 'Strawberry milk',     group: 'extra' },
   { key: 'favHabit',     label: 'Favorite Habit',       type: 'textarea', placeholder: 'Stealing his hoodie sleeves and poking his cheek', group: 'extra' },
+  { key: 'photo',        label: 'Photo (file path, e.g. assets/photos/people/name.jpg)', type: 'input', placeholder: 'assets/photos/people/name.jpg', group: 'extra' },
 ];
 
 function _charHue(name) {
@@ -4438,6 +4566,7 @@ function serializeCharsToRichText(chars) {
     const namePart = c.name || '';
     const chinesePart = c.nameChinese ? ` (${c.nameChinese})` : '';
     lines.push(`✦ ${namePart}${chinesePart}`);
+    if (c.photo)       lines.push(`Photo: ${c.photo}`);
     if (c.role)        lines.push(`Role: ${c.role}`);
     if (c.age)         lines.push(`Age: ${c.age}`);
     if (c.birthday)    lines.push(`Birthday: ${c.birthday}`);
@@ -4563,6 +4692,7 @@ function renderFrontMatterReader(novelIdx) {
         const subName = nameMatch && nameMatch[2] ? nameMatch[2].trim() : '';
 
         const role = fields['Role'] || fields['role'] || '';
+        const photo = (fields['Photo'] || fields['photo'] || '').trim();
         const age = fields['Age'] || fields['age'] || '';
         const mbti = fields['MBTI'] || fields['mbti'] || '';
         const birthday = fields['Birthday'] || fields['birthday'] || '';
@@ -4629,7 +4759,7 @@ function renderFrontMatterReader(novelIdx) {
         }
 
         // Other unknown fields
-        const knownKeys = new Set(['Role','Age','Birthday','MBTI','Love Language','Love language','Appearance','Personality','Strengths','Weaknesses','Nickname by Yichen','Nickname','Favorite Drink','Favorite drink','Favorite Habit','Favorite habit','Description','Desc','role','age','birthday','mbti','appearance','personality','strengths','weaknesses','nickname','description','desc']);
+        const knownKeys = new Set(['Photo','photo','Role','Age','Birthday','MBTI','Love Language','Love language','Appearance','Personality','Strengths','Weaknesses','Nickname by Yichen','Nickname','Favorite Drink','Favorite drink','Favorite Habit','Favorite habit','Description','Desc','role','age','birthday','mbti','appearance','personality','strengths','weaknesses','nickname','description','desc']);
         Object.entries(fields).forEach(([key, val]) => {
           if (!knownKeys.has(key) && val) {
             bodyHtml += `<div class="char-field"><div class="char-field-label">${key}</div><div class="char-field-val">${val.replace(/\n/g,'<br>')}</div></div>`;
@@ -4638,7 +4768,7 @@ function renderFrontMatterReader(novelIdx) {
 
         return `<div class="char-card" onclick="toggleCharCard(this)">
           <div class="char-card-header">
-            <div class="char-avatar" style="background:hsl(${hue},40%,45%)">${initials}</div>
+            ${photo ? _charPhotoHTML(photo, displayName, hue, initials) : `<div class="char-avatar" style="background:hsl(${hue},40%,45%)">${initials}</div>`}
             <div class="char-header-info">
               <div class="char-name">${displayName}${subName ? ` <span style="font-size:0.8em;opacity:0.7">(${subName})</span>` : ''}</div>
               ${role ? `<div class="char-role">${role}</div>` : ''}

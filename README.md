@@ -5,7 +5,7 @@ The site's code and its content live in separate files. There is no backend and 
 ```
 index.html                     ← design + code only (no novel text inside)
 manifest.webmanifest, robots.txt, sitemap.xml, README.md, .nojekyll
-assets/                        ← icons and the link-preview picture
+assets/                        ← icons, the link-preview picture, and photos/ (the couples’ photos at full size, plus small thumbnails)
 content/
   site.json                    ← site title, hero text, About page, admin password hash
   catalog.json                 ← every novel and chapter list, no chapter text (for a fast start)
@@ -13,7 +13,9 @@ content/
     index.json                 ← which novels appear, in what order
     thorns.json, 322.json, …   ← one file per novel: info, front matter, all chapters
 play/
-  thorns-phone.html, thorns-desktop.html, …   ← interactive pieces, one self-contained file each
+  thorns-phone.html, thorns-desktop.html, …   ← interactive pieces, one small page each
+  engine.js, engine.css        ← shared by every piece
+  img/                         ← the pieces' photos and wallpapers
 ```
 
 Other files in the repo:
@@ -44,9 +46,16 @@ The site updates in about a minute. If you close the tab before downloading, the
 
 ## Interactive pieces
 
-Each finished book has two: a phone story and a computer story. Each is one file in `play/` (`thorns-phone.html`, `thorns-desktop.html`, …) with its pictures packed inside, so nothing else needs uploading. The book's chapter list shows the right one for the reader's device.
+Each finished book has two: a phone story and a computer story. Each is one small page in `play/` (`thorns-phone.html`, `thorns-desktop.html`, …). They share `play/engine.js` and `play/engine.css`, and their photos live in `play/img/`. Upload the whole `play` folder. The book's chapter list shows the right one for the reader's device.
 
 **Tidying the old layout (once):** after uploading, delete the old `extras` folder, and these old files at the top of the repo: `favicon.svg`, `favicon-32.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png` and `og-image.png` (they now live in `assets/`, and the favicon is inside index.html). To delete a folder, open it, click the **…** menu at the top right and choose *Delete directory*, then commit. Keep `google406eb474f9a235a5.html`.
+
+## Couple photos in the chapters
+
+The leads’ portraits show in each novel’s **Characters** tab: tap the round photo to see it full size. Inside the chapters, a small camera strip sits under the paragraph where a photo was taken; tapping it opens the photo at its real size (swipe or use the arrows when there are several).
+
+- Portraits: a `Photo: assets/photos/people/name.jpg` line under the character’s name (or the **Photo** field in the admin character builder).
+- Chapter photos: the `photoMoments` list in the novel’s file, e.g. `{ "ch": 4, "after": "Nine forty-one.", "photos": ["assets/photos/thorns/registry.jpg"], "caption": "The registry steps, 9:41", "when": "Tue 17 Mar 2020" }`. `ch` counts from 0, and `after` is a sentence from the paragraph the strip goes under. The chapter text itself is never changed.
 
 ## Main chapters and side stories
 
