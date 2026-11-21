@@ -1,0 +1,94 @@
+{
+ "id": "the-black-box",
+ "badge": "IDEA",
+ "color": "#6a2cbf",
+ "coverAccent": "#b57bf0",
+ "descs": {
+  "en": "A blind date. He arrived in a three-piece suit. She came straight from a crash site with dirt on her face. He tried to manage her. She laughed at him."
+ },
+ "genre": "Contemporary Romance",
+ "status": "idea",
+ "titles": {
+  "en": "The Black Box"
+ },
+ "ideaNote": "Planned: 50 chapters. The Date · The Crash · The Report · The Song · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>Ren Hao fixes problems for big companies: kidnappings, scandals, the things that never make the news. He’s loud, direct and used to being obeyed. Xu Song-Zhu rebuilds what happened from the wreckage: flight recorders, ruined hard drives, the last minutes of strangers.</p>\n\n<p>His sister sets them up at a French restaurant with candles. He orders her water and suggests she wash her face. She laughs, leans across the table and tells him he’s awfully bossy for a man who hasn’t asked her name.</p>\n\n<p>Then a plane goes into the sea, and the woman he loves is the one who has to listen to how it ended.</p>\n\n<p><em>Opposites · Loud hero · She makes him say it · Coming soon</em></p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>This one is loud and quick and joyful, and then, when it has to be, very quiet. Her job means listening to people’s last words, and the book doesn’t look away from what that costs her.</p>\n\n<p>He tries to love her the way he protects clients, with fireproofing and assistants and flowers. She wants the words. Watching a man like that learn to say them is the whole fun of it.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Ren Hao",
+     "nameChinese": "",
+     "role": "Male Lead · crisis and risk consultant",
+     "age": "28",
+     "birthday": "",
+     "mbti": "ENTJ",
+     "loveLanguage": "",
+     "appearance": "Sharp three-piece suits; ears that go red when he’s embarrassed.",
+     "personality": "Bold, loud and aggressively honest\nIsla’s fiercely protective older brother\nSays ‘I love you’ to his sister as easily as hello, and can’t say it to her",
+     "strengths": "Gets things done, fast\nAfraid of nobody in the city",
+     "weaknesses": "Treats love like a security upgrade\nBad at the words",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "A crumpled list of reasons, written himself"
+    },
+    {
+     "name": "Xu Song-Zhu",
+     "nameChinese": "",
+     "role": "Female Lead · air accident and data recovery investigator",
+     "age": "26",
+     "birthday": "",
+     "mbti": "ENFP",
+     "loveLanguage": "",
+     "appearance": "A flight suit, a smudge on her cheek, a screwdriver she points at people.",
+     "personality": "Bright, fast and very expressive\nAnalyses his feelings out loud to make him blush\nNo relation to any Song family",
+     "strengths": "The best in the city at rebuilding what happened\nLaughs at bossy men",
+     "weaknesses": "Carries strangers’ last words home\nHates being managed",
+     "nickname": "Song-Zhu (everyone) · Commander is what she calls him",
+     "favDrink": "",
+     "favHabit": "Voice notes at two in the morning after a forty-eight-hour recovery"
+    },
+    {
+     "name": "Isla Ren",
+     "nameChinese": "",
+     "role": "Ren Hao’s sister · diplomat",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Set them up, or says she did",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Ren Hao\nRole: Male Lead · crisis and risk consultant\nAge: 28\nMBTI: ENTJ\nAppearance: Sharp three-piece suits; ears that go red when he’s embarrassed.\nPersonality:\nBold, loud and aggressively honest\nIsla’s fiercely protective older brother\nSays ‘I love you’ to his sister as easily as hello, and can’t say it to her\nStrengths:\nGets things done, fast\nAfraid of nobody in the city\nWeaknesses:\nTreats love like a security upgrade\nBad at the words\nFavorite Habit: A crumpled list of reasons, written himself\n\n✦ Xu Song-Zhu\nRole: Female Lead · air accident and data recovery investigator\nAge: 26\nMBTI: ENFP\nAppearance: A flight suit, a smudge on her cheek, a screwdriver she points at people.\nPersonality:\nBright, fast and very expressive\nAnalyses his feelings out loud to make him blush\nNo relation to any Song family\nStrengths:\nThe best in the city at rebuilding what happened\nLaughs at bossy men\nWeaknesses:\nCarries strangers’ last words home\nHates being managed\nNickname: Song-Zhu (everyone) · Commander is what she calls him\nFavorite Habit: Voice notes at two in the morning after a forty-eight-hour recovery\n\n✦ Isla Ren\nRole: Ren Hao’s sister · diplomat\nPersonality:\nSet them up, or says she did"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>Planned content includes:</p>\n\n<p>• An air-crash investigation, including wreckage and cockpit recordings</p>\n\n<p>• Grief and trauma from listening to the last minutes of strangers</p>\n\n<p>• A break-up and a long silence</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}

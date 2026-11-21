@@ -1,0 +1,110 @@
+{
+ "id": "matched",
+ "badge": "IDEA",
+ "color": "#c2410c",
+ "coverAccent": "#f2a541",
+ "descs": {
+  "en": "He broke into an archive. She dropped from the vents and nearly took him down. He has wanted a rematch, and her, ever since."
+ },
+ "genre": "Action Romance",
+ "status": "idea",
+ "titles": {
+  "en": "Matched"
+ },
+ "ideaNote": "Planned: 50 chapters. The Archive · The Noise · The Files · Matched · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>Deng Mu-Ran, the theatrical second son of an old dynasty, breaks into the Iron Archive to wipe the files his family keeps on him. He doesn’t expect the night-shift engineer, He Si-Mei, to drop out of the air vents and very nearly win. He also doesn’t expect to find out that his family pays her wages.</p>\n\n<p>Months later he corners her in an abandoned industrial park to test her, and she picks up a steel pipe. Now he wants a rematch every Sunday. He wants to buy her lab, guard her building and clear her path.</p>\n\n<p>She wants him to understand that she doesn’t want to be kept. She wants to be matched.</p>\n\n<p><em>Rivals to lovers · Sparring partners · Two geniuses · Coming soon</em></p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>Two geniuses who only feel awake when they’re fighting each other, and a man whose flaw is trying to buy and guard someone’s life instead of asking her what she wants.</p>\n\n<p>There are no forced kisses or threats in this one. The love scenes start like a fight and end in surrender on both sides. He only sleeps with his head in her lap.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Deng Mu-Ran",
+     "nameChinese": "",
+     "role": "Male Lead · second son of the Deng family",
+     "age": "22",
+     "birthday": "",
+     "mbti": "INTJ",
+     "loveLanguage": "",
+     "appearance": "Theatrical, elegant, often with a cut lip from the last rematch; fights with a modular guan dao and two short blades.",
+     "personality": "Finds the world mind-numbingly dull, except her\nSwings between showing off and collapsing on her shoulder\nYounger brother of Deng Kai",
+     "strengths": "Brilliant and fearless\nHonest about wanting her",
+     "weaknesses": "Solves everything with money and men\nLearns slowly that he has to ask",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Sleeping with his head in her lap, listening to her heart"
+    },
+    {
+     "name": "He Si-Mei",
+     "nameChinese": "",
+     "role": "Female Lead · mechatronics architect and black-site engineer",
+     "age": "19",
+     "birthday": "",
+     "mbti": "ISTP",
+     "loveLanguage": "",
+     "appearance": "Oversized techwear hoodie, noise-cancelling headphones, a wrench within reach.",
+     "personality": "Grew up in the grey-market district, daughter of an underground fighter\nHacked her way into her job by sending a syndicate the fix and an invoice\nFaster than him",
+     "strengths": "Low-centre, high-agility fighter\nCan secure anything",
+     "weaknesses": "Treats her beauty as a liability\nRefuses all help on principle",
+     "nickname": "The vent girl",
+     "favDrink": "",
+     "favHabit": "‘Rematch on Sunday. If I win, you stop sending your men to my building.’"
+    },
+    {
+     "name": "He Xiao-Rong",
+     "nameChinese": "",
+     "role": "Si-Mei’s cousin and best friend",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "The golden girl of the dance department",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    },
+    {
+     "name": "Deng Kai",
+     "nameChinese": "",
+     "role": "Mu-Ran’s older brother",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Thinks Mu-Ran is a loud child",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Deng Mu-Ran\nRole: Male Lead · second son of the Deng family\nAge: 22\nMBTI: INTJ\nAppearance: Theatrical, elegant, often with a cut lip from the last rematch; fights with a modular guan dao and two short blades.\nPersonality:\nFinds the world mind-numbingly dull, except her\nSwings between showing off and collapsing on her shoulder\nYounger brother of Deng Kai\nStrengths:\nBrilliant and fearless\nHonest about wanting her\nWeaknesses:\nSolves everything with money and men\nLearns slowly that he has to ask\nFavorite Habit: Sleeping with his head in her lap, listening to her heart\n\n✦ He Si-Mei\nRole: Female Lead · mechatronics architect and black-site engineer\nAge: 19\nMBTI: ISTP\nAppearance: Oversized techwear hoodie, noise-cancelling headphones, a wrench within reach.\nPersonality:\nGrew up in the grey-market district, daughter of an underground fighter\nHacked her way into her job by sending a syndicate the fix and an invoice\nFaster than him\nStrengths:\nLow-centre, high-agility fighter\nCan secure anything\nWeaknesses:\nTreats her beauty as a liability\nRefuses all help on principle\nNickname: The vent girl\nFavorite Habit: ‘Rematch on Sunday. If I win, you stop sending your men to my building.’\n\n✦ He Xiao-Rong\nRole: Si-Mei’s cousin and best friend\nPersonality:\nThe golden girl of the dance department\n\n✦ Deng Kai\nRole: Mu-Ran’s older brother\nPersonality:\nThinks Mu-Ran is a loud child"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>Planned content includes:</p>\n\n<p>• Armed sparring with blades and pipes</p>\n\n<p>• A family that keeps files on its own children</p>\n\n<p>• Intrusive, racing thoughts the hero calls ‘the noise’</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}

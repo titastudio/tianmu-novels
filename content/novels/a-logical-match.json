@@ -1,0 +1,110 @@
+{
+ "id": "a-logical-match",
+ "badge": "IDEA",
+ "color": "#8e5572",
+ "coverAccent": "#d6a6bd",
+ "descs": {
+  "en": "The actress who spent three years bowing to his family. The lawyer who stayed silent until the day she left."
+ },
+ "genre": "Angst Romance",
+ "status": "idea",
+ "titles": {
+  "en": "A Logical Match"
+ },
+ "ideaNote": "Planned: 50 chapters. The Match · The Silence · The Ocean · The Premiere · Side stories.",
+ "frontMatter": {
+  "synopsis": {
+   "icon": "📖",
+   "title": "Synopsis",
+   "visible": true,
+   "content": "<p>Yen Si-Yuan is the most famous of the Yen triplets, an actress on billboards across Asia. Yang Pengcheng is the lawyer sent to clean up a legal mess on her film set, and the only man in the room who isn’t starstruck. She decides he’s a challenge. He decides she’s a logical match.</p>\n\n<p>For three years she bows at his family’s dinners while they ignore her, and he says nothing. When his mother humiliates her at a gala in front of everyone, he says nothing again.</p>\n\n<p>She moves her filming overseas and puts an ocean between them. For the first time in his life, Yang Pengcheng finds out what silence costs.</p>\n\n<p><em>A marriage in trouble · He has to earn her back · Second chance · Coming soon</em></p>"
+  },
+  "authorNote": {
+   "icon": "✍️",
+   "title": "Author Note",
+   "visible": true,
+   "content": "<p>This is the book in the series that hurts on purpose: a marriage gone cold, and a man who has to learn that staying silent is a choice, and never a neutral one.</p>\n\n<p>The repair is slow and earned. You’ll see it in how he touches her. He falls asleep on her shoulder during script reads.</p>"
+  },
+  "characters": {
+   "icon": "👥",
+   "title": "Characters",
+   "visible": true,
+   "chars": [
+    {
+     "name": "Yen Si-Yuan",
+     "nameChinese": "",
+     "role": "Female Lead · actress and philanthropist",
+     "age": "21",
+     "birthday": "",
+     "mbti": "ENFJ",
+     "loveLanguage": "",
+     "appearance": "Billboard-famous; dims herself at his family’s table.",
+     "personality": "Eldest of the Yen triplets, from Taipei\nCharismatic and warm; needs to be truly seen\nFunds arts programmes for kids who can’t pay",
+     "strengths": "Can hold a room of thousands\nKnows when to leave",
+     "weaknesses": "Bowed for three years before she stopped\nMistook his silence for safety",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Reading scripts with his head on her shoulder"
+    },
+    {
+     "name": "Yang Pengcheng",
+     "nameChinese": "",
+     "role": "Male Lead · founder of Yang & Associates",
+     "age": "28",
+     "birthday": "",
+     "mbti": "INTJ",
+     "loveLanguage": "",
+     "appearance": "Immaculate, still, a face that never shows a crack.",
+     "personality": "Raised in a legal dynasty where a Yang never loses\nThought her compliance was part of the agreement\nLearns, too late and then not too late, to speak",
+     "strengths": "Formidable lawyer\nOnce he chooses, he never wavers",
+     "weaknesses": "Silence as a habit\nA mother he has never once contradicted",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": "Ironclad contracts so she never has to bow again"
+    },
+    {
+     "name": "Arthur Cheung",
+     "nameChinese": "",
+     "role": "A fellow legal heir",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "Same dinner parties since childhood; they do not like each other, and now they date sisters",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    },
+    {
+     "name": "Yen Si-Jie & Yen Si-Wei",
+     "nameChinese": "",
+     "role": "Si-Yuan’s sisters",
+     "age": "",
+     "birthday": "",
+     "mbti": "",
+     "loveLanguage": "",
+     "appearance": "",
+     "personality": "The middle triplet and the youngest",
+     "strengths": "",
+     "weaknesses": "",
+     "nickname": "",
+     "favDrink": "",
+     "favHabit": ""
+    }
+   ],
+   "content": "✦ Yen Si-Yuan\nRole: Female Lead · actress and philanthropist\nAge: 21\nMBTI: ENFJ\nAppearance: Billboard-famous; dims herself at his family’s table.\nPersonality:\nEldest of the Yen triplets, from Taipei\nCharismatic and warm; needs to be truly seen\nFunds arts programmes for kids who can’t pay\nStrengths:\nCan hold a room of thousands\nKnows when to leave\nWeaknesses:\nBowed for three years before she stopped\nMistook his silence for safety\nFavorite Habit: Reading scripts with his head on her shoulder\n\n✦ Yang Pengcheng\nRole: Male Lead · founder of Yang & Associates\nAge: 28\nMBTI: INTJ\nAppearance: Immaculate, still, a face that never shows a crack.\nPersonality:\nRaised in a legal dynasty where a Yang never loses\nThought her compliance was part of the agreement\nLearns, too late and then not too late, to speak\nStrengths:\nFormidable lawyer\nOnce he chooses, he never wavers\nWeaknesses:\nSilence as a habit\nA mother he has never once contradicted\nFavorite Habit: Ironclad contracts so she never has to bow again\n\n✦ Arthur Cheung\nRole: A fellow legal heir\nPersonality:\nSame dinner parties since childhood; they do not like each other, and now they date sisters\n\n✦ Yen Si-Jie & Yen Si-Wei\nRole: Si-Yuan’s sisters\nPersonality:\nThe middle triplet and the youngest"
+  },
+  "contentWarn": {
+   "icon": "⚠️",
+   "title": "Content Warning",
+   "visible": true,
+   "content": "<p>Planned content includes:</p>\n\n<p>• Emotional neglect in a marriage</p>\n\n<p>• Public humiliation by a partner’s family</p>\n\n<p>• A long separation</p>\n\n<p>• Online abuse aimed at an actress</p>"
+  }
+ },
+ "chapters": [],
+ "publishDate": "",
+ "updatedDate": ""
+}
