@@ -583,6 +583,12 @@ nav {
   position: relative;
 }
 
+
+.chapter-item.interactive { text-decoration: none; color: inherit; border-style: dashed; background: linear-gradient(135deg, var(--cream) 0%, rgba(0,0,0,0.03) 100%); }
+.chapter-item.interactive .ix-icon { display:flex; align-items:center; justify-content:center; color: var(--ink); opacity: .8; }
+.chapter-item.interactive .ix-badge { background: var(--ink); color: var(--cream); }
+body.dark-read .chapter-item.interactive { background: #1e1a14; }
+body.dark-read .chapter-item.interactive .ix-icon { color: var(--cream-dark); }
 /* ── CHAPTER LIST ── */
 .chapter-list {
   max-width: 680px;
@@ -3364,6 +3370,21 @@ function volumeParts(v) {
   const t = String(v).trim(), k = t.indexOf(':');
   return k > -1 ? { num: t.slice(0, k).trim(), name: t.slice(k + 1).trim(), full: t } : { num: t, name: '', full: t };
 }
+// Interactive pieces (phone / desktop), stored beside the chapters so no chapter link moves.
+// novel.extras = [{ after: <chapter index>, device: 'phone'|'desktop', title, line, url }]
+const _EXTRA_DEVICE = (window.matchMedia && matchMedia('(pointer:coarse)').matches && Math.min(screen.width, screen.height) < 700) ? 'phone' : 'desktop';
+function _extrasAfter(novel, i) {
+  return (novel.extras || []).filter(x => x.after === i && x.device === _EXTRA_DEVICE).map(x => `
+    <a class="chapter-item interactive" href="${x.url}?v=${x.device}">
+      <div class="ch-num ix-icon">${x.device === 'phone' ? '<svg width="22" height="30" viewBox="0 0 22 30"><rect x="1.5" y="1.5" width="19" height="27" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="24" width="6" height="1.6" rx=".8" fill="currentColor"/></svg>' : '<svg width="30" height="24" viewBox="0 0 30 24"><rect x="2" y="1.5" width="26" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M0 22h30" stroke="currentColor" stroke-width="2.4"/></svg>'}</div>
+      <div class="ch-info">
+        <div class="ch-title">${x.title}<span class="ch-kind-badge ix-badge">Interactive</span></div>
+        ${x.line ? `<div class="ch-desc">${x.line}</div>` : ''}
+        <div class="ch-date">${x.device === 'phone' ? 'Opens on this phone' : 'Opens on this computer'} · about ${x.minutes || 20} minutes</div>
+      </div>
+      <div class="ch-arrow">→</div>
+    </a>`).join('');
+}
 let _chFilter = 'all';
 function setChapterFilter(f) { _chFilter = f; if (currentNovel !== null) renderChapterList(currentNovel); }
 
@@ -3424,7 +3445,7 @@ function renderChapterList(idx) {
         ${dateStr}
       </div>
       <div class="ch-arrow">→</div>
-    </div>`;
+    </div>` + (_chFilter !== 'side' ? _extrasAfter(novel, i) : '');
   }).join('') || (novel.status === 'idea'
       ? '<p style="font-style:italic;color:#8a7a60;padding:1rem 0">No chapters yet. This story is still an idea; the Synopsis, Characters and Author Note above show where it is going.</p>'
       : '<p style="font-style:italic;color:#8a7a60;padding:1rem 0">No chapters available yet.</p>'));
