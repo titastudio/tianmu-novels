@@ -44,7 +44,8 @@
           "weaknesses": "Swore she'd never be owned, and nearly kept everyone out with it\nThinks she has to do everything alone",
           "nickname": "Jinx (bad luck for the police) · Boss · darling, in public, to annoy her",
           "favDrink": "",
-          "favHabit": "Turning a bolt over and over in her pocket"
+          "favHabit": "Turning a bolt over and over in her pocket",
+          "photo": "assets/photos/people/jinx.jpg"
         },
         {
           "name": "Raiden Lin",
@@ -60,7 +61,8 @@
           "weaknesses": "Was hidden for ten years and thinks hiding is how you keep someone\nCan't draw her face (for three years)",
           "nickname": "The useless one (everyone) · Mr. Lin (builders) · the monkey (Jinx)",
           "favDrink": "",
-          "favHabit": "Drawing on napkins, receipts, invoices and his own arm"
+          "favHabit": "Drawing on napkins, receipts, invoices and his own arm",
+          "photo": "assets/photos/people/raiden.jpg"
         },
         {
           "name": "Cao Tiehan",
@@ -108,7 +110,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/zhao.jpg"
         },
         {
           "name": "Elowen, Evangeline, Elara and Eliana Lin",
@@ -140,7 +143,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/serafina.jpg"
         },
         {
           "name": "Guo Wenbo",
@@ -175,7 +179,7 @@
           "favHabit": ""
         }
       ],
-      "content": "✦ Jia “Jinx” Lin (née Cao)\nRole: Female Lead\nAge: 23 at the start\nBirthday: 14 February (1998), which she hates\nMBTI: ISTP\nLove Language: Acts of service\nAppearance: Tall and broad-shouldered. Hair shaved at one side, black nails, tattoos from wrists to shoulders: peonies, gears, a carp up her left forearm toward a spark plug. A dead man's leather jacket with a burn on the cuff.\nPersonality:\nSays very little, all of it exact\nCould strip a carburettor before she could write her name\nNever talks to engines. She listens to them\nWhen it's too much, she pulls the roll-up door down and turns the radio up\nTakes her coffee all three ways\nStrengths:\nThe best motorbike engineer in the city\nStopped a bike in two metres from a hundred and ninety\nSays no to anyone, in their own kitchen\nWeaknesses:\nSwore she'd never be owned, and nearly kept everyone out with it\nThinks she has to do everything alone\nNickname: Jinx (bad luck for the police) · Boss · darling, in public, to annoy her\nFavorite Drink: Coffee. Black, with milk, and with condensed milk. All three.\nFavorite Habit: Turning a bolt over and over in her pocket\n\n✦ Raiden Lin\nRole: Male Lead\nAge: 23 at the start\nBirthday: 9 April (1998)\nMBTI: ESFP\nLove Language: Quality time, and food\nAppearance: Tall and slim, black hair always in his eyes, a pencil behind his ear. Silver waistcoats he designs himself. A thin scar through his left eyebrow from 2021.\nPersonality:\nTalks all the time, mostly nonsense, on purpose\nPlays the fool so nobody worries about him\nGoes quiet and draws when something's real\nCooks every night; takes the bones out of her fish\nAsks her to marry him on napkins, drawn to scale\nStrengths:\nKnows the weak point of every building in the city\nDesigns safe rooms nobody can find\nKeeps his word, especially in front of witnesses\nWeaknesses:\nWas hidden for ten years and thinks hiding is how you keep someone\nCan't draw her face (for three years)\nNickname: The useless one (everyone) · Mr. Lin (builders) · the monkey (Jinx)\nFavorite Drink: Tea. Coffee makes his hands shake.\nFavorite Habit: Drawing on napkins, receipts, invoices and his own arm\n\n✦ Cao Tiehan\nRole: Her father\nAge: 61 in 2023\nAppearance: Big, white-haired, with spotted hands that shake.\nPersonality:\nRan a chop shop under the flyover for forty years\nKeeps every jet in a tobacco tin, labelled\nLater — twelve racing pigeons named after engines\nWeaknesses:\nDidn't come when she shouted, at seventeen\n\n✦ Lin Jian\nRole: His father\nAge: Late fifties\nAppearance: Big and grey, in a suit too tight across the back.\nPersonality:\nOnce the most frightening man in the Walled City, now frightened of his daughters\nOpened his own door, once, at eleven at night\nLaughs, rarely, very loudly\n\n✦ Zhao Zhendong\nRole: Brother-in-law\nPersonality:\nSays “Hm”\nLooks at people for four seconds\nKnew about them first and told no one\n\n✦ Elowen, Evangeline, Elara and Eliana Lin\nRole: His sisters\nPersonality:\nElowen — the florist, cool and sharp\nEvangeline — the paper twin, almost silent; nods once\nElara — a surgeon, always on nights\nEliana — the youngest, a hacker with a spreadsheet and a camera nobody asked for\n\n✦ Serafina Song\nRole: Friend and client\nPersonality:\nA racing driver who paid for a bike with a gearbox\nOwes Jinx, or says Jinx owes her, depending on the day\n\n✦ Guo Wenbo\nRole: The man who bought her father's debts\nAppearance: Thin, polite, reading glasses, a grey shirt buttoned to the neck.\nPersonality:\nLooks like an accountant\nLoved his brother's motorbike more than anything\n\n✦ Mrs. Tong\nRole: The noodle shop on the corner\nPersonality:\nExtra beef for anything she approves of\nPuts the important things on the wall behind the counter"
+      "content": "✦ Jia “Jinx” Lin (née Cao)\nPhoto: assets/photos/people/jinx.jpg\nRole: Female Lead\nAge: 23 at the start\nBirthday: 14 February (1998), which she hates\nMBTI: ISTP\nLove Language: Acts of service\nAppearance: Tall and broad-shouldered. Hair shaved at one side, black nails, tattoos from wrists to shoulders: peonies, gears, a carp up her left forearm toward a spark plug. A dead man's leather jacket with a burn on the cuff.\nPersonality:\nSays very little, all of it exact\nCould strip a carburettor before she could write her name\nNever talks to engines. She listens to them\nWhen it's too much, she pulls the roll-up door down and turns the radio up\nTakes her coffee all three ways\nStrengths:\nThe best motorbike engineer in the city\nStopped a bike in two metres from a hundred and ninety\nSays no to anyone, in their own kitchen\nWeaknesses:\nSwore she'd never be owned, and nearly kept everyone out with it\nThinks she has to do everything alone\nNickname: Jinx (bad luck for the police) · Boss · darling, in public, to annoy her\nFavorite Drink: Coffee. Black, with milk, and with condensed milk. All three.\nFavorite Habit: Turning a bolt over and over in her pocket\n\n✦ Raiden Lin\nPhoto: assets/photos/people/raiden.jpg\nRole: Male Lead\nAge: 23 at the start\nBirthday: 9 April (1998)\nMBTI: ESFP\nLove Language: Quality time, and food\nAppearance: Tall and slim, black hair always in his eyes, a pencil behind his ear. Silver waistcoats he designs himself. A thin scar through his left eyebrow from 2021.\nPersonality:\nTalks all the time, mostly nonsense, on purpose\nPlays the fool so nobody worries about him\nGoes quiet and draws when something's real\nCooks every night; takes the bones out of her fish\nAsks her to marry him on napkins, drawn to scale\nStrengths:\nKnows the weak point of every building in the city\nDesigns safe rooms nobody can find\nKeeps his word, especially in front of witnesses\nWeaknesses:\nWas hidden for ten years and thinks hiding is how you keep someone\nCan't draw her face (for three years)\nNickname: The useless one (everyone) · Mr. Lin (builders) · the monkey (Jinx)\nFavorite Drink: Tea. Coffee makes his hands shake.\nFavorite Habit: Drawing on napkins, receipts, invoices and his own arm\n\n✦ Cao Tiehan\nRole: Her father\nAge: 61 in 2023\nAppearance: Big, white-haired, with spotted hands that shake.\nPersonality:\nRan a chop shop under the flyover for forty years\nKeeps every jet in a tobacco tin, labelled\nLater — twelve racing pigeons named after engines\nWeaknesses:\nDidn't come when she shouted, at seventeen\n\n✦ Lin Jian\nRole: His father\nAge: Late fifties\nAppearance: Big and grey, in a suit too tight across the back.\nPersonality:\nOnce the most frightening man in the Walled City, now frightened of his daughters\nOpened his own door, once, at eleven at night\nLaughs, rarely, very loudly\n\n✦ Zhao Zhendong\nPhoto: assets/photos/people/zhao.jpg\nRole: Brother-in-law\nPersonality:\nSays “Hm”\nLooks at people for four seconds\nKnew about them first and told no one\n\n✦ Elowen, Evangeline, Elara and Eliana Lin\nRole: His sisters\nPersonality:\nElowen — the florist, cool and sharp\nEvangeline — the paper twin, almost silent; nods once\nElara — a surgeon, always on nights\nEliana — the youngest, a hacker with a spreadsheet and a camera nobody asked for\n\n✦ Serafina Song\nPhoto: assets/photos/people/serafina.jpg\nRole: Friend and client\nPersonality:\nA racing driver who paid for a bike with a gearbox\nOwes Jinx, or says Jinx owes her, depending on the day\n\n✦ Guo Wenbo\nRole: The man who bought her father's debts\nAppearance: Thin, polite, reading glasses, a grey shirt buttoned to the neck.\nPersonality:\nLooks like an accountant\nLoved his brother's motorbike more than anything\n\n✦ Mrs. Tong\nRole: The noodle shop on the corner\nPersonality:\nExtra beef for anything she approves of\nPuts the important things on the wall behind the counter"
     },
     "contentWarn": {
       "icon": "⚠️",
@@ -639,6 +643,35 @@
       "line": "The morning after the Peak drawings. His phone rang beside the peaches, and he never puts drawings away wrong.",
       "url": "play/blueprint-phone.html",
       "minutes": 20
+    }
+  ],
+  "photoMoments": [
+    {
+      "ch": 9,
+      "after": "The shop. The dyno. The two doors.",
+      "photos": [
+        "assets/photos/blueprint/shop.jpg"
+      ],
+      "caption": "Her shop, her roof",
+      "when": ""
+    },
+    {
+      "ch": 13,
+      "after": "ARCHITECT on its brass plate",
+      "photos": [
+        "assets/photos/blueprint/sidecar.jpg"
+      ],
+      "caption": "ARCHITECT",
+      "when": ""
+    },
+    {
+      "ch": 19,
+      "after": "He hadn’t ridden pillion since the sidecar came",
+      "photos": [
+        "assets/photos/blueprint/pillion.jpg"
+      ],
+      "caption": "The long way round",
+      "when": ""
     }
   ]
 }

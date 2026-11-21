@@ -50,7 +50,8 @@
           "weaknesses": "Retreats into carefulness when he’s frightened\nNo idea he is handsome",
           "nickname": "",
           "favDrink": "",
-          "favHabit": "Sticky notes with physics jokes on her tea, every Wednesday"
+          "favHabit": "Sticky notes with physics jokes on her tea, every Wednesday",
+          "photo": "assets/photos/people/miles.jpg"
         },
         {
           "name": "Shen Yu Jie",
@@ -66,7 +67,8 @@
           "weaknesses": "Hides the hard things behind a joke, and tries to carry them alone",
           "nickname": "Perfect Jewel (her family) · Not Stuck (his phone)",
           "favDrink": "",
-          "favHabit": "A calendar of 255 squares counting down to 20 June, 16:00"
+          "favHabit": "A calendar of 255 squares counting down to 20 June, 16:00",
+          "photo": "assets/photos/people/yu-jie.jpg"
         },
         {
           "name": "Dr. Ling Hao",
@@ -197,7 +199,7 @@
           "favHabit": ""
         }
       ],
-      "content": "✦ Dr. Miles Wei\nRole: Male Lead · lecturer in physics\nAge: 31\nAppearance: Clean-cut and quietly beautiful. Soft brown hair with a fringe, fair skin, gentle eyes behind thin round glasses, a boyish face that looks younger than he is. Black turtlenecks and dark blazers. Smells of chalk, old paper and coffee.\nPersonality:\nLiteral and deadpan; terrible puns delivered with total seriousness\nStopped laughing at seventeen, after a library fight over his notebook\nOne rule — nothing happens while she is a student in his department\nStrengths:\nTakes other people’s minds seriously\nKind in small, exact ways\nWeaknesses:\nRetreats into carefulness when he’s frightened\nNo idea he is handsome\nFavorite Habit: Sticky notes with physics jokes on her tea, every Wednesday\n\n✦ Shen Yu Jie\nRole: Female Lead · final-year physics student\nAge: 22\nAppearance: Radiant. Long dark-brown hair with a middle part, big bright doe eyes, rosy lips always about to laugh. A white shirt under a black blazer. Smells of peach and strawberry sweets.\nPersonality:\nBold, bright and very funny\nComes to office hours on Wednesdays with problems she has already solved\nThe ‘Perfect Jewel’ of a family that expects her to marry well\nStrengths:\nBest mind in the department\nBrave with her family when it costs her everything\nWeaknesses:\nHides the hard things behind a joke, and tries to carry them alone\nNickname: Perfect Jewel (her family) · Not Stuck (his phone)\nFavorite Habit: A calendar of 255 squares counting down to 20 June, 16:00\n\n✦ Dr. Ling Hao\nRole: Astrophysicist, office 413\nAge: 35\nPersonality:\nRound-faced, cheerful, married to a pastry chef; arrives smelling of butter\nThe fourth floor’s greatest source of gossip\nKeeps the sticky-note score on the inside of his door\n\n✦ Professor Ruan Lijun\nRole: Yu Jie’s supervisor · head of the condensed matter group\nAge: 58\nPersonality:\nTwo national prizes; never knocks\nSmokes on a balcony nobody is allowed on\nAt school with Yu Jie’s mother; lies to her exactly when she must\n\n✦ Tao Tao\nRole: Yu Jie’s best friend since twelve and her flatmate · biology student\nPersonality:\nHas opinions about everything, especially Miles\n\n✦ Wei Lan\nRole: Miles’s older sister · children’s nurse\nPersonality:\nBossy, loving, and looking at rings in shop windows on his behalf\n\n✦ Shen Ruolan\nRole: Yu Jie’s mother\nAge: 54\nPersonality:\nPerfect skin, perfect posture, a voice like a knife wrapped in silk\n\n✦ Shen Guoqiang\nRole: Yu Jie’s father\nPersonality:\nTall, silver-haired, expressionless; talks about quarterly growth at galas\n\n✦ Yan Zhiyuan\nRole: The diplomat her mother chose\nPersonality:\nFive languages, a beautiful waltz, and a secret of his own\n\n✦ Elowen, Zhao, Aurelia & Chen Si\nRole: Crossover\nPersonality:\nTwo girls Miles knew at school, and the men they married"
+      "content": "✦ Dr. Miles Wei\nPhoto: assets/photos/people/miles.jpg\nRole: Male Lead · lecturer in physics\nAge: 31\nAppearance: Clean-cut and quietly beautiful. Soft brown hair with a fringe, fair skin, gentle eyes behind thin round glasses, a boyish face that looks younger than he is. Black turtlenecks and dark blazers. Smells of chalk, old paper and coffee.\nPersonality:\nLiteral and deadpan; terrible puns delivered with total seriousness\nStopped laughing at seventeen, after a library fight over his notebook\nOne rule — nothing happens while she is a student in his department\nStrengths:\nTakes other people’s minds seriously\nKind in small, exact ways\nWeaknesses:\nRetreats into carefulness when he’s frightened\nNo idea he is handsome\nFavorite Habit: Sticky notes with physics jokes on her tea, every Wednesday\n\n✦ Shen Yu Jie\nPhoto: assets/photos/people/yu-jie.jpg\nRole: Female Lead · final-year physics student\nAge: 22\nAppearance: Radiant. Long dark-brown hair with a middle part, big bright doe eyes, rosy lips always about to laugh. A white shirt under a black blazer. Smells of peach and strawberry sweets.\nPersonality:\nBold, bright and very funny\nComes to office hours on Wednesdays with problems she has already solved\nThe ‘Perfect Jewel’ of a family that expects her to marry well\nStrengths:\nBest mind in the department\nBrave with her family when it costs her everything\nWeaknesses:\nHides the hard things behind a joke, and tries to carry them alone\nNickname: Perfect Jewel (her family) · Not Stuck (his phone)\nFavorite Habit: A calendar of 255 squares counting down to 20 June, 16:00\n\n✦ Dr. Ling Hao\nRole: Astrophysicist, office 413\nAge: 35\nPersonality:\nRound-faced, cheerful, married to a pastry chef; arrives smelling of butter\nThe fourth floor’s greatest source of gossip\nKeeps the sticky-note score on the inside of his door\n\n✦ Professor Ruan Lijun\nRole: Yu Jie’s supervisor · head of the condensed matter group\nAge: 58\nPersonality:\nTwo national prizes; never knocks\nSmokes on a balcony nobody is allowed on\nAt school with Yu Jie’s mother; lies to her exactly when she must\n\n✦ Tao Tao\nRole: Yu Jie’s best friend since twelve and her flatmate · biology student\nPersonality:\nHas opinions about everything, especially Miles\n\n✦ Wei Lan\nRole: Miles’s older sister · children’s nurse\nPersonality:\nBossy, loving, and looking at rings in shop windows on his behalf\n\n✦ Shen Ruolan\nRole: Yu Jie’s mother\nAge: 54\nPersonality:\nPerfect skin, perfect posture, a voice like a knife wrapped in silk\n\n✦ Shen Guoqiang\nRole: Yu Jie’s father\nPersonality:\nTall, silver-haired, expressionless; talks about quarterly growth at galas\n\n✦ Yan Zhiyuan\nRole: The diplomat her mother chose\nPersonality:\nFive languages, a beautiful waltz, and a secret of his own\n\n✦ Elowen, Zhao, Aurelia & Chen Si\nRole: Crossover\nPersonality:\nTwo girls Miles knew at school, and the men they married"
     },
     "glossary": {
       "icon": "📚",
@@ -876,6 +878,44 @@
       "line": "August to September, two years after a purple pen. He has decided. He has not decided how. He starts on paper.",
       "url": "play/proof-by-induction-desktop.html",
       "minutes": 20
+    }
+  ],
+  "photoMoments": [
+    {
+      "ch": 1,
+      "after": "Beside them was a small tin of jasmine tea",
+      "photos": [
+        "assets/photos/proof-by-induction/tea.jpg"
+      ],
+      "caption": "Jasmine, strong. The blue mug.",
+      "when": ""
+    },
+    {
+      "ch": 16,
+      "after": "chalk on her cheek",
+      "photos": [
+        "assets/photos/proof-by-induction/board.jpg"
+      ],
+      "caption": "Arguing about line four",
+      "when": ""
+    },
+    {
+      "ch": 24,
+      "after": "Five words, in purple.",
+      "photos": [
+        "assets/photos/proof-by-induction/oranges.jpg"
+      ],
+      "caption": "Still peeling oranges",
+      "when": "Tue 17 Mar 2026"
+    },
+    {
+      "ch": 27,
+      "after": "On the desk there was a lamp, brass, with a green shade.",
+      "photos": [
+        "assets/photos/proof-by-induction/attic.jpg"
+      ],
+      "caption": "The room above the bakery",
+      "when": ""
     }
   ]
 }

@@ -43,7 +43,8 @@
           "weaknesses": "Works until there's nothing left\nForgets to eat\nThought loneliness was just quiet",
           "nickname": "Glacier (the squad; Isla, fondly)",
           "favDrink": "Coffee, one cup; ginger tea on Tuesdays",
-          "favHabit": "Looking up at nine o'clock"
+          "favHabit": "Looking up at nine o'clock",
+          "photo": "assets/photos/people/song-wei-long.jpg"
         },
         {
           "name": "Isla Ren",
@@ -59,7 +60,8 @@
           "weaknesses": "Hates waiting\nForgets that she's allowed to rest\nCan't stop herself checking other people's forms",
           "nickname": "",
           "favDrink": "Her evening tea, the kind he carried to Lima",
-          "favHabit": "Leaving language cards in his pockets"
+          "favHabit": "Leaving language cards in his pockets",
+          "photo": "assets/photos/people/isla.jpg"
         },
         {
           "name": "Ren Hao",
@@ -126,7 +128,7 @@
           "favHabit": ""
         }
       ],
-      "content": "✦ Song Wei Long\nRole: Male Lead · police inspector\nAge: 30 at the start\nMBTI: ISTJ\nLove Language: Acts of service, checked twice: her water bottle, her shoes in his hand, the boxes on the form\nAppearance: Tall and spare, with a cold, still face that the squad has spent years trying to photograph smiling. A dark jacket that stays on at work. An old kettle burn across his knuckles.\nPersonality:\nRaised his cousin Yu Chen from fifteen\nLiteral about everything, including love\nSays what he's going to do, then does it\nKeeps every card she ever wrote him\nStrengths:\nNever drops a case\nListens until people tell him the truth\nNever once asks her to be smaller\nWeaknesses:\nWorks until there's nothing left\nForgets to eat\nThought loneliness was just quiet\nNickname: Glacier (the squad; Isla, fondly)\nFavorite Drink: Coffee, one cup; ginger tea on Tuesdays\nFavorite Habit: Looking up at nine o'clock\n\n✦ Isla Ren\nRole: Female Lead · consular officer\nAge: 25 at the start\nLove Language: Physical touch and words, out loud, in three languages\nAppearance: Warm, quick and direct, with dark hair always coming out of its clip and a coat that's usually wet. Sits on desks.\nPersonality:\nBorn and raised in Vancouver\nSays exactly what she wants\nThe only person who can make him laugh out loud\nStarts most of the kisses\nStrengths:\nFixes anything in English, French or Chinese, and later Spanish\nCalm with frightened families\nKnows where the line is and won't cross it\nWeaknesses:\nHates waiting\nForgets that she's allowed to rest\nCan't stop herself checking other people's forms\nFavorite Drink: Her evening tea, the kind he carried to Lima\nFavorite Habit: Leaving language cards in his pockets\n\n✦ Ren Hao\nRole: Isla's older brother\nPersonality:\nRuns a global risk firm from the thirty-second floor\nSays 'I love you' the way other people say hello\nGives very long toasts\n\n✦ Wang Yu Chen\nRole: Wei Long's cousin\nPersonality:\nThe boy Wei Long raised\nJunior doctor, then emergency medicine\nCalls him Ge\n\n✦ Station Sergeant Hau\nRole: The front desk\nPersonality:\nTwenty years at the station\nKeeps the betting book on the ten minutes\nNever bets on the ones he already knows\n\n✦ Superintendent Pun (retired)\nRole: Wei Long's teacher\nPersonality:\nTrained him from nineteen\nSeventy-three when they meet, and unimpressed by almost everyone\nUnexpectedly good friends with Ren Hao"
+      "content": "✦ Song Wei Long\nPhoto: assets/photos/people/song-wei-long.jpg\nRole: Male Lead · police inspector\nAge: 30 at the start\nMBTI: ISTJ\nLove Language: Acts of service, checked twice: her water bottle, her shoes in his hand, the boxes on the form\nAppearance: Tall and spare, with a cold, still face that the squad has spent years trying to photograph smiling. A dark jacket that stays on at work. An old kettle burn across his knuckles.\nPersonality:\nRaised his cousin Yu Chen from fifteen\nLiteral about everything, including love\nSays what he's going to do, then does it\nKeeps every card she ever wrote him\nStrengths:\nNever drops a case\nListens until people tell him the truth\nNever once asks her to be smaller\nWeaknesses:\nWorks until there's nothing left\nForgets to eat\nThought loneliness was just quiet\nNickname: Glacier (the squad; Isla, fondly)\nFavorite Drink: Coffee, one cup; ginger tea on Tuesdays\nFavorite Habit: Looking up at nine o'clock\n\n✦ Isla Ren\nPhoto: assets/photos/people/isla.jpg\nRole: Female Lead · consular officer\nAge: 25 at the start\nLove Language: Physical touch and words, out loud, in three languages\nAppearance: Warm, quick and direct, with dark hair always coming out of its clip and a coat that's usually wet. Sits on desks.\nPersonality:\nBorn and raised in Vancouver\nSays exactly what she wants\nThe only person who can make him laugh out loud\nStarts most of the kisses\nStrengths:\nFixes anything in English, French or Chinese, and later Spanish\nCalm with frightened families\nKnows where the line is and won't cross it\nWeaknesses:\nHates waiting\nForgets that she's allowed to rest\nCan't stop herself checking other people's forms\nFavorite Drink: Her evening tea, the kind he carried to Lima\nFavorite Habit: Leaving language cards in his pockets\n\n✦ Ren Hao\nRole: Isla's older brother\nPersonality:\nRuns a global risk firm from the thirty-second floor\nSays 'I love you' the way other people say hello\nGives very long toasts\n\n✦ Wang Yu Chen\nRole: Wei Long's cousin\nPersonality:\nThe boy Wei Long raised\nJunior doctor, then emergency medicine\nCalls him Ge\n\n✦ Station Sergeant Hau\nRole: The front desk\nPersonality:\nTwenty years at the station\nKeeps the betting book on the ten minutes\nNever bets on the ones he already knows\n\n✦ Superintendent Pun (retired)\nRole: Wei Long's teacher\nPersonality:\nTrained him from nineteen\nSeventy-three when they meet, and unimpressed by almost everyone\nUnexpectedly good friends with Ren Hao"
     },
     "contentWarn": {
       "icon": "⚠️",
@@ -805,6 +807,44 @@
       "line": "Five evenings at the desk while she thinks it’s overtime. Three pages, seventeen numbered paragraphs.",
       "url": "play/ten-minutes-desktop.html",
       "minutes": 20
+    }
+  ],
+  "photoMoments": [
+    {
+      "ch": 2,
+      "after": "she sat on the edge of his desk",
+      "photos": [
+        "assets/photos/ten-minutes/desk.jpg"
+      ],
+      "caption": "On his desk, where the files were",
+      "when": "Fri 7 Mar 2025"
+    },
+    {
+      "ch": 7,
+      "after": "Oh. Ranunculus.",
+      "photos": [
+        "assets/photos/ten-minutes/ranunculus.jpg"
+      ],
+      "caption": "Ranunculus",
+      "when": ""
+    },
+    {
+      "ch": 22,
+      "after": "6. The tea is for you too.",
+      "photos": [
+        "assets/photos/ten-minutes/tea.jpg"
+      ],
+      "caption": "The tea is for you too",
+      "when": ""
+    },
+    {
+      "ch": 24,
+      "after": "He knew the cliffs she’d described",
+      "photos": [
+        "assets/photos/ten-minutes/cliff.jpg"
+      ],
+      "caption": "The cliffs she sent him",
+      "when": "Aug 2026"
     }
   ]
 }

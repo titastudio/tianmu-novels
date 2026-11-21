@@ -50,7 +50,8 @@
           "weaknesses": "Has never done one thing just for herself\nKeeps the score with Aurelia, forever",
           "nickname": "",
           "favDrink": "",
-          "favHabit": "Arranging his lapel flower; doing the armory’s accounts"
+          "favHabit": "Arranging his lapel flower; doing the armory’s accounts",
+          "photo": "assets/photos/people/elowen.jpg"
         },
         {
           "name": "Zhao Zhendong",
@@ -66,7 +67,8 @@
           "weaknesses": "Thinks he stains everything he touches",
           "nickname": "",
           "favDrink": "",
-          "favHabit": "Remembering every date; a notebook of anniversaries"
+          "favHabit": "Remembering every date; a notebook of anniversaries",
+          "photo": "assets/photos/people/zhao.jpg"
         },
         {
           "name": "Lin Jian",
@@ -98,7 +100,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/raiden.jpg"
         },
         {
           "name": "Evangeline Lin",
@@ -114,7 +117,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/evangeline.jpg"
         },
         {
           "name": "Elara Lin",
@@ -130,7 +134,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/elara.jpg"
         },
         {
           "name": "Eliana Lin",
@@ -146,7 +151,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/eliana.jpg"
         },
         {
           "name": "Chen Si",
@@ -162,7 +168,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/chen-si.jpg"
         },
         {
           "name": "Xiao Pan",
@@ -242,7 +249,8 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/song-wei-long.jpg"
         },
         {
           "name": "Qiu Wen & Qiu Lei",
@@ -290,10 +298,11 @@
           "weaknesses": "",
           "nickname": "",
           "favDrink": "",
-          "favHabit": ""
+          "favHabit": "",
+          "photo": "assets/photos/people/aurelia.jpg"
         }
       ],
-      "content": "✦ Elowen Zhao (née Lin)\nRole: Female Lead · florist, owner of Elowen’s\nAge: 24 at the start\nAppearance: Cool and composed; often in green; a camellia in her hair for the days that matter.\nPersonality:\nCool and sharp; cuts stems like a wound\nHas run a house of five since she was seven\nProposed the marriage herself, in a three-page contract — ‘You don’t touch me unless I ask’\nStrengths:\nKnows exactly what everything costs\nNot afraid of the most frightening man in the city\nWeaknesses:\nHas never done one thing just for herself\nKeeps the score with Aurelia, forever\nFavorite Habit: Arranging his lapel flower; doing the armory’s accounts\n\n✦ Zhao Zhendong\nRole: Male Lead · arms dealer, the Iron Docks\nAppearance: Very large, dark clothes, a long scar from ribs to hip; looks at people for four seconds.\nPersonality:\nSays almost nothing (‘Hm’)\nFerociously protective; sits outside her door at night\nNever stops wondering whether she married him for love\nStrengths:\nLoyal to the death\nNoticed everything about her before she knew he was looking\nWeaknesses:\nThinks he stains everything he touches\nFavorite Habit: Remembering every date; a notebook of anniversaries\n\n✦ Lin Jian\nRole: Elowen’s father · runs the Syndicate’s logistics\nAge: 53 at the start\nPersonality:\n‘Not a criminal. A logistics man. He arranged things.’\n\n✦ Raiden Lin\nRole: Elowen’s brother · draughtsman\nAge: 21 at the start\nPersonality:\nPlays the cheerful, slightly useless son so well people think he’s simple\nBuilds hidden doors; draws everything ‘as it really is’\n\n✦ Evangeline Lin\nRole: Elowen’s sister, on paper Raiden’s twin\nAge: 21 at the start\nPersonality:\nAlmost silent; leaves her door open a crack when she can’t sleep\n\n✦ Elara Lin\nRole: Elowen’s sister\nPersonality:\nAt university; becomes someone else entirely in an emergency\n\n✦ Eliana Lin\nRole: The youngest Lin sister · hacker\nAge: 17 at the start\nPersonality:\nThree screens, a device she thinks nobody knows about, and the shop’s alarm\n\n✦ Chen Si\nRole: Zhao’s blood brother\nPersonality:\nThe calculating brain to Zhao’s muscle since Block C\n\n✦ Xiao Pan\nRole: Delivery boy at Elowen’s\nAge: 19 at the start\nPersonality:\nSaving for a motorbike; has seen far too much and will never tell\n\n✦ Granny Yip\nRole: Flower-market stallholder\nPersonality:\nSmokes, judges, and approves of Zhao eventually\n\n✦ Bao\nRole: Zhao’s driver\nPersonality:\nVery wisely says nothing\n\n✦ Mr. Yao\nRole: Zhao’s accountant\nPersonality:\nNine years of nerves; keeps a private diary\n\n✦ Song Wei Long\nRole: Detective\nPersonality:\nThe one Elowen calls instead of her husband\n\n✦ Qiu Wen & Qiu Lei\nRole: Rival brothers\nPersonality:\nThe older one arrives with no lights; the younger one has a camera on his own door\n\n✦ Maartens\nRole: The buyer\nPersonality:\nRed-faced, loud and pleasant until he isn’t\n\n✦ Aurelia Chen (née Song)\nRole: Elowen’s school rival · Chen Si’s wife\nPersonality:\nFirst and second at school; the score has never stopped"
+      "content": "✦ Elowen Zhao (née Lin)\nPhoto: assets/photos/people/elowen.jpg\nRole: Female Lead · florist, owner of Elowen’s\nAge: 24 at the start\nAppearance: Cool and composed; often in green; a camellia in her hair for the days that matter.\nPersonality:\nCool and sharp; cuts stems like a wound\nHas run a house of five since she was seven\nProposed the marriage herself, in a three-page contract — ‘You don’t touch me unless I ask’\nStrengths:\nKnows exactly what everything costs\nNot afraid of the most frightening man in the city\nWeaknesses:\nHas never done one thing just for herself\nKeeps the score with Aurelia, forever\nFavorite Habit: Arranging his lapel flower; doing the armory’s accounts\n\n✦ Zhao Zhendong\nPhoto: assets/photos/people/zhao.jpg\nRole: Male Lead · arms dealer, the Iron Docks\nAppearance: Very large, dark clothes, a long scar from ribs to hip; looks at people for four seconds.\nPersonality:\nSays almost nothing (‘Hm’)\nFerociously protective; sits outside her door at night\nNever stops wondering whether she married him for love\nStrengths:\nLoyal to the death\nNoticed everything about her before she knew he was looking\nWeaknesses:\nThinks he stains everything he touches\nFavorite Habit: Remembering every date; a notebook of anniversaries\n\n✦ Lin Jian\nRole: Elowen’s father · runs the Syndicate’s logistics\nAge: 53 at the start\nPersonality:\n‘Not a criminal. A logistics man. He arranged things.’\n\n✦ Raiden Lin\nPhoto: assets/photos/people/raiden.jpg\nRole: Elowen’s brother · draughtsman\nAge: 21 at the start\nPersonality:\nPlays the cheerful, slightly useless son so well people think he’s simple\nBuilds hidden doors; draws everything ‘as it really is’\n\n✦ Evangeline Lin\nPhoto: assets/photos/people/evangeline.jpg\nRole: Elowen’s sister, on paper Raiden’s twin\nAge: 21 at the start\nPersonality:\nAlmost silent; leaves her door open a crack when she can’t sleep\n\n✦ Elara Lin\nPhoto: assets/photos/people/elara.jpg\nRole: Elowen’s sister\nPersonality:\nAt university; becomes someone else entirely in an emergency\n\n✦ Eliana Lin\nPhoto: assets/photos/people/eliana.jpg\nRole: The youngest Lin sister · hacker\nAge: 17 at the start\nPersonality:\nThree screens, a device she thinks nobody knows about, and the shop’s alarm\n\n✦ Chen Si\nPhoto: assets/photos/people/chen-si.jpg\nRole: Zhao’s blood brother\nPersonality:\nThe calculating brain to Zhao’s muscle since Block C\n\n✦ Xiao Pan\nRole: Delivery boy at Elowen’s\nAge: 19 at the start\nPersonality:\nSaving for a motorbike; has seen far too much and will never tell\n\n✦ Granny Yip\nRole: Flower-market stallholder\nPersonality:\nSmokes, judges, and approves of Zhao eventually\n\n✦ Bao\nRole: Zhao’s driver\nPersonality:\nVery wisely says nothing\n\n✦ Mr. Yao\nRole: Zhao’s accountant\nPersonality:\nNine years of nerves; keeps a private diary\n\n✦ Song Wei Long\nPhoto: assets/photos/people/song-wei-long.jpg\nRole: Detective\nPersonality:\nThe one Elowen calls instead of her husband\n\n✦ Qiu Wen & Qiu Lei\nRole: Rival brothers\nPersonality:\nThe older one arrives with no lights; the younger one has a camera on his own door\n\n✦ Maartens\nRole: The buyer\nPersonality:\nRed-faced, loud and pleasant until he isn’t\n\n✦ Aurelia Chen (née Song)\nPhoto: assets/photos/people/aurelia.jpg\nRole: Elowen’s school rival · Chen Si’s wife\nPersonality:\nFirst and second at school; the score has never stopped"
     },
     "glossary": {
       "icon": "📚",
@@ -1037,6 +1046,44 @@
       "publishDate": "2024-08-05",
       "scheduleDate": "",
       "scheduleTime": "12:00"
+    }
+  ],
+  "photoMoments": [
+    {
+      "ch": 4,
+      "after": "Nine forty-one.",
+      "photos": [
+        "assets/photos/thorns/registry.jpg"
+      ],
+      "caption": "The registry steps, 9:41",
+      "when": "Tue 17 Mar 2020"
+    },
+    {
+      "ch": 5,
+      "after": "named after lunch",
+      "photos": [
+        "assets/photos/thorns/dogs.jpg"
+      ],
+      "caption": "Dumpling, Noodle and the new Mrs. Zhao",
+      "when": "March 2020"
+    },
+    {
+      "ch": 22,
+      "after": "She was in the glass room with her sleeves pushed up",
+      "photos": [
+        "assets/photos/thorns/glass-room.jpg"
+      ],
+      "caption": "The glass room",
+      "when": ""
+    },
+    {
+      "ch": 44,
+      "after": "she wrapped the flowers in paper and stacked them on the counter",
+      "photos": [
+        "assets/photos/thorns/counter.jpg"
+      ],
+      "caption": "Behind the counter at Elowen’s",
+      "when": ""
     }
   ]
 }
