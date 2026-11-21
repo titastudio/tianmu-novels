@@ -4,14 +4,16 @@ The site's code and its content live in separate files. There is no backend and 
 
 ```
 index.html                     ← design + code only (no novel text inside)
+manifest.webmanifest, robots.txt, sitemap.xml, README.md, .nojekyll
+assets/                        ← icons and the link-preview picture
 content/
   site.json                    ← site title, hero text, About page, admin password hash
   catalog.json                 ← every novel and chapter list, no chapter text (for a fast start)
   novels/
     index.json                 ← which novels appear, in what order
-    322.json
-    the-softest-kind-of-love.json
-    …                          ← one file per novel: info, front matter, all chapters
+    thorns.json, 322.json, …   ← one file per novel: info, front matter, all chapters
+play/
+  thorns-phone.html, thorns-desktop.html, …   ← interactive pieces, one self-contained file each
 ```
 
 Other files in the repo:
@@ -22,14 +24,14 @@ Other files in the repo:
 
 ## Setup (once)
 
-1. Upload everything in this folder to your GitHub repo, keeping the `content/` folder structure.
+1. Upload everything to your GitHub repo, keeping the four folders (`assets`, `content`, `play` and the files at the top).
 2. Repo → *Settings → Pages →* Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
 
 The site goes live at `https://<username>.github.io/<repo>/` in about a minute.
 
 ## Updating content
 
-**Option A — edit the files directly.** Open a file in `content/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`. If you change titles, dates or chapters this way, also replace `content/catalog.json` (the admin download makes a fresh one), or the library will show the old list.
+**Option A — edit the files directly.** Open a file in `content/novels/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`. If you change titles, dates or chapters this way, also replace `content/catalog.json` (the admin download makes a fresh one), or the library will show the old list.
 
 **Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file, in well under a second, then loads chapter text in the background. Each novel file is fetched with a version tag, so the browser keeps it and a refresh doesn't download it again.
 
@@ -39,6 +41,12 @@ The site goes live at `https://<username>.github.io/<repo>/` in about a minute.
 2. Unzip it. On GitHub: *Add file → Upload files*, drag in the `content` folder (plus `sitemap.xml` and `robots.txt`), and commit.
 
 The site updates in about a minute. If you close the tab before downloading, the edits are gone (the browser warns you first).
+
+## Interactive pieces
+
+Each finished book has two: a phone story and a computer story. Each is one file in `play/` (`thorns-phone.html`, `thorns-desktop.html`, …) with its pictures packed inside, so nothing else needs uploading. The book's chapter list shows the right one for the reader's device.
+
+**Tidying the old layout (once):** after uploading, delete the old `extras` folder, and these old files at the top of the repo: `favicon.svg`, `favicon-32.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png` and `og-image.png` (they now live in `assets/`, and the favicon is inside index.html). To delete a folder, open it, click the **…** menu at the top right and choose *Delete directory*, then commit. Keep `google406eb474f9a235a5.html`.
 
 ## Main chapters and side stories
 
