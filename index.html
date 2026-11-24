@@ -723,6 +723,7 @@ body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
 }
 .reader-text p { margin-bottom: 1.5em; text-indent: 2em; }
 .reader-text p:first-child { text-indent: 0; }
+.reader-text p.lines { text-indent: 0; }
 .reader-text p:first-child::first-letter {
   font-family: 'Fraunces', serif;
   font-size: 3.8em;
@@ -3155,7 +3156,8 @@ function renderGrid() {
 // ═══════════════════════════════════════════════
 function openNovel(idx, _noPush) {
   if (NOVELS[idx] && (NOVELS[idx].status === 'idea' || NOVELS[idx].status === 'coming-soon') && !document.body.classList.contains('admin-mode')) return;
-  _ensureNovel(idx).catch(() => {});   // start loading this book's chapter text now
+  // start loading this book's chapter text now; redraw the list and dropdown from the full book when it lands
+  _ensureNovel(idx).then(() => { if (currentNovel === idx && document.getElementById('chapterListItems')) renderChapterList(idx); }).catch(() => {});
   currentNovel = idx;
   const novel = NOVELS[idx];
   document.getElementById('libraryView').style.display = 'none';
