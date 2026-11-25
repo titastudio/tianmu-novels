@@ -34,7 +34,7 @@ StoryEngine.start({
     { date: 'Tue 12 Mar', dn: 12, start: '23:46', beats: [
       { id: 'cl', target: 'note:cl', auto: true, autoDelay: 500 },
       { id: 'au', target: 'thread:au', unread: 'au', time: '23:58', at: '23:58', delay: 2400, notify: { app: 'messages', title: 'Aurelia', body: 'Lily says you left my shop with my lipstick on your mouth.' } },
-      { id: 'zh', target: 'thread:zh', unread: 'zh', time: '00:04', at: '00:04', delay: 2600, notify: { app: 'messages', title: 'Brother', body: 'Qian says you cancelled the consortium.' } }
+      { id: 'zh', target: 'thread:zh', unread: 'zh', time: '00:04', at: '00:04', delay: 2600, notify: { app: 'messages', title: 'Brother', body: 'Qian says you canceled the consortium.' } }
     ] },
     { date: 'Tue 9 Apr', dn: 9, start: '23:22', lead: 'Four weeks later.', beats: [
       { id: 'm1', target: 'mail:m1', mailUnread: 'm1', notify: { app: 'mail', title: 'Enzo', body: 'Lezione uno' } },
@@ -93,7 +93,7 @@ StoryEngine.start({
       ] },
       { id: 'zh', day: 0, name: 'Brother', photo: 'img/av-zhao.webp', time: 'Mar', order: 30, items: [
         { t: 'day', text: '<b>Wed 13 Mar</b> 00:04', beat: 'zh' },
-        { t: 'in', text: 'Qian says you cancelled the consortium.', live: true, wait: 300 },
+        { t: 'in', text: 'Qian says you canceled the consortium.', live: true, wait: 300 },
         { t: 'out', text: 'She proposed.', live: true, play: [['p', 900], ['t', 'I was'], ['p', 700], ['d', 5], ['t', 'She proposed.']] },
         { t: 'in', text: 'With what.', live: true, wait: 1800 },
         { t: 'out', text: 'Eleven pages.', live: true },
@@ -137,7 +137,7 @@ StoryEngine.start({
       ] }
     ] },
     browser: { items: [
-      { id: 'old', day: 0, dayLabel: 'Tuesday 12 March', time: '08:02', q: 'harbour road jewellers opening hours', results: [{ site: 'City Guide', path: 'shopping', title: 'Harbour Road: independent jewellers', snip: 'Most open at ten. One opens at nine on Tuesdays for appointments only.' }] },
+      { id: 'old', day: 0, dayLabel: 'Tuesday 12 March', time: '08:02', q: 'harbor road jewelers opening hours', results: [{ site: 'City Guide', path: 'shopping', title: 'Harbor Road: independent jewelers', snip: 'Most open at ten. One opens at nine on Tuesdays for appointments only.' }] },
       { id: 's1', day: 1, dayLabel: 'Tuesday 9 April', time: '23:24', q: 'lo prometto pronunciation', live: true, play: [['t', 'italian wedding vows'], ['p', 1100], ['d', 20], ['p', 500], ['t', 'lo prometto pronunciation']], results: [
         { site: 'Language Desk', path: 'italian › phrases', title: '“Lo prometto”: I promise', snip: 'Three syllables in prometto. Stress the second: pro-MET-to. Double the t. Do not rush it.' },
         { site: 'Wedding Almanac', path: 'ceremonies abroad', title: 'Civil ceremonies in Milan', snip: 'Couples may write their own words. Many grooms who don’t speak Italian ask for a translator. Some insist on learning it.' }
