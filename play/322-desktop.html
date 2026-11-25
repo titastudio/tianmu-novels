@@ -17,7 +17,7 @@
 /* 322 · desktop · "Little Finger"
    Serafina's office computer in the garage under the railway bridge, Sunday 26 February to Saturday 11 March 2023.
    Canon: Ch8 (5:52 "Wait for me", no phone, "I'm choosing twelve"; Sat 4 Mar the Needle, splitter cracked,
-   less than a metre, Aurelia's "When you can tell me, tell me", four tenths quicker in the afternoon; the mug upside down;
+   less than a meter, Aurelia's "When you can tell me, tell me", four tenths quicker in the afternoon; the mug upside down;
    Fri 10 Mar the blank Monza postcard, his name only; 11:20 p.m. he's back; "Next time, write something"),
    Ch9 (Sat 11 Mar 10:16 the glovebox, the ruby from Antwerp, a speech in four parts, the little finger,
    the silver ring on her dressing table; 11:07 the Bureau form, "intended marriage"). Saved as GUARD (LIFTS). */
@@ -33,7 +33,7 @@ StoryEngine.start({
   login: { pass: 'nonna', hint: 'Hint: the car she learned in.', atStart: true },
   dock: ['finder', 'mail', 'messages', 'notes', 'browser', 'sheets', 'calendar'],
   calIcon: [{ wd: 'Sun', dn: '26' }, { wd: 'Sat', dn: '4' }, { wd: 'Fri', dn: '10' }, { wd: 'Sat', dn: '11' }],
-  caption: { open: 'Sunday, the twenty-sixth of February. Eight minutes to six in the morning.<br><br>One small black bag. A coat over the passenger seat. A folder she was careful not to look at. No phone.<br><br>“Two weeks,” he said. She chose twelve, because it was a better number.<br><br>The grey estate has gone round the corner. She has gone into the little office behind the workbench, because she isn’t going to stand in a doorway for twelve days.' },
+  caption: { open: 'Sunday, the twenty-sixth of February. Eight minutes to six in the morning.<br><br>One small black bag. A coat over the passenger seat. A folder she was careful not to look at. No phone.<br><br>“Two weeks,” he said. She chose twelve, because it was a better number.<br><br>The gray estate has gone round the corner. She has gone into the little office behind the workbench, because she isn’t going to stand in a doorway for twelve days.' },
   days: [
     { date: 'Sun 26 Feb', dn: 26, start: '06:03', beats: [
       { id: 'g1', target: 'thread:g', auto: true, autoDelay: 600 },
@@ -65,7 +65,7 @@ StoryEngine.start({
     ] },
     mail: { items: [
       { id: 'm0', day: 0, from: 'Granny Shum', subject: 'Saturday', date: '24/02/2023', full: '24 February 2023 at 19:02', body: 'The gas-works bend is still new tarmac to the fifth lamp post.\n\nYour guard has not been. I noticed.\n\nNO GUNS NO DRUNKS NO CHILDREN NO CRYING.\n\nG.S.' },
-      { id: 'm1', day: 1, from: 'Northern Circuit', subject: 'Your test day: incident report', date: '19:20', full: 'Saturday 4 March 2023 at 19:20', body: 'Car 7, Team AURELIA.\n\n09:21, turn 9 (the Needle). Car ran wide under braking, kerb strike, light contact with the tyre-wall apron. No barrier damage. Driver uninjured.\n\nPlease confirm the car’s splitter has been inspected before your next session.\n\nCircuit Safety Office' }
+      { id: 'm1', day: 1, from: 'Northern Circuit', subject: 'Your test day: incident report', date: '19:20', full: 'Saturday 4 March 2023 at 19:20', body: 'Car 7, Team AURELIA.\n\n09:21, turn 9 (the Needle). Car ran wide under braking, curb strike, light contact with the tire-wall apron. No barrier damage. Driver uninjured.\n\nPlease confirm the car’s splitter has been inspected before your next session.\n\nCircuit Safety Office' }
     ] },
     messages: { threads: [
       { id: 'g', day: 0, name: 'GUARD (LIFTS)', photo: 'img/av-haozhen.webp', time: '06:04', order: 50, items: [
@@ -83,7 +83,7 @@ StoryEngine.start({
         { t: 'out', text: 'Day 4. Mouse touched the shelves. I have moved them back.', day: 1 },
         { t: 'day', text: '<b>Sat 4 Mar</b> 23:14', beat: 'g2', day: 1 },
         { t: 'out', text: 'I went off at the Needle.', day: 1, live: true, play: [['p', 900], ['t', 'I went off at the Needle.']] },
-        { t: 'out', text: 'Less than a metre. Splitter’s cracked. I’m fine.', day: 1, live: true, play: [['p', 1200], ['t', 'Less than a metre. Splitter’s cracked. I’m fine.']] },
+        { t: 'out', text: 'Less than a meter. Splitter’s cracked. I’m fine.', day: 1, live: true, play: [['p', 1200], ['t', 'Less than a meter. Splitter’s cracked. I’m fine.']] },
         { t: 'out', text: 'Don’t ask me why.', day: 1, live: true, play: [['p', 1600], ['t', 'It was because'], ['p', 1400], ['d', 14], ['p', 900], ['t', 'Don’t ask me why.']] },
         { t: 'out', text: 'Four tenths quicker in the afternoon. I didn’t look at the gate once.', day: 1, live: true, play: [['p', 1300], ['t', 'Four tenths quicker in the afternoon. I didn’t look at the gate once.']] },
         { t: 'day', text: '<b>Fri 10 Mar</b> 11:49', beat: 'g3', day: 2 },
@@ -93,7 +93,7 @@ StoryEngine.start({
         { t: 'day', text: '<b>Fri 10 Mar</b> 23:58', beat: 'g4', day: 2 },
         { t: 'in', text: 'I read them.', day: 2, live: true, wait: 600 },
         { t: 'in', text: 'All of them. On the bench, while the kettle was on.', day: 2, live: true, wait: 1700 },
-        { t: 'out', text: 'You’re three metres away.', day: 2, live: true },
+        { t: 'out', text: 'You’re three meters away.', day: 2, live: true },
         { t: 'in', text: 'I know. It’s easier to write it.', day: 2, live: true, wait: 2100 },
         { t: 'in', text: 'Next time I’ll write something on the card.', day: 2, live: true, wait: 1600 },
         { t: 'out', text: 'More than your name.', day: 2, live: true },
@@ -109,7 +109,7 @@ StoryEngine.start({
         { t: 'in', text: 'coming over', live: true, wait: 1600 },
         { t: 'day', text: '<b>Sat 4 Mar</b> 22:44', day: 1 },
         { t: 'in', text: 'sent you the data. look at lap 3', day: 1 },
-        { t: 'in', text: 'you braked 22 metres late at the Needle. you never brake late at the Needle', day: 1 },
+        { t: 'in', text: 'you braked 22 meters late at the Needle. you never brake late at the Needle', day: 1 },
         { t: 'day', text: '<b>Sat 11 Mar</b> 11:26', beat: 'mo2', day: 3 },
         { t: 'in', text: 'WHAT', day: 3 },
         { t: 'in', text: 'aurelia says ring', day: 3, live: true, wait: 900 },
@@ -125,7 +125,7 @@ StoryEngine.start({
         { t: 'in', text: 'Saturday week. I’ll do the clipboard. Camel coat, don’t laugh.' },
         { t: 'day', text: '<b>Sat 4 Mar</b> 22:58', beat: 'au', day: 1 },
         { t: 'in', text: 'The splitter is on my account. Don’t argue.', day: 1 },
-        { t: 'in', text: 'And what I said by the tyres stands. When you can tell me, tell me.', day: 1, live: true, wait: 1500 },
+        { t: 'in', text: 'And what I said by the tires stands. When you can tell me, tell me.', day: 1, live: true, wait: 1500 },
         { t: 'out', text: 'And if I never can?', day: 1, live: true, play: [['p', 1100], ['t', 'And if I never can?']] },
         { t: 'in', text: 'Then I’ll pay for the splitter. And wait anyway.', day: 1, live: true, wait: 2000 },
         { t: 'day', text: '<b>Sat 11 Mar</b> 11:19', beat: 'au2', day: 3 },
@@ -149,7 +149,7 @@ StoryEngine.start({
       { id: 't', day: 1, title: 'Test 4 Mar — Gilded (Mouse)', cols: ['Lap', 'Time', 'Needle brake', 'Min speed', 'Note'], rows: [
         ['1', '2:04.81', 'board', '71 km/h', 'out lap'],
         ['2', '1:57.92', 'board', '74 km/h', ''],
-        ['3', '2:11.60', '+22 m late', '—', 'off. kerb. splitter. < 1 m from wall'],
+        ['3', '2:11.60', '+22 m late', '—', 'off. curb. splitter. < 1 m from wall'],
         ['4', '2:26.04', '—', '—', 'in lap, slow'],
         ['PM 1', '1:56.71', 'board', '75 km/h', 'new pads OK'],
         ['PM 2', '1:56.12', 'board', '76 km/h', ''],

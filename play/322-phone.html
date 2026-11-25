@@ -79,13 +79,13 @@ StoryEngine.start({
         { t: 'in', text: 'Good. Then she is still herself.' },
         { t: 'day', text: '<b>Sun 21 Sep</b> 15:40' },
         { t: 'in', text: 'What do they give her for the shoulder?' },
-        { t: 'out', text: 'A sling. Grey. From the hospital.' },
-        { t: 'in', text: 'Grey is miserable. Which arm?' },
+        { t: 'out', text: 'A sling. Gray. From the hospital.' },
+        { t: 'in', text: 'Gray is miserable. Which arm?' },
         { t: 'out', text: 'Left. Collarbone.' },
         { t: 'in', text: 'Is she tall or small?' },
         { t: 'out', text: 'Small. She says she isn’t.' },
         { t: 'day', text: '<b>Today</b> 21:10' },
-        { t: 'in', text: 'I have started it. Red cotton. Is red her colour?' }
+        { t: 'in', text: 'I have started it. Red cotton. Is red her color?' }
       ] },
       { id: 'ninth', name: 'Ninth floor', group: true, initials: '9', color: 'linear-gradient(180deg,#a5b4c7,#6d7f99)', time: '16/09', order: 40, items: [
         { t: 'day', text: '<b>Mon 15 Sep</b> 08:11' },
@@ -200,7 +200,7 @@ StoryEngine.start({
       { id: 'ask', group: 'Previous 7 Days', when: '22/09/2025', stamp: '22 September 2025 at 04:10', title: 'Things she will ask',
         body: [
           'The car. (Front-left wishbone. Cell held. Gilded comes home Saturday.)',
-          'The data. (Matteo has it. Four litres of oil in under two seconds. No flag in time.)',
+          'The data. (Matteo has it. Four liters of oil in under two seconds. No flag in time.)',
           'Whether it was her. (No. Mouse will tell her. She believes Mouse.)',
           'Who came. (Everyone.)',
           'When she can drive. (Not yet. Don’t say not yet. Say the consultant will tell us.)',
@@ -253,7 +253,7 @@ StoryEngine.start({
   calendar: { today: [{ title: 'Discharge, ninth floor', time: '11:00' }], later: [{ title: 'Fracture clinic', time: 'Thu 6 November' }] },
 
   beats: [
-    { id: 'ma', onLock: true, target: 'thread:ma', banner: { app: 'messages', title: 'Mother', body: 'I have started it. Red cotton. Is red her colour?', when: '2m ago', open: 'thread:ma' } },
+    { id: 'ma', onLock: true, target: 'thread:ma', banner: { app: 'messages', title: 'Mother', body: 'I have started it. Red cotton. Is red her color?', when: '2m ago', open: 'thread:ma' } },
     { id: 'ninth', target: 'thread:ninth', at: '21:15', unread: 'ninth', time: '21:15', push: [{ t: 'day', text: '<b>Today</b> 21:15' }, { t: 'in', who: 'Jinx', text: 'Is she home? Is she being terrible?' }], banner: { app: 'messages', title: 'Ninth floor', body: 'Jinx: Is she home? Is she being terrible?', open: 'thread:ninth' }, delay: 2600 },
     { id: 'vs', target: 'thread:vs', at: '21:17', unread: 'vs', time: '21:17', push: [{ t: 'in', text: 'Mr. Qin, the consultant’s numbers for her own doctor. You wrote them all down. I saw you, in that little notebook of yours.' }], banner: { app: 'messages', title: 'Mrs. Song', body: 'Mr. Qin, the consultant’s numbers for her own doctor. You wrote them all down.', open: 'thread:vs' }, delay: 2800 },
     { id: 'note', target: 'note:ninth', delay: 600, hold: 9000 },
@@ -263,7 +263,7 @@ StoryEngine.start({
   ],
   end: {
     delay: 3800, at: '21:31', capDelay: 1800,
-    caption: 'The side door. His step on the concrete, quiet, because he thought she was asleep.<br><br>She put the phone back on the charger, face down, beside the mug.<br><br>The parcel came on Saturday from the north. Red cotton, softer than the hospital’s grey, with a mountain road winding up it from one corner to the other and a very small car near the top.<br><br>“Baizhang,” she said, as if she hadn’t known.<br><br>“She sent you a road,” said Haozhen.'
+    caption: 'The side door. His step on the concrete, quiet, because he thought she was asleep.<br><br>She put the phone back on the charger, face down, beside the mug.<br><br>The parcel came on Saturday from the north. Red cotton, softer than the hospital’s gray, with a mountain road winding up it from one corner to the other and a very small car near the top.<br><br>“Baizhang,” she said, as if she hadn’t known.<br><br>“She sent you a road,” said Haozhen.'
   }
 });
 
