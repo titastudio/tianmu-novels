@@ -762,6 +762,38 @@ body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
   letter-spacing: 0.6rem;
 }
 
+
+/* tm-reader-features-v1: last line read, read aloud, next for you */
+.resume-mark { animation: resumeMark 2.6s ease-out; border-radius: 6px; }
+@keyframes resumeMark { 0%,35% { background: rgba(232,116,90,0.18); box-shadow: 0 0 0 6px rgba(232,116,90,0.18); } 100% { background: transparent; box-shadow: 0 0 0 6px transparent; } }
+.reader-pill { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%) translateY(140%); background: var(--ink); color: var(--cream-dark); border: 2px solid var(--coral); border-radius: 40px; padding: 0.45rem 0.6rem 0.45rem 1.1rem; display: flex; align-items: center; gap: 0.55rem; z-index: 95; box-shadow: 0 4px 24px rgba(0,0,0,0.3); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); max-width: calc(100vw - 1.6rem); }
+.reader-pill.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+.reader-pill:not(.show) { opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.35s, opacity 0.2s, visibility 0s 0.35s; }
+@media (max-width: 600px) {
+  .reader-pill { left: 0.8rem; right: 4.4rem; max-width: none; transform: translateY(140%); padding-left: 0.9rem; gap: 0.4rem; }
+  .reader-pill.show { transform: translateY(0); }
+  .reader-pill button { padding: 0.42rem 0.6rem; }
+}
+.reader-pill .rp-text { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.reader-pill button { background: var(--coral); color: #fff; border: none; border-radius: 20px; font-family: 'Syne', sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.42rem 0.75rem; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+.reader-pill button.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.35); }
+.tts-on { background: rgba(232,116,90,0.13); box-shadow: 0 0 0 6px rgba(232,116,90,0.13); border-radius: 6px; transition: background 0.3s; }
+body.dark-read .tts-on { background: rgba(232,116,90,0.16); box-shadow: 0 0 0 6px rgba(232,116,90,0.16); }
+body:not(.in-reader) #ttsBtn { display: none; }
+#ttsBtn.on { background: var(--coral); color: #fff; }
+.next-for-you { margin-top: 2.5rem; padding-top: 1.6rem; border-top: 2px dashed var(--border); }
+.nfy-kicker { font-family: 'Syne', sans-serif; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.9rem; }
+.nfy-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; }
+.nfy-card { display: flex; flex-direction: column; border: 2px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--cream); box-shadow: 3px 3px 0 var(--border); cursor: pointer; transition: transform 0.15s; text-align: left; padding: 0; font: inherit; color: var(--ink); }
+.nfy-card:hover { transform: translate(-2px,-2px); }
+.nfy-band { height: 54px; }
+.nfy-body { padding: 0.75rem 0.95rem 0.9rem; }
+.nfy-title { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.08rem; line-height: 1.2; }
+.nfy-why { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; color: #6a5a40; margin-top: 0.25rem; }
+.nfy-go { font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-top: 0.55rem; }
+body.dark-read .nfy-card { background: #1e1a12; color: #e8dcc4; border-color: #3a3222; box-shadow: 3px 3px 0 #3a3222; }
+body.dark-read .nfy-why { color: #a89878; }
+body.dark-read .next-for-you { border-color: #3a3222; }
 .reader-nav {
   display: flex;
   justify-content: space-between;
@@ -3023,6 +3055,7 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
       <button class="reader-nav-btn" id="backToListBtn" onclick="showChapterList()" data-i18n="all-ch">All Chapters</button>
       <button class="reader-nav-btn" id="nextChBtn" onclick="nextChapter()" data-i18n="next-ch">Next →</button>
     </div>
+    <div class="next-for-you" id="nextForYou" style="display:none"></div>
   </div>
 
 </div><!-- /readingView -->
@@ -3076,7 +3109,10 @@ body.in-reader .reading-hero-title { font-size: clamp(1.05rem, 3.2vw, 1.5rem); m
 <div class="font-controls" id="fontControls" style="display:none">
   <button class="font-btn" onclick="changeFontSize(1)">A+</button>
   <button class="font-btn" onclick="changeFontSize(-1)">A−</button>
+  <button class="font-btn" id="ttsBtn" onclick="ttsToggle()" title="Read aloud" aria-label="Read aloud" style="display:none">🔊</button>
 </div>
+<div class="reader-pill" id="resumePill" role="status"><span class="rp-text">Back where you left off</span><button class="ghost" onclick="_resumeFromTop()">From the top</button></div>
+<div class="reader-pill" id="ttsPill" role="group" aria-label="Read aloud"><span class="rp-text" id="ttsText">Reading aloud</span><button id="ttsPlay" onclick="ttsToggle()">Pause</button><button class="ghost" id="ttsRate" onclick="ttsRate()">1×</button><button class="ghost" onclick="ttsStop()">Stop</button></div>
 
 <script>
 // ═══════════════════════════════════════════════════
@@ -3198,7 +3234,7 @@ function openNovel(idx, _noPush) {
 
 // Internal UI update without pushing state
 function _showChapterListUI() {
-  _readTrackStop();
+  _readTrackStop(); ttsStop(); _hidePill('resumePill');
   document.getElementById('chapterListView').style.display = 'block';
   if (currentNovel !== null) renderChapterList(currentNovel);   // refreshes the continue card and the last-read tag
   document.getElementById('chapterReaderView').classList.remove('active');
@@ -3312,6 +3348,8 @@ function openChapter(idx, _noPush) {
   currentChapterIdx = idx;
   const novel = NOVELS[currentNovel];
   const ch = novel.chapters[idx];
+  if (!(_rt && _rt.nid === novel.id && _rt.c === idx)) _pendingRestore = { nid: novel.id, c: idx };   // a fresh open, not a re-draw
+  if (!_ttsAdvancing) ttsStop();
   if (novel._lite) {
     const want = currentNovel;
     _ensureNovel(want).then(() => { if (currentNovel === want && currentChapterIdx === idx) openChapter(idx, true); })
@@ -3359,6 +3397,12 @@ function openChapter(idx, _noPush) {
 
   animateView(document.getElementById('chapterReaderView'));
   window.scrollTo(0,0);
+  _renderNextForYou(novel, idx, _visibleForNav);
+  const tb = document.getElementById('ttsBtn'); if (tb) tb.style.display = _ttsOK() ? 'flex' : 'none';
+  if (!novel._lite && ch.content != null && _pendingRestore && _pendingRestore.nid === novel.id && _pendingRestore.c === idx) {
+    _pendingRestore = null;
+    if (!_ttsAdvancing) _restoreLine(novel, idx);
+  }
 }
 
 function jumpToChapter(val) {
@@ -3398,7 +3442,7 @@ function goBack() {
   document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
   document.getElementById('readerProgressWrap').style.display = 'none';
   currentNovel = null;
-  _readTrackStop(); _refreshCardReads();
+  _readTrackStop(); _refreshCardReads(); ttsStop(); _hidePill('resumePill');
   try { history.pushState({ view: 'library' }, '', window.location.pathname); } catch(e) {}
   _setLibraryMeta();
   animateView(document.getElementById('libraryView'));
@@ -3472,7 +3516,7 @@ window.addEventListener('popstate', e => {
     document.getElementById('fontControls').style.display = 'none'; document.body.classList.remove('in-reader');
     document.getElementById('readerProgressWrap').style.display = 'none';
     currentNovel = null;
-    _readTrackStop(); _refreshCardReads();
+    _readTrackStop(); _refreshCardReads(); ttsStop(); _hidePill('resumePill');
     _setLibraryMeta();
     window.scrollTo(0,0);
   } else if (state.view === 'novel') {
@@ -5009,6 +5053,7 @@ function buildReaderLangBar(novelIdx, chapterIdx) {
 }
 
 function setReaderLang(code) {
+  ttsStop();
   currentReaderLang = code;
   // re-render current chapter in chosen language
   if (currentNovel !== null) openChapter(currentChapterIdx);
@@ -5176,7 +5221,7 @@ function _readTrackStart(novelIdx, chapterIdx) {
   if (!n) return;
   if (_rt && _rt.nid === n.id && _rt.c === chapterIdx) return;   // same chapter re-rendered (e.g. language switch)
   _readTrackStop();
-  _rt = { nid: n.id, c: chapterIdx, t: n.chapters[chapterIdx]?.title || '', secs: 0, maxPct: 0, counted: false };
+  _rt = { nid: n.id, c: chapterIdx, t: n.chapters[chapterIdx]?.title || '', secs: 0, maxPct: 0, maxP: 0, counted: false };
   _lastActivity = Date.now();
   _rtTimer = setInterval(_readTick, 1000);
 }
@@ -5188,6 +5233,7 @@ function _readTick() {
   if (Date.now() - _lastActivity > READ_RULES.idleSeconds * 1000) return;   // tab left open, nobody reading
   _rt.secs++;
   _rt.maxPct = Math.max(_rt.maxPct, _scrollPct());
+  _rt.maxP = Math.max(_rt.maxP, _topPara());
   const ok = (_rt.secs >= READ_RULES.minSeconds && _rt.maxPct >= READ_RULES.minPct) ||
              (_rt.secs >= READ_RULES.fastSeconds && _rt.maxPct >= READ_RULES.fastPct);
   if (ok) {
@@ -5199,8 +5245,11 @@ function _saveRead() {
   if (!_rt) return;
   const all = _readAll();
   const prev = all[_rt.nid];
-  const pct = (prev && (prev.t ? prev.t === _rt.t : prev.c === _rt.c)) ? Math.max(prev.pct || 0, _rt.maxPct) : _rt.maxPct;
-  all[_rt.nid] = { c: _rt.c, t: _rt.t, pct: Math.round(pct * 100) / 100, at: Date.now() };
+  const same = prev && (prev.t ? prev.t === _rt.t : prev.c === _rt.c);
+  const pct = same ? Math.max(prev.pct || 0, _rt.maxPct) : _rt.maxPct;
+  const lang = currentReaderLang || 'en';
+  const p = (same && (prev.l || 'en') === lang) ? Math.max(prev.p || 0, _rt.maxP) : _rt.maxP;
+  all[_rt.nid] = { c: _rt.c, t: _rt.t, pct: Math.round(pct * 100) / 100, p, l: lang, at: Date.now() };
   _writeAll(all);
 }
 function _readTrackStop() {
@@ -5256,13 +5305,193 @@ function resumeNovel(novelIdx) {
   const tgt = _resumeTarget(novel, r);
   if (currentNovel !== novelIdx) openNovel(novelIdx);
   openChapter(tgt.c);
-  if (!tgt.finished && r.pct > 0.02) {
-    setTimeout(() => {
-      const d = document.documentElement;
-      window.scrollTo(0, r.pct * (d.scrollHeight - d.clientHeight));
-    }, 120);
-  }
 }
+
+// ── LAST LINE READ (tm-reader-features-v1) ──
+// Any way into a chapter you hadn't finished (Resume, the chapter list, a saved link, a refresh)
+// puts you back on the paragraph you'd reached, on phones and computers alike.
+let _pendingRestore = null;
+function _paras() { const t = document.getElementById('readerText'); return t ? Array.from(t.querySelectorAll(':scope > p')) : []; }
+function _navOffset() { const n = document.querySelector('.reading-nav'); const w = document.getElementById('readerProgressWrap'); return (n ? n.offsetHeight : 0) + (w && w.offsetParent ? w.offsetHeight : 0) + 12; }
+function _topPara() {
+  const ps = _paras(), top = _navOffset();
+  for (let i = 0; i < ps.length; i++) if (ps[i].getBoundingClientRect().bottom > top) return i;
+  return Math.max(0, ps.length - 1);
+}
+let _pillTimer = null, _restoreAt = null;
+function _hidePill(id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
+function _restoreLine(novel, idx) {
+  const r = getNovelRead(novel.id);
+  if (!r || r.c !== idx || r.pct >= 0.95) return;
+  const usePara = (r.l || 'en') === (currentReaderLang || 'en') && r.p > 0;
+  if (!usePara && !(r.pct > 0.02)) return;
+  let moved = false;
+  const go = () => {
+    if (moved && Math.abs(window.scrollY - _restoreAt) > 60) return;   // the reader has scrolled since: leave them be
+    const ps = _paras(), d = document.documentElement;
+    let y;
+    if (usePara && ps[r.p]) y = ps[r.p].getBoundingClientRect().top + window.scrollY - _navOffset() - Math.round(window.innerHeight * 0.12);
+    else y = r.pct * (d.scrollHeight - d.clientHeight);
+    if (y < 120) return;
+    window.scrollTo({ top: y, behavior: 'instant' }); _restoreAt = window.scrollY; moved = true;
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    go();
+    if (!moved) return;
+    const ps = _paras();
+    if (usePara && ps[r.p]) { ps[r.p].classList.remove('resume-mark'); void ps[r.p].offsetWidth; ps[r.p].classList.add('resume-mark'); }
+    const pill = document.getElementById('resumePill');
+    if (pill) { pill.classList.add('show'); clearTimeout(_pillTimer); _pillTimer = setTimeout(() => pill.classList.remove('show'), 6000); }
+  }));
+  // fonts and photos can shift the page a moment later
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(go, 50));
+  setTimeout(go, 700);
+}
+function _resumeFromTop() { _hidePill('resumePill'); _restoreAt = -9999; window.scrollTo({ top: 0, behavior: 'instant' }); }
+
+// ── READ ALOUD (tm-reader-features-v1) ──
+// Uses the voice built into the reader's phone or computer. Nothing is sent anywhere.
+const _tts = { on: false, paused: false, i: 0, parts: [], gen: 0, rate: 1, fast: 0 };
+let _ttsAdvancing = false;
+try { _tts.rate = parseFloat(localStorage.getItem('tm_tts_rate')) || 1; } catch(e) {}
+const _TTS_RATES = [0.85, 1, 1.15, 1.3, 1.5];
+function _ttsOK() { return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined'; }
+function _ttsLang() { const c = currentReaderLang || 'en'; return c === 'en' ? 'en-GB' : c === 'zh' ? 'zh-CN' : c; }
+function _ttsVoice(lang) {
+  const vs = (window.speechSynthesis.getVoices() || []).filter(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2).toLowerCase()));
+  if (!vs.length) return null;
+  const score = v => (v.lang.toLowerCase() === lang.toLowerCase() ? 4 : 0) + (/natural|neural|premium|enhanced/i.test(v.name) ? 3 : 0) + (/google|siri|samantha|daniel|serena|libby|sonia/i.test(v.name) ? 1 : 0) + (v.localService ? 1 : 0);
+  return vs.sort((a, b) => score(b) - score(a))[0];
+}
+if (_ttsOK()) { try { speechSynthesis.getVoices(); speechSynthesis.addEventListener('voiceschanged', () => {}); } catch(e) {} }
+function _ttsCollect() {
+  // one entry per paragraph; long paragraphs are cut at sentence ends so no browser drops them
+  const out = [];
+  _paras().forEach((p, pi) => {
+    const c = p.cloneNode(true); c.querySelectorAll('sup, .footnote-ref').forEach(x => x.remove());
+    const t = c.textContent.replace(/\s+/g, ' ').trim();
+    if (!t || /^[✦*·\s]+$/.test(t)) return;
+    const bits = t.match(/[^.!?…]+[.!?…]+[”’"']*\s*|[^.!?…]+$/g) || [t];
+    let cur = '';
+    bits.forEach(b => { if ((cur + b).length > 220 && cur) { out.push({ pi, t: cur.trim() }); cur = ''; } cur += b; });
+    if (cur.trim()) out.push({ pi, t: cur.trim() });
+  });
+  return out;
+}
+function _ttsMark() {
+  document.querySelectorAll('.tts-on').forEach(e => e.classList.remove('tts-on'));
+  const part = _tts.parts[_tts.i]; if (!part) return;
+  const p = _paras()[part.pi]; if (!p) return;
+  p.classList.add('tts-on');
+  const r = p.getBoundingClientRect(), top = _navOffset();
+  if (r.top < top || r.bottom > window.innerHeight - 90) window.scrollTo({ top: r.top + window.scrollY - top - 40, behavior: 'smooth' });
+  const lab = document.getElementById('ttsText');
+  if (lab) lab.textContent = `Reading aloud · ${Math.round(100 * _tts.i / Math.max(1, _tts.parts.length))}%`;
+}
+function _ttsSpeak() {
+  const gen = ++_tts.gen;
+  try { speechSynthesis.cancel(); } catch(e) {}
+  const part = _tts.parts[_tts.i];
+  if (!part) { _ttsEnd(); return; }
+  _ttsMark();
+  const u = new SpeechSynthesisUtterance(part.t);
+  const lang = _ttsLang(); u.lang = lang; const v = _ttsVoice(lang); if (v) u.voice = v;
+  u.rate = _tts.rate;
+  let t0 = 0; u.onstart = () => { t0 = Date.now(); };
+  // a browser with no usable voice "finishes" every line at once: stop instead of racing through the book
+  const quick = () => { _tts.fast = (!t0 || Date.now() - t0 < 120) && part.t.length > 25 ? _tts.fast + 1 : 0; if (_tts.fast >= 4) { ttsStop(); alert('This browser has no voice to read aloud with. Try another browser, or add a voice in your phone’s settings.'); return true; } };
+  u.onend = () => { if (gen !== _tts.gen || !_tts.on || _tts.paused) return; if (quick()) return; _tts.i++; _ttsSpeak(); };
+  u.onerror = e => { if (gen !== _tts.gen) return; if (e.error === 'interrupted' || e.error === 'canceled') return; if (quick()) return; _tts.i++; _ttsSpeak(); };
+  setTimeout(() => { if (gen === _tts.gen) speechSynthesis.speak(u); }, 60);
+}
+function _ttsUI() {
+  const pill = document.getElementById('ttsPill'), btn = document.getElementById('ttsBtn');
+  if (pill) pill.classList.toggle('show', _tts.on);
+  if (btn) { btn.classList.toggle('on', _tts.on); btn.textContent = _tts.on && !_tts.paused ? '⏸' : '🔊'; btn.title = _tts.on && !_tts.paused ? 'Pause reading' : 'Read aloud'; }
+  const pl = document.getElementById('ttsPlay'); if (pl) pl.textContent = _tts.paused ? 'Play' : 'Pause';
+  const rt = document.getElementById('ttsRate'); if (rt) rt.textContent = (_tts.rate === 1 ? '1' : _tts.rate) + '×';
+  if (_tts.on) _hidePill('resumePill');
+}
+function ttsToggle() {
+  if (!_ttsOK()) { alert('Reading aloud isn’t available in this browser.'); return; }
+  if (!_tts.on) {
+    _tts.parts = _ttsCollect();
+    if (!_tts.parts.length) return;
+    const start = _topPara();
+    _tts.i = Math.max(0, _tts.parts.findIndex(x => x.pi >= start));
+    _tts.on = true; _tts.paused = false; _tts.fast = 0; _ttsUI(); _ttsSpeak();
+  } else if (_tts.paused) { _tts.paused = false; _ttsUI(); _ttsSpeak(); }
+  else { _tts.paused = true; _tts.gen++; try { speechSynthesis.cancel(); } catch(e) {} _ttsUI(); }
+}
+function ttsRate() {
+  const k = _TTS_RATES.indexOf(_tts.rate);
+  _tts.rate = _TTS_RATES[(k + 1) % _TTS_RATES.length];
+  try { localStorage.setItem('tm_tts_rate', String(_tts.rate)); } catch(e) {}
+  _ttsUI();
+  if (_tts.on && !_tts.paused) _ttsSpeak();
+}
+function ttsStop() {
+  if (!_tts.on) return;
+  _tts.on = false; _tts.paused = false; _tts.gen++;
+  try { speechSynthesis.cancel(); } catch(e) {}
+  document.querySelectorAll('.tts-on').forEach(e => e.classList.remove('tts-on'));
+  _ttsUI();
+}
+function _ttsEnd() {
+  // end of the chapter: carry on into the next one, like an audiobook
+  const vis = getVisibleChapterIndices(), pos = vis.indexOf(currentChapterIdx);
+  if (pos > -1 && pos < vis.length - 1) {
+    _ttsAdvancing = true;
+    openChapter(vis[pos + 1]);
+    const novel = NOVELS[currentNovel];
+    const begin = () => {
+      _ttsAdvancing = false;
+      _tts.parts = _ttsCollect(); _tts.i = 0;
+      const ch = novel.chapters[currentChapterIdx];
+      if (ch && ch.title) _tts.parts.unshift({ pi: 0, t: `${chapterLabel(novel, currentChapterIdx).long}. ${ch.title}.` });
+      if (!_tts.parts.length) { ttsStop(); return; }
+      _ttsSpeak();
+    };
+    if (novel._lite) _ensureNovel(currentNovel).then(() => setTimeout(begin, 200)).catch(() => { _ttsAdvancing = false; ttsStop(); });
+    else setTimeout(begin, 200);
+  } else ttsStop();
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && _tts.on && !_tts.paused && !speechSynthesis.speaking) _ttsSpeak(); });
+
+// ── NEXT FOR YOU (tm-reader-features-v1) ──
+// At the end of the last chapter there is so far, suggest the books that share people with this one.
+// novel.related is worked out from the character lists when the site is built.
+function _renderNextForYou(novel, idx, vis) {
+  const box = document.getElementById('nextForYou');
+  if (!box) return;
+  const last = vis.length && vis[vis.length - 1] === idx;
+  if (!last) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  const reads = _readAll();
+  const live = n => n && n.id !== novel.id && (!n.status || n.status === 'active') && (n.chapters || []).some(_chapterIsLive);
+  let picks = (novel.related || []).map(r => ({ n: NOVELS.find(x => x.id === r.id), why: r.why })).filter(x => live(x.n));
+  if (!picks.length) picks = NOVELS.filter(live).map(n => ({ n, why: 'Another story by 甜慕 Tián Mù' }));
+  const state = n => { const r = reads[n.id]; return !r ? 0 : r.pct >= 0.95 && _resumeTarget(n, r).done ? 2 : 1; };
+  picks = picks.map((x, k) => ({ ...x, k, s: state(x.n) })).filter(x => x.s < 2).sort((a, b) => a.s - b.s || a.k - b.k).slice(0, 2);
+  if (!picks.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  const done = String(novel.badge || '').toUpperCase().includes('COMPLETE');
+  const esc = t => String(t || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  box.innerHTML = `<div class="nfy-kicker">${done ? 'Next for you' : 'While you wait for the next chapter'}</div>
+    <div class="nfy-list">${picks.map(x => `<button class="nfy-card" onclick="_openNextForYou('${esc(x.n.id)}')">
+      <div class="nfy-band" style="background:linear-gradient(135deg,${esc(x.n.color)},${esc(x.n.coverAccent)})"></div>
+      <div class="nfy-body"><div class="nfy-title">${esc(x.n.titles.en)}</div><div class="nfy-why">${esc(x.why)}</div>
+      <div class="nfy-go">${x.s === 1 ? 'Continue →' : 'Start reading →'}</div></div></button>`).join('')}</div>`;
+  box.style.display = 'block';
+}
+function _openNextForYou(id) {
+  const i = NOVELS.findIndex(n => n.id === id);
+  if (i < 0) return;
+  const r = getNovelRead(id);
+  if (r) { resumeNovel(i); return; }
+  openNovel(i);
+  const go = () => { const v = getVisibleChapterIndices(); if (v.length) openChapter(v[0]); };
+  if (NOVELS[i]._lite) _ensureNovel(i).then(go).catch(go); else go();
+}
+
 function _cardReadLine(n) {
   const r = getNovelRead(n.id);
   if (!r) return '';
@@ -5287,6 +5516,8 @@ function loadLastRead() {
     const shortTitle = title.length > 24 ? title.slice(0, 24) + '…' : title;
     document.getElementById('resumeText').textContent = `Continue “${shortTitle}” · ${chapterLabel(NOVELS[idx], best.r.c).short}`;
     document.getElementById('resumeBtn').onclick = () => { dismissResume(); resumeNovel(idx); };
+    // fetch that book quietly once the page is idle, so Resume opens straight away
+    (window.requestIdleCallback || (f => setTimeout(f, 2500)))(() => _ensureNovel(idx).catch(() => {}));
     const banner = document.getElementById('resumeBanner');
     banner.style.display = 'flex';
     setTimeout(() => banner.classList.add('show'), 600);
@@ -5779,7 +6010,8 @@ function _buildContentFiles() {
     const clean = _cleanNovel(n), text = _fmt(clean);
     files[_pNovel(names[i])] = text;
     const lite = Object.assign({}, clean, { _file: names[i], _ver: _ver(text) });
-    lite.chapters = (clean.chapters || []).map(c => { const o = Object.assign({}, c); const tmp = document.createElement('div'); tmp.innerHTML = o.content || ''; o.words = tmp.textContent.trim().split(/\s+/).filter(Boolean).length; delete o.content; delete o.translations; return o; });
+    lite.chapters = (clean.chapters || []).map(c => { const o = Object.assign({}, c); const tmp = document.createElement('div'); tmp.innerHTML = o.content || ''; o.words = tmp.textContent.trim().split(/\s+/).filter(Boolean).length; delete o.content; delete o.translations; delete o.desc; delete o.epigraph; return o; });
+    delete lite.frontMatter; delete lite.photoMoments;   // these come with the book when it's opened (faster first load)
     cat.push(lite);
   });
   files[_P_CATALOG] = JSON.stringify({ novels: cat }) + '\n';

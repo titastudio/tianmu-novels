@@ -35,7 +35,7 @@ The site goes live at `https://<username>.github.io/<repo>/` in about a minute.
 
 **Option A — edit the files directly.** Open a file in `content/novels/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`. If you change titles, dates or chapters this way, also replace `content/catalog.json` (the admin download makes a fresh one), or the library will show the old list.
 
-**Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file, in well under a second, then loads chapter text in the background. Each novel file is fetched with a version tag, so the browser keeps it and a refresh doesn't download it again.
+**Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file (about 200 KB, 25 KB compressed: no chapter text, character pages, photos, chapter blurbs or epigraphs; those come with the book when it's opened), in well under a second, then loads chapter text when a book is opened. The book you were last reading is fetched quietly in the background, so Resume opens straight away. Each novel file is fetched with a version tag, so the browser keeps it and a refresh doesn't download it again.
 
 **Option B — use the admin panel.** Click the logo **5 times** and log in. Edit anything. Your edits stay in that browser until you publish them:
 
@@ -81,6 +81,15 @@ Saved **only in each reader's own browser** (key `tm_reads_v1`), one entry per s
 - A chapter only counts as read after real reading: the chapter is open, the tab is visible, the reader has been active in the last minute, and has spent at least 20 seconds on it and scrolled at least 15% (or 8 seconds and 60% for fast readers). Quick clicks, previews and peeks are ignored.
 - Each story's page shows its own card: *Continue where you left off* (with % read), or *Up next* once a chapter is finished. A story the reader has never read shows nothing.
 - Library cards show "Reading Ch. N · 2 days ago" for stories in progress, and the home page offers the story read most recently.
+- **Last line read:** the paragraph the reader reached is saved too. Opening that chapter again in any way (Resume, the chapter list, a saved link, a refresh), on a phone or a computer, puts them back on that paragraph. A small bar offers *From the top*.
+
+## Read aloud
+
+The 🔊 button next to A+ / A− reads the chapter aloud with the voice built into the reader's phone or computer (nothing is sent anywhere). It starts at the paragraph on screen, highlights each paragraph as it goes, carries on into the next chapter, and has Pause, speed (0.85× to 1.5×) and Stop. Browsers with no voice installed show a message instead.
+
+## Next for you
+
+At the end of the last chapter so far, readers see up to two books that share people with the one they've just read ("Ren Hao's own story"), books they've already finished left out. The links come from each book's Characters list and are worked out when the site is built (`related` in each novel file and the catalog). An ongoing book says *While you wait for the next chapter*. A book with no shared people suggests other stories.
 
 ## Idea novels
 
