@@ -673,5 +673,23 @@
       "caption": "The long way round",
       "when": ""
     }
+  ],
+  "related": [
+    {
+      "id": "thorns",
+      "why": "Elowen Zhao and Zhao Zhendong’s own story"
+    },
+    {
+      "id": "the-ghost-surgeon",
+      "why": "Elara Wang’s own story"
+    },
+    {
+      "id": "stay-behind-me",
+      "why": "Evangeline Lee’s own story"
+    },
+    {
+      "id": "unofficial",
+      "why": "Eliana Lin’s own story"
+    }
   ]
 }
