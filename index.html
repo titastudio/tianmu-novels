@@ -660,6 +660,26 @@ body.dark-read .chapter-item.interactive .ix-icon { color: var(--cream-dark); }
 .ch-filter button.on { background:var(--ink); color:var(--cream); border-color:var(--ink); }
 .ch-legend { font-size:0.78rem; font-style:italic; color:#8a7a60; margin:0 0 0.9rem; }
 body.dark-read .chapter-item.side { background:#221c16; }
+.chapter-item.side.sv0 { background: #fde2e4; }
+body.dark-read .chapter-item.side.sv0 { background: #2a1c20; }
+.chapter-item.side.sv1 { background: #ffe5d0; }
+body.dark-read .chapter-item.side.sv1 { background: #2a2018; }
+.chapter-item.side.sv2 { background: #fff3c4; }
+body.dark-read .chapter-item.side.sv2 { background: #29261a; }
+.chapter-item.side.sv3 { background: #dff3e4; }
+body.dark-read .chapter-item.side.sv3 { background: #1a2620; }
+.chapter-item.side.sv4 { background: #dcecfb; }
+body.dark-read .chapter-item.side.sv4 { background: #1a2230; }
+.chapter-item.side.sv5 { background: #e8e1f7; }
+body.dark-read .chapter-item.side.sv5 { background: #221c2e; }
+.chapter-item.side.sv6 { background: #e6eed9; }
+body.dark-read .chapter-item.side.sv6 { background: #20261a; }
+.chapter-item.side.sv7 { background: #f5dcef; }
+body.dark-read .chapter-item.side.sv7 { background: #2a1c28; }
+.chapter-item.side.sv8 { background: #f1e6d6; }
+body.dark-read .chapter-item.side.sv8 { background: #262019; }
+.chapter-item.side.sv9 { background: #d8f1f0; }
+body.dark-read .chapter-item.side.sv9 { background: #18282a; }
 body.dark-read .ch-filter button { background:#1e1a14; color:#e8dcc8; border-color:#3a3020; }
 body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
 
@@ -3571,7 +3591,7 @@ function renderChapterList(idx) {
     const lastTag = (_lr && _lr.c === i) ? `<span class="ch-lastread">${_lr.pct >= 0.95 ? 'Read last' : 'Reading'}</span>` : '';
     const newTag = ch.isNew ? '<span class="ch-new-badge">New</span>' : '';
     return volHead + `
-    <div class="chapter-item${isSide ? ' side' : ''}" onclick="openChapter(${i})">
+    <div class="chapter-item${isSide ? ` side sv${(parseInt(lab.num.slice(1), 10) - 1) % 10}` : ''}" onclick="openChapter(${i})">
       ${numDisplay}
       <div class="ch-info">
         <div class="ch-title">${ch.title}${typeLabel}${newTag}${lastTag}</div>
@@ -3991,7 +4011,7 @@ function addNewNovel() {
     genre: 'Romance',
     color: '#3a5a6e',
     coverAccent: '#5a8aa0',
-    badge: 'NEW',
+    badge: 'IDEA',
     chapters: [],
     titles: { en: 'New Novel' },
     descs: { en: 'A new story begins here.' }
