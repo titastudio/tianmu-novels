@@ -819,6 +819,20 @@ body.dark-read .tm-opt.sel { color: var(--coral); }
 .reader-pill .tm-select-btn { background: transparent; color: var(--cream-dark); border: 1px solid rgba(255,255,255,0.35); box-shadow: none; min-height: 34px; font-size: 0.66rem; max-width: 9rem; }
 .reader-pill .tm-select-btn:hover { transform: none; box-shadow: none; border-color: var(--coral); }
 .reader-pill .tm-select-panel { max-width: min(300px, calc(100vw - 1.5rem)); }
+.reader-pill .tm-opt { display: flex; justify-content: center; gap: 0.45rem; width: 100%; min-height: 0; background: none; color: var(--ink); border: none; border-radius: 9px;
+  font-family: 'Instrument Serif', serif; font-size: 0.98rem; font-weight: 400; letter-spacing: normal; text-transform: none; text-align: center; padding: 0.5rem 1rem; white-space: normal; flex-shrink: 1; }
+.reader-pill .tm-opt:hover, .reader-pill .tm-opt:focus-visible { background: rgba(232,116,90,0.12); }
+.reader-pill .tm-opt.sel { color: var(--coral); font-weight: 700; }
+.reader-pill .tm-opt { position: relative; }
+.reader-pill .tm-opt.sel::after { position: absolute; right: 0.75rem; top: 50%; margin: -3.5px 0 0; }
+body.dark-read .reader-pill .tm-opt { color: #e8dcc4; }
+body.dark-read .reader-pill .tm-opt.sel { color: var(--coral); }
+/* reading bar: the chapter menu shortens instead of pushing the theme button onto a second line */
+.reading-nav > div:last-child { flex-wrap: nowrap !important; flex-shrink: 1 !important; min-width: 0; }
+.reading-nav #chapterJumpSelectWrap { min-width: 0; flex-shrink: 1; }
+.reading-nav #darkModeBtn { flex-shrink: 0; }
+/* the book page's tabs sit centred under the centred title */
+.frontmatter-tabs { justify-content: center; }
 @media (max-width: 600px) { .reader-pill .tm-select-btn { max-width: 6.5rem; } }
 /* tm-reader-ui: line icons in the text colour, no coloured emoji */
 .fm-block-icon .ico { width: 1.7rem; height: 1.7rem; stroke-width: 1.5; color: var(--coral); }
@@ -5615,7 +5629,7 @@ function _ttsSpeak() {
   if (!part) { _ttsEnd(); return; }
   _ttsMark();
   const u = new SpeechSynthesisUtterance(part.t);
-  const lang = _ttsLang(); u.lang = lang; const v = _ttsVoice(lang); if (v) u.voice = v;
+  const lang = _ttsLang(); u.lang = lang; const v = _ttsVoice(lang); if (v) { try { u.voice = v; } catch (e) {} }
   u.rate = _tts.rate;
   let t0 = 0; u.onstart = () => { t0 = Date.now(); };
   // a browser with no usable voice "finishes" every line at once: stop instead of racing through the book
