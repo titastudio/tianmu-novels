@@ -764,7 +764,63 @@ body.dark-read .ch-filter button.on { background:#e8dcc8; color:#1e1a14; }
 
 
 
-/* tm-reader-ui-v2: line icons in the text colour, no coloured emoji */
+
+/* tm-themed-controls: scroll bars, selection, focus and dropdowns in the site's colours */
+html { scrollbar-color: #c9b48f var(--cream); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: #c9b48f; border-radius: 10px; border: 2px solid var(--cream); }
+::-webkit-scrollbar-thumb:hover { background: var(--coral); }
+::-webkit-scrollbar-corner { background: transparent; }
+body.dark-read, body.dark-read * { scrollbar-color: #4a3f2c #16130e; }
+body.dark-read ::-webkit-scrollbar-track { background: #16130e; }
+body.dark-read ::-webkit-scrollbar-thumb { background: #4a3f2c; border-color: #16130e; }
+body.dark-read ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
+::selection { background: rgba(232,116,90,0.28); color: inherit; }
+:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+input::placeholder, textarea::placeholder { color: #a8987a; opacity: 1; font-style: italic; }
+textarea { scrollbar-width: thin; }
+.admin-select { appearance: none; -webkit-appearance: none; padding-right: 2.2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8745a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.8rem center; background-size: 14px; }
+/* themed dropdown */
+.tm-select { position: relative; display: inline-flex; min-width: 0; max-width: 100%; }
+.tm-select > select { position: absolute !important; opacity: 0 !important; pointer-events: none !important; width: 1px !important; height: 1px !important; overflow: hidden; }
+.tm-select-btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 0.5rem; min-width: 0; max-width: 100%; width: 100%;
+  font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--ink); background: var(--cream-dark);
+  border: 2px solid var(--border); border-radius: 20px; padding: 0.4rem 0.75rem 0.4rem 0.95rem; cursor: pointer; box-shadow: 2px 2px 0 var(--border); text-align: left; }
+.tm-select-btn .tm-select-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.tm-select-btn .ico { width: 14px; height: 14px; stroke: var(--coral); stroke-width: 2.2; transition: transform 0.2s; }
+.tm-select.open .tm-select-btn .ico { transform: rotate(180deg); }
+.tm-select-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--border); }
+.tm-select-panel { position: fixed; z-index: 400; min-width: 140px; width: max-content; max-width: min(360px, calc(100vw - 1.5rem));
+  max-height: min(60vh, 440px); overflow-y: auto; overscroll-behavior: contain; background: var(--cream); border: 2px solid var(--border); border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--border); padding: 0.35rem; display: none; scrollbar-width: thin; scrollbar-color: #c9b48f transparent; }
+.tm-select-panel::-webkit-scrollbar { width: 8px; } .tm-select-panel::-webkit-scrollbar-track { background: transparent; }
+.tm-select-panel::-webkit-scrollbar-thumb { border-color: var(--cream); }
+.tm-select.open .tm-select-panel { display: block; animation: tmDrop 0.14s ease-out; }
+@keyframes tmDrop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.tm-select.drop-up.open .tm-select-panel { animation: none; }
+.tm-opt { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.7rem; border: none; background: none; border-radius: 9px; cursor: pointer;
+  font-family: 'Instrument Serif', serif; font-size: 0.98rem; color: var(--ink); text-align: left; line-height: 1.25; }
+.tm-opt:hover, .tm-opt:focus-visible { background: rgba(232,116,90,0.12); outline: none; }
+.tm-opt.sel { color: var(--coral); font-weight: 700; }
+.tm-opt.sel::after { content: ''; margin-left: auto; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); flex-shrink: 0; }
+.tm-opt.placeholder { font-family: 'Syne', sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #8a7a60; }
+.tm-grp { font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); padding: 0.75rem 0.7rem 0.3rem; }
+body.dark-read .tm-select-btn { background: #252018; color: var(--cream-dark); border-color: #3a3222; box-shadow: 2px 2px 0 #3a3222; }
+body.dark-read .tm-select-panel { background: #1e1a12; border-color: #3a3222; box-shadow: 4px 4px 0 #0e0c08; }
+body.dark-read .tm-opt { color: #e8dcc4; }
+body.dark-read .tm-opt.sel { color: var(--coral); }
+#chapterJumpSelectWrap { flex: 0 1 auto; min-width: 0; max-width: min(360px, 52vw); }
+@media (max-width: 600px) { #chapterJumpSelectWrap .tm-select-btn { font-size: 0.65rem; padding: 0.35rem 0.6rem 0.35rem 0.8rem; } }
+@media (max-width: 400px) { #chapterJumpSelectWrap { max-width: 50vw; } }
+/* the read-aloud voice menu lives in the dark bar */
+.reader-pill .tm-select-btn { background: transparent; color: var(--cream-dark); border: 1px solid rgba(255,255,255,0.35); box-shadow: none; min-height: 34px; font-size: 0.66rem; max-width: 9rem; }
+.reader-pill .tm-select-btn:hover { transform: none; box-shadow: none; border-color: var(--coral); }
+.reader-pill .tm-select-panel { max-width: min(300px, calc(100vw - 1.5rem)); }
+@media (max-width: 600px) { .reader-pill .tm-select-btn { max-width: 6.5rem; } }
+/* tm-reader-ui: line icons in the text colour, no coloured emoji */
 .fm-block-icon .ico { width: 1.7rem; height: 1.7rem; stroke-width: 1.5; color: var(--coral); }
 .resume-btn { white-space: nowrap; flex-shrink: 0; }
 .resume-text { min-width: 0; }
@@ -802,7 +858,7 @@ body.pill-on .scroll-top-btn { opacity: 0 !important; pointer-events: none !impo
   .reader-pill .rp-text { font-size: 0.85rem; }
   .reader-pill select { max-width: 6.2rem; }
 }
-/* tm-reader-features-v1: last line read, read aloud, next for you */
+/* tm-reader-features: last line read, read aloud, next for you */
 .resume-mark { animation: resumeMark 2.6s ease-out; border-radius: 6px; }
 @keyframes resumeMark { 0%,35% { background: rgba(232,116,90,0.18); box-shadow: 0 0 0 6px rgba(232,116,90,0.18); } 100% { background: transparent; box-shadow: 0 0 0 6px transparent; } }
 .reader-pill { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%) translateY(140%); background: var(--ink); color: var(--cream-dark); border: 2px solid var(--coral); border-radius: 40px; padding: 0.45rem 0.6rem 0.45rem 1.1rem; display: flex; align-items: center; gap: 0.55rem; z-index: 95; box-shadow: 0 4px 24px rgba(0,0,0,0.3); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); max-width: calc(100vw - 1.6rem); }
@@ -5238,7 +5294,8 @@ window.addEventListener('scroll', () => {
 // One entry per story: { c: chapter index, t: chapter title, pct: furthest scroll 0–1, at: timestamp }.
 // A chapter only counts as read after real reading: the reader is open, the tab is visible,
 // and the reader has spent time on it and scrolled into it. Quick clicks and peeks are ignored.
-const _READS_KEY = 'tm_reads_v1';
+(function () { try { ['tm_reads', 'tm_likes', 'tm_comments'].forEach(function (k) { var o = localStorage.getItem(k + '_v1'); if (o !== null && localStorage.getItem(k) === null) localStorage.setItem(k, o); if (o !== null) localStorage.removeItem(k + '_v1'); }); } catch (e) {} })();
+const _READS_KEY = 'tm_reads';
 const READ_RULES = { minSeconds: 20, minPct: 0.15, fastSeconds: 8, fastPct: 0.6, idleSeconds: 60 };
 function _readAll() { try { return JSON.parse(localStorage.getItem(_READS_KEY)) || {}; } catch(e) { return {}; } }
 function _writeAll(o) { try { localStorage.setItem(_READS_KEY, JSON.stringify(o)); } catch(e) {} }
@@ -5355,7 +5412,87 @@ function resumeNovel(novelIdx) {
   openChapter(tgt.c);
 }
 
-// ── LAST LINE READ (tm-reader-features-v1) ──
+
+// ── THEMED DROPDOWNS (tm-themed-controls) ──
+// A styled button and list over a native <select>. The select keeps the value and fires its own change event,
+// so the rest of the page doesn't need to know. Rebuilds itself when the options change or the value is set.
+const _selVal = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value');
+const _CHEV = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+function tmSelect(sel, opts) {
+  if (!sel || sel._tm) return;
+  opts = opts || {};
+  const wrap = document.createElement('div'); wrap.className = 'tm-select' + (opts.up ? ' drop-up' : '');
+  if (sel.id) wrap.id = sel.id + 'Wrap';
+  sel.parentNode.insertBefore(wrap, sel); wrap.appendChild(sel);
+  sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true');
+  const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'tm-select-btn';
+  btn.setAttribute('aria-haspopup', 'listbox'); btn.setAttribute('aria-expanded', 'false');
+  if (sel.getAttribute('aria-label')) btn.setAttribute('aria-label', sel.getAttribute('aria-label'));
+  btn.innerHTML = '<span class="tm-select-label"></span>' + _CHEV;
+  const panel = document.createElement('div'); panel.className = 'tm-select-panel'; panel.setAttribute('role', 'listbox');
+  wrap.appendChild(btn); wrap.appendChild(panel);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function label() {
+    const o = sel.options[sel.selectedIndex];
+    btn.querySelector('.tm-select-label').textContent = o ? o.textContent : '';
+    panel.querySelectorAll('.tm-opt').forEach(b => { const on = b.dataset.v === sel.value; b.classList.toggle('sel', on); b.setAttribute('aria-selected', on); });
+  }
+  function build() {
+    let h = '';
+    Array.from(sel.children).forEach(node => {
+      const one = o => `<button type="button" role="option" class="tm-opt${o.value === '-1' ? ' placeholder' : ''}" data-v="${esc(o.value)}">${esc(o.textContent)}</button>`;
+      if (node.tagName === 'OPTGROUP') h += `<div class="tm-grp">${esc(node.label)}</div>` + Array.from(node.children).map(one).join('');
+      else h += one(node);
+    });
+    panel.innerHTML = h; label();
+    wrap.style.display = sel.style.display === 'none' ? 'none' : '';
+  }
+  function close() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  function open() {
+    document.querySelectorAll('.tm-select.open').forEach(w => w !== wrap && w.classList.remove('open'));
+    const r = btn.getBoundingClientRect();
+    wrap.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
+    // fixed to the screen, so a parent with overflow hidden can't clip it
+    panel.style.minWidth = Math.max(140, r.width) + 'px';
+    const pw = panel.offsetWidth, ph = panel.offsetHeight, m = 12;
+    const up = opts.up || (window.innerHeight - r.bottom < Math.min(ph, 240) + m && r.top > window.innerHeight - r.bottom);
+    wrap.classList.toggle('drop-up', up);
+    let left = r.left + r.width / 2 > window.innerWidth / 2 ? r.right - pw : r.left;
+    left = Math.max(m, Math.min(left, window.innerWidth - pw - m));
+    panel.style.left = left + 'px';
+    if (up) { panel.style.top = 'auto'; panel.style.bottom = (window.innerHeight - r.top + 8) + 'px'; }
+    else { panel.style.bottom = 'auto'; panel.style.top = (r.bottom + 8) + 'px'; }
+    const cur = panel.querySelector('.tm-opt.sel') || panel.querySelector('.tm-opt');
+    if (cur) { panel.scrollTop = cur.offsetTop - panel.clientHeight / 2 + cur.offsetHeight / 2; cur.focus({ preventScroll: true }); }
+  }
+  btn.addEventListener('click', e => { e.stopPropagation(); wrap.classList.contains('open') ? close() : open(); });
+  panel.addEventListener('click', e => {
+    const b = e.target.closest('.tm-opt'); if (!b) return;
+    e.stopPropagation(); close();
+    if (b.dataset.v !== sel.value) { _selVal.set.call(sel, b.dataset.v); label(); sel.dispatchEvent(new Event('change', { bubbles: true })); }
+    btn.focus({ preventScroll: true });
+  });
+  wrap.addEventListener('keydown', e => {
+    if (!wrap.classList.contains('open')) { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(); } return; }
+    const all = Array.from(panel.querySelectorAll('.tm-opt')); const i = all.indexOf(document.activeElement);
+    if (e.key === 'Escape') { e.preventDefault(); close(); btn.focus(); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); (all[Math.min(all.length - 1, i + 1)] || all[0]).focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); (all[Math.max(0, i - 1)] || all[0]).focus(); }
+    else if (e.key === 'Tab') close();
+  });
+  document.addEventListener('click', e => { if (!wrap.contains(e.target)) close(); });
+  window.addEventListener('resize', close);
+  window.addEventListener('scroll', close, { passive: true });
+  Object.defineProperty(sel, 'value', { configurable: true, get() { return _selVal.get.call(this); }, set(v) { _selVal.set.call(this, v); label(); } });
+  new MutationObserver(build).observe(sel, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'disabled'] });
+  sel._tm = { build, label, close };
+  build();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  tmSelect(document.getElementById('chapterJumpSelect'));
+  tmSelect(document.getElementById('ttsVoice'), { up: true });
+});
+// ── LAST LINE READ (tm-reader-features) ──
 // Any way into a chapter you hadn't finished (Resume, the chapter list, a saved link, a refresh)
 // puts you back on the paragraph you'd reached, on phones and computers alike.
 let _pendingRestore = null;
@@ -5397,7 +5534,7 @@ function _restoreLine(novel, idx) {
 }
 function _resumeFromTop() { _hidePill('resumePill'); _restoreAt = -9999; window.scrollTo({ top: 0, behavior: 'instant' }); }
 
-// ── READ ALOUD (tm-reader-features-v1) ──
+// ── READ ALOUD (tm-reader-features) ──
 // Uses the voice built into the reader's phone or computer. Nothing is sent anywhere.
 const _tts = { on: false, paused: false, i: 0, parts: [], gen: 0, rate: 1, fast: 0 };
 let _ttsAdvancing = false;
@@ -5430,7 +5567,7 @@ function _ttsVoiceName(v) {
 function _ttsVoiceList() {
   const sel = document.getElementById('ttsVoice'); if (!sel) return;
   const lang = _ttsLang(), vs = _ttsVoices(lang), cur = _ttsVoice(lang);
-  if (vs.length < 2) { sel.style.display = 'none'; return; }
+  if (vs.length < 2) { sel.style.display = 'none'; if (sel._tm) sel._tm.build(); return; }
   sel.style.display = '';
   sel.innerHTML = vs.slice(0, 12).map(v => `<option value="${v.voiceURI.replace(/"/g, '&quot;')}"${cur && v.voiceURI === cur.voiceURI ? ' selected' : ''}>${_ttsVoiceName(v).replace(/</g, '&lt;')}</option>`).join('');
 }
@@ -5544,7 +5681,7 @@ function _ttsEnd() {
 }
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && _tts.on && !_tts.paused) { _ttsWake(true); if (!speechSynthesis.speaking) _ttsSpeak(); } });
 
-// ── NEXT FOR YOU (tm-reader-features-v1) ──
+// ── NEXT FOR YOU (tm-reader-features) ──
 // At the end of the last chapter there is so far, suggest the books that share people with this one.
 // novel.related is worked out from the character lists when the site is built.
 function _renderNextForYou(novel, idx, vis) {
@@ -5629,7 +5766,7 @@ function animateView(el) {
 
 // In-memory cache: { novelId: { count, liked } }
 const _likesCache = {};
-const _LIKES_KEY = 'tm_likes_v1';
+const _LIKES_KEY = 'tm_likes';
 
 function _readLikes() { try { return JSON.parse(localStorage.getItem(_LIKES_KEY)) || {}; } catch(e) { return {}; } }
 function _writeLikes(o) { try { localStorage.setItem(_LIKES_KEY, JSON.stringify(o)); } catch(e) {} }
@@ -5727,7 +5864,7 @@ function updateReaderHeart() {
 
 // In-memory cache: { novelId: [ comment, ... ] }
 const _commentsCache = {};
-const _COMMENTS_KEY = 'tm_comments_v1';
+const _COMMENTS_KEY = 'tm_comments';
 
 function _readAllComments() { try { return JSON.parse(localStorage.getItem(_COMMENTS_KEY)) || {}; } catch(e) { return {}; } }
 function _writeAllComments(o) { try { localStorage.setItem(_COMMENTS_KEY, JSON.stringify(o)); return true; } catch(e) { return false; } }
@@ -6340,7 +6477,6 @@ function _downloadFile(filename, content, mime) {
 function exportData() {
   const date = new Date().toISOString().slice(0, 10);
   const payload = {
-    _version: 1,
     exportedAt: new Date().toISOString(),
     novels: NOVELS,
     siteConfig: SITE_CONFIG,

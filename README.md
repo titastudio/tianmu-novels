@@ -35,7 +35,7 @@ The site goes live at `https://<username>.github.io/<repo>/` in about a minute.
 
 **Option A — edit the files directly.** Open a file in `content/novels/` on GitHub, edit, and commit. Chapter text is HTML inside `"content"`. If you change titles, dates or chapters this way, also replace `content/catalog.json` (the admin download makes a fresh one), or the library will show the old list.
 
-**Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file (about 200 KB, 25 KB compressed: no chapter text, character pages, photos, chapter blurbs or epigraphs; those come with the book when it's opened), in well under a second, then loads chapter text when a book is opened. The book you were last reading is fetched quietly in the background, so Resume opens straight away. Each novel file is fetched with a version tag, so the browser keeps it and a refresh doesn't download it again.
+**Why it's fast:** the page draws the whole library from `content/catalog.json`, one small file (about 200 KB, 25 KB compressed: no chapter text, character pages, photos, chapter blurbs or epigraphs; those come with the book when it's opened), in well under a second, then loads chapter text when a book is opened. The book you were last reading is fetched quietly in the background, so Resume opens straight away. Each novel file is fetched with a content tag that changes when the file changes, so the browser keeps it and a refresh doesn't download it again.
 
 **Option B — use the admin panel.** Click the logo **5 times** and log in. Edit anything. Your edits stay in that browser until you publish them:
 
@@ -76,7 +76,7 @@ A chapter can have a **volume** (chapter editor → Volume), written like `Volum
 
 ## Reading history ("Continue reading")
 
-Saved **only in each reader's own browser** (key `tm_reads_v1`), one entry per story.
+Saved **only in each reader's own browser** (key `tm_reads`), one entry per story.
 
 - A chapter only counts as read after real reading: the chapter is open, the tab is visible, the reader has been active in the last minute, and has spent at least 20 seconds on it and scrolled at least 15% (or 8 seconds and 60% for fast readers). Quick clicks, previews and peeks are ignored.
 - Each story's page shows its own card: *Continue where you left off* (with % read), or *Up next* once a chapter is finished. A story the reader has never read shows nothing.
